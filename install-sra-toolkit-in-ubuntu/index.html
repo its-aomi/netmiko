@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-7.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>How to Install SRA Toolkit in Ubuntu 20.04 &#x2d; Netmiko.com</title>
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all the commands to install it step by step&#8230;">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="install SRA toolkit on ubuntu 20.04">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install SRA Toolkit in Ubuntu 20.04">
+<meta property="og:description" content="Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all the commands to install it step by step below. So, do read this article till the&#8230;">
+<meta property="og:url" content="https://netmiko.com/install-sra-toolkit-in-ubuntu/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:updated_time" content="2022-10-02T03:32+00:00">
+<meta property="article:published_time" content="2021-09-15T09:10+00:00">
+<meta property="article:modified_time" content="2022-10-02T03:32+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Install SRA Toolkit in Ubuntu 20.04">
+<meta name="twitter:description" content="Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all the commands to install it step by step below. So, do read this article till the&#8230;">
+<meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi.png">
+<meta name="twitter:image:width" content="1280">
+<meta name="twitter:image:height" content="720">
+<meta name="twitter:image:alt" content="install SRA toolkit on ubuntu 20.04">
+<link rel="canonical" href="https://netmiko.com/install-sra-toolkit-in-ubuntu/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-sra-toolkit-in-ubuntu/","name":"How to Install SRA Toolkit in Ubuntu 20.04"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 4.43ms meta | 11.03ms boot -->
+
+<link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
+<link rel="stylesheet" id="crp-public-css" href="https://netmiko.com/wp-content/plugins/custom-related-posts/dist/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="income-school-style-css" href="https://netmiko.com/wp-content/themes/fibrimex/style.css" type="text/css" media="all">
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+pre::before {
+    content: 'Click Code to Copy';
+    display: block;
+    color: #f5f5f5;
+    padding: 20px;
+    margin-top: -25px;
+    margin-bottom: 30px;
+    margin-left: -30px;
+    margin-right: -1000px;
+    background-color: #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+    font-family: 'Fira Sans' !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
+}
+.lyte-wrapper::before {
+    content: 'Watch the Video';
+    display: block;
+    background-color: #444;
+    color: #f5f5f5;
+    padding-left:5px;
+}
+.lyte-wrapper {
+    margin-left: -1px !important;
+}
+.lyte, .lyMe {
+    border: 5px solid #444;
+}
+.image-container {
+    border: 5px solid #444;
+}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/457">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml"> 
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-sra-toolkit-in-ubuntu%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-sra-toolkit-in-ubuntu%2F&#038;format=xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install SRA Toolkit in Ubuntu 20.04 | Netmiko.com">
+<meta property="og:description" content="Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all&hellip;">
+<meta property="og:url" content="https://netmiko.com/install-sra-toolkit-in-ubuntu/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi-1024x576.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all&hellip;">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-150x150.png" sizes="32x32">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+<meta name="msapplication-TileImage" content="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+
+</head>
+
+
+<body class="post-template-default single single-post postid-457 single-format-standard wp-custom-logo no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="360" height="149" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-5993" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5993"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-407">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-409"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-408"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+<li id="menu-item-6244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6244"><a href="https://netmiko.com/category/code/">Source Codes</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-457" class="post-457 post type-post status-publish format-standard has-post-thumbnail hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">How to Install SRA Toolkit in Ubuntu 20.04</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2021-09-15">
+<meta itemprop="dateModified" content="2022-10-02">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/miko/">MIKO</a></span> </span><meta itemprop="author" content="MIKO">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/install-sra-toolkit-in-ubuntu/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+			<div class="post-thumbnail" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<img width="1280" height="720" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi.png.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="install SRA toolkit on ubuntu 20.04" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi.png.webp 1280w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi-768x432.png.webp 768w" sizes="(max-width: 1280px) 100vw, 1280px">			</div>
+<!-- .post-thumbnail -->
+
+		
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all the commands to install it step by step below.</p>
+<p>So, do read this article till the end so that you will not face any problem in installing the SRA Toolkit in your ubuntu 20.04.</p>
+<div class="brcNUDvT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div>
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+</div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+<h2>Install SRA Toolkit in Ubuntu 20.04 &#8211;<br>
+</h2>
+<p>Now let&#8217;s see how we can install sra toolkit in our Ubuntu 20.04. It will be easy and quick. </p>
+<h3>Update &#8211;<br>
+</h3>
+<p>Before installing the SRA toolkit, we will first update our packages. We will use the below commands to update our packages.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update</code></pre>
+<p>After we updated our packages, now let us see how we will install the SRA Toolkit.</p>
+<div class="8QMZLHPi" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+</div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+<h3>Create Local Directory &#8211;<br>
+</h3>
+<p>Before installing sra toolkit we have to create a local directory for this in our ubuntu system. To create a local directory, we will use the command given below, where you can create a directory of any name in place of “yourdirectoryname”.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">mkdir -p yourdirectoryname/local
+</code></pre>
+<p>Now that we have created a directory, now we will have to change our working directory. We will use the command given below for this, which will change our current working directory to the one that we made.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd yourdirectoryname
+</code></pre>
+<h3>Download SRA Toolkit &#8211;<br>
+</h3>
+<p>Now you will have to download the sra toolkit inside this directory. We will download tar.gz of sra toolkit for this. To download this tar file copy the below commands and paste it in your terminal and press enter.</p>
+<div class="JWIDSfgg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longer_content - longer_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-652"> </div>
+</div>
+<!-- End Ezoic - longer_content - longer_content -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget &#8211; output-document sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+</code></pre>
+<h3>Check and Extract SRA Toolkit &#8211;<br>
+</h3>
+<p>Now we will check whether our sra toolkit has been downloaded or not in our directory. To check that we have to type the following command in the terminal while our working directory is “ yourdirectoryname”. You can also manually open your file manager and go to the &#8220;yourdirectoryname&#8221; folder where you can see the downloaded tar file.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">ls </code></pre>
+<p>After typing the above command, if you see sratoolkit.tar.gz in terminal then it means that sra toolkit has been downloaded which we have to extract now.</p>
+<p>To extract, we will use the below command which will extract the sra toolkit in the same directory.</p>
+<div class="inkoPkSn" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longest_content - longest_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-653"> </div>
+</div>
+<!-- End Ezoic - longest_content - longest_content -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">tar -vxzf sratoolkit.tar.gz</code></pre>
+<h3>Append binary path to path environment variable &#8211; </h3>
+<p>Now we will have to append the path of our binary to the path environment variable. To append it we will copy the below command and then paste it in our terminal.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">export PATH=$PATH:$PWD/sratoolkit.2.11.1-ubuntu64/bin
+</code></pre>
+<p>Here in this command if your system is 32-bit then you have to write ubuntu32 instead of ubuntu 64 and also sratoolkit version will be different due to updates. So make sure you use the correct version name in this command. You can see what version you downloaded in your terminal when downloading the tar file.</p>
+<p>After entering the above command, now we have to check whether our system can find this binary or not. To see that we will type the command given below.</p>
+<div class="IpDJPlZr" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+</div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">which fastq-dump
+</code></pre>
+<p>After typing this above command, if you see “ /yourdirectoryname/local/sratoolkit.2.11.1-ubuntu64/bin/fastq-dump” in your terminal it means that our system can find the binary.</p>
+<h2>SRA Toolkit Configuration &#8211; </h2>
+<p>Now we have to configure our sra toolkit. To configure the sra toolkit, first of all type the following command in the terminal after which the configuration panel of the sra toolkit will open from where we can complete the final steps.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">vdb-config -i
+</code></pre>
+<p>After entering the command you will get the configuration panel of sra toolkit where the red color mark on the side of the first option means that you have just selected that option and to change that you have to press “TAB KEY” in your computer keyboard.You can choose other options using tab key and enter key. </p>
+<div class="d0RweLle" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_6 - incontent_6 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-655"> </div>
+</div>
+<!-- End Ezoic - incontent_6 - incontent_6 -->
+</div>
+<p>Keep pressing TAB KEY until your red mark appears at the side of CACHE. When your red mark is at the side of the CACHE option then you have to press ENTER KEY.</p>
+<p>After you hit enter and get inside the CACHE option here you will have to press TAB KEY again and then select the choose button below the location of user-repository option.</p>
+<p>Now after we have selected the choose option here we will have to select the directory that we created at the beginning of the tutorial, which in our case is yourdirectoryname.</p>
+<div class="RnjbwTMs" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_7 - incontent_7 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-656"> </div>
+</div>
+<!-- End Ezoic - incontent_7 - incontent_7 -->
+</div>
+<p> Enter the directory by selecting it with the help of the arrow key on our keyboard and then select the folder named local and press enter.</p>
+<p>After this, again with the help of TAB KEY, go to the option of OK and press it and then select the option yes and present enter.</p>
+<p>Now we have to click on save option here and then click on ok. After this we have to go to the exit button and then press enter.</p>
+<div class="4JbWoyez" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_8 - incontent_8 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-657"> </div>
+</div>
+<!-- End Ezoic - incontent_8 - incontent_8 -->
+</div>
+<h2>Check SRA Toolkit &#8211;<br>
+</h2>
+<p>Now we have to see whether our sra toolkit is working and is functional or not. To see this, we will type the command given below in our terminal.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">fastq-dump &#8211; stdout SRR390728 | head -n 8</code></pre>
+<p>After typing the above command in the terminal you will need to wait a few seconds and after that if you see the following output in the terminal, then it means that the sra toolkit is working and is fully functional.</p>
+<p>															<img width="844" height="249" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Screenshot-286.png.webp" alt="install sra toolkit in ubuntu 20.04 check toolkit" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Screenshot-286.png.webp 844w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Screenshot-286-300x89.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Screenshot-286-768x227.png.webp 768w" sizes="(max-width: 844px) 100vw, 844px">															</p>
+<div class="qOLPWPjW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_9 - incontent_9 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-658"> </div>
+</div>
+<!-- End Ezoic - incontent_9 - incontent_9 -->
+</div>
+<h2>Uninstall SRA Toolkit &#8211;<br>
+</h2>
+<p>If for some reason you want to uninstall SRA Toolkit from your ubuntu system, then you can use the below command for this, which will completely uninstall the sra toolkit from your Ubuntu system.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get purge &#8211; auto-remove sra-toolkit
+</code></pre>
+<p><strong>NOTE:</strong> In some cases you might need to run the source command for sra toolkit installation to complete. You can also close the active terminal window and open a new one.</p>
+<p>				x				</p>
+<div class="DWjBs2DO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_10 - incontent_10 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-659"> </div>
+</div>
+<!-- End Ezoic - incontent_10 - incontent_10 -->
+</div>
+<p>And just like this you can install and setup sra toolkit in your ubuntu 20.04. If you liked this tutorial, then definitely share it with your friends who want to install sra toolkit in their ubuntu 20.04 system. If you face any problem in installing it, then comment below and I will definitely solve it and provide the solution to you. Thank you.</p>
+<div class="lyte-wrapper" title="How to Install SRA Toolkit in Ubuntu 20.04 - Step by Step" style="width:1280px;max-width:100%;margin:5px;"><div class="lyMe" id="WYL_6EHKuh0T3eI" itemprop="video" itemscope itemtype="https://schema.org/VideoObject">
+<div>
+<meta itemprop="thumbnailUrl" content="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyteCache.php?origThumbUrl=https%3A%2F%2Fi.ytimg.com%2Fvi%2F6EHKuh0T3eI%2Fhqdefault.jpg">
+<meta itemprop="embedURL" content="https://www.youtube.com/embed/6EHKuh0T3eI">
+<meta itemprop="duration" content="PT6M15S">
+<meta itemprop="uploadDate" content="2021-09-15T15:18:00Z">
+</div>
+<div id="lyte_6EHKuh0T3eI" data-src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyteCache.php?origThumbUrl=https%3A%2F%2Fi.ytimg.com%2Fvi%2F6EHKuh0T3eI%2Fhqdefault.jpg" class="pL">
+<div class="tC"><div class="tT" itemprop="name">How to Install SRA Toolkit in Ubuntu 20.04 - Step by Step</div></div>
+<div class="play"></div>
+<div class="ctrl">
+<div class="Lctrl"></div>
+<div class="Rctrl"></div>
+</div>
+</div>
+<noscript><a href="http://youtu.be/6EHKuh0T3eI"><img src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyteCache.php?origThumbUrl=http%3A%2F%2Fi.ytimg.com%2Fvi%2F6EHKuh0T3eI%2F0.jpg" alt="How to Install SRA Toolkit in Ubuntu 20.04 - Step by Step" width="1280" height="700"><br>Watch this video on YouTube</a></noscript>
+<meta itemprop="description" content="Full step by step tutorial on how to install sra toolkit in ubuntu 20.04. COMMANDS - https://netmiko.com/install-sra-toolkit-in-ubuntu/ Best Web Hosting for your blog - https://netmiko.com/best-hosting/ 0:00 Update 0:25 Create directory 0:44 Change working directory 1:04 Download SRA Toolkit 2:12 Extract Tar file 2:38 Append binary path 3:18 Check binary 3:38 Configure 4:28 Check installation">
+</div></div>
+<div class="lL" style="max-width:100%;width:1280px;margin:5px;"></div>
+<h2>FAQ &#8211; </h2>
+<h3>Can we install SRA Toolkit in our ubuntu 18.04 with the help of this tutorial.<br>
+</h3>
+<p>Yes, you can install and run sra toolkit in your Ubuntu 18.04 also with the help of this tutorial. The commands will remain same for your system but if your system is 32-bit then keep in mind that in the command “ export PATH=$PATH:$PWD/sratoolkit.2.11.1-ubuntu64/bin ” you have to use ubuntu32 instead of ubuntu64 along with a different sra toolkit version if yours is different.</p>
+<h3>Can we create a directory with any name?<br>
+</h3>
+<p>Yes, you can create a directory with any name here, like we had created a directory here by the name of “yourdirectoryname” and “local”, you can create a directory with any such name.</p>
+<div class="1nhinD7D" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_11 - incontent_11 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-660"> </div>
+</div>
+<!-- End Ezoic - incontent_11 - incontent_11 -->
+</div>
+	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-457 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install SRA Toolkit in Ubuntu 20.04",
+				"url": "https://netmiko.com/install-sra-toolkit-in-ubuntu/",
+				"articleBody": "Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all the commands to install it step by step below.So, do read this article till the end so that you will not face any problem in installing the SRA Toolkit in your ubuntu 20.04.		
+			Install SRA Toolkit in Ubuntu 20.04 -
+		
+		Now let's see how we can install sra toolkit in our Ubuntu 20.04. It will be easy and quick. 		
+			Update -
+		
+		Before installing the SRA toolkit, we will first update our packages. We will use the below commands to update our packages.		
+			sudo apt-get update		
+		After we updated our packages, now let us see how we will install the SRA Toolkit.
+			Create Local Directory -
+		
+		Before installing sra toolkit we have to create a local directory for this in our ubuntu system. To create a local directory, we will use the command given below, where you can create a directory of any name in place of “yourdirectoryname”.		
+			mkdir -p yourdirectoryname/local
+		
+		Now that we have created a directory, now we will have to change our working directory. We will use the command given below for this, which will change our current working directory to the one that we made.		
+			cd yourdirectoryname
+		
+			Download SRA Toolkit -
+		
+		Now you will have to download the sra toolkit inside this directory. We will download tar.gz of sra toolkit for this. To download this tar file copy the below commands and paste it in your terminal and press enter.
+			wget --output-document sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+		
+			Check and Extract SRA Toolkit -
+		
+		Now we will check whether our sra toolkit has been downloaded or not in our directory. To check that we have to type the following command in the terminal while our working directory is “ yourdirectoryname”. You can also manually open your file manager and go to the \"yourdirectoryname\" folder where you can see the downloaded tar file.		
+			ls 		
+		After typing the above command, if you see sratoolkit.tar.gz in terminal then it means that sra toolkit has been downloaded which we have to extract now.To extract, we will use the below command which will extract the sra toolkit in the same directory.
+			tar -vxzf sratoolkit.tar.gz		
+			Append binary path to path environment variable - 		
+		Now we will have to append the path of our binary to the path environment variable. To append it we will copy the below command and then paste it in our terminal.		
+			export PATH=$PATH:$PWD/sratoolkit.2.11.1-ubuntu64/bin
+		
+		Here in this command if your system is 32-bit then you have to write ubuntu32 instead of ubuntu 64 and also sratoolkit version will be different due to updates. So make sure you use the correct version name in this command. You can see what version you downloaded in your terminal when downloading the tar file.After entering the above command, now we have to check whether our system can find this binary or not. To see that we will type the command given below.
+			which fastq-dump
+		
+		After typing this above command, if you see “ /yourdirectoryname/local/sratoolkit.2.11.1-ubuntu64/bin/fastq-dump” in your terminal it means that our system can find the binary.		
+			SRA Toolkit Configuration - 		
+		Now we have to configure our sra toolkit. To configure the sra toolkit, first of all type the following command in the terminal after which the configuration panel of the sra toolkit will open from where we can complete the final steps.		
+			vdb-config -i
+		
+		After entering the command you will get the configuration panel of sra toolkit where the red color mark on the side of the first option means that you have just selected that option and to change that you have to press “TAB KEY” in your computer keyboard.You can choose other options using tab key and enter key. 
+Keep pressing TAB KEY until your red mark appears at the side of CACHE. When your red mark is at the side of the CACHE option then you have to press ENTER KEY.After you hit enter and get inside the CACHE option here you will have to press TAB KEY again and then select the choose button below the location of user-repository option.Now after we have selected the choose option here we will have to select the directory that we created at the beginning of the tutorial, which in our case is yourdirectoryname. Enter the directory by selecting it with the help of the arrow key on our keyboard and then select the folder named local and press enter.
+After this, again with the help of TAB KEY, go to the option of OK and press it and then select the option yes and present enter.Now we have to click on save option here and then click on ok. After this we have to go to the exit button and then press enter.		
+			Check SRA Toolkit - 
+		
+		Now we have to see whether our sra toolkit is working and is functional or not. To see this, we will type the command given below in our terminal.
+			fastq-dump --stdout SRR390728 | head -n 8		
+		After typing the above command in the terminal you will need to wait a few seconds and after that if you see the following output in the terminal, then it means that the sra toolkit is working and is fully functional.		
+																														
+			Uninstall SRA Toolkit - 
+		
+		If for some reason you want to uninstall SRA Toolkit from your ubuntu system, then you can use the below command for this, which will completely uninstall the sra toolkit from your Ubuntu system.		
+			sudo apt-get purge --auto-remove sra-toolkit
+		
+		NOTE: In some cases you might need to run the source command for sra toolkit installation to complete. You can also close the active terminal window and open a new one.		
+				x				
+		And just like this you can install and setup sra toolkit in your ubuntu 20.04. If you liked this tutorial, then definitely share it with your friends who want to install sra toolkit in their ubuntu 20.04 system. If you face any problem in installing it, then comment below and I will definitely solve it and provide the solution to you. Thank you. How to Install SRA Toolkit in Ubuntu 20.04 - Step by StepWatch this video on YouTube
+
+			FAQ - 		
+			Can we install SRA Toolkit in our ubuntu 18.04 with the help of this tutorial.
+		
+		Yes, you can install and run sra toolkit in your Ubuntu 18.04 also with the help of this tutorial. The commands will remain same for your system but if your system is 32-bit then keep in mind that in the command “ export PATH=$PATH:$PWD/sratoolkit.2.11.1-ubuntu64/bin ” you have to use ubuntu32 instead of ubuntu64 along with a different sra toolkit version if yours is different.		
+			Can we create a directory with any name?
+		
+		Yes, you can create a directory with any name here, like we had created a directory here by the name of “yourdirectoryname” and “local”, you can create a directory with any such name.",
+				"headline": "How to Install SRA Toolkit in Ubuntu 20.04",
+				"author": "MIKO",
+				"datePublished": "2021-09-15",
+				"mainEntityOfPage": "True",
+				"dateModified": "2022-10-02",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://netmiko.com/wp-content/uploads/2021/09/install-SRA-toolkit-on-ubuntu-20.04-hindi-1024x576.png",
+          "height": 1024,
+          "width": 576        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "Netmiko.com",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/miko/" alt="link to MIKO author page">
+				<div class="avatar-container" style="background-image: url('http://2.gravatar.com/avatar/e065f317ac1f997d8cb4fb90aa5ca03b?s=96&d=mm&r=g')">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/miko/">MIKO</a></p>
+				</header>
+				<p>Gamer &amp; Blogger.</p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/css-solar-system-simulator/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp')"></div>
+<span class="sr-only">link to CSS Solar System Simulator</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/css-solar-system-simulator/">CSS Solar System Simulator</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+A 2d solar system simulator with time. The planets and the orbit has simple animation.
+
+
+
+[ Made by Sam Chahine ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" &gt;
+&lt;head&gt;
+ ...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/css-solar-system-simulator/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="CSS Solar System Simulator">
+				<meta itemprop="headline" content="CSS Solar System Simulator">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/solar-system-animation-pure-css/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp')"></div>
+<span class="sr-only">link to Solar System Animation Pure CSS</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/solar-system-animation-pure-css/">Solar System Animation Pure CSS</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+Simple 2d animation of the solar system made using CSS, it also uses a little jquery to create the stars in the background. 
+
+
+
+[ Made by Giulia Cardieri ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/solar-system-animation-pure-css/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="Solar System Animation Pure CSS">
+				<meta itemprop="headline" content="Solar System Animation Pure CSS">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Html, CSS, JavaScript, React, and Vue Code Examples and Source Codes.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-680"> </div>
+<p><!-- End Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2022 Copyright Netmiko.com			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<div class="codecopy_tooltip" style="display: inline-block; background: #333; color: white; padding: 0 8px; font-size: 14px; border-radius: 2px; border: 1px solid #111; position:absolute; display: none;">Click to Copy</div>
+<script type="text/javascript">
+	function codecopy_get_element_position(el) {
+		var rect = el.getBoundingClientRect(),
+		scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+		scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		return { top: rect.top + scrollTop - 30, left: rect.left + scrollLeft }
+	}
+
+	function codecopy_apply(element) {
+		element.addEventListener("click", function() {
+			event.stopPropagation();
+			const el = document.createElement('textarea');
+			el.value = element.textContent;
+			document.body.appendChild(el);
+			el.select();
+			document.execCommand('copy');
+			document.body.removeChild(el);
+			codecopy_tooltip.innerHTML = 'Copied!'
+		});
+		element.addEventListener("mouseover", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.innerHTML = 'Click to Copy';
+			codecopy_tooltip.style.display = 'inline-block';
+			codecopy_tooltip.style.top = position.top + 'px';
+			codecopy_tooltip.style.left = position.left + 'px';
+		});
+		element.addEventListener("mouseout", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.style.display = 'none';
+			codecopy_tooltip.style.top ='9999px';
+		});
+	}
+
+	var codecopy_tooltip = document.querySelector('.codecopy_tooltip');
+
+	document.querySelectorAll("code").forEach(function(element) {
+		codecopy_apply(element);
+	});
+</script>
+<script type="text/javascript" data-cfasync="false">var bU="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/";var mOs=null;style = document.createElement("style");style.type = "text/css";rules = document.createTextNode(".lyte-wrapper-audio div, .lyte-wrapper div {margin:0px; overflow:hidden;} .lyte,.lyMe{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background-color:#777;} .fourthree .lyMe, .fourthree .lyte {padding-bottom:75%;} .lidget{margin-bottom:5px;} .lidget .lyte, .widget .lyMe {padding-bottom:0!important;height:100%!important;} .lyte-wrapper-audio .lyte{height:38px!important;overflow:hidden;padding:0!important} .lyMe iframe, .lyte iframe,.lyte .pL{position:absolute !important;top:0;left:0;width:100%;height:100%!important;background:no-repeat scroll center #000;background-size:cover;cursor:pointer} .tC{left:0;position:absolute;top:0;width:100%} .tC{background-image:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0))} .tT{color:#FFF;font-family:Roboto,sans-serif;font-size:16px;height:auto;text-align:left;padding:5px 10px 50px 10px} .play{background:no-repeat scroll 0 0 transparent;width:88px;height:63px;position:absolute;left:43%;left:calc(50% - 44px);left:-webkit-calc(50% - 44px);top:38%;top:calc(50% - 31px);top:-webkit-calc(50% - 31px);} .widget .play {top:30%;top:calc(45% - 31px);top:-webkit-calc(45% - 31px);transform:scale(0.6);-webkit-transform:scale(0.6);-ms-transform:scale(0.6);} .lyte:hover .play{background-position:0 -65px;} .lyte-audio .pL{max-height:38px!important} .lyte-audio iframe{height:438px!important} .ctrl{background:repeat scroll 0 -220px rgba(0,0,0,0.3);width:100%;height:40px;bottom:0px;left:0;position:absolute;} .lyte-wrapper .ctrl{display:none}.Lctrl{background:no-repeat scroll 0 -137px transparent;width:158px;height:40px;bottom:0;left:0;position:absolute} .Rctrl{background:no-repeat scroll -42px -179px transparent;width:117px;height:40px;bottom:0;right:0;position:absolute;padding-right:10px;}.lyte-audio .play{display:none}.lyte-audio .ctrl{background-color:rgba(0,0,0,1)}.lyte .hidden{display:none}");if(style.styleSheet) { style.styleSheet.cssText = rules.nodeValue;} else {style.appendChild(rules);}document.getElementsByTagName("head")[0].appendChild(style);</script><script type="text/javascript" data-cfasync="false" async src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/lyte-min.js?wyl_version=1.7.19"></script><script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-7.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>How to do a website load Test Online &#x2d; Netmiko.com</title>
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Ever wondered how much traffic your blog can handle without crashing. Well, there is a tool by which you can check how many visitors your blog can handle per&#8230;">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/10/How-to-do-website-load-test-online.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="How to do website load test online">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to do a website load Test Online">
+<meta property="og:description" content="Ever wondered how much traffic your blog can handle without crashing. Well, there is a tool by which you can check how many visitors your blog can handle per minute or second. The tool which we will&#8230;">
+<meta property="og:url" content="https://netmiko.com/website-load-test-online/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:updated_time" content="2022-10-02T03:32+00:00">
+<meta property="article:published_time" content="2021-10-08T16:31+00:00">
+<meta property="article:modified_time" content="2022-10-02T03:32+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to do a website load Test Online">
+<meta name="twitter:description" content="Ever wondered how much traffic your blog can handle without crashing. Well, there is a tool by which you can check how many visitors your blog can handle per minute or second. The tool which we will&#8230;">
+<meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/10/How-to-do-website-load-test-online.png">
+<meta name="twitter:image:width" content="1280">
+<meta name="twitter:image:height" content="720">
+<meta name="twitter:image:alt" content="How to do website load test online">
+<link rel="canonical" href="https://netmiko.com/website-load-test-online/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/website-load-test-online/","name":"How to do a website load Test Online"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 4.09ms meta | 10.74ms boot -->
+
+<link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
+<link rel="stylesheet" id="crp-public-css" href="https://netmiko.com/wp-content/plugins/custom-related-posts/dist/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="income-school-style-css" href="https://netmiko.com/wp-content/themes/fibrimex/style.css" type="text/css" media="all">
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+pre::before {
+    content: 'Click Code to Copy';
+    display: block;
+    color: #f5f5f5;
+    padding: 20px;
+    margin-top: -25px;
+    margin-bottom: 30px;
+    margin-left: -30px;
+    margin-right: -1000px;
+    background-color: #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+    font-family: 'Fira Sans' !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
+}
+.lyte-wrapper::before {
+    content: 'Watch the Video';
+    display: block;
+    background-color: #444;
+    color: #f5f5f5;
+    padding-left:5px;
+}
+.lyte-wrapper {
+    margin-left: -1px !important;
+}
+.lyte, .lyMe {
+    border: 5px solid #444;
+}
+.image-container {
+    border: 5px solid #444;
+}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/717">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml"> 
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Fwebsite-load-test-online%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Fwebsite-load-test-online%2F&#038;format=xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to do a website load Test Online | Netmiko.com">
+<meta property="og:description" content="Ever wondered how much traffic your blog can handle without crashing. Well, there is a tool by which you can check how many visitors your&hellip;">
+<meta property="og:url" content="https://netmiko.com/website-load-test-online/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/10/How-to-do-website-load-test-online-1024x576.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Ever wondered how much traffic your blog can handle without crashing. Well, there is a tool by which you can check how many visitors your&hellip;">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-150x150.png" sizes="32x32">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+<meta name="msapplication-TileImage" content="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+
+</head>
+
+
+<body class="post-template-default single single-post postid-717 single-format-standard wp-custom-logo no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="360" height="149" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-5993" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5993"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-407">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-409"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-408"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+<li id="menu-item-6244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6244"><a href="https://netmiko.com/category/code/">Source Codes</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-717" class="post-717 post type-post status-publish format-standard has-post-thumbnail hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">How to do a website load Test Online</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2021-10-08">
+<meta itemprop="dateModified" content="2022-10-02">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/miko/">MIKO</a></span> </span><meta itemprop="author" content="MIKO">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/website-load-test-online/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+			<div class="post-thumbnail" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<img width="1280" height="720" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online.png.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="How to do website load test online" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online.png.webp 1280w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-768x432.png.webp 768w" sizes="(max-width: 1280px) 100vw, 1280px">			</div>
+<!-- .post-thumbnail -->
+
+		
+	<div class="entry-content" itemprop="articleBody">
+		<p>Ever wondered how much traffic your blog can handle without crashing. Well, there is a tool by which you can check how many visitors your blog can handle per minute or second.</p>
+<p>The tool which we will be using is called <a href="https://loader.io/">loader.io</a> that will help us test our site&#8217;s performance by sending virtual traffic to our website per second or per minute and giving us back the performance report of our site.</p>
+<div class="vBk66xXo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div>
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+</div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+<p>This tool is very easy to set up and use and we can easily set up a load test for our website in minutes.</p>
+<h2>Why you must do a load test of your website before going live &#8211;<br>
+</h2>
+<p>A website load test is something you must do before launching your website or e-commerce store. </p>
+<p>Why you might ask? Because by doing a website load test we will be able to see how much traffic our website can handle concurrently without crashing or having a crazy high load time during a traffic surge.</p>
+<div class="DFvVIDez" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+</div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+<p>If your website gets crashed during a traffic surge then you can lose a lot of money because your site won&#8217;t load or will have a very high loading time which will send customers away from your site. </p>
+<p>That&#8217;s why it&#8217;s best to load test your website using this online tool before launching it. So, that you can prepare for a traffic surge in your website to avoid it getting crashed.</p>
+<h2>Website load test online using Loader.io &#8211;<br>
+</h2>
+<p>To do a website load test online we will use this online Application load testing Tool called <a href="https://loader.io/">Loader.io</a>. </p>
+<div class="mm5bgeiV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longer_content - longer_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-652"> </div>
+</div>
+<!-- End Ezoic - longer_content - longer_content -->
+</div>
+<p><strong>1.</strong> First go to the site and here you will need to make a new account. Click on “<em>Sign Up Now</em>” and then select the Plan you need. Click on Sign Up Now again below the plan you want to use.</p>
+<p><strong>2.</strong> Now here you will need to give your company name or any name you want and after that add your email and a secure password. And after that click on “<em>Sign Up</em>”.</p>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-sign-up-at-loader.io_-1024x576.png.webp" alt="How to do website load test online - sign up at loader.io" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-sign-up-at-loader.io_-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-sign-up-at-loader.io_-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-sign-up-at-loader.io_-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-sign-up-at-loader.io_.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<div class="S9zCuDYT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longest_content - longest_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-653"> </div>
+</div>
+<!-- End Ezoic - longest_content - longest_content -->
+</div>
+<p><strong>3.</strong> After that you will need to verify your email. Go to your email app and there you will receive an email from Loader.io. Click on the “<em>Verify me</em>” link to verify your email.</p>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verify-email-of-loader.io_-1024x576.png.webp" alt="How to do website load test online - verify email of loader.io" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verify-email-of-loader.io_-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verify-email-of-loader.io_-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verify-email-of-loader.io_-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verify-email-of-loader.io_.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p><strong>4.</strong> Your account will be verified after going to the link. After that, you can log in to your Loader.io account using the email and the password that you provided.</p>
+<div class="0GoY9F8H" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+</div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>
+<p><strong>5.</strong> After logging in to your Loader.io account you will get an option to add a “New Host”. You can add your website by clicking on the “<em>New Host</em>” button.</p>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-new-host-in-loader.io_-1024x576.png.webp" alt="How to do website load test online - add new host in loader.io" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-new-host-in-loader.io_-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-new-host-in-loader.io_-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-new-host-in-loader.io_-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-new-host-in-loader.io_.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p><strong>6.</strong> Now here you will need to add your domain name. Add your domain name and then click on the “Verify” button to continue.</p>
+<div class="msXlypCP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_6 - incontent_6 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-655"> </div>
+</div>
+<!-- End Ezoic - incontent_6 - incontent_6 -->
+</div>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-domain-to-loader.io_-1024x576.png.webp" alt="How to do website load test online - add domain to loader.io" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-domain-to-loader.io_-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-domain-to-loader.io_-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-domain-to-loader.io_-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-add-domain-to-loader.io_.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p><strong>7.</strong> To verify that you own that website you will have to copy the verification token that they give you and then add it to your website.</p>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-copy-verification-code-of-loader.io_-1024x576.png.webp" alt="How to do website load test online - copy verification code of loader.io" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-copy-verification-code-of-loader.io_-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-copy-verification-code-of-loader.io_-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-copy-verification-code-of-loader.io_-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-copy-verification-code-of-loader.io_.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<div class="X8XoGMh8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_7 - incontent_7 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-656"> </div>
+</div>
+<!-- End Ezoic - incontent_7 - incontent_7 -->
+</div>
+<p><strong>8.</strong> Copy the verification code and open a new notepad file. Paste the verification code in the txt file and then save the file with the name as the verification code. Like “loaderio-753f78a8b2f4d1051db444f419f24e29<em>.txt</em>”.</p>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-a-txt-file-for-loader.io-verification-1024x576.png.webp" alt="How to do website load test online - create a txt file for loader.io verification" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-a-txt-file-for-loader.io-verification-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-a-txt-file-for-loader.io-verification-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-a-txt-file-for-loader.io-verification-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-a-txt-file-for-loader.io-verification.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p><strong>9.</strong> Now using FTP or File Manager in WordPress upload the txt file to your <em>website’s root directory</em>.</p>
+<div class="LveGJb9Y" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_8 - incontent_8 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-657"> </div>
+</div>
+<!-- End Ezoic - incontent_8 - incontent_8 -->
+</div>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-upload-verification-file-to-website-1024x576.png.webp" alt="How to do website load test online - upload verification file to website" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-upload-verification-file-to-website-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-upload-verification-file-to-website-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-upload-verification-file-to-website-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-upload-verification-file-to-website.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p><strong>10.</strong> After uploading the verification code to your website go back to Loader.io and click on the “<em>Verify</em>” button. If you uploaded your verification code correctly then it will show “<em>Congrats, target verification passed!</em>” after clicking the verify button.</p>
+<p>Click on “<em>New Test</em>” to create a new test.</p>
+<div class="eYh2FHZW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_9 - incontent_9 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-658"> </div>
+</div>
+<!-- End Ezoic - incontent_9 - incontent_9 -->
+</div>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verification-passed-notice-1024x576.png.webp" alt="How to do website load test online - verification passed notice" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verification-passed-notice-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verification-passed-notice-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verification-passed-notice-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-verification-passed-notice.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p><strong>11.</strong> Here in the “<em>Test Name</em>” give it anything you want. And in “<em>Test type</em>” you can select 3 methods &#8211; Clients per test, Clients per second, Maintain client load. Select the one you want.</p>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-new-load-test-1024x576.png.webp" alt="How to do website load test online - create new load test" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-new-load-test-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-new-load-test-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-new-load-test-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-create-new-load-test.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<div class="p6SPWAmS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_10 - incontent_10 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-659"> </div>
+</div>
+<!-- End Ezoic - incontent_10 - incontent_10 -->
+</div>
+<p>In clients, select the number of clients you want to visit your website during the given time. In Duration select the time you want for this test to run.</p>
+<p><strong>12.</strong> After setting these up, scroll down to the bottom and then click on “<em>Run Test</em>”.</p>
+<p><strong>13.</strong> After you click on “run test” the test will start and loader.io will send the number of visitors you added in settings to your website over the period of time you gave. </p>
+<div class="zychfRu7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_11 - incontent_11 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-660"> </div>
+</div>
+<!-- End Ezoic - incontent_11 - incontent_11 -->
+</div>
+<p>Now here you will be able to see all the things you need to see how well your site is performing. Most important is the “<em>Response time</em>” because a high response time means your site is not able to handle that load properly. </p>
+<p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-website-load-test-results-1024x576.png.webp" alt="How to do website load test online - website load test results" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-website-load-test-results-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-website-load-test-results-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-website-load-test-results-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/How-to-do-website-load-test-online-website-load-test-results.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p>If you see a spike in the <em>response time</em> in the graph below. Then it means that your server is having a hard time processing the requests. Also in <em>Response Counts,</em> if you see any timeout then it means that the server failed to process a request.</p>
+<div class="eIOJNG24" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_12 - incontent_12 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-661"> </div>
+</div>
+<!-- End Ezoic - incontent_12 - incontent_12 -->
+</div>
+<p>You can test out different settings in Loader.io to see how your website performs during a traffic surge which will help you prepare for a traffic surge in the future.</p>
+<p>And that is how you can do a <em>website load test online using Loader.io</em> in a few easy steps.</p>
+<h2>Frequently asked questions &#8211;<br>
+</h2>
+<h3>Does doing a website load test can break my site?</h3>
+<p>No, doing a website load test won&#8217;t break your website. But <em>what</em> <em>it can do is crash your website&#8217;s server for a few minutes</em> meaning that you won&#8217;t be able to access your website for a few minutes.</p>
+<div class="zDutmT7D" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_13 - incontent_13 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-662"> </div>
+</div>
+<!-- End Ezoic - incontent_13 - incontent_13 -->
+</div>
+<p>This will get fixed automatically after you stop the load testing. And after that, you will be able to access your website without any problem.</p>
+<h3>Does my web hosting provider allow load testing?<br>
+</h3>
+<p>Now load testing a website is something that <em>not all hosting providers allow you to do</em>. Because if you are using any shared hosting then you can cause problems for other users on the same server as you will use up all the resources of that server.</p>
+<p>That&#8217;s why it&#8217;s important to contact your hosting provider before doing a website load test otherwise your web hosting account might get banned for abuse.</p>
+<div class="Ax603vgO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_14 - incontent_14 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-663"> </div>
+</div>
+<!-- End Ezoic - incontent_14 - incontent_14 -->
+</div>
+<p>One more thing you should know is that doing a <em>website load test uses a lot of resources</em> from a server which means that if you are hosting your website on a limited resources hosting plan then you might have to pay some extra money to keep your site running. </p>
+<p>Because otherwise, they will just lower the resources provided to your website and make it go down.</p>
+<p>This is not a problem in VPS hosting as you get a server with dedicated resources and not shared resources.</p>
+<div class="1QVwgnep" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_15 - incontent_15 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-664"> </div>
+</div>
+<!-- End Ezoic - incontent_15 - incontent_15 -->
+</div>
+<p>			<a href="https://netmiko.com/hosting" role="button"><br>
+						GET BEST VPS HOSTING HERE<br>
+					</a></p>
+<h3>How to make my website handle more load without crashing?<br>
+</h3>
+<p>If you want your website to be able to handle more load then what you can do is <em>enable caching</em>. You will have to enable caching on your website and serve your content through a cdn.</p>
+<p>You will also have to offload your images and website files to external cdn providers to make your website fast and make it handle more users without any problem.</p>
+<div class="GSfaxu8f" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_16 - incontent_16 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-665"> </div>
+</div>
+<!-- End Ezoic - incontent_16 - incontent_16 -->
+</div>
+<p>You can check out this full tutorial on how we can handle million of visitors on shared hosting easily- <a href="https://netmiko.com/tutorials/million-visitors-on-shared-hosting/">Handle million visitors on shared hosting.</a></p>
+<p>If you liked this post then do make sure to share it with your friends and also to comment down in the comments. Thanks. </p>
+<div class="tSiWsb0s" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_17 - incontent_17 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-666"> </div>
+</div>
+<!-- End Ezoic - incontent_17 - incontent_17 -->
+</div>	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-717 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to do a website load Test Online",
+				"url": "https://netmiko.com/website-load-test-online/",
+				"articleBody": "Ever wondered how much traffic your blog can handle without crashing. Well, there is a tool by which you can check how many visitors your blog can handle per minute or second.The tool which we will be using is called loader.io that will help us test our site's performance by sending virtual traffic to our website per second or per minute and giving us back the performance report of our site.
+This tool is very easy to set up and use and we can easily set up a load test for our website in minutes.		
+			Why you must do a load test of your website before going live -
+		
+		A website load test is something you must do before launching your website or e-commerce store. Why you might ask? Because by doing a website load test we will be able to see how much traffic our website can handle concurrently without crashing or having a crazy high load time during a traffic surge.
+If your website gets crashed during a traffic surge then you can lose a lot of money because your site won't load or will have a very high loading time which will send customers away from your site. That's why it's best to load test your website using this online tool before launching it. So, that you can prepare for a traffic surge in your website to avoid it getting crashed.		
+			Website load test online using Loader.io -
+		
+		To do a website load test online we will use this online Application load testing Tool called Loader.io. 
+1. First go to the site and here you will need to make a new account. Click on “Sign Up Now” and then select the Plan you need. Click on Sign Up Now again below the plan you want to use.2. Now here you will need to give your company name or any name you want and after that add your email and a secure password. And after that click on “Sign Up”.		
+																														
+		3. After that you will need to verify your email. Go to your email app and there you will receive an email from Loader.io. Click on the “Verify me” link to verify your email.
+																														
+		4. Your account will be verified after going to the link. After that, you can log in to your Loader.io account using the email and the password that you provided.5. After logging in to your Loader.io account you will get an option to add a “New Host”. You can add your website by clicking on the “New Host” button.		
+																														
+		6. Now here you will need to add your domain name. Add your domain name and then click on the “Verify” button to continue.
+																														
+		7. To verify that you own that website you will have to copy the verification token that they give you and then add it to your website.		
+																														
+		8. Copy the verification code and open a new notepad file. Paste the verification code in the txt file and then save the file with the name as the verification code. Like “loaderio-753f78a8b2f4d1051db444f419f24e29.txt”.		
+																														
+		9. Now using FTP or File Manager in WordPress upload the txt file to your website’s root directory.
+																														
+		10. After uploading the verification code to your website go back to Loader.io and click on the “Verify” button. If you uploaded your verification code correctly then it will show “Congrats, target verification passed!” after clicking the verify button.Click on “New Test” to create a new test.		
+																														
+		11. Here in the “Test Name” give it anything you want. And in “Test type” you can select 3 methods - Clients per test, Clients per second, Maintain client load. Select the one you want.
+																														
+		In clients, select the number of clients you want to visit your website during the given time. In Duration select the time you want for this test to run.12. After setting these up, scroll down to the bottom and then click on “Run Test”.13. After you click on “run test” the test will start and loader.io will send the number of visitors you added in settings to your website over the period of time you gave. 
+Now here you will be able to see all the things you need to see how well your site is performing. Most important is the “Response time” because a high response time means your site is not able to handle that load properly. 		
+																														
+		If you see a spike in the response time in the graph below. Then it means that your server is having a hard time processing the requests. Also in Response Counts, if you see any timeout then it means that the server failed to process a request.You can test out different settings in Loader.io to see how your website performs during a traffic surge which will help you prepare for a traffic surge in the future.
+And that is how you can do a website load test online using Loader.io in a few easy steps.		
+			Frequently asked questions -
+		
+			Does doing a website load test can break my site?		
+		No, doing a website load test won't break your website. But what it can do is crash your website's server for a few minutes meaning that you won't be able to access your website for a few minutes.This will get fixed automatically after you stop the load testing. And after that, you will be able to access your website without any problem.
+			Does my web hosting provider allow load testing?
+		
+		Now load testing a website is something that not all hosting providers allow you to do. Because if you are using any shared hosting then you can cause problems for other users on the same server as you will use up all the resources of that server.That's why it's important to contact your hosting provider before doing a website load test otherwise your web hosting account might get banned for abuse.One more thing you should know is that doing a website load test uses a lot of resources from a server which means that if you are hosting your website on a limited resources hosting plan then you might have to pay some extra money to keep your site running. 
+Because otherwise, they will just lower the resources provided to your website and make it go down.This is not a problem in VPS hosting as you get a server with dedicated resources and not shared resources.		
+			
+						GET BEST VPS HOSTING HERE
+					
+			How to make my website handle more load without crashing?
+		
+		If you want your website to be able to handle more load then what you can do is enable caching. You will have to enable caching on your website and serve your content through a cdn.
+You will also have to offload your images and website files to external cdn providers to make your website fast and make it handle more users without any problem.You can check out this full tutorial on how we can handle million of visitors on shared hosting easily- Handle million visitors on shared hosting.If you liked this post then do make sure to share it with your friends and also to comment down in the comments. Thanks. ",
+				"headline": "How to do a website load Test Online",
+				"author": "MIKO",
+				"datePublished": "2021-10-08",
+				"mainEntityOfPage": "True",
+				"dateModified": "2022-10-02",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://netmiko.com/wp-content/uploads/2021/10/How-to-do-website-load-test-online-1024x576.png",
+          "height": 1024,
+          "width": 576        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "Netmiko.com",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/miko/" alt="link to MIKO author page">
+				<div class="avatar-container" style="background-image: url('http://2.gravatar.com/avatar/e065f317ac1f997d8cb4fb90aa5ca03b?s=96&d=mm&r=g')">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/miko/">MIKO</a></p>
+				</header>
+				<p>Gamer &amp; Blogger.</p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/css-solar-system-simulator/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp')"></div>
+<span class="sr-only">link to CSS Solar System Simulator</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/css-solar-system-simulator/">CSS Solar System Simulator</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+A 2d solar system simulator with time. The planets and the orbit has simple animation.
+
+
+
+[ Made by Sam Chahine ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" &gt;
+&lt;head&gt;
+ ...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/css-solar-system-simulator/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="CSS Solar System Simulator">
+				<meta itemprop="headline" content="CSS Solar System Simulator">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/solar-system-animation-pure-css/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp')"></div>
+<span class="sr-only">link to Solar System Animation Pure CSS</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/solar-system-animation-pure-css/">Solar System Animation Pure CSS</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+Simple 2d animation of the solar system made using CSS, it also uses a little jquery to create the stars in the background. 
+
+
+
+[ Made by Giulia Cardieri ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/solar-system-animation-pure-css/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="Solar System Animation Pure CSS">
+				<meta itemprop="headline" content="Solar System Animation Pure CSS">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Html, CSS, JavaScript, React, and Vue Code Examples and Source Codes.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-680"> </div>
+<p><!-- End Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2022 Copyright Netmiko.com			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<div class="codecopy_tooltip" style="display: inline-block; background: #333; color: white; padding: 0 8px; font-size: 14px; border-radius: 2px; border: 1px solid #111; position:absolute; display: none;">Click to Copy</div>
+<script type="text/javascript">
+	function codecopy_get_element_position(el) {
+		var rect = el.getBoundingClientRect(),
+		scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+		scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		return { top: rect.top + scrollTop - 30, left: rect.left + scrollLeft }
+	}
+
+	function codecopy_apply(element) {
+		element.addEventListener("click", function() {
+			event.stopPropagation();
+			const el = document.createElement('textarea');
+			el.value = element.textContent;
+			document.body.appendChild(el);
+			el.select();
+			document.execCommand('copy');
+			document.body.removeChild(el);
+			codecopy_tooltip.innerHTML = 'Copied!'
+		});
+		element.addEventListener("mouseover", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.innerHTML = 'Click to Copy';
+			codecopy_tooltip.style.display = 'inline-block';
+			codecopy_tooltip.style.top = position.top + 'px';
+			codecopy_tooltip.style.left = position.left + 'px';
+		});
+		element.addEventListener("mouseout", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.style.display = 'none';
+			codecopy_tooltip.style.top ='9999px';
+		});
+	}
+
+	var codecopy_tooltip = document.querySelector('.codecopy_tooltip');
+
+	document.querySelectorAll("code").forEach(function(element) {
+		codecopy_apply(element);
+	});
+</script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+</body>
+</html>

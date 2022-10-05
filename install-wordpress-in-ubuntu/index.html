@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-7.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>How to Install WordPress on Ubuntu 20.04 &#x2d; Netmiko.com</title>
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with the help of this you can&#8230;">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/08/how-to-install-wordpress-on-ubuntu.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="how to install wordpress on ubuntu">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install WordPress on Ubuntu 20.04">
+<meta property="og:description" content="Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with the help of this you can easily install WordPress in your ubuntu.">
+<meta property="og:url" content="https://netmiko.com/install-wordpress-in-ubuntu/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:updated_time" content="2022-10-02T03:32+00:00">
+<meta property="article:published_time" content="2021-08-29T16:15+00:00">
+<meta property="article:modified_time" content="2022-10-02T03:32+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Install WordPress on Ubuntu 20.04">
+<meta name="twitter:description" content="Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with the help of this you can easily install WordPress in your ubuntu.">
+<meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/08/how-to-install-wordpress-on-ubuntu.png">
+<meta name="twitter:image:width" content="1280">
+<meta name="twitter:image:height" content="720">
+<meta name="twitter:image:alt" content="how to install wordpress on ubuntu">
+<link rel="canonical" href="https://netmiko.com/install-wordpress-in-ubuntu/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-wordpress-in-ubuntu/","name":"How to Install WordPress on Ubuntu 20.04"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 6.68ms meta | 11.57ms boot -->
+
+<link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
+<link rel="stylesheet" id="crp-public-css" href="https://netmiko.com/wp-content/plugins/custom-related-posts/dist/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="income-school-style-css" href="https://netmiko.com/wp-content/themes/fibrimex/style.css" type="text/css" media="all">
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+pre::before {
+    content: 'Click Code to Copy';
+    display: block;
+    color: #f5f5f5;
+    padding: 20px;
+    margin-top: -25px;
+    margin-bottom: 30px;
+    margin-left: -30px;
+    margin-right: -1000px;
+    background-color: #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+    font-family: 'Fira Sans' !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
+}
+.lyte-wrapper::before {
+    content: 'Watch the Video';
+    display: block;
+    background-color: #444;
+    color: #f5f5f5;
+    padding-left:5px;
+}
+.lyte-wrapper {
+    margin-left: -1px !important;
+}
+.lyte, .lyMe {
+    border: 5px solid #444;
+}
+.image-container {
+    border: 5px solid #444;
+}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/284">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml"> 
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-wordpress-in-ubuntu%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-wordpress-in-ubuntu%2F&#038;format=xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install WordPress on Ubuntu 20.04 | Netmiko.com">
+<meta property="og:description" content="Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with&hellip;">
+<meta property="og:url" content="https://netmiko.com/install-wordpress-in-ubuntu/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/08/how-to-install-wordpress-on-ubuntu-1024x576.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with&hellip;">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-150x150.png" sizes="32x32">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+<meta name="msapplication-TileImage" content="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+
+</head>
+
+
+<body class="post-template-default single single-post postid-284 single-format-standard wp-custom-logo no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="360" height="149" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-5993" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5993"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-407">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-409"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-408"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+<li id="menu-item-6244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6244"><a href="https://netmiko.com/category/code/">Source Codes</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-284" class="post-284 post type-post status-publish format-standard has-post-thumbnail hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">How to Install WordPress on Ubuntu 20.04</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2021-08-29">
+<meta itemprop="dateModified" content="2022-10-02">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/miko/">MIKO</a></span> </span><meta itemprop="author" content="MIKO">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/install-wordpress-in-ubuntu/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+			<div class="post-thumbnail" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<img width="1280" height="720" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/how-to-install-wordpress-on-ubuntu.png.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="how to install wordpress on ubuntu" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/how-to-install-wordpress-on-ubuntu.png.webp 1280w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/how-to-install-wordpress-on-ubuntu-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/how-to-install-wordpress-on-ubuntu-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/how-to-install-wordpress-on-ubuntu-768x432.png.webp 768w" sizes="(max-width: 1280px) 100vw, 1280px">			</div>
+<!-- .post-thumbnail -->
+
+		
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with the help of this you can easily install WordPress in your ubuntu.</p>
+<p>First of all we will setup a LAMP server after which we will install WordPress in it. For this tutorial we have used ubuntu 20.04 LTS. If you want to install your WordPress in your localhost i.e. in XAMPP then click on this link &#8211; <a href="https://netmiko.com/tutorials/install-wordpress-in-xampp/">Install WordPress in xampp</a> Here I showed in detail how you can run WordPress by installing it in xampp.</p>
+<div class="cf7fORpf" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div>
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+</div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+<h2>Update </h2>
+<p>First of all we will update the index packages for which we will use this command which will update it.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt update</code></pre>
+<h2>Install NGINX </h2>
+<p>After the update is complete, now we will install nginx which is an open source web server in which we will install WordPress later. To install nginx, you have to type the command given below.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install nginx -y
+</code></pre>
+<p>It will take some time to install, it depends on your internet connection how long it will take to install it. After nginx is installed, you can type the command given below to check its status.</p>
+<div class="otfxeWei" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+</div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl status nginx</code></pre>
+<p>By typing this command you will see the status of nginx in terminal whether it is working or not. You can also check this by going to your web browser whether nginx is installed or not, for this you will need the IP address of your server, to get which you can use the command given below.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">ip a</code></pre>
+<p>Enter this ip address in your browser and if the landing page of nginx appears in your browser it means it is well installed and working.</p>
+<h2>Install MySQL Database </h2>
+<p>Now we will install MySQL database in this server which is a very important component to run WordPress. To install it, we will type the command given below.</p>
+<div class="Tr3f1LIQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longer_content - longer_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-652"> </div>
+</div>
+<!-- End Ezoic - longer_content - longer_content -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install mysql-server mysql-client -y</code></pre>
+<p>We are installing MySQL client because we need MySQL client to connect to our database. It will take you 2 &#8211; 5 minutes to install MySQL, it depends on your internet speed.</p>
+<p>After MySQL is installed, we have to start it, to start you have to type this command &#8211;</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl start mysql</code></pre>
+<h2>Enable MySQL and NGINX </h2>
+<p>Now we will enable MySQL and nginx. By enabling this, if you ever reboot your system, then MySQL and nginx will start automatically, which if you do not enable then you have to start them manually. To enable MySQL and nginx, type this command &#8211;</p>
+<div class="EU0A1CiB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longest_content - longest_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-653"> </div>
+</div>
+<!-- End Ezoic - longest_content - longest_content -->
+</div>
+<pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl enable mysql
+sudo systemctl enable nginx
+</code></pre>
+<h2>Configure MySQL Database </h2>
+<p>Now we will deploy our MySQL server for which we will type the below command so that it will be deployed securely.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo mysql_secure_installation</code></pre>
+<p>After typing this command, it will ask you to set a password, for which you will first have to select &#8220;y&#8221; then you will have to select number 2, after which you can enter any good password of your choice in it.</p>
+<p>After this, you will have to select &#8221; y &#8221; in all the options that come after which your MySQL server will be deployed.</p>
+<div class="hUsfNv5P" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+</div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>
+<h2>Connect to MySQL database<br>
+</h2>
+<p>After the MySQL server is deployed, now we have to connect to it with the role of a root user. For which we will type the command given below so that we can connect to the database with the role of a root user.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo mysql -u root -p</code></pre>
+<p>Now it will ask you for your database password which you set during database configuration. After typing the password we will be logged in to our MySQL server after which we will have to create a database in it.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">create database wordpress;</code></pre>
+<p>And you will also have to create a user.</p>
+<div class="sCVZKaNN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_6 - incontent_6 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-655"> </div>
+</div>
+<!-- End Ezoic - incontent_6 - incontent_6 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">create user &ldquo;yourusername&rdquo;@&rdquo;localhost&rdquo; identified by &ldquo;yourpassword&rdquo;; </code></pre>
+<p>Keep in mind that your password must be good, it must be strong, it must contain a capital letter, small letter, a symbol and number.</p>
+<p>Now we will give all those privileges of this database to our user for which we will use this command.</p>
+<pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">grant all privileges on wordpress.* to &lsquo;yourusername&rsquo;@&rsquo;yourpassword&rsquo;;</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">flush privileges;
+</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">exit;</code></pre>
+<h2>Install PHP<br>
+</h2>
+<p>Now we will install PHP in our web server because this is something that we need to install and run WordPress in an ubuntu web server. Type this command to install PHP.</p>
+<div class="0LBQkMAh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_7 - incontent_7 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-656"> </div>
+</div>
+<!-- End Ezoic - incontent_7 - incontent_7 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install php7.4 php7.4-gd php7.4-mysql php7.4-zip php7.4-fpm -y
+</code></pre>
+<p>Now all the requirements are downloaded and this means that our LAMP server is also ready to install WordPress. So let us now see how we can install WordPress in ubuntu.</p>
+<h2>Install WordPress in Ubuntu<br>
+</h2>
+<p>Now we will install WordPress in our ubuntu for which we will copy this link &#8220;https://wordpress.org/latest.zip&#8221; and after that we will type this command in the terminal of our server so that latest WordPress version will be installed in our web server.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install wget
+</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget https://wordpress.org/latest.zip</code></pre>
+<p>Now we have to unzip the downloaded WordPress zip file, for which we will first install unzip, for which we will use this command.</p>
+<div class="AGVFR8zw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_8 - incontent_8 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-657"> </div>
+</div>
+<!-- End Ezoic - incontent_8 - incontent_8 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install unzip -y</code></pre>
+<p>Unzip will now be installed in our system. After this we will unzip the zip file of WordPress.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">ls</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">unzip latest.zip
+</code></pre>
+<p>After WordPress is unzipped, a new folder will now appear in your directory, which will be named WordPress. Now change your working directory to WordPress.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd wordpress/
+</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">ls</code></pre>
+<p>Now we will copy all the files in this folder to /var/www/html/ for which we will use this command.</p>
+<div class="2EBfTHoA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_9 - incontent_9 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-658"> </div>
+</div>
+<!-- End Ezoic - incontent_9 - incontent_9 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo cp -r * /var/www/html/
+</code></pre>
+<p>After this we will change the permissions of this folder which we need to install any plugins or anything in WordPress.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo chown -R www-data:www-data /var/www/html/</code></pre>
+<p>After this we will restart our nginx server &#8211;</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl restart nginx</code></pre>
+<h2>Configure WordPress </h2>
+<p>Now we have to do some configuration in the default files of WordPress. For this, first we will change our directory and go to the directory given below.</p>
+<div class="g9C3ZR8n" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_10 - incontent_10 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-659"> </div>
+</div>
+<!-- End Ezoic - incontent_10 - incontent_10 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd  /etc/nginx/sites-enabled/</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">ls</code></pre>
+<p>Now we will move the default file that is in it to WordPress by default. For which we will type this command.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo mv default wordpress</code></pre>
+<p>Now we will edit this WordPress file for which we will use Nano editor.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo nano wordpress
+</code></pre>
+<p>Here you will have to edit some lines, whose image is below, which you will have to change.</p>
+<div class="YbbNTvxe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_11 - incontent_11 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-660"> </div>
+</div>
+<!-- End Ezoic - incontent_11 - incontent_11 -->
+</div>
+<p>															<img width="735" height="780" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png.webp" alt="install wordpress in ubuntu lines to change (2)" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png.webp 735w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2-283x300.png.webp 283w" sizes="(max-width: 735px) 100vw, 735px">															</p>
+<p>We&#8217;ll go down a bit after that and uncomment these things there because we&#8217;re using PHP.</p>
+<p>															<img width="713" height="696" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code.png.webp" alt="install wordpress in ubuntu change lines" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code.png.webp 713w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code-300x293.png.webp 300w" sizes="(max-width: 713px) 100vw, 713px">															</p>
+<div class="pqVTOjXZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_12 - incontent_12 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-661"> </div>
+</div>
+<!-- End Ezoic - incontent_12 - incontent_12 -->
+</div>
+<p>After all the editing is complete, we will hit exit from our Nano editor, save it and then type the command given below.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo nginx -t </code></pre>
+<p>With the help of the above comment, it happens that it checks the syntax of the file we just saved, whether it is right or wrong. After the check is successful, we will now restart our nginx server.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl restart nginx
+</code></pre>
+<p>WordPress is now installed in our ubuntu server and you can now do the rest of the configuration in it by going to your chrome browser. For this, you have to type your server IP address in your browser and then it will redirect you to WordPress configuration.</p>
+<div class="lvzYFZth" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_13 - incontent_13 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-662"> </div>
+</div>
+<!-- End Ezoic - incontent_13 - incontent_13 -->
+</div>
+<pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">ip a</code></pre>
+<h2>Final WordPress Configuration<br>
+</h2>
+<p>After typing the IP address in the browser, when the configuration page will open, we will have to select your language here and then click on continue. After clicking on continue, we will have to type the user name of the database in this and the password of the database and then we will have to click on submit.</p>
+<p>After that we will click on run the installation. After this we will have to give a name to our website and to log in to the website, we will have to give a username and a password and the email address you have so that if you ever forget the password, you can reset it.</p>
+<p>And finally we will click on Install WordPress which will install our WordPress completely. Now you can login to your WordPress site from its admin panel. If you want to install SSL in your website then you can also see this post &#8220;<a href="https://netmiko.com/tutorials/install-ssl-certificate-in-ubuntu/">Install SSL certificate in ubuntu</a>&#8221; here You will get complete details of installing ssl in ubuntu.</p>
+<div class="In0Nz9kO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_14 - incontent_14 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-663"> </div>
+</div>
+<!-- End Ezoic - incontent_14 - incontent_14 -->
+</div>
+<h2>Install Theme in WordPress<br>
+</h2>
+<p>Now we will see how we can install a theme in WordPress so that the look of your website looks very good.</p>
+<p>To install the theme, you must first login to your WordPress admin dashboard through your username and password that you gave during installation.</p>
+<p>After login to the dashboard, you will get the option of appearance below on the left side, above which if you hover your mouse, then you will get the option of themes, on which you will have to click. Here you will get the add new option on which you have to click.</p>
+<div class="Iy9y42jh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_15 - incontent_15 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-664"> </div>
+</div>
+<!-- End Ezoic - incontent_15 - incontent_15 -->
+</div>
+<p>Here now you can install it by hovering over any theme, on hovering over any theme, you will see the option of install, which you have to click, after clicking it, it will be installed. After installation, you will get an activate button, which you have to click, so that the theme will now be activated on your website.</p>
+<p>If you have already purchased a theme and want to install it, then you will first have to go to the appearance and then to the themes where you have to click on the button of add new, there you will get the option of upload theme. But you have to click.</p>
+<p>Now you have to select your theme which is in your computer by clicking on the option of choose file and then click on the option of install now, now it will have to be uploaded and after uploading you will have to activate it and by which it will be activated in your website.</p>
+<div class="E2SMa3sO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_16 - incontent_16 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-665"> </div>
+</div>
+<!-- End Ezoic - incontent_16 - incontent_16 -->
+</div>
+<h2>Install Plugin in WordPress </h2>
+<p>If you want to install a plugin, then you have to first go to the option of plugins from the menu then click on the add new option there, after clicking on add new you can search for any plugin and install it.</p>
+<p>If you have purchased and downloaded a plugin, then you can activate it by uploading it by clicking on the upload button and in the same way you can install both the theme and the plugins.</p>
+<h2>Conclusion &#8211; </h2>
+<p>And just like that you can easily install WordPress on your ubuntu server and create a website. If you have to install SSL certificate in your website then I have given its link in the article. Click on it and if you want to host the WordPress site on your localhost, then I have also given its link.</p>
+<div class="bRrpBHVY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_17 - incontent_17 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-666"> </div>
+</div>
+<!-- End Ezoic - incontent_17 - incontent_17 -->
+</div>
+<p>If you liked this post, then do share it with your friends and do comment below. If I have made any mistake here, then definitely tell it in the comment and I will correct it.</p>
+	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-284 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install WordPress on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-wordpress-in-ubuntu/",
+				"articleBody": "Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with the help of this you can easily install WordPress in your ubuntu.First of all we will setup a LAMP server after which we will install WordPress in it. For this tutorial we have used ubuntu 20.04 LTS. If you want to install your WordPress in your localhost i.e. in XAMPP then click on this link - Install WordPress in xampp Here I showed in detail how you can run WordPress by installing it in xampp.		
+			Update 		
+		First of all we will update the index packages for which we will use this command which will update it.		
+			sudo apt update		
+			Install NGINX 		
+		After the update is complete, now we will install nginx which is an open source web server in which we will install WordPress later. To install nginx, you have to type the command given below.		
+			sudo apt install nginx -y
+		
+		It will take some time to install, it depends on your internet connection how long it will take to install it. After nginx is installed, you can type the command given below to check its status.		
+			sudo systemctl status nginx		
+		By typing this command you will see the status of nginx in terminal whether it is working or not. You can also check this by going to your web browser whether nginx is installed or not, for this you will need the IP address of your server, to get which you can use the command given below.		
+			ip a		
+		Enter this ip address in your browser and if the landing page of nginx appears in your browser it means it is well installed and working.		
+			Install MySQL Database 		
+		Now we will install MySQL database in this server which is a very important component to run WordPress. To install it, we will type the command given below.		
+			sudo apt install mysql-server mysql-client -y		
+		We are installing MySQL client because we need MySQL client to connect to our database. It will take you 2 - 5 minutes to install MySQL, it depends on your internet speed.After MySQL is installed, we have to start it, to start you have to type this command -		
+			sudo systemctl start mysql		
+			Enable MySQL and NGINX 		
+		Now we will enable MySQL and nginx. By enabling this, if you ever reboot your system, then MySQL and nginx will start automatically, which if you do not enable then you have to start them manually. To enable MySQL and nginx, type this command -		
+			sudo systemctl enable mysql
+sudo systemctl enable nginx
+		
+			Configure MySQL Database 		
+		Now we will deploy our MySQL server for which we will type the below command so that it will be deployed securely.		
+			sudo mysql_secure_installation		
+		After typing this command, it will ask you to set a password, for which you will first have to select \"y\" then you will have to select number 2, after which you can enter any good password of your choice in it.After this, you will have to select \" y \" in all the options that come after which your MySQL server will be deployed.		
+			Connect to MySQL database 
+		
+		After the MySQL server is deployed, now we have to connect to it with the role of a root user. For which we will type the command given below so that we can connect to the database with the role of a root user.		
+			sudo mysql -u root -p		
+		Now it will ask you for your database password which you set during database configuration. After typing the password we will be logged in to our MySQL server after which we will have to create a database in it.		
+			create database wordpress;		
+		And you will also have to create a user.		
+			create user &ldquo;yourusername&rdquo;@&rdquo;localhost&rdquo; identified by &ldquo;yourpassword&rdquo;; 		
+		Keep in mind that your password must be good, it must be strong, it must contain a capital letter, small letter, a symbol and number.Now we will give all those privileges of this database to our user for which we will use this command.		
+			grant all privileges on wordpress.* to &lsquo;yourusername&rsquo;@&rsquo;yourpassword&rsquo;;		
+			flush privileges;
+		
+			exit;		
+			Install PHP 
+		
+		Now we will install PHP in our web server because this is something that we need to install and run WordPress in an ubuntu web server. Type this command to install PHP.		
+			sudo apt install php7.4 php7.4-gd php7.4-mysql php7.4-zip php7.4-fpm -y
+		
+		Now all the requirements are downloaded and this means that our LAMP server is also ready to install WordPress. So let us now see how we can install WordPress in ubuntu.		
+			Install WordPress in Ubuntu 
+		
+		Now we will install WordPress in our ubuntu for which we will copy this link \"https://wordpress.org/latest.zip\" and after that we will type this command in the terminal of our server so that latest WordPress version will be installed in our web server.		
+			sudo apt install wget
+		
+			wget https://wordpress.org/latest.zip		
+		Now we have to unzip the downloaded WordPress zip file, for which we will first install unzip, for which we will use this command.		
+			sudo apt install unzip -y		
+		Unzip will now be installed in our system. After this we will unzip the zip file of WordPress.		
+			ls		
+			unzip latest.zip
+		
+		After WordPress is unzipped, a new folder will now appear in your directory, which will be named WordPress. Now change your working directory to WordPress.		
+			cd wordpress/
+		
+			ls		
+		Now we will copy all the files in this folder to /var/www/html/ for which we will use this command.		
+			sudo cp -r * /var/www/html/
+		
+		After this we will change the permissions of this folder which we need to install any plugins or anything in WordPress.		
+			sudo chown -R www-data:www-data /var/www/html/		
+		After this we will restart our nginx server -		
+			sudo systemctl restart nginx		
+			Configure WordPress 		
+		Now we have to do some configuration in the default files of WordPress. For this, first we will change our directory and go to the directory given below.		
+			cd  /etc/nginx/sites-enabled/		
+			ls		
+		Now we will move the default file that is in it to WordPress by default. For which we will type this command.		
+			sudo mv default wordpress		
+		Now we will edit this WordPress file for which we will use Nano editor.		
+			sudo nano wordpress
+		
+		Here you will have to edit some lines, whose image is below, which you will have to change.		
+																														
+		We'll go down a bit after that and uncomment these things there because we're using PHP.		
+																														
+		After all the editing is complete, we will hit exit from our Nano editor, save it and then type the command given below.		
+			sudo nginx -t 		
+		With the help of the above comment, it happens that it checks the syntax of the file we just saved, whether it is right or wrong. After the check is successful, we will now restart our nginx server.		
+			sudo systemctl restart nginx
+		
+		WordPress is now installed in our ubuntu server and you can now do the rest of the configuration in it by going to your chrome browser. For this, you have to type your server IP address in your browser and then it will redirect you to WordPress configuration.		
+			ip a		
+			Final WordPress Configuration 
+		
+		After typing the IP address in the browser, when the configuration page will open, we will have to select your language here and then click on continue. After clicking on continue, we will have to type the user name of the database in this and the password of the database and then we will have to click on submit.After that we will click on run the installation. After this we will have to give a name to our website and to log in to the website, we will have to give a username and a password and the email address you have so that if you ever forget the password, you can reset it.And finally we will click on Install WordPress which will install our WordPress completely. Now you can login to your WordPress site from its admin panel. If you want to install SSL in your website then you can also see this post \"Install SSL certificate in ubuntu\" here You will get complete details of installing ssl in ubuntu.		
+			Install Theme in WordPress 
+		
+		Now we will see how we can install a theme in WordPress so that the look of your website looks very good.To install the theme, you must first login to your WordPress admin dashboard through your username and password that you gave during installation.After login to the dashboard, you will get the option of appearance below on the left side, above which if you hover your mouse, then you will get the option of themes, on which you will have to click. Here you will get the add new option on which you have to click.Here now you can install it by hovering over any theme, on hovering over any theme, you will see the option of install, which you have to click, after clicking it, it will be installed. After installation, you will get an activate button, which you have to click, so that the theme will now be activated on your website.If you have already purchased a theme and want to install it, then you will first have to go to the appearance and then to the themes where you have to click on the button of add new, there you will get the option of upload theme. But you have to click.Now you have to select your theme which is in your computer by clicking on the option of choose file and then click on the option of install now, now it will have to be uploaded and after uploading you will have to activate it and by which it will be activated in your website.		
+			Install Plugin in WordPress 		
+		If you want to install a plugin, then you have to first go to the option of plugins from the menu then click on the add new option there, after clicking on add new you can search for any plugin and install it.If you have purchased and downloaded a plugin, then you can activate it by uploading it by clicking on the upload button and in the same way you can install both the theme and the plugins.		
+			Conclusion - 		
+		And just like that you can easily install WordPress on your ubuntu server and create a website. If you have to install SSL certificate in your website then I have given its link in the article. Click on it and if you want to host the WordPress site on your localhost, then I have also given its link.If you liked this post, then do share it with your friends and do comment below. If I have made any mistake here, then definitely tell it in the comment and I will correct it.",
+				"headline": "How to Install WordPress on Ubuntu 20.04",
+				"author": "MIKO",
+				"datePublished": "2021-08-29",
+				"mainEntityOfPage": "True",
+				"dateModified": "2022-10-02",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://netmiko.com/wp-content/uploads/2021/08/how-to-install-wordpress-on-ubuntu-1024x576.png",
+          "height": 1024,
+          "width": 576        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "Netmiko.com",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/miko/" alt="link to MIKO author page">
+				<div class="avatar-container" style="background-image: url('http://2.gravatar.com/avatar/e065f317ac1f997d8cb4fb90aa5ca03b?s=96&d=mm&r=g')">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/miko/">MIKO</a></p>
+				</header>
+				<p>Gamer &amp; Blogger.</p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/css-solar-system-simulator/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp')"></div>
+<span class="sr-only">link to CSS Solar System Simulator</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/css-solar-system-simulator/">CSS Solar System Simulator</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+A 2d solar system simulator with time. The planets and the orbit has simple animation.
+
+
+
+[ Made by Sam Chahine ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" &gt;
+&lt;head&gt;
+ ...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/css-solar-system-simulator/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="CSS Solar System Simulator">
+				<meta itemprop="headline" content="CSS Solar System Simulator">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/solar-system-animation-pure-css/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp')"></div>
+<span class="sr-only">link to Solar System Animation Pure CSS</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/solar-system-animation-pure-css/">Solar System Animation Pure CSS</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+Simple 2d animation of the solar system made using CSS, it also uses a little jquery to create the stars in the background. 
+
+
+
+[ Made by Giulia Cardieri ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/solar-system-animation-pure-css/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="Solar System Animation Pure CSS">
+				<meta itemprop="headline" content="Solar System Animation Pure CSS">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Html, CSS, JavaScript, React, and Vue Code Examples and Source Codes.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-680"> </div>
+<p><!-- End Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2022 Copyright Netmiko.com			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<div class="codecopy_tooltip" style="display: inline-block; background: #333; color: white; padding: 0 8px; font-size: 14px; border-radius: 2px; border: 1px solid #111; position:absolute; display: none;">Click to Copy</div>
+<script type="text/javascript">
+	function codecopy_get_element_position(el) {
+		var rect = el.getBoundingClientRect(),
+		scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+		scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		return { top: rect.top + scrollTop - 30, left: rect.left + scrollLeft }
+	}
+
+	function codecopy_apply(element) {
+		element.addEventListener("click", function() {
+			event.stopPropagation();
+			const el = document.createElement('textarea');
+			el.value = element.textContent;
+			document.body.appendChild(el);
+			el.select();
+			document.execCommand('copy');
+			document.body.removeChild(el);
+			codecopy_tooltip.innerHTML = 'Copied!'
+		});
+		element.addEventListener("mouseover", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.innerHTML = 'Click to Copy';
+			codecopy_tooltip.style.display = 'inline-block';
+			codecopy_tooltip.style.top = position.top + 'px';
+			codecopy_tooltip.style.left = position.left + 'px';
+		});
+		element.addEventListener("mouseout", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.style.display = 'none';
+			codecopy_tooltip.style.top ='9999px';
+		});
+	}
+
+	var codecopy_tooltip = document.querySelector('.codecopy_tooltip');
+
+	document.querySelectorAll("code").forEach(function(element) {
+		codecopy_apply(element);
+	});
+</script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+</body>
+</html>

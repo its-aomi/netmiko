@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-7.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>How to Install Kali Linux on Android Phone without Root &#x2d; Netmiko.com</title>
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to&#8230;">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="How to Install Kali Linux on Android Phone without Root">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install Kali Linux on Android Phone without Root">
+<meta property="og:description" content="Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to install on our android device is called&#8230;">
+<meta property="og:url" content="https://netmiko.com/install-kali-linux-android-no-root/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:updated_time" content="2022-10-02T03:32+00:00">
+<meta property="article:published_time" content="2021-12-17T13:14+00:00">
+<meta property="article:modified_time" content="2022-10-02T03:32+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Install Kali Linux on Android Phone without Root">
+<meta name="twitter:description" content="Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to install on our android device is called&#8230;">
+<meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root.png">
+<meta name="twitter:image:width" content="1280">
+<meta name="twitter:image:height" content="720">
+<meta name="twitter:image:alt" content="How to Install Kali Linux on Android Phone without Root">
+<link rel="canonical" href="https://netmiko.com/install-kali-linux-android-no-root/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-kali-linux-android-no-root/","name":"How to Install Kali Linux on Android Phone without Root"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 3.80ms meta | 10.70ms boot -->
+
+<link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
+<link rel="stylesheet" id="crp-public-css" href="https://netmiko.com/wp-content/plugins/custom-related-posts/dist/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="income-school-style-css" href="https://netmiko.com/wp-content/themes/fibrimex/style.css" type="text/css" media="all">
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+pre::before {
+    content: 'Click Code to Copy';
+    display: block;
+    color: #f5f5f5;
+    padding: 20px;
+    margin-top: -25px;
+    margin-bottom: 30px;
+    margin-left: -30px;
+    margin-right: -1000px;
+    background-color: #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+    font-family: 'Fira Sans' !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
+}
+.lyte-wrapper::before {
+    content: 'Watch the Video';
+    display: block;
+    background-color: #444;
+    color: #f5f5f5;
+    padding-left:5px;
+}
+.lyte-wrapper {
+    margin-left: -1px !important;
+}
+.lyte, .lyMe {
+    border: 5px solid #444;
+}
+.image-container {
+    border: 5px solid #444;
+}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/1906">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml"> 
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-kali-linux-android-no-root%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-kali-linux-android-no-root%2F&#038;format=xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install Kali Linux on Android Phone without Root | Netmiko.com">
+<meta property="og:description" content="Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of&hellip;">
+<meta property="og:url" content="https://netmiko.com/install-kali-linux-android-no-root/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root-1024x576.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of&hellip;">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-150x150.png" sizes="32x32">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+<meta name="msapplication-TileImage" content="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+
+</head>
+
+
+<body class="post-template-default single single-post postid-1906 single-format-standard wp-custom-logo no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="360" height="149" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-5993" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5993"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-407">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-409"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-408"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+<li id="menu-item-6244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6244"><a href="https://netmiko.com/category/code/">Source Codes</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-1906" class="post-1906 post type-post status-publish format-standard has-post-thumbnail hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">How to Install Kali Linux on Android Phone without Root</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2021-12-17">
+<meta itemprop="dateModified" content="2022-10-02">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/miko/">MIKO</a></span> </span><meta itemprop="author" content="MIKO">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/install-kali-linux-android-no-root/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+			<div class="post-thumbnail" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<img width="1280" height="720" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root.png.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="How to Install Kali Linux on Android Phone without Root" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root.png.webp 1280w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root-768x432.png.webp 768w" sizes="(max-width: 1280px) 100vw, 1280px">			</div>
+<!-- .post-thumbnail -->
+
+		
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to install on our android device is called Kali NetHunter.</p>
+<p><b>What is Kali Nethunter &#8211;</b>  Kali NetHunter is an Android-based penetration testing platform that provides an interactive and user-friendly environment to perform a variety of network security-related tasks.</p>
+<div class="5moSHcqq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div>
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+</div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+<p><em>Kali NetHunter is a customized version of Kali Linux</em> which has been pre-installed on an Android device. It includes all the tools present in the Kali Linux distribution, but it supports wireless networks and has been optimized for touchscreen devices.</p>
+<h2>Download Requirements for Kali NetHunter </h2>
+<p>Before starting the installation process of Kali Linux on our Android device we will need to first download some requirements that we will need in order to run and install Kali Linux NetHunter.</p>
+<p>To download and install Kali Linux NetHunter will need to first install <em>Termux</em>, <em>NetHunter-KeX</em> client, and <em>Hacker’s keyboard</em>.</p>
+<div class="fGIimkXa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+</div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+<p>Here termux is used to download and install Kali Linux NetHunter, NetHunter-KeX is used to run the GUI ( Graphical user interface ) and the hacker’s keyboard is a helpful virtual keyboard containing all the symbols required in the kali terminal.</p>
+<h3>Download Termux &#8211;<br>
+</h3>
+<p>To download Termux, first, open your google play store and search for &#8220;Termux&#8221;, here click on Install to install the Termux app. You can also download and install the termux app from its official website at &#8211; <a href="https://termux.com/">https://termux.com</a>. </p>
+<p>If you downloaded Termux from the play store then you might get a “<em>repository under maintenance error</em>” which you can fix by changing the repo of termux, just enter the command given below in the terminal &#8211; </p>
+<div class="tcxnK4hd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longer_content - longer_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-652"> </div>
+</div>
+<!-- End Ezoic - longer_content - longer_content -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">termux-change-repo</code></pre>
+<p>This will display a popup where the main repository will be selected by default, now all you need to do is select all three repositories, main, game, and science. Once done click on “OK” to save it.</p>
+<p>															<img width="1024" height="240" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo-1024x240.png.webp" alt="select termux repo" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo-1024x240.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo-300x70.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo-768x180.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p>After that you will need to select the mirror, the “official repositories” will be selected by default, change it to “<em>Mirrors by</em> <em>Grimler</em>” after that click on OK to save it.</p>
+<div class="vTnE3SMT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longest_content - longest_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-653"> </div>
+</div>
+<!-- End Ezoic - longest_content - longest_content -->
+</div>
+<p>															<img width="1024" height="240" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo-1024x240.png.webp" alt="select grimler repo" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo-1024x240.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo-300x70.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo-768x180.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p>If you are still getting a repository under maintenance error then just download Termux from F-Droid, as the play store version of Termux is not maintained. <a href="https://f-droid.org/packages/com.termux/">Get Termux from F-Droid</a>.</p>
+<h3>Download Kali NetHunter App Store &#038; KEX &#8211;</h3>
+<p>Kali Nethunter App Store is required to install all other things that we will need to install and run Kali NetHunter on our Android device.</p>
+<div class="VNnqjJSf" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+</div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>
+<p>Download the Nethunter App store by going to <a href="https://store.nethunter.com/">https://store.nethunter.com/</a> and clicking on “DOWNLOAD STORE APP” which will download the NetHunter app store apk.</p>
+<p>															<img width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store-1024x400.png.webp" alt="download kali nethunter app store" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p>Once downloaded, install the app and continue to the next step which is to download NetHunter kex.</p>
+<div class="ZVDy0bdm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_6 - incontent_6 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-655"> </div>
+</div>
+<!-- End Ezoic - incontent_6 - incontent_6 -->
+</div>
+<p>Open the NetHunter App Store and at the bottom, you will get a search button, search for Nethunter Kex, click on it and click on Install. </p>
+<p>															<img width="1024" height="360" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex-1024x360.png.webp" alt="download nethunter kex" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex-1024x360.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex-300x105.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex-768x270.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p>Once the download finishes you might need to allow NetHunter Store to install apps from unknown sources, open settings and allow it, and install NetHunter Kex.</p>
+<div class="1c9ycDjv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_7 - incontent_7 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-656"> </div>
+</div>
+<!-- End Ezoic - incontent_7 - incontent_7 -->
+</div>
+<p>NetHunter kex is required to run Kali Linux Nethunter using the graphical user interface aka GUI. If you want you can also use Kali Linux using just its command line.</p>
+<h3>Download Hacker’s Keyboard &#8211;</h3>
+<p>You can download Hacker’s Keyboard from Playstore or NetHunter App Store, just search for Hacker’s Keyboard on Play Store or NetHunter Play Store and download it and install it.</p>
+<p>After installing it, open it and follow the steps to set it up. NOTE: <em>Hacker’s keyboard is optional,</em> you can also use your default keyboard on Termux or Kali Linux.</p>
+<div class="EkrNUwOM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_8 - incontent_8 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-657"> </div>
+</div>
+<!-- End Ezoic - incontent_8 - incontent_8 -->
+</div>
+<h2>Install Kali Linux NetHunter</h2>
+<p>Okay so now let us see how we can download and install Kali Linux NetHunter on our Android device using termux, to begin first open your termux app and update its packages.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">pkg update -y
+</code></pre>
+<p>Now setup the storage of termux using the command below, you might get a popup asking you to allow termux storage permissions, accept it to continue- </p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">termux-setup-storage
+</code></pre>
+<p>After that you will need to download and install wget which we will need to download kali Linux, you can download and install wget on termux using this command &#8211;</p>
+<div class="rXmI7dRZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_9 - incontent_9 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-658"> </div>
+</div>
+<!-- End Ezoic - incontent_9 - incontent_9 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">pkg install wget -y
+</code></pre>
+<p>Once wget is installed, you can now download kali, do note that in order to run and use Kali Linux NetHunter on your Android device you will need at least <em>10GB of free space</em>, so make sure to have some empty storage for the installation. </p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget -O install-nethunter-termux https://offs.ec/2MceZWr </code></pre>
+<p>Once Kali Linux Nethunter finishes downloading you will need to make the downloaded file executable to install it, use this command to make the downloaded kali Linux file executable &#8211; </p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">chmod +x install-nethunter-termux</code></pre>
+<p>Now run the script which will download the full version of Kali Linux NetHunter, it will take a few minutes to complete, so keep the termux app in Foreground and wait for the installation to complete. </p>
+<div class="DtVHTpUw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_10 - incontent_10 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-659"> </div>
+</div>
+<!-- End Ezoic - incontent_10 - incontent_10 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">./install-nethunter-termux
+</code></pre>
+<p>Once Kali Linux NetHunter is fully downloaded and installed it will ask you for input at the end of the installation process, the question will be “ Delete downloaded Rootfs file”, just enter “<em>y</em>” and click enter to finish the installation.</p>
+<p>															<img width="1024" height="160" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/delete-downloaded-rootfs-file-1024x160.png.webp" alt="delete downloaded rootfs file" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/delete-downloaded-rootfs-file-1024x160.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/delete-downloaded-rootfs-file-300x47.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/delete-downloaded-rootfs-file-768x120.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/delete-downloaded-rootfs-file.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<p>Once done, make sure to update kali packages using the command &#8211; </p>
+<div class="yaFb6tnz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_11 - incontent_11 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-660"> </div>
+</div>
+<!-- End Ezoic - incontent_11 - incontent_11 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt update &amp;&amp; sudo apt full-upgrade -y
+</code></pre>
+<p>And that&#8217;s it, that&#8217;s how you can install Kali Linux on your Android device without root, now after the installation finishes, you will be in the command line interface of Kali Linux where you can do anything you want. </p>
+<p>Use command “<em>nethunter</em>” to enter the CLI, or use “<em>nethunter -r</em>” to enter root.</p>
+<p>Now for users that want a GUI interface instead of using just the command line, you can follow the rest of the steps below.</p>
+<div class="A78wIRKC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_12 - incontent_12 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-661"> </div>
+</div>
+<!-- End Ezoic - incontent_12 - incontent_12 -->
+</div>
+<h2>Run Kali Linux NetHunter GUI </h2>
+<p>To use Kali Linux NetHunter in GUI mode, you will need to first set a kex password, you can set a kex password by entering the following command &#8211;</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">kex passwd</code></pre>
+<p>After entering the command, you will need to enter a password, verify the password, and once done you will need to type “kex” in the terminal to know your RFB Port.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">kex 
+</code></pre>
+<p>After entering the kex command, in the terminal, you will get the RFB Port number.</p>
+<div class="XoZ4eXEv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_13 - incontent_13 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-662"> </div>
+</div>
+<!-- End Ezoic - incontent_13 - incontent_13 -->
+</div>
+<p>Now go back and open the NetHunter Kex app, here if it asks for storage permissions then allow it, after that on the right side of localhost:1 there will be a port number, you will need to <em>remove the default port number</em> and <em>enter your</em> <em>RFB Port</em> number here.</p>
+<p>After that below in the VNC Password, enter the kex password and click on “Connect” at the top right corner.</p>
+<p>															<img width="1024" height="360" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server-1024x360.png.webp" alt="setup kex server" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server-1024x360.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server-300x105.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server-768x270.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
+<div class="71JLIBy4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_14 - incontent_14 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-663"> </div>
+</div>
+<!-- End Ezoic - incontent_14 - incontent_14 -->
+</div>
+<p>You will now be in the GUI interface of Kali Linux NetHunter, you can use a mouse or your fingers to control it, it will work just like the Kali Linux PC, it will have everything that is available in the original Kali Linux.</p>
+<p>To exit Kali Linux NetHunter, go back to Temux and enter “<em>kex stop</em>” to stop the server. And that&#8217;s it, that is how you can use Kali Linux NetHunter in GUI using NetHunter Kex. </p>
+<h2>Conclusion &#8211; </h2>
+<p>Installing and Running Kali Linux on your Android phone is very easy, it just takes a little bit of time and patience. You just need a good device with plenty of free space if you want to install Kali Linux. Thanks for reading, comment below if you are facing any problems.</p>
+<div class="wUBL0sZ8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_15 - incontent_15 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-664"> </div>
+</div>
+<!-- End Ezoic - incontent_15 - incontent_15 -->
+</div>
+<p>Do note that this tutorial is only for educational purposes and does not promote illegal activities that someone can do by following this tutorial. NETMIKO.COM will not be responsible for anything that might happen to your android device and others through this tutorial.</p>
+<h2>FAQ &#8211;</h2>
+<h3>How to Install Termux from F-Droid? </h3>
+<p>Did you downloaded Termux from the Playstore and is now unable to do anything because of errors? That happens because the play store version of Termux is not maintained anymore, meaning no one is updating it anymore. </p>
+<p>To get the latest version of Termux you can use F-Droid, to begin first go to &#8211; <a href="https://f-droid.org/packages/com.termux/">https://f-droid.org/packages/com.termux/</a>. Here scroll down and in the latest version of Termux click on Download Now.</p>
+<div class="zyXNJlfo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_16 - incontent_16 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-665"> </div>
+</div>
+<!-- End Ezoic - incontent_16 - incontent_16 -->
+</div>
+<p>This will download the latest version of Termux Apk which you can install and use.</p>
+	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-1906 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install Kali Linux on Android Phone without Root",
+				"url": "https://netmiko.com/install-kali-linux-android-no-root/",
+				"articleBody": "Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to install on our android device is called Kali NetHunter.What is Kali Nethunter -  Kali NetHunter is an Android-based penetration testing platform that provides an interactive and user-friendly environment to perform a variety of network security-related tasks.
+Kali NetHunter is a customized version of Kali Linux which has been pre-installed on an Android device. It includes all the tools present in the Kali Linux distribution, but it supports wireless networks and has been optimized for touchscreen devices.		
+			Download Requirements for Kali NetHunter 		
+		Before starting the installation process of Kali Linux on our Android device we will need to first download some requirements that we will need in order to run and install Kali Linux NetHunter.To download and install Kali Linux NetHunter will need to first install Termux, NetHunter-KeX client, and Hacker’s keyboard.
+Here termux is used to download and install Kali Linux NetHunter, NetHunter-KeX is used to run the GUI ( Graphical user interface ) and the hacker’s keyboard is a helpful virtual keyboard containing all the symbols required in the kali terminal.		
+			Download Termux - 
+		
+		To download Termux, first, open your google play store and search for \"Termux\", here click on Install to install the Termux app. You can also download and install the termux app from its official website at - https://termux.com. If you downloaded Termux from the play store then you might get a “repository under maintenance error” which you can fix by changing the repo of termux, just enter the command given below in the terminal - 		
+			termux-change-repo		
+		
+		This will display a popup where the main repository will be selected by default, now all you need to do is select all three repositories, main, game, and science. Once done click on “OK” to save it.		
+																														
+		After that you will need to select the mirror, the “official repositories” will be selected by default, change it to “Mirrors by Grimler” after that click on OK to save it.		
+																														
+		If you are still getting a repository under maintenance error then just download Termux from F-Droid, as the play store version of Termux is not maintained. Get Termux from F-Droid.
+			Download Kali NetHunter App Store & KEX -		
+		Kali Nethunter App Store is required to install all other things that we will need to install and run Kali NetHunter on our Android device.Download the Nethunter App store by going to https://store.nethunter.com/ and clicking on “DOWNLOAD STORE APP” which will download the NetHunter app store apk.		
+																														
+		Once downloaded, install the app and continue to the next step which is to download NetHunter kex.
+Open the NetHunter App Store and at the bottom, you will get a search button, search for Nethunter Kex, click on it and click on Install. 		
+																														
+		Once the download finishes you might need to allow NetHunter Store to install apps from unknown sources, open settings and allow it, and install NetHunter Kex.NetHunter kex is required to run Kali Linux Nethunter using the graphical user interface aka GUI. If you want you can also use Kali Linux using just its command line.
+			Download Hacker’s Keyboard -		
+		You can download Hacker’s Keyboard from Playstore or NetHunter App Store, just search for Hacker’s Keyboard on Play Store or NetHunter Play Store and download it and install it.After installing it, open it and follow the steps to set it up. NOTE: Hacker’s keyboard is optional, you can also use your default keyboard on Termux or Kali Linux.		
+			Install Kali Linux NetHunter		
+		Okay so now let us see how we can download and install Kali Linux NetHunter on our Android device using termux, to begin first open your termux app and update its packages.		
+			pkg update -y
+		
+		
+		Now setup the storage of termux using the command below, you might get a popup asking you to allow termux storage permissions, accept it to continue- 		
+			termux-setup-storage
+		
+		After that you will need to download and install wget which we will need to download kali Linux, you can download and install wget on termux using this command -		
+			pkg install wget -y
+		
+		Once wget is installed, you can now download kali, do note that in order to run and use Kali Linux NetHunter on your Android device you will need at least 10GB of free space, so make sure to have some empty storage for the installation. 		
+			wget -O install-nethunter-termux https://offs.ec/2MceZWr 		
+		
+		Once Kali Linux Nethunter finishes downloading you will need to make the downloaded file executable to install it, use this command to make the downloaded kali Linux file executable - 		
+			chmod +x install-nethunter-termux		
+		Now run the script which will download the full version of Kali Linux NetHunter, it will take a few minutes to complete, so keep the termux app in Foreground and wait for the installation to complete. 		
+			./install-nethunter-termux
+		
+		Once Kali Linux NetHunter is fully downloaded and installed it will ask you for input at the end of the installation process, the question will be “ Delete downloaded Rootfs file”, just enter “y” and click enter to finish the installation.		
+																														
+		
+		Once done, make sure to update kali packages using the command - 		
+			sudo apt update &amp;&amp; sudo apt full-upgrade -y
+		
+		And that's it, that's how you can install Kali Linux on your Android device without root, now after the installation finishes, you will be in the command line interface of Kali Linux where you can do anything you want. Use command “nethunter” to enter the CLI, or use “nethunter -r” to enter root.Now for users that want a GUI interface instead of using just the command line, you can follow the rest of the steps below.
+			Run Kali Linux NetHunter GUI 		
+		To use Kali Linux NetHunter in GUI mode, you will need to first set a kex password, you can set a kex password by entering the following command -		
+			kex passwd		
+		After entering the command, you will need to enter a password, verify the password, and once done you will need to type “kex” in the terminal to know your RFB Port.		
+			kex 
+		
+		After entering the kex command, in the terminal, you will get the RFB Port number.
+Now go back and open the NetHunter Kex app, here if it asks for storage permissions then allow it, after that on the right side of localhost:1 there will be a port number, you will need to remove the default port number and enter your RFB Port number here.After that below in the VNC Password, enter the kex password and click on “Connect” at the top right corner.		
+																														
+		You will now be in the GUI interface of Kali Linux NetHunter, you can use a mouse or your fingers to control it, it will work just like the Kali Linux PC, it will have everything that is available in the original Kali Linux.
+To exit Kali Linux NetHunter, go back to Temux and enter “kex stop” to stop the server. And that's it, that is how you can use Kali Linux NetHunter in GUI using NetHunter Kex. 		
+			Conclusion - 		
+		Installing and Running Kali Linux on your Android phone is very easy, it just takes a little bit of time and patience. You just need a good device with plenty of free space if you want to install Kali Linux. Thanks for reading, comment below if you are facing any problems.Do note that this tutorial is only for educational purposes and does not promote illegal activities that someone can do by following this tutorial. NETMIKO.COM will not be responsible for anything that might happen to your android device and others through this tutorial.
+			FAQ -		
+			How to Install Termux from F-Droid? 		
+		Did you downloaded Termux from the Playstore and is now unable to do anything because of errors? That happens because the play store version of Termux is not maintained anymore, meaning no one is updating it anymore. To get the latest version of Termux you can use F-Droid, to begin first go to - https://f-droid.org/packages/com.termux/. Here scroll down and in the latest version of Termux click on Download Now.This will download the latest version of Termux Apk which you can install and use.",
+				"headline": "How to Install Kali Linux on Android Phone without Root",
+				"author": "MIKO",
+				"datePublished": "2021-12-17",
+				"mainEntityOfPage": "True",
+				"dateModified": "2022-10-02",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://netmiko.com/wp-content/uploads/2021/12/How-to-Install-Kali-Linux-on-Android-Phone-without-Root-1024x576.png",
+          "height": 1024,
+          "width": 576        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "Netmiko.com",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/miko/" alt="link to MIKO author page">
+				<div class="avatar-container" style="background-image: url('http://2.gravatar.com/avatar/e065f317ac1f997d8cb4fb90aa5ca03b?s=96&d=mm&r=g')">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/miko/">MIKO</a></p>
+				</header>
+				<p>Gamer &amp; Blogger.</p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/css-solar-system-simulator/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp')"></div>
+<span class="sr-only">link to CSS Solar System Simulator</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/css-solar-system-simulator/">CSS Solar System Simulator</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+A 2d solar system simulator with time. The planets and the orbit has simple animation.
+
+
+
+[ Made by Sam Chahine ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" &gt;
+&lt;head&gt;
+ ...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/css-solar-system-simulator/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="CSS Solar System Simulator">
+				<meta itemprop="headline" content="CSS Solar System Simulator">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/solar-system-animation-pure-css/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp')"></div>
+<span class="sr-only">link to Solar System Animation Pure CSS</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/solar-system-animation-pure-css/">Solar System Animation Pure CSS</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+Simple 2d animation of the solar system made using CSS, it also uses a little jquery to create the stars in the background. 
+
+
+
+[ Made by Giulia Cardieri ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/solar-system-animation-pure-css/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="Solar System Animation Pure CSS">
+				<meta itemprop="headline" content="Solar System Animation Pure CSS">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Html, CSS, JavaScript, React, and Vue Code Examples and Source Codes.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-680"> </div>
+<p><!-- End Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2022 Copyright Netmiko.com			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<div class="codecopy_tooltip" style="display: inline-block; background: #333; color: white; padding: 0 8px; font-size: 14px; border-radius: 2px; border: 1px solid #111; position:absolute; display: none;">Click to Copy</div>
+<script type="text/javascript">
+	function codecopy_get_element_position(el) {
+		var rect = el.getBoundingClientRect(),
+		scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+		scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		return { top: rect.top + scrollTop - 30, left: rect.left + scrollLeft }
+	}
+
+	function codecopy_apply(element) {
+		element.addEventListener("click", function() {
+			event.stopPropagation();
+			const el = document.createElement('textarea');
+			el.value = element.textContent;
+			document.body.appendChild(el);
+			el.select();
+			document.execCommand('copy');
+			document.body.removeChild(el);
+			codecopy_tooltip.innerHTML = 'Copied!'
+		});
+		element.addEventListener("mouseover", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.innerHTML = 'Click to Copy';
+			codecopy_tooltip.style.display = 'inline-block';
+			codecopy_tooltip.style.top = position.top + 'px';
+			codecopy_tooltip.style.left = position.left + 'px';
+		});
+		element.addEventListener("mouseout", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.style.display = 'none';
+			codecopy_tooltip.style.top ='9999px';
+		});
+	}
+
+	var codecopy_tooltip = document.querySelector('.codecopy_tooltip');
+
+	document.querySelectorAll("code").forEach(function(element) {
+		codecopy_apply(element);
+	});
+</script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+</body>
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-7.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>How to Install KOHA on Ubuntu 20.04 &#x2d; Netmiko.com</title>
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux. In this tutorial, we will show you the complete installation&#8230;">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/09/install-koha-on-ubuntu-20.04.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="install koha on ubuntu 20.04">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install KOHA on Ubuntu 20.04">
+<meta property="og:description" content="Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux. In this tutorial, we will show you the complete installation process of koha, after which you will&#8230;">
+<meta property="og:url" content="https://netmiko.com/install-koha-on-ubuntu-linux/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:updated_time" content="2022-10-02T03:32+00:00">
+<meta property="article:published_time" content="2021-09-02T15:56+00:00">
+<meta property="article:modified_time" content="2022-10-02T03:32+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Install KOHA on Ubuntu 20.04">
+<meta name="twitter:description" content="Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux. In this tutorial, we will show you the complete installation process of koha, after which you will&#8230;">
+<meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/09/install-koha-on-ubuntu-20.04.png">
+<meta name="twitter:image:width" content="1280">
+<meta name="twitter:image:height" content="720">
+<meta name="twitter:image:alt" content="install koha on ubuntu 20.04">
+<link rel="canonical" href="https://netmiko.com/install-koha-on-ubuntu-linux/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-koha-on-ubuntu-linux/","name":"How to Install KOHA on Ubuntu 20.04"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 4.00ms meta | 11.68ms boot -->
+
+<link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
+<link rel="stylesheet" id="crp-public-css" href="https://netmiko.com/wp-content/plugins/custom-related-posts/dist/public.css" type="text/css" media="all">
+<link rel="stylesheet" id="income-school-style-css" href="https://netmiko.com/wp-content/themes/fibrimex/style.css" type="text/css" media="all">
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+pre::before {
+    content: 'Click Code to Copy';
+    display: block;
+    color: #f5f5f5;
+    padding: 20px;
+    margin-top: -25px;
+    margin-bottom: 30px;
+    margin-left: -30px;
+    margin-right: -1000px;
+    background-color: #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+    font-family: 'Fira Sans' !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
+}
+.lyte-wrapper::before {
+    content: 'Watch the Video';
+    display: block;
+    background-color: #444;
+    color: #f5f5f5;
+    padding-left:5px;
+}
+.lyte-wrapper {
+    margin-left: -1px !important;
+}
+.lyte, .lyMe {
+    border: 5px solid #444;
+}
+.image-container {
+    border: 5px solid #444;
+}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/146">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml"> 
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-koha-on-ubuntu-linux%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-koha-on-ubuntu-linux%2F&#038;format=xml">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install KOHA on Ubuntu 20.04 | Netmiko.com">
+<meta property="og:description" content="Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux.In this tutorial, we will show&hellip;">
+<meta property="og:url" content="https://netmiko.com/install-koha-on-ubuntu-linux/">
+<meta property="og:site_name" content="Netmiko.com">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/09/install-koha-on-ubuntu-20.04-1024x576.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux.In this tutorial, we will show&hellip;">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-150x150.png" sizes="32x32">
+<link rel="icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png" sizes="192x192">
+<link rel="apple-touch-icon" href="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+<meta name="msapplication-TileImage" content="https://netmiko.com/wp-content/uploads/2021/09/favicon-300x300.png">
+
+</head>
+
+
+<body class="post-template-default single single-post postid-146 single-format-standard wp-custom-logo no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="360" height="149" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-5993" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-5993"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-407">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-409" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-409"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-410"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-408"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+<li id="menu-item-6244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6244"><a href="https://netmiko.com/category/code/">Source Codes</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-146" class="post-146 post type-post status-publish format-standard has-post-thumbnail hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">How to Install KOHA on Ubuntu 20.04</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2021-09-02">
+<meta itemprop="dateModified" content="2022-10-02">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/miko/">MIKO</a></span> </span><meta itemprop="author" content="MIKO">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/install-koha-on-ubuntu-linux/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+			<div class="post-thumbnail" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<img width="1280" height="720" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-koha-on-ubuntu-20.04.png.webp" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="install koha on ubuntu 20.04" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-koha-on-ubuntu-20.04.png.webp 1280w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-koha-on-ubuntu-20.04-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-koha-on-ubuntu-20.04-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/install-koha-on-ubuntu-20.04-768x432.png.webp 768w" sizes="(max-width: 1280px) 100vw, 1280px">			</div>
+<!-- .post-thumbnail -->
+
+		
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux.</p>
+<p>In this tutorial, we will show you the complete installation process of koha, after which you will be able to easily install it on your Ubuntu Linux by yourself.</p>
+<div class="REs3bgd2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div>
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+</div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+<h2>Login as Root/Admin &#8211;<br>
+</h2>
+<p>First of all we will open our terminal and there we will log in as root user/admin for which we have to type the below command in terminal and then we have to enter our password.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo su</code></pre>
+<h2>Update and Upgrade &#8211;<br>
+</h2>
+<p>After this we have to update and upgrade our ubuntu system. To do this, we will first type the commands given below in our terminal.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get upgrade</code></pre>
+<p>Now we will have to flush our apt cache files, for which we have to type the following commands &#8211;</p>
+<div class="tEq043EG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+</div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get clean</code></pre>
+<h2>Add Koha Repo and Source package key &#8211;<br>
+</h2>
+<p>To install Koha&#8217;s repository address and its source key package, we first have to type or copy paste the following command in our terminal.</p>
+<p>We will install the stable version of koha here, if you want, you can also download the old version of koha.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo echo deb https://debian.koha-community.org/koha stable main | sudo tee /etc/apt/sources.list.d/koha.list
+</code></pre>
+<p>Type the command given above and after that press enter and after which type the command given below which will download the source package key.</p>
+<div class="xyDn32k5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longer_content - longer_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-652"> </div>
+</div>
+<!-- End Ezoic - longer_content - longer_content -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget &#8211; no-check-certificate -qO - https://debian.koha-community.org/koha/gpg.asc | sudo apt-key add -</code></pre>
+<p>If this command is not working then it means that you have not installed wget. To install wget copy the command below after that try again.</p>
+<p>To install wget in ubuntu you have to use this command &#8211; &#8220;apt-get install wget&#8221; using which wget will be installed in your system.</p>
+<p>Now we will update our ubuntu system again with the help of sudo apt-get update command.</p>
+<div class="tOhxNhxt" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - longest_content - longest_content -->
+<div>
+<div id="ezoic-pub-ad-placeholder-653"> </div>
+</div>
+<!-- End Ezoic - longest_content - longest_content -->
+</div>
+<h2>Install Koha &#8211;<br>
+</h2>
+<p>Now we will install koha in our ubuntu system, to do that type the command given below which will download the latest version of koha in our computer.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install koha-common -y
+</code></pre>
+<p>It will take some time to download depending upon your internet connection.</p>
+<p>Now we have to change the port number in it for the staff client, to change the port number we have to open one of its conf file and edit it. <br>To open the conf file we will type the command given below and give the address of the directory where our conf file is located. The path will be same for everyone.</p>
+<div class="Rr1PyLMM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+</div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo gedit /etc/koha/koha-sites.conf
+</code></pre>
+<p>Now we have to edit this file a bit, here we will get a line where we will get this written &#8221; INTRAPORT=&#8221;80″ &#8221; below which we will have to add one more INTRAPORT &#8221; INTRAPORT = &#8220;8080″ &#8221; After which we will save this conf file and exit from the file editor.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">exit</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo su </code></pre>
+<h2>Install MySQL Server &#8211;<br>
+</h2>
+<p>Now we will download MySQL server for the database which we need to run koha.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get install mysql-server</code></pre>
+<p>After typing this command, the MySQL server will be installed in your ubuntu, if it asks you for a password, then type your password in it.</p>
+<div class="QOiOWasj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_6 - incontent_6 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-655"> </div>
+</div>
+<!-- End Ezoic - incontent_6 - incontent_6 -->
+</div>
+<h2>Setup Apache &#8211; </h2>
+<p>Now we will enable CGI and rewrite in our Apache server, for which we will type the following two commands in the terminal.</p>
+<p>We will type this command to enable rewrite.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo a2enmod rewrite</code></pre>
+<p>And to enable cgi will use this command.</p>
+<div class="zIPBmtkU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_7 - incontent_7 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-656"> </div>
+</div>
+<!-- End Ezoic - incontent_7 - incontent_7 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo a2enmod cgi
+</code></pre>
+<p>After typing these two commands, we will restart our apache server once.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl restart apache2</code></pre>
+<p>With the help of this command, our apache server will be restarted. If you face any error then try this command.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo service apache2 restart
+</code></pre>
+<h2>Create Koha instance &#8211;<br>
+</h2>
+<p>Now we have to create an instance of koha. To create an instance of koha, we will type the following command in our terminal which is &#8211;</p>
+<div class="FQXvcYy8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_8 - incontent_8 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-657"> </div>
+</div>
+<!-- End Ezoic - incontent_8 - incontent_8 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo koha-create &#8211; create-db library
+</code></pre>
+<p>Here library is the name of our instance, which you can give anything you want, but we recommend you to give the name library as it will be easier to remember and follow the tutorial.</p>
+<p>After this we have to add a port in our apache&#8217;s ports conf file just like we previously added in koha&#8217;s conf file. For this we will edit the ports conf file of our apache server.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo gedit  /etc/apache2/ports.conf</code></pre>
+<p>Inside this file, we have to add the port we had previously added in koha&#8217;s conf file under “listen 80”, which in our case is “listen 8080”. After that we will save it and then hit exit from the file editor.</p>
+<div class="gS5Do4u2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_9 - incontent_9 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-658"> </div>
+</div>
+<!-- End Ezoic - incontent_9 - incontent_9 -->
+</div>
+<p>After this we have to restart our apache server again.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl restart apache2
+</code></pre>
+<p>If the above command does not work then you can also try the command given below.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo service apache2 restart
+</code></pre>
+<h2>Enable Koha Instance &#8211;<br>
+</h2>
+<p>Now we will have to disable the default site of our apache server and enable our koha instance for which we have to type the commands given below.</p>
+<div class="reVRrkwH" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_10 - incontent_10 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-659"> </div>
+</div>
+<!-- End Ezoic - incontent_10 - incontent_10 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo a2dissite 000-default
+</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo a2enmod deflate
+</code></pre>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo a2ensite library
+</code></pre>
+<p>After typing these commands, we will restart the apache server once again.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl restart apache2</code></pre>
+<h2>Install Locale Language Perl module &#8211; </h2>
+<p>Now we have to install the Locale Language perl module, for this we will type the command given below &#8211;</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install liblocale-codes-perl
+</code></pre>
+<h2>Know Master Password &#8211;</h2>
+<p>Now you have to type the command given below to know the master password of your koha installation, from which you will get its password which you will need later to log in to koha web installer.</p>
+<div class="S6aUH8Ot" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_11 - incontent_11 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-660"> </div>
+</div>
+<!-- End Ezoic - incontent_11 - incontent_11 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo koha-passwd library
+</code></pre>
+<p>As soon as you type this command in the terminal, you will see the master password of your koha in your terminal, which you will have to write somewhere or copy paste it somewhere because it is very important.</p>
+<p>Koha is now installed in our ubuntu and now we have to set it up, keep reading below for the setup process.</p>
+<h2>Setup Koha &#8211; </h2>
+<p>Now we have to open any web browser in which we will go to localhost, for which we will type “localhost:8080” in the browser, if you had given a different port then, remove 8080 then give the port you added.</p>
+<div class="dBEXDka7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_12 - incontent_12 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-661"> </div>
+</div>
+<!-- End Ezoic - incontent_12 - incontent_12 -->
+</div>
+<p>Now we have to type our username and password. Here in the username, by default it is “ koha_library ” and the master password we copied a while back is our password. After that we will click on login.</p>
+<p>After this we will follow the instructions of the web installer and click on continue to the next step. And when we get the option to select your marc flavor then we have to select any one of the two options and then click on continue to the next step.</p>
+<p>Now, here we have to select all the things that we want in our koha installation and then we will scroll down and click on import.</p>
+<div class="ccTK6Sn0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_13 - incontent_13 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-662"> </div>
+</div>
+<!-- End Ezoic - incontent_13 - incontent_13 -->
+</div>
+<p>Now we have to scroll down a bit here and click on &#8220;set up some of koha basic requirements&#8221;. After clicking on this option our koha will be installed successfully.</p>
+<h2>Web Installer Setup &#8211;<br>
+</h2>
+<p>Whatever password and username you provide here, keep them well noted somewhere because you will need them to login to koha.</p>
+<h3>Create Library &#8211; </h3>
+<p>Now we have to create a library in the web installer. Here we have to give library code which you can give anything and you can give anything in name also. And then we will click on submit button here. The library code will be &#8220;library&#8221; and the name will be &#8220;library&#8221;.</p>
+<div class="03mAN7eC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_14 - incontent_14 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-663"> </div>
+</div>
+<!-- End Ezoic - incontent_14 - incontent_14 -->
+</div>
+<h3>Create patron category &#8211;</h3>
+<p>After this we have to type the code of our library in the category code and we can write anything in the description. Select yes in Overdue notice required. Enrollment period we can enter anything after which we will click on submit button.</p>
+<h3>Create administrator patron &#8211;</h3>
+<p>Now we have to enter our identity here i.e. we have to enter our name and card number. The card number can be anything like “1”  or “001” “000001” etc.</p>
+<p>Now we will scroll down a bit and there we will confirm our administrator password and then click on submit.</p>
+<div class="pG1qdp5R" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_15 - incontent_15 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-664"> </div>
+</div>
+<!-- End Ezoic - incontent_15 - incontent_15 -->
+</div>
+<h3>Create item type &#8211;</h3>
+<p>Now we have to create a new item type here where we can give anything in the item type code and then we will give a description in it. You can also use the library name here and then we will submit it.</p>
+<h3>Create circulation rule &#8211;</h3>
+<p>In the circulation rule, you can change things by yourself, select the things you want and then click on submit.</p>
+<h2>Web Installer Setup Complete &#8211;<br>
+</h2>
+<p>Now the setup of our web installer is complete and now we will click on start using koha. Here now we will login with the username and password of our library by selecting our library. Now we are logged in to our koha admin dashboard and we can use it now.</p>
+<div class="rlb5NX9o" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_16 - incontent_16 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-665"> </div>
+</div>
+<!-- End Ezoic - incontent_16 - incontent_16 -->
+</div>
+<p>In this tutorial we have shown you how you can install and setup koha on your ubuntu 20.04. If you have any question then you can ask it in comment below.</p>
+<div class="lyte-wrapper" title="How to Install KOHA on Ubuntu 20.04 - Step By Step" style="width:1280px;max-width:100%;margin:5px;"><div class="lyMe" id="WYL_9XteSeSAJbA" itemprop="video" itemscope itemtype="https://schema.org/VideoObject">
+<div>
+<meta itemprop="thumbnailUrl" content="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyteCache.php?origThumbUrl=https%3A%2F%2Fi.ytimg.com%2Fvi%2F9XteSeSAJbA%2Fhqdefault.jpg">
+<meta itemprop="embedURL" content="https://www.youtube.com/embed/9XteSeSAJbA">
+<meta itemprop="duration" content="PT16M26S">
+<meta itemprop="uploadDate" content="2021-09-10T07:43:59Z">
+</div>
+<div id="lyte_9XteSeSAJbA" data-src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyteCache.php?origThumbUrl=https%3A%2F%2Fi.ytimg.com%2Fvi%2F9XteSeSAJbA%2Fhqdefault.jpg" class="pL">
+<div class="tC"><div class="tT" itemprop="name">How to Install KOHA on Ubuntu 20.04 - Step By Step</div></div>
+<div class="play"></div>
+<div class="ctrl">
+<div class="Lctrl"></div>
+<div class="Rctrl"></div>
+</div>
+</div>
+<noscript><a href="http://youtu.be/9XteSeSAJbA"><img src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyteCache.php?origThumbUrl=http%3A%2F%2Fi.ytimg.com%2Fvi%2F9XteSeSAJbA%2F0.jpg" alt="How to Install KOHA on Ubuntu 20.04 - Step By Step" width="1280" height="700"><br>Watch this video on YouTube</a></noscript>
+<meta itemprop="description" content="Learn how you can install koha on your ubuntu 20.04. Full tutorial on koha installation on ubuntu linux. Commands - https://netmiko.com/install-koha-on-ubuntu-linux/ Best Web Hosting for your blog - https://netmiko.com/best-hosting/ Change Language Using &quot; Select Language &quot; on the left side . 0:00 - 0:21 - Update system 0:21 - 0:35 - Add koha repo 0:35 - 1:35 - Add Source key 1:35 - 2:05 - Update again 2:05 - 6:55 - Install Koha 6:55 - 8:35 - Edit conf file 8:35 - 9:55 - Install MySQL 9:55 - 10:15 - Restart apache 10:15 - 10:35 - Enable Rewrite 10:35 - 10:47 - Enable CGI 10:47 - 11:05 - Restart apache again 11:05 - 11:48 - Create koha database 11:48 - 13:26 - Edit ports conf 13:26 - 14:45 - Enable instance 14:45 - 15:15 - Install Perl Module 15:15 - 15:55 - Get password 15:55 - 16:24 - Open Localhost">
+</div></div>
+<div class="lL" style="max-width:100%;width:1280px;margin:5px;"></div>
+<h2>Frequently asked questions &#8211;</h2>
+<h3>How to fix Perl modules missing error.</h3>
+<p>If you also get the error of Perl modules missing then you will get the option of recheck dependencies below which if you click then it will recheck dependencies again and this time your error will be fixed.</p>
+<p>Here is the command to install perl modules &#8211; &#8220;sudo apt install liblocale-codes-perl&#8221;</p>
+<div class="EjGJgoW7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_17 - incontent_17 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-666"> </div>
+</div>
+<!-- End Ezoic - incontent_17 - incontent_17 -->
+</div>
+<h3>Which ubuntu version is used in this tutorial.</h3>
+<p>For this tutorial, we have used ubuntu version 20.04, LTS version has been used. You can also use a different version of ubuntu that has LTS support to install koha.</p>
+<h3>What is Koha?</h3>
+<p>Koha is an integrated library system that is open source and free and is used by schools, colleges and libraries around the world.</p>
+<h3>Can we install koha on windows?</h3>
+<p>Yes, you can install koha in your windows computer also. It is very easy to install koha in windows as compared to ubuntu. You will find many videos on YouTube that how you can install koha in windows, Search on YouTube and you will definitely get a good video.</p>
+<div class="HtMOfz1D" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_18 - incontent_18 -->
+<div>
+<div id="ezoic-pub-ad-placeholder-667"> </div>
+</div>
+<!-- End Ezoic - incontent_18 - incontent_18 -->
+</div>
+<p>If you liked this post, then do comment below and share it with your friends who want to install koha in ubuntu 20.04.</p>
+	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-146 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install KOHA on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-koha-on-ubuntu-linux/",
+				"articleBody": "Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux.In this tutorial, we will show you the complete installation process of koha, after which you will be able to easily install it on your Ubuntu Linux by yourself.
+			Login as Root/Admin - 
+		
+		First of all we will open our terminal and there we will log in as root user/admin for which we have to type the below command in terminal and then we have to enter our password.		
+			sudo su		
+			Update and Upgrade -
+		
+		After this we have to update and upgrade our ubuntu system. To do this, we will first type the commands given below in our terminal.		
+			sudo apt-get update		
+			sudo apt-get upgrade		
+		Now we will have to flush our apt cache files, for which we have to type the following commands -
+			sudo apt-get clean		
+			Add Koha Repo and Source package key - 
+		
+		To install Koha's repository address and its source key package, we first have to type or copy paste the following command in our terminal.We will install the stable version of koha here, if you want, you can also download the old version of koha.		
+			sudo echo deb https://debian.koha-community.org/koha stable main | sudo tee /etc/apt/sources.list.d/koha.list
+		
+		Type the command given above and after that press enter and after which type the command given below which will download the source package key.
+			wget --no-check-certificate -qO - https://debian.koha-community.org/koha/gpg.asc | sudo apt-key add -		
+		If this command is not working then it means that you have not installed wget. To install wget copy the command below after that try again.To install wget in ubuntu you have to use this command - \"apt-get install wget\" using which wget will be installed in your system.Now we will update our ubuntu system again with the help of sudo apt-get update command.
+			Install Koha -
+		
+		Now we will install koha in our ubuntu system, to do that type the command given below which will download the latest version of koha in our computer.		
+			sudo apt install koha-common -y
+		
+		It will take some time to download depending upon your internet connection.Now we have to change the port number in it for the staff client, to change the port number we have to open one of its conf file and edit it. To open the conf file we will type the command given below and give the address of the directory where our conf file is located. The path will be same for everyone.
+			sudo gedit /etc/koha/koha-sites.conf
+		
+		Now we have to edit this file a bit, here we will get a line where we will get this written \" INTRAPORT=\"80″ \" below which we will have to add one more INTRAPORT \" INTRAPORT = \"8080″ \" After which we will save this conf file and exit from the file editor.		
+			exit		
+			sudo su 		
+			Install MySQL Server -
+		
+		Now we will download MySQL server for the database which we need to run koha.		
+			sudo apt-get install mysql-server		
+		After typing this command, the MySQL server will be installed in your ubuntu, if it asks you for a password, then type your password in it.
+			Setup Apache - 		
+		Now we will enable CGI and rewrite in our Apache server, for which we will type the following two commands in the terminal.We will type this command to enable rewrite.		
+			sudo a2enmod rewrite		
+		And to enable cgi will use this command.		
+			sudo a2enmod cgi
+		
+		After typing these two commands, we will restart our apache server once.
+			sudo systemctl restart apache2		
+		With the help of this command, our apache server will be restarted. If you face any error then try this command.		
+			sudo service apache2 restart
+		
+			Create Koha instance -
+		
+		Now we have to create an instance of koha. To create an instance of koha, we will type the following command in our terminal which is -		
+			sudo koha-create --create-db library
+		
+		Here library is the name of our instance, which you can give anything you want, but we recommend you to give the name library as it will be easier to remember and follow the tutorial.
+After this we have to add a port in our apache's ports conf file just like we previously added in koha's conf file. For this we will edit the ports conf file of our apache server.		
+			sudo gedit  /etc/apache2/ports.conf		
+		Inside this file, we have to add the port we had previously added in koha's conf file under “listen 80”, which in our case is “listen 8080”. After that we will save it and then hit exit from the file editor.After this we have to restart our apache server again.
+			sudo systemctl restart apache2
+		
+		If the above command does not work then you can also try the command given below.		
+			sudo service apache2 restart
+		
+			Enable Koha Instance -
+		
+		Now we will have to disable the default site of our apache server and enable our koha instance for which we have to type the commands given below.		
+			sudo a2dissite 000-default
+		
+			sudo a2enmod deflate
+		
+			sudo a2ensite library
+		
+		After typing these commands, we will restart the apache server once again.
+			sudo systemctl restart apache2		
+			Install Locale Language Perl module - 		
+		Now we have to install the Locale Language perl module, for this we will type the command given below -		
+			sudo apt install liblocale-codes-perl
+		
+			Know Master Password -		
+		Now you have to type the command given below to know the master password of your koha installation, from which you will get its password which you will need later to log in to koha web installer.		
+			sudo koha-passwd library
+		
+		As soon as you type this command in the terminal, you will see the master password of your koha in your terminal, which you will have to write somewhere or copy paste it somewhere because it is very important.
+Koha is now installed in our ubuntu and now we have to set it up, keep reading below for the setup process.		
+			Setup Koha - 		
+		Now we have to open any web browser in which we will go to localhost, for which we will type “localhost:8080” in the browser, if you had given a different port then, remove 8080 then give the port you added.Now we have to type our username and password. Here in the username, by default it is “ koha_library ” and the master password we copied a while back is our password. After that we will click on login.
+After this we will follow the instructions of the web installer and click on continue to the next step. And when we get the option to select your marc flavor then we have to select any one of the two options and then click on continue to the next step.Now, here we have to select all the things that we want in our koha installation and then we will scroll down and click on import.Now we have to scroll down a bit here and click on \"set up some of koha basic requirements\". After clicking on this option our koha will be installed successfully.
+			Web Installer Setup -
+		
+		Whatever password and username you provide here, keep them well noted somewhere because you will need them to login to koha.Create Library - Now we have to create a library in the web installer. Here we have to give library code which you can give anything and you can give anything in name also. And then we will click on submit button here. The library code will be \"library\" and the name will be \"library\".Create patron category -After this we have to type the code of our library in the category code and we can write anything in the description. Select yes in Overdue notice required. Enrollment period we can enter anything after which we will click on submit button.
+Create administrator patron -Now we have to enter our identity here i.e. we have to enter our name and card number. The card number can be anything like “1”  or “001” “000001” etc.Now we will scroll down a bit and there we will confirm our administrator password and then click on submit.Create item type -Now we have to create a new item type here where we can give anything in the item type code and then we will give a description in it. You can also use the library name here and then we will submit it.Create circulation rule -In the circulation rule, you can change things by yourself, select the things you want and then click on submit.
+			Web Installer Setup Complete -
+		
+		Now the setup of our web installer is complete and now we will click on start using koha. Here now we will login with the username and password of our library by selecting our library. Now we are logged in to our koha admin dashboard and we can use it now.In this tutorial we have shown you how you can install and setup koha on your ubuntu 20.04. If you have any question then you can ask it in comment below. How to Install KOHA on Ubuntu 20.04 - Step By StepWatch this video on YouTube
+			Frequently asked questions -		
+		How to fix Perl modules missing error.If you also get the error of Perl modules missing then you will get the option of recheck dependencies below which if you click then it will recheck dependencies again and this time your error will be fixed.Here is the command to install perl modules - \"sudo apt install liblocale-codes-perl\"
+Which ubuntu version is used in this tutorial.For this tutorial, we have used ubuntu version 20.04, LTS version has been used. You can also use a different version of ubuntu that has LTS support to install koha.What is Koha?Koha is an integrated library system that is open source and free and is used by schools, colleges and libraries around the world.Can we install koha on windows?Yes, you can install koha in your windows computer also. It is very easy to install koha in windows as compared to ubuntu. You will find many videos on YouTube that how you can install koha in windows, Search on YouTube and you will definitely get a good video.If you liked this post, then do comment below and share it with your friends who want to install koha in ubuntu 20.04.",
+				"headline": "How to Install KOHA on Ubuntu 20.04",
+				"author": "MIKO",
+				"datePublished": "2021-09-02",
+				"mainEntityOfPage": "True",
+				"dateModified": "2022-10-02",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://netmiko.com/wp-content/uploads/2021/09/install-koha-on-ubuntu-20.04-1024x576.png",
+          "height": 1024,
+          "width": 576        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "Netmiko.com",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/miko/" alt="link to MIKO author page">
+				<div class="avatar-container" style="background-image: url('http://2.gravatar.com/avatar/e065f317ac1f997d8cb4fb90aa5ca03b?s=96&d=mm&r=g')">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/miko/">MIKO</a></p>
+				</header>
+				<p>Gamer &amp; Blogger.</p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/css-solar-system-simulator/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp')"></div>
+<span class="sr-only">link to CSS Solar System Simulator</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/css-solar-system-simulator/">CSS Solar System Simulator</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+A 2d solar system simulator with time. The planets and the orbit has simple animation.
+
+
+
+[ Made by Sam Chahine ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en" &gt;
+&lt;head&gt;
+ ...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/css-solar-system-simulator/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1499.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="CSS Solar System Simulator">
+				<meta itemprop="headline" content="CSS Solar System Simulator">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/solar-system-animation-pure-css/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp')"></div>
+<span class="sr-only">link to Solar System Animation Pure CSS</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/solar-system-animation-pure-css/">Solar System Animation Pure CSS</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+Simple 2d animation of the solar system made using CSS, it also uses a little jquery to create the stars in the background. 
+
+
+
+[ Made by Giulia Cardieri ]
+
+
+
+
+
+The Html Part
+
+
+
+&lt;!DOCTYPE...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/solar-system-animation-pure-css/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/Screenshot-1498.png">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="Netmiko.com">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
+				<meta itemprop="name" content="Solar System Animation Pure CSS">
+				<meta itemprop="headline" content="Solar System Animation Pure CSS">
+				<meta itemprop="author" content="MIKO">
+				<meta itemprop="datePublished" content="2022-10-05">
+				<meta itemprop="dateModified" content="2022-10-05">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Html, CSS, JavaScript, React, and Vue Code Examples and Source Codes.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-680"> </div>
+<p><!-- End Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2022 Copyright Netmiko.com			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<div class="codecopy_tooltip" style="display: inline-block; background: #333; color: white; padding: 0 8px; font-size: 14px; border-radius: 2px; border: 1px solid #111; position:absolute; display: none;">Click to Copy</div>
+<script type="text/javascript">
+	function codecopy_get_element_position(el) {
+		var rect = el.getBoundingClientRect(),
+		scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+		scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		return { top: rect.top + scrollTop - 30, left: rect.left + scrollLeft }
+	}
+
+	function codecopy_apply(element) {
+		element.addEventListener("click", function() {
+			event.stopPropagation();
+			const el = document.createElement('textarea');
+			el.value = element.textContent;
+			document.body.appendChild(el);
+			el.select();
+			document.execCommand('copy');
+			document.body.removeChild(el);
+			codecopy_tooltip.innerHTML = 'Copied!'
+		});
+		element.addEventListener("mouseover", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.innerHTML = 'Click to Copy';
+			codecopy_tooltip.style.display = 'inline-block';
+			codecopy_tooltip.style.top = position.top + 'px';
+			codecopy_tooltip.style.left = position.left + 'px';
+		});
+		element.addEventListener("mouseout", function() {
+			event.stopPropagation();
+			var position = codecopy_get_element_position(element);
+			codecopy_tooltip.style.display = 'none';
+			codecopy_tooltip.style.top ='9999px';
+		});
+	}
+
+	var codecopy_tooltip = document.querySelector('.codecopy_tooltip');
+
+	document.querySelectorAll("code").forEach(function(element) {
+		codecopy_apply(element);
+	});
+</script>
+<script type="text/javascript" data-cfasync="false">var bU="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/";var mOs=null;style = document.createElement("style");style.type = "text/css";rules = document.createTextNode(".lyte-wrapper-audio div, .lyte-wrapper div {margin:0px; overflow:hidden;} .lyte,.lyMe{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background-color:#777;} .fourthree .lyMe, .fourthree .lyte {padding-bottom:75%;} .lidget{margin-bottom:5px;} .lidget .lyte, .widget .lyMe {padding-bottom:0!important;height:100%!important;} .lyte-wrapper-audio .lyte{height:38px!important;overflow:hidden;padding:0!important} .lyMe iframe, .lyte iframe,.lyte .pL{position:absolute !important;top:0;left:0;width:100%;height:100%!important;background:no-repeat scroll center #000;background-size:cover;cursor:pointer} .tC{left:0;position:absolute;top:0;width:100%} .tC{background-image:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0))} .tT{color:#FFF;font-family:Roboto,sans-serif;font-size:16px;height:auto;text-align:left;padding:5px 10px 50px 10px} .play{background:no-repeat scroll 0 0 transparent;width:88px;height:63px;position:absolute;left:43%;left:calc(50% - 44px);left:-webkit-calc(50% - 44px);top:38%;top:calc(50% - 31px);top:-webkit-calc(50% - 31px);} .widget .play {top:30%;top:calc(45% - 31px);top:-webkit-calc(45% - 31px);transform:scale(0.6);-webkit-transform:scale(0.6);-ms-transform:scale(0.6);} .lyte:hover .play{background-position:0 -65px;} .lyte-audio .pL{max-height:38px!important} .lyte-audio iframe{height:438px!important} .ctrl{background:repeat scroll 0 -220px rgba(0,0,0,0.3);width:100%;height:40px;bottom:0px;left:0;position:absolute;} .lyte-wrapper .ctrl{display:none}.Lctrl{background:no-repeat scroll 0 -137px transparent;width:158px;height:40px;bottom:0;left:0;position:absolute} .Rctrl{background:no-repeat scroll -42px -179px transparent;width:117px;height:40px;bottom:0;right:0;position:absolute;padding-right:10px;}.lyte-audio .play{display:none}.lyte-audio .ctrl{background-color:rgba(0,0,0,1)}.lyte .hidden{display:none}");if(style.styleSheet) { style.styleSheet.cssText = rules.nodeValue;} else {style.appendChild(rules);}document.getElementsByTagName("head")[0].appendChild(style);</script><script type="text/javascript" data-cfasync="false" async src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/lyte-min.js?wyl_version=1.7.19"></script><script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+</body>
+</html>
