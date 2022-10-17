@@ -4,7 +4,7 @@
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-7.png">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/nm-1.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<title>How to Install and Setup Anaconda on Ubuntu 20.04 &#x2d; Netmiko.com</title>
@@ -22,9 +22,9 @@
 <meta property="og:description" content="Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won&#039;t have any problem installing anaconda on your ubuntu system. Now&#8230;">
 <meta property="og:url" content="https://netmiko.com/install-and-setup-anaconda-ubuntu/">
 <meta property="og:site_name" content="Netmiko.com">
-<meta property="og:updated_time" content="2022-10-02T03:32+00:00">
+<meta property="og:updated_time" content="2022-10-17T07:33+00:00">
 <meta property="article:published_time" content="2021-11-10T06:41+00:00">
-<meta property="article:modified_time" content="2022-10-02T03:32+00:00">
+<meta property="article:modified_time" content="2022-10-17T07:33+00:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to Install and Setup Anaconda on Ubuntu 20.04">
 <meta name="twitter:description" content="Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won&#039;t have any problem installing anaconda on your ubuntu system. Now&#8230;">
@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="how to install and setup anaconda on ubuntu 20.04">
 <link rel="canonical" href="https://netmiko.com/install-and-setup-anaconda-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-and-setup-anaconda-ubuntu/","name":"How to Install and Setup Anaconda on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 5.66ms meta | 11.14ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.89ms meta | 11.06ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
@@ -48,6 +48,13 @@
 			.antibounce-container { background: ; }
 			.antibounce-card { color: ; }
 			.antibounce-card .button { background: ; color:  }
+#download a {
+    color: #fff;
+    text-decoration: none;
+}
+.wp-block-image {
+    box-shadow: 0 0 0 1px #444;
+}
 pre::before {
     content: 'Click Code to Copy';
     display: block;
@@ -78,7 +85,6 @@ h3 {
 }
 strong {
     font-weight:600 !important;
-    font-family: 'Fira Sans' !important;
 }
 .search-wrapper {
     content-visibility: hidden;
@@ -155,7 +161,7 @@ h2 {
 				</button>
 			</div>
 			<div class="site-branding">
-								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="360" height="149" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="480" height="200" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/nm-2.png.webp" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
 									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
 										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
 								</div>
@@ -186,7 +192,6 @@ h2 {
 	<li id="menu-item-408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-408"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
 </ul>
 </li>
-<li id="menu-item-6244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6244"><a href="https://netmiko.com/category/code/">Source Codes</a></li>
 </ul></div>		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
@@ -200,7 +205,7 @@ h2 {
 	<header class="entry-header">
 		<h1 class="entry-title">How to Install and Setup Anaconda on Ubuntu 20.04</h1>			<div class="entry-meta sr-only">
 				<meta itemprop="datePublished" content="2021-11-10">
-<meta itemprop="dateModified" content="2022-10-02">
+<meta itemprop="dateModified" content="2022-10-17">
 <span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/miko/">MIKO</a></span> </span><meta itemprop="author" content="MIKO">
 <link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/install-and-setup-anaconda-ubuntu/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
 <!-- .entry-meta -->
@@ -216,7 +221,7 @@ h2 {
 		<p>Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won&#8217;t have any problem installing <a href="https://anaconda.com/">anaconda</a> on your ubuntu system.</p>
 <h2>Create a new directory for Anaconda</h2>
 <p>Now, let&#8217;s start the installation process. The first step will be to create a new directory in our home directory where Anaconda will be downloaded. Just to keep things organised.</p>
-<div class="QN3PUg1B" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Pk0mAFOw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -228,7 +233,7 @@ h2 {
 </code></pre>
 <p>Here, the &#8220;anaconda&#8221; is the name of the directory which you can name anything that you like.</p>
 <p>You can also create a new directory by going to your File Manager&gt;Home. After that right-click inside the Home directory and click on “New Folder”. </p>
-<div class="R85C0ZWQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="SYnAybz9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -240,7 +245,7 @@ h2 {
 <p>Now, the next step will be to download Anaconda from its official website <a href="https://www.anaconda.com/">Anaconda.com</a>. There are two ways to download anaconda, you can download it directly from its website or you can download it using the terminal.</p>
 <h3>Download Anaconda using Browser &#8211; </h3>
 <p>Let me show you both the ways to download anaconda. First I&#8217;ll show you how you can download anaconda directly from its website using a web browser.</p>
-<div class="6K5Ct5YT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="qZAQa5RJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -258,7 +263,7 @@ h2 {
 </h3>
 <p>Now, let&#8217;s see the steps to download Anaconda using the terminal. First, change your working directory to the directory where you want to download Anaconda.</p>
 <p>In our case its the folder that we created in the first step, so we will change our directory to that one using this command &#8211;</p>
-<div class="6oVYF9Dj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="cWNaZuKe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -273,7 +278,7 @@ h2 {
 <p>If you don&#8217;t have wget installed on your ubuntu system then you can install it using “<em>apt-get install wget</em>”.</p>
 <blockquote>
 <p>Note: The download link keeps changing after the latest updates, so the above command might not work after some time. It&#8217;s better to just download anaconda using the web browser or get the latest download link from <a href="https://www.anaconda.com/products/individual#Downloads">here</a>.</p>
-<div class="mdF7UO4f" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="laGpwcRT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -286,7 +291,7 @@ h2 {
 <p>Before starting the installation process we will have to first “Verify the data integrity with SHA-256”.</p>
 <p>To do that, first go to <a href="https://docs.anaconda.com/anaconda/install/hashes/">https://docs.anaconda.com/anaconda/install/hashes/</a>. Here click on the “64-bit Linux py3 &#8221;.</p>
 <p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-1024x576.png.webp" alt="anaconda hash 64-bit linux" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="fQ8IdJd4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="tx56EVFG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -296,7 +301,7 @@ h2 {
 <p>I have python 3 installed on my ubuntu that&#8217;s why I have selected the py3 option, if you have python 2 then select the py2 one.</p>
 <p>After that click on the version of anaconda that you downloaded. In our case it will be &#8211; “Hashes for Anaconda3-2021.05-Linux-x86_64.sh” this will be different if you downloaded a different version of anaconda. Check the downloaded file for the version name.</p>
 <p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-1024x576.png.webp" alt="anaconda hash 2020-5 64-bit version- linux" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="r2mo5iI7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="OmHJLLCj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -306,7 +311,7 @@ h2 {
 <p>Now here you will need to copy the hash shown at the right side of “sha256”. Copy it and paste it somewhere, we’ll need it after this step.</p>
 <p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-1024x576.png.webp" alt="sha256 of anaconda 64-bit linux" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>Before proceeding to the next step, change your working directory to home directory. As our working directory was anaconda.</p>
-<div class="ZHLyW0Ll" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="h3djDq5f" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -319,7 +324,7 @@ h2 {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sha256sum /home/username/anaconda/Anaconda3-2021.05-Linux-x86_64.sh</code></pre>
 <p>Now after you enter this command in your terminal, there will be a hash shown in the terminal which you will need to compare with the hash shown on the website.</p>
 <p>															<img width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-1024x576.png.webp" alt="compare hashes of anaconda" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="xN8GuK2u" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="a4shjPS1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -330,7 +335,7 @@ h2 {
 <p>Now, change your working directory to anaconda by using this command &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd anaconda</code></pre>
 <p>After that in the terminal type “bash filename”. The file name will be the name of the anaconda file that you downloaded.</p>
-<div class="fUR35OFf" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="x43IZhnU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -342,7 +347,7 @@ h2 {
 <p>Press Enter, this will start the installation process.</p>
 <p>First press “enter” to continue then it will ask you to read the terms and agreement, hold and keep pressing enter to continue.</p>
 <p>Once the Agreement ends it will ask you to accept it. Enter “Yes” to continue. After accepting the agreement it will show you the location where anaconda will be installed. Press Enter to continue.</p>
-<div class="v417HGtZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="7aN228Gk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
@@ -352,7 +357,7 @@ h2 {
 <p>It will take some time to finish the installation of anaconda, just before the installation finishes it will ask whether “You wish the installer to initialize Anaconda3 by running conda init”. Enter “Yes” to finish the installation of Anaconda on ubuntu. </p>
 <p>Now you will need to run the source command or close the activate terminal and open a new terminal window for anaconda to work.</p>
 <p>Type this command to verify the installation of Anaconda &#8211;</p>
-<div class="Ou619yLj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="hqOxV96F" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-661"> </div>
@@ -367,7 +372,7 @@ h2 {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">conda config &#8211; set auto_activate_base True 
 </code></pre>
 <p style="text-align: center;">Or</p>
-<div class="9I3tNuOd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="zKdXX0go" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-662"> </div>
@@ -402,7 +407,7 @@ h2 {
 <h3>Q1. How to Uninstall Anaconda on Ubuntu 20.04?<br>
 </h3>
 <p>You can uninstall Anaconda by typing “<em>rm -rf ~/anaconda3</em>” in the terminal. If you want to fully uninstall Anaconda and its related files then in a terminal type “conda install anaconda-clean” and after that type “anaconda-clean &#8211;yes”.</p>
-<div class="dkWbYn4f" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="wiB4irow" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-663"> </div>
@@ -490,7 +495,7 @@ Type this command to verify the installation of Anaconda -
 				"author": "MIKO",
 				"datePublished": "2021-11-10",
 				"mainEntityOfPage": "True",
-				"dateModified": "2022-10-02",
+				"dateModified": "2022-10-17",
         "image": {
           "@type": "ImageObject",
           "url": "https://netmiko.com/wp-content/uploads/2021/11/how-to-install-and-setup-anaconda-on-ubuntu-20.04-1024x576.png",
@@ -502,7 +507,7 @@ Type this command to verify the installation of Anaconda -
 					"name": "Netmiko.com",
           "logo":{
              "@type":"ImageObject",
-             "url":"https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg",
+             "url":"https://netmiko.com/wp-content/uploads/2022/10/nm-2.png",
              "width":600,
              "height":60
           }
@@ -524,92 +529,68 @@ Type this command to verify the installation of Anaconda -
 					<h3 class="h2">Recent Content</h3>
 			<div class="recent-articles-container">
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
-				<a href="https://netmiko.com/css-solar-system-simulator/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp')"></div>
-<span class="sr-only">link to CSS Solar System Simulator</span></a>
+				<a href="https://netmiko.com/download-install-mod-apk/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/how-to-download-and-install-a-mod-apk.png.webp')"></div>
+<span class="sr-only">link to How to Download and Install a Mod Apk</span></a>
 
 				<div class="copy-container">
 					<header>
-						<p><a itemprop="name" href="https://netmiko.com/css-solar-system-simulator/">CSS Solar System Simulator</a></p>
+						<p><a itemprop="name" href="https://netmiko.com/download-install-mod-apk/">How to Download and Install a Mod Apk</a></p>
 					</header>
 					<div class="excerpt">
 						<p>
-A 2d solar system simulator with time. The planets and the orbit has simple animation.
+In this post, you will get to know all about what a mod apk is and how you can download and install a mod apk on your own phone.
 
 
 
-[ Made by Sam Chahine ]
+What exactly is a Mod Apk?
 
 
 
-
-
-The Html Part
-
-
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en" &gt;
-&lt;head&gt;
- ...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/css-solar-system-simulator/">Continue Reading</a></div>					</div>
+<strong>A mod apk is a modified...</strong></p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/download-install-mod-apk/">Continue Reading</a></div>					</div>
 					<!-- <div class="button-container">
 						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
 					</div> -->
 				</div>
-				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp">
-				<meta itemprop="image" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp">
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/how-to-download-and-install-a-mod-apk.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/how-to-download-and-install-a-mod-apk.png">
 								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
 					<meta itemprop="name" content="Netmiko.com">
 				</span>
-				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
-				<meta itemprop="name" content="CSS Solar System Simulator">
-				<meta itemprop="headline" content="CSS Solar System Simulator">
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/nm-2.png">
+				<meta itemprop="name" content="How to Download and Install a Mod Apk">
+				<meta itemprop="headline" content="How to Download and Install a Mod Apk">
 				<meta itemprop="author" content="MIKO">
-				<meta itemprop="datePublished" content="2022-10-05">
-				<meta itemprop="dateModified" content="2022-10-06">
+				<meta itemprop="datePublished" content="2022-10-17">
+				<meta itemprop="dateModified" content="2022-10-17">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
-				<a href="https://netmiko.com/solar-system-animation-pure-css/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp')"></div>
-<span class="sr-only">link to Solar System Animation Pure CSS</span></a>
+				<a href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/01/How-to-Setup-Use-Cloudinary-Image-CDN-in-WordPress.png.webp')"></div>
+<span class="sr-only">link to How to Setup & Use Cloudinary Image CDN in WordPress</span></a>
 
 				<div class="copy-container">
 					<header>
-						<p><a itemprop="name" href="https://netmiko.com/solar-system-animation-pure-css/">Solar System Animation Pure CSS</a></p>
+						<p><a itemprop="name" href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/">How to Setup & Use Cloudinary Image CDN in WordPress</a></p>
 					</header>
 					<div class="excerpt">
-						<p>
-Simple 2d animation of the solar system made using CSS, it also uses a little jquery to create the stars in the background. 
-
-
-
-[ Made by Giulia Cardieri ]
-
-
-
-
-
-The Html Part
-
-
-
-&lt;!DOCTYPE...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/solar-system-animation-pure-css/">Continue Reading</a></div>					</div>
+						<p>Today I'll show you how you can Set up and use Cloudinary Image CDN in WordPress. The steps are very easy and simple to do and if you follow the steps properly then you will have Cloudinary Working...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/">Continue Reading</a></div>					</div>
 					<!-- <div class="button-container">
 						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
 					</div> -->
 				</div>
-				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp">
-				<meta itemprop="image" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp">
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/01/How-to-Setup-Use-Cloudinary-Image-CDN-in-WordPress.png.webp">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/01/How-to-Setup-Use-Cloudinary-Image-CDN-in-WordPress.png.webp">
 								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
 					<meta itemprop="name" content="Netmiko.com">
 				</span>
-				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
-				<meta itemprop="name" content="Solar System Animation Pure CSS">
-				<meta itemprop="headline" content="Solar System Animation Pure CSS">
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/nm-2.png">
+				<meta itemprop="name" content="How to Setup &#038; Use Cloudinary Image CDN in WordPress">
+				<meta itemprop="headline" content="How to Setup &#038; Use Cloudinary Image CDN in WordPress">
 				<meta itemprop="author" content="MIKO">
-				<meta itemprop="datePublished" content="2022-10-05">
-				<meta itemprop="dateModified" content="2022-10-06">
+				<meta itemprop="datePublished" content="2022-01-16">
+				<meta itemprop="dateModified" content="2022-10-17">
 
 			</article>
 					</div>
@@ -620,7 +601,7 @@ The Html Part
 
 <aside id="secondary" class="widget-area">
 		<div class="about-wrapper">
-		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Html, CSS, JavaScript, React, and Vue Code Examples and Source Codes.</p>
+		<h2 class="widget-title">About US</h2>		<p class="about-copy">Blogging about WordPress, Ezoic, Web Development, and a few other Things.</p>
 			</div>
 		<div class="sidebar-ad">
 		<p><!-- Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
@@ -686,5 +667,21 @@ The Html Part
 </script>
 <script type="text/javascript" data-cfasync="false">var bU="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/";var mOs=null;style = document.createElement("style");style.type = "text/css";rules = document.createTextNode(".lyte-wrapper-audio div, .lyte-wrapper div {margin:0px; overflow:hidden;} .lyte,.lyMe{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background-color:#777;} .fourthree .lyMe, .fourthree .lyte {padding-bottom:75%;} .lidget{margin-bottom:5px;} .lidget .lyte, .widget .lyMe {padding-bottom:0!important;height:100%!important;} .lyte-wrapper-audio .lyte{height:38px!important;overflow:hidden;padding:0!important} .lyMe iframe, .lyte iframe,.lyte .pL{position:absolute !important;top:0;left:0;width:100%;height:100%!important;background:no-repeat scroll center #000;background-size:cover;cursor:pointer} .tC{left:0;position:absolute;top:0;width:100%} .tC{background-image:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0))} .tT{color:#FFF;font-family:Roboto,sans-serif;font-size:16px;height:auto;text-align:left;padding:5px 10px 50px 10px} .play{background:no-repeat scroll 0 0 transparent;width:88px;height:63px;position:absolute;left:43%;left:calc(50% - 44px);left:-webkit-calc(50% - 44px);top:38%;top:calc(50% - 31px);top:-webkit-calc(50% - 31px);} .widget .play {top:30%;top:calc(45% - 31px);top:-webkit-calc(45% - 31px);transform:scale(0.6);-webkit-transform:scale(0.6);-ms-transform:scale(0.6);} .lyte:hover .play{background-position:0 -65px;} .lyte-audio .pL{max-height:38px!important} .lyte-audio iframe{height:438px!important} .ctrl{background:repeat scroll 0 -220px rgba(0,0,0,0.3);width:100%;height:40px;bottom:0px;left:0;position:absolute;} .lyte-wrapper .ctrl{display:none}.Lctrl{background:no-repeat scroll 0 -137px transparent;width:158px;height:40px;bottom:0;left:0;position:absolute} .Rctrl{background:no-repeat scroll -42px -179px transparent;width:117px;height:40px;bottom:0;right:0;position:absolute;padding-right:10px;}.lyte-audio .play{display:none}.lyte-audio .ctrl{background-color:rgba(0,0,0,1)}.lyte .hidden{display:none}");if(style.styleSheet) { style.styleSheet.cssText = rules.nodeValue;} else {style.appendChild(rules);}document.getElementsByTagName("head")[0].appendChild(style);</script><script type="text/javascript" data-cfasync="false" async src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/lyte-min.js?wyl_version=1.7.19"></script><script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
 <script type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+<script>
+var downloadButton = document.getElementById("download");
+var counter = 15;
+var newElement = document.createElement("p");
+newElement.innerHTML = "Fetching Latest Link, Pls Wait 15 seconds.";
+var id;
+downloadButton.parentNode.replaceChild(newElement, downloadButton);
+id = setInterval(function() {
+counter--;
+if(counter < 0) {
+newElement.parentNode.replaceChild(downloadButton, newElement);
+clearInterval(id);
+} else {
+newElement.innerHTML = "Fetching Latest Link, Pls Wait " + counter.toString() + " seconds.";
+}}, 1000);
+</script>
 </body>
 </html>

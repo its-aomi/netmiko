@@ -4,7 +4,7 @@
 	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-7.png">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/10/nm-1.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<title>Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04 &#x2d; Netmiko.com</title>
@@ -22,9 +22,9 @@
 <meta property="og:description" content="Today I&#039;ll show you how you can host a WordPress website on an NGINX server with varnish caching for a fast and optimized WordPress website. If you want to host a WordPress website that can handle&#8230;">
 <meta property="og:url" content="https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/">
 <meta property="og:site_name" content="Netmiko.com">
-<meta property="og:updated_time" content="2022-10-02T03:32+00:00">
+<meta property="og:updated_time" content="2022-10-17T07:33+00:00">
 <meta property="article:published_time" content="2021-12-27T14:29+00:00">
-<meta property="article:modified_time" content="2022-10-02T03:32+00:00">
+<meta property="article:modified_time" content="2022-10-17T07:33+00:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04">
 <meta name="twitter:description" content="Today I&#039;ll show you how you can host a WordPress website on an NGINX server with varnish caching for a fast and optimized WordPress website. If you want to host a WordPress website that can handle&#8230;">
@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="Install WordPress on NGINX Server with Varnish Cache in Ubuntu">
 <link rel="canonical" href="https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/","name":"Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.67ms meta | 11.02ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.88ms meta | 11.03ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}</style>
@@ -48,6 +48,13 @@
 			.antibounce-container { background: ; }
 			.antibounce-card { color: ; }
 			.antibounce-card .button { background: ; color:  }
+#download a {
+    color: #fff;
+    text-decoration: none;
+}
+.wp-block-image {
+    box-shadow: 0 0 0 1px #444;
+}
 pre::before {
     content: 'Click Code to Copy';
     display: block;
@@ -78,7 +85,6 @@ h3 {
 }
 strong {
     font-weight:600 !important;
-    font-family: 'Fira Sans' !important;
 }
 .search-wrapper {
     content-visibility: hidden;
@@ -155,7 +161,7 @@ h2 {
 				</button>
 			</div>
 			<div class="site-branding">
-								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="360" height="149" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="480" height="200" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/nm-2.png.webp" class="attachment-medium size-medium" alt="netmiko.com" loading="lazy"></a>
 									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
 										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
 								</div>
@@ -186,7 +192,6 @@ h2 {
 	<li id="menu-item-408" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-408"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
 </ul>
 </li>
-<li id="menu-item-6244" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6244"><a href="https://netmiko.com/category/code/">Source Codes</a></li>
 </ul></div>		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
@@ -200,7 +205,7 @@ h2 {
 	<header class="entry-header">
 		<h1 class="entry-title">Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04</h1>			<div class="entry-meta sr-only">
 				<meta itemprop="datePublished" content="2021-12-27">
-<meta itemprop="dateModified" content="2022-10-02">
+<meta itemprop="dateModified" content="2022-10-17">
 <span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/miko/">MIKO</a></span> </span><meta itemprop="author" content="MIKO">
 <link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
 <!-- .entry-meta -->
@@ -215,7 +220,7 @@ h2 {
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I&#8217;ll show you how you can host a WordPress website on an NGINX server with varnish caching for a fast and optimized WordPress website. </p>
 <p>If you want to host a WordPress website that can handle lots of traffic without crashing on a cheap cloud hosting like digital ocean basic plan then this is the perfect tutorial for you, with the help of this tutorial your WordPress website will be able to handle <em>5000+ visitors daily</em> at a cost of just 5$ per month.</p>
-<div class="srRXW4Ul" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="8k38wD4g" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -230,7 +235,7 @@ h2 {
 <h3>Amazon AWS<br>
 </h3>
 <p>To create a new Ubuntu server or Instance on AWS you will need to first log in to your AWS account, here go to the EC2 dashboard and click on “<em>Launch Instance</em>” to start the process of creating a new Ubuntu instance.</p>
-<div class="1VTKKKeS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="W0wfAOzq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -240,7 +245,7 @@ h2 {
 <p>First, you will need to choose an Amazon Machine Image (<em>AMI</em>), in the search bar search for Ubuntu, this will display a few ubuntu machine images, you will need to select the “<em>Ubuntu Server 20.04 LTS (HVM)</em>” which comes under free tier, click on select on the right side.</p>
 <p>															<img width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image-1024x400.png.webp" alt="choose amazon machine image" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>After that you will need to choose an <em>instance type</em>, choose the instance that suits your need, like t2.micro or t.2small for a small and medium blog, choose the instance type that you can afford, and click on next.</p>
-<div class="LViSLNrh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="z7SM9hiS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -250,7 +255,7 @@ h2 {
 <p>In the <em>Configure Instance Details,</em> you don&#8217;t need to change anything, click on next to continue. </p>
 <p>In the <em>Storage</em> Tab enter the amount of storage that you need and the storage type that you need, like SSD or Magnetic, once done click on next. In Tags, no need to do anything, click next again.</p>
 <p>															<img width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage-1024x400.png.webp" alt="choose ssd and storage" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="LXVrbY1f" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="HnGrvp6r" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -260,7 +265,7 @@ h2 {
 <p>Now in the <em>Configure Security Group</em> tab, you will need to add two security group rules, which are HTTP and HTTPS. Click on “<em>Add Rule</em>”, in type select “<strong>HTTP</strong>”, again add another rule for “<strong>HTTPS</strong>”. Click Review and Launch to continue.</p>
 <p>															<img width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule-1024x400.png.webp" alt="add http and https rule" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>In the <em>Review</em> Tab, check if everything is correct or not, things like Instance type, storage, and Machine image are important things to check before launching the instance. If everything is correct then click on “Launch”. </p>
-<div class="AWL06J0t" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="3MatPvxW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -270,7 +275,7 @@ h2 {
 <p>It will now ask you to add a <em>Key Pair</em> to the instance, select <em>create a new Key pair</em> option from the dropdown, name the keypair and <em>click on download</em> to download a .pem or .ppk file. Save this file somewhere safe because you will need it to log in to your server.</p>
 <p>															<img width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair-1024x400.png.webp" alt="create a new keypair" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>After downloading the Key pair, <em>click on Launch</em> to launch a ubuntu server.</p>
-<div class="IHEv8ATS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="UOwUbcIi" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -282,7 +287,7 @@ h2 {
 </h3>
 <p>If you are using Digital ocean then here are the steps to create a ubuntu server or droplet. To begin, log in to your digital ocean dashboard.</p>
 <p>Click on Create then select <em>Droplets</em>, to create a new droplet. In image Choose Ubuntu 20.04, after that in plans select the plan that suits your need.</p>
-<div class="xRVZAcBT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="gTvniT8i" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -292,7 +297,7 @@ h2 {
 <p>															<img width="1024" height="320" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean-1024x320.png.webp" alt="choose droplet image in digital ocean" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean-1024x320.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean-300x94.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean-768x240.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>Scroll down and in the data center region select the server that is closest to your customers or users. After that in the Additional option check the “<em>IpV6</em>” and “<em>Monitoring</em>”.</p>
 <p>															<img width="1024" height="320" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring-1024x320.png.webp" alt="check ipv6 and monitoring" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring-1024x320.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring-300x94.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring-768x240.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="WK1ViPd9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="vtGAHlpw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -304,7 +309,7 @@ h2 {
 <h2>Connect Domain &#8211;<br>
 </h2>
 <p>If you want to connect a domain name to your server then you can follow these steps otherwise you can skip this step if you just want to use the IP address.</p>
-<div class="wFauwofq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="sUvwi50r" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -321,7 +326,7 @@ h2 {
 <h2>Install Putty<br>
 </h2>
 <p>Now to login to the ubuntu server, we will need to install Putty, you can download putty from its official website at &#8211; <a href="https://www.putty.org/">https://www.putty.org/</a>. Download the latest version of putty from the website and install it.</p>
-<div class="IZIqoxGE" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="P4B9JNql" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -335,7 +340,7 @@ h2 {
 <h3>Amazon AWS &#8211;<br>
 </h3>
 <p>If you want to log in to your ubuntu server hosted on AWS then here are the steps. </p>
-<div class="3xiV8wKV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ZZQQGyIW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
@@ -345,7 +350,7 @@ h2 {
 <p>Open putty, in the hostname, enter the IP address of your amazon instance, after that on the left side click on “<em>SSH</em>” twice, this will display some more options, click on “<em>Auth</em>”, after that click on Browse and <em>select the .ppk or .pem Key Pair</em> downloaded during instance launch.</p>
 <p>															<img width="1024" height="480" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-hostname-and-port-select-private-keypair-1024x480.png.webp" alt="enter hostname and port &amp; select private keypair" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-hostname-and-port-select-private-keypair-1024x480.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-hostname-and-port-select-private-keypair-300x141.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-hostname-and-port-select-private-keypair-768x360.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-hostname-and-port-select-private-keypair.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>After that in putty click on open to connect to your AWS instance. In the terminal, it will ask “Login as”, enter <em>root</em> and you will be logged in to your AWS ubuntu server.</p>
-<div class="8M0oN1s8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="VIKYTk52" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-661"> </div>
@@ -359,7 +364,7 @@ h2 {
 <h2>Install NGINX<br>
 </h2>
 <p>Okay now it&#8217;s time to set up the server, we will be installing WordPress on Lemp Stack so the first thing we will need to do is install NGINX. All you need to do is copy &amp; paste the commands given below in the putty terminal.</p>
-<div class="sNQw6FgS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Gz7ZWID2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-662"> </div>
@@ -372,7 +377,7 @@ h2 {
 <p>After that you can now <em>download Nginx</em>, to do that use this command &#8211; </p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get install nginx</code></pre>
 <p>Once Nginx is installed check its status using the command “<em>sudo service nginx status</em>”, if it shows an output that says “Active(running) then Nginx is installed and running properly. Exit the status screen by pressing “q”.</p>
-<div class="tpJ5jzA7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="rOtk5WJX" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-663"> </div>
@@ -387,7 +392,7 @@ sudo ufw allow 'Nginx Full'
 <pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo ufw enable
 sudo ufw status</code></pre>
 <p>Once done you can now check if Nginx is working properly or not, to do that enter the IP address of your Ubuntu server in a browser. This will display the “<em>Welcome to Nginx</em>” page which means that Nginx is working perfectly.</p>
-<div class="zFW6PaYu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="CmtQfwK3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-664"> </div>
@@ -399,7 +404,7 @@ sudo ufw status</code></pre>
 <p>Now we will install the MySQL database, again before starting the installation make sure to update the apt packages again &#8211; </p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update</code></pre>
 <p>After that enter the MySQL installation command, you might need to press “y” after entering the command.</p>
-<div class="qFB8fisI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="8aLmUyZq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-665"> </div>
@@ -412,7 +417,7 @@ sudo ufw status</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo service mysql status</code></pre>
 <p>After this, you will need to now create a root password for your MySQL, and remove anonymous users, Disable remote root login, remove the test database and reload privilege tables.</p>
 <p>First <em>create a root password</em>, to do that first enter the command given below &#8211; </p>
-<div class="QWZdCnJs" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="1PtrFDgb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-666"> </div>
@@ -424,7 +429,7 @@ sudo ufw status</code></pre>
 <p>In the terminal you will now get an output asking “Would you like to set up the <em>VALIDATE PASSWORD</em> component?”, just enter any key to continue. After that, you will be asked to enter a new password and confirm the password.</p>
 <p>Create a strong password and confirm it.</p>
 <p>After that you will be asked to <em>remove the anonymous users</em>, press y to continue. After that it will ask “<em>Disallow remote root login</em>”, press y to continue.</p>
-<div class="dPK0WasU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="32j2iVMQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-667"> </div>
@@ -436,7 +441,7 @@ sudo ufw status</code></pre>
 <p>Now we will install PHP for our Nginx server, to begin first you will need to <em>add the universe repository</em> of Ubuntu to your system, use the command given below for adding the universe repo.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo add-apt-repository universe</code></pre>
 <p>After adding the repo, update the apt packages and <em>install php-fpm and php-mysql</em>. You can install them by using these commands &#8211; </p>
-<div class="sICMplSW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="E67siBTs" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-668"> </div>
@@ -453,7 +458,7 @@ sudo apt-get install php-mysql
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo nano /etc/nginx/sites-available/default
 </code></pre>
 <p>The file path for the server block can be different sometimes.</p>
-<div class="QF4SO9oO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Hbetnucf" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_20 - incontent_20 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-669"> </div>
@@ -463,7 +468,7 @@ sudo apt-get install php-mysql
 <p>That command will open the default config file in the nano editor, you will now need to change a few things inside this file to set up the Nginx server. The first thing will be to add index.php.</p>
 <p>Inside this file scroll down and look for the “Add index.php to the list” option, here <em>between the index and index.html</em> enter <em>index.php</em>. Just below that in “server_name” enter your domain name or IP address. </p>
 <p>															<img width="1024" height="360" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-index.php-and-server-ip-to-virtual-host-configuration-file-1024x360.png.webp" alt="add index.php and server ip to virtual host configuration file" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-index.php-and-server-ip-to-virtual-host-configuration-file-1024x360.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-index.php-and-server-ip-to-virtual-host-configuration-file-300x105.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-index.php-and-server-ip-to-virtual-host-configuration-file-768x270.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-index.php-and-server-ip-to-virtual-host-configuration-file.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="ysWSEt9h" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="iAZx3NwV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_21 - incontent_21 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-670"> </div>
@@ -480,7 +485,7 @@ sudo apt-get install php-mysql
 <li style="font-weight: 400;" aria-level="1">fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;</li>
 </ol>
 <p>After that, also <em>uncomment the closing bracket</em> below the “fastcgi_pass 127.0.0.1:9000;” line. Once done, recheck everything and save the file by clicking “CTRL+X &gt; Y &gt; Enter”.</p>
-<div class="PVwqVQLH" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Et7w0Rpa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_22 - incontent_22 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-671"> </div>
@@ -492,7 +497,7 @@ sudo apt-get install php-mysql
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo nginx -t
 </code></pre>
 <p>This will display an output in the terminal like, “Syntax is OK” and “test is successful”, this means that there are no errors after editing the file and you can now proceed to the next step.</p>
-<div class="t7BH1Wvw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="EIAnNUk9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_23 - incontent_23 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-672"> </div>
@@ -507,7 +512,7 @@ sudo apt-get install php-mysql
 </code></pre>
 <h2>Install phpMyAdmin</h2>
 <p>Now to be able to set up and manage MySQL databases on your WordPress website you will need to install and set up phpMyAdmin.</p>
-<div class="PbKniEg5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="AuZW07ge" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_24 - incontent_24 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-673"> </div>
@@ -519,7 +524,7 @@ sudo apt-get install php-mysql
 </code></pre>
 <p>During the download, it will ask you to enter “y” enter y and press enter to continue, when asked to choose a web server you will need to press TAB Key and press enter to continue.</p>
 <p>															<img width="1024" height="360" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/php-installation-server-select-1024x360.png.webp" alt="php installation - server select" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/php-installation-server-select-1024x360.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/php-installation-server-select-300x105.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/php-installation-server-select-768x270.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/php-installation-server-select.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="jNPth03n" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="fazgk2p9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_25 - incontent_25 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-674"> </div>
@@ -531,7 +536,7 @@ sudo apt-get install php-mysql
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
 </code></pre>
 <p>Once done go to your web browser and go to domain.com/phpmyadmin or ip_addresss/phpmyadmin to check if PHPMyAdmin is working perfectly or not. If it is then now you will need to create a superuser to log in to your admin dashboard.</p>
-<div class="3UquuRGL" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="K7Ny4lIZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_26 - incontent_26 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-675"> </div>
@@ -545,7 +550,7 @@ sudo apt-get install php-mysql
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
 </code></pre>
 <p>After that, grant all the root privileges to the user using the command below, change the username to the one you added using the above command &#8211;</p>
-<div class="xnvU4HoM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="D2nyReHR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_27 - incontent_27 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-676"> </div>
@@ -557,7 +562,7 @@ sudo apt-get install php-mysql
 <p>Once done, exit using the command “<em>exit</em>”.</p>
 <p><strong>[ OPTIONAL BUT RECOMMENDED STEP ]</strong></p>
 <p>You should secure your phpMyAdmin by following this tutorial here &#8211; <a href="https://bit.ly/3FG2lso">https://bit.ly/3FG2lso</a></p>
-<div class="w8OYDfts" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Ari56QvY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_28 - incontent_28 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-677"> </div>
@@ -569,7 +574,7 @@ sudo apt-get install php-mysql
 <p>Now after installing phpmyadmin, log in to the dashboard by going to your_domain.com/phpmyadmin, log in using the username and password that you provided.</p>
 <p>After logging in, on the top left click on “Databases”, here in “<em>database name</em>” enter a database name like “<em>wordpress_database</em>” and click on create to create the database. After that proceed to the installation of WordPress.</p>
 <p>															<img width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-new-mysql-database-1024x400.png.webp" alt="create new mysql database" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-new-mysql-database-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-new-mysql-database-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-new-mysql-database-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-new-mysql-database.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="ltANWOaT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9tR2V3rm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_29 - incontent_29 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-678"> </div>
@@ -581,7 +586,7 @@ sudo apt-get install php-mysql
 <p>Now we can start the installation of WordPress, first, go to the official website of WordPress at &#8211; <a href="https://wordpress.org/">https://wordpress.org</a> and download the latest version of the WordPress zip file.</p>
 <p>Once done extract the downloaded zip file and go inside it, here look for “<em>wp-config-sample.php</em>”, right click and <em>rename it</em> to just “wp-config.php”, after renaming it, <em>edit the PHP file</em> using a note editor by right clicking and open with &gt; note pad. </p>
 <p>															<img width="1024" height="480" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/rename-wpconfig-file-1024x480.jpg.webp" alt="rename wpconfig file" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/rename-wpconfig-file-1024x480.jpg.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/rename-wpconfig-file-300x141.jpg.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/rename-wpconfig-file-768x360.jpg.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/rename-wpconfig-file.jpg.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="fvKOVxQP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="lQmrk8bZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_30 - incontent_30 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-679"> </div>
@@ -889,7 +894,7 @@ NOTE: The SSL certificate that you will get will only be valid for 90days, which
 				"author": "MIKO",
 				"datePublished": "2021-12-27",
 				"mainEntityOfPage": "True",
-				"dateModified": "2022-10-02",
+				"dateModified": "2022-10-17",
         "image": {
           "@type": "ImageObject",
           "url": "https://netmiko.com/wp-content/uploads/2021/12/Install-WordPress-on-NGINX-Server-with-Varnish-Cache-in-Ubuntu-1024x576.png",
@@ -901,7 +906,7 @@ NOTE: The SSL certificate that you will get will only be valid for 90days, which
 					"name": "Netmiko.com",
           "logo":{
              "@type":"ImageObject",
-             "url":"https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg",
+             "url":"https://netmiko.com/wp-content/uploads/2022/10/nm-2.png",
              "width":600,
              "height":60
           }
@@ -923,92 +928,68 @@ NOTE: The SSL certificate that you will get will only be valid for 90days, which
 					<h3 class="h2">Recent Content</h3>
 			<div class="recent-articles-container">
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
-				<a href="https://netmiko.com/css-solar-system-simulator/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp')"></div>
-<span class="sr-only">link to CSS Solar System Simulator</span></a>
+				<a href="https://netmiko.com/download-install-mod-apk/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/how-to-download-and-install-a-mod-apk.png.webp')"></div>
+<span class="sr-only">link to How to Download and Install a Mod Apk</span></a>
 
 				<div class="copy-container">
 					<header>
-						<p><a itemprop="name" href="https://netmiko.com/css-solar-system-simulator/">CSS Solar System Simulator</a></p>
+						<p><a itemprop="name" href="https://netmiko.com/download-install-mod-apk/">How to Download and Install a Mod Apk</a></p>
 					</header>
 					<div class="excerpt">
 						<p>
-A 2d solar system simulator with time. The planets and the orbit has simple animation.
+In this post, you will get to know all about what a mod apk is and how you can download and install a mod apk on your own phone.
 
 
 
-[ Made by Sam Chahine ]
+What exactly is a Mod Apk?
 
 
 
-
-
-The Html Part
-
-
-
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en" &gt;
-&lt;head&gt;
- ...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/css-solar-system-simulator/">Continue Reading</a></div>					</div>
+<strong>A mod apk is a modified...</strong></p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/download-install-mod-apk/">Continue Reading</a></div>					</div>
 					<!-- <div class="button-container">
 						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
 					</div> -->
 				</div>
-				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp">
-				<meta itemprop="image" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1499.png.webp">
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/uploads/2022/10/how-to-download-and-install-a-mod-apk.png">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/uploads/2022/10/how-to-download-and-install-a-mod-apk.png">
 								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
 					<meta itemprop="name" content="Netmiko.com">
 				</span>
-				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
-				<meta itemprop="name" content="CSS Solar System Simulator">
-				<meta itemprop="headline" content="CSS Solar System Simulator">
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/nm-2.png">
+				<meta itemprop="name" content="How to Download and Install a Mod Apk">
+				<meta itemprop="headline" content="How to Download and Install a Mod Apk">
 				<meta itemprop="author" content="MIKO">
-				<meta itemprop="datePublished" content="2022-10-05">
-				<meta itemprop="dateModified" content="2022-10-06">
+				<meta itemprop="datePublished" content="2022-10-17">
+				<meta itemprop="dateModified" content="2022-10-17">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
-				<a href="https://netmiko.com/solar-system-animation-pure-css/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp')"></div>
-<span class="sr-only">link to Solar System Animation Pure CSS</span></a>
+				<a href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/" rel="nofollow"><div class="image-container" style="background-image: url('https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/01/How-to-Setup-Use-Cloudinary-Image-CDN-in-WordPress.png.webp')"></div>
+<span class="sr-only">link to How to Setup & Use Cloudinary Image CDN in WordPress</span></a>
 
 				<div class="copy-container">
 					<header>
-						<p><a itemprop="name" href="https://netmiko.com/solar-system-animation-pure-css/">Solar System Animation Pure CSS</a></p>
+						<p><a itemprop="name" href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/">How to Setup & Use Cloudinary Image CDN in WordPress</a></p>
 					</header>
 					<div class="excerpt">
-						<p>
-Simple 2d animation of the solar system made using CSS, it also uses a little jquery to create the stars in the background. 
-
-
-
-[ Made by Giulia Cardieri ]
-
-
-
-
-
-The Html Part
-
-
-
-&lt;!DOCTYPE...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/solar-system-animation-pure-css/">Continue Reading</a></div>					</div>
+						<p>Today I'll show you how you can Set up and use Cloudinary Image CDN in WordPress. The steps are very easy and simple to do and if you follow the steps properly then you will have Cloudinary Working...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/">Continue Reading</a></div>					</div>
 					<!-- <div class="button-container">
 						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
 					</div> -->
 				</div>
-				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp">
-				<meta itemprop="image" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/10/Screenshot-1498.png.webp">
+				<meta itemprop="thumbnailUrl" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/01/How-to-Setup-Use-Cloudinary-Image-CDN-in-WordPress.png.webp">
+				<meta itemprop="image" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2022/01/How-to-Setup-Use-Cloudinary-Image-CDN-in-WordPress.png.webp">
 								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
 					<meta itemprop="name" content="Netmiko.com">
 				</span>
-				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/netmiko.com-5.svg">
-				<meta itemprop="name" content="Solar System Animation Pure CSS">
-				<meta itemprop="headline" content="Solar System Animation Pure CSS">
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/10/nm-2.png">
+				<meta itemprop="name" content="How to Setup &#038; Use Cloudinary Image CDN in WordPress">
+				<meta itemprop="headline" content="How to Setup &#038; Use Cloudinary Image CDN in WordPress">
 				<meta itemprop="author" content="MIKO">
-				<meta itemprop="datePublished" content="2022-10-05">
-				<meta itemprop="dateModified" content="2022-10-06">
+				<meta itemprop="datePublished" content="2022-01-16">
+				<meta itemprop="dateModified" content="2022-10-17">
 
 			</article>
 					</div>
@@ -1019,7 +1000,7 @@ The Html Part
 
 <aside id="secondary" class="widget-area">
 		<div class="about-wrapper">
-		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Html, CSS, JavaScript, React, and Vue Code Examples and Source Codes.</p>
+		<h2 class="widget-title">About US</h2>		<p class="about-copy">Blogging about WordPress, Ezoic, Web Development, and a few other Things.</p>
 			</div>
 		<div class="sidebar-ad">
 		<p><!-- Ezoic - sidebar_bottom - sidebar_floating_1 --></p>
@@ -1083,7 +1064,23 @@ The Html Part
 		codecopy_apply(element);
 	});
 </script>
-<script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="text/javascript" data-cfasync="false">var bU="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/";var mOs=null;style = document.createElement("style");style.type = "text/css";rules = document.createTextNode(".lyte-wrapper-audio div, .lyte-wrapper div {margin:0px; overflow:hidden;} .lyte,.lyMe{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background-color:#777;} .fourthree .lyMe, .fourthree .lyte {padding-bottom:75%;} .lidget{margin-bottom:5px;} .lidget .lyte, .widget .lyMe {padding-bottom:0!important;height:100%!important;} .lyte-wrapper-audio .lyte{height:38px!important;overflow:hidden;padding:0!important} .lyMe iframe, .lyte iframe,.lyte .pL{position:absolute !important;top:0;left:0;width:100%;height:100%!important;background:no-repeat scroll center #000;background-size:cover;cursor:pointer} .tC{left:0;position:absolute;top:0;width:100%} .tC{background-image:linear-gradient(to bottom,rgba(0,0,0,0.6),rgba(0,0,0,0))} .tT{color:#FFF;font-family:Roboto,sans-serif;font-size:16px;height:auto;text-align:left;padding:5px 10px 50px 10px} .play{background:no-repeat scroll 0 0 transparent;width:88px;height:63px;position:absolute;left:43%;left:calc(50% - 44px);left:-webkit-calc(50% - 44px);top:38%;top:calc(50% - 31px);top:-webkit-calc(50% - 31px);} .widget .play {top:30%;top:calc(45% - 31px);top:-webkit-calc(45% - 31px);transform:scale(0.6);-webkit-transform:scale(0.6);-ms-transform:scale(0.6);} .lyte:hover .play{background-position:0 -65px;} .lyte-audio .pL{max-height:38px!important} .lyte-audio iframe{height:438px!important} .ctrl{background:repeat scroll 0 -220px rgba(0,0,0,0.3);width:100%;height:40px;bottom:0px;left:0;position:absolute;} .lyte-wrapper .ctrl{display:none}.Lctrl{background:no-repeat scroll 0 -137px transparent;width:158px;height:40px;bottom:0;left:0;position:absolute} .Rctrl{background:no-repeat scroll -42px -179px transparent;width:117px;height:40px;bottom:0;right:0;position:absolute;padding-right:10px;}.lyte-audio .play{display:none}.lyte-audio .ctrl{background-color:rgba(0,0,0,1)}.lyte .hidden{display:none}");if(style.styleSheet) { style.styleSheet.cssText = rules.nodeValue;} else {style.appendChild(rules);}document.getElementsByTagName("head")[0].appendChild(style);</script><script type="text/javascript" data-cfasync="false" async src="https://netmiko.com/wp-content/plugins/wp-youtube-lyte/lyte/lyte-min.js?wyl_version=1.7.19"></script><script type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
 <script type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+<script>
+var downloadButton = document.getElementById("download");
+var counter = 15;
+var newElement = document.createElement("p");
+newElement.innerHTML = "Fetching Latest Link, Pls Wait 15 seconds.";
+var id;
+downloadButton.parentNode.replaceChild(newElement, downloadButton);
+id = setInterval(function() {
+counter--;
+if(counter < 0) {
+newElement.parentNode.replaceChild(downloadButton, newElement);
+clearInterval(id);
+} else {
+newElement.innerHTML = "Fetching Latest Link, Pls Wait " + counter.toString() + " seconds.";
+}}, 1000);
+</script>
 </body>
 </html>
