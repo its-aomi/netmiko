@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="How to Serve Dropbox images through a CDN in WordPress">
 <link rel="canonical" href="https://netmiko.com/dropbox-images-through-cdn/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/dropbox-images-through-cdn/","name":"How to Serve Dropbox images through a CDN in WordPress"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 3.69ms meta | 10.77ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.80ms meta | 10.68ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="classic-theme-styles-css" href="https://netmiko.com/wp-includes/css/classic-themes.min.css" type="text/css" media="all">
@@ -54,6 +54,108 @@
 			.antibounce-container { background: ; }
 			.antibounce-card { color: ; }
 			.antibounce-card .button { background: ; color:  }
+a.close {
+    color: red;
+}
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+width: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
+.close {
+font-size:15px;
+margin-top:30px;
+}
+.cnt223 {
+    /* min-width: 200px; */
+    width: 400px;
+    min-height: 150px;
+    margin: 100px auto;
+    background: #f3f3f3;
+    position: relative;
+    z-index: 103;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #000;
+    margin-top: -100px;
+}
+.cnt223 p{
+clear: both;
+    color: #555555;
+    /* text-align: justify; */
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 25px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 25px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+#download a {
+    color: #fff;
+    text-decoration: none;
+}
+.wp-block-image {
+    box-shadow: 0 0 0 1px #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
 a.close {
     color: red;
 }
@@ -119,43 +221,6 @@ width: 25px;
 }
 .cnt223 .x:hover{
 cursor: pointer;
-}
-
-#download a {
-    color: #fff;
-    text-decoration: none;
-}
-.wp-block-image {
-    box-shadow: 0 0 0 1px #444;
-}
-h2.widget-title {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-body.home .articles-wrapper>h2 {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-.article-card header p {
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    margin-bottom: 10px;
-    text-align: center;
-}
-h3 {
-    margin-bottom: 10px;
-}
-strong {
-    font-weight:600 !important;
-}
-.search-wrapper {
-    content-visibility: hidden;
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-h2 {
-    margin-bottom: 20px;
 }
 }
 .lyte-wrapper::before {
@@ -303,7 +368,7 @@ h2 {
 		<p>When we host our images on dropbox and then use those external images on our WordPress site then the loading time of those images is generally very high. It takes around 1 &#8211; 2 seconds for those images to load.</p>
 <blockquote>
 <p><strong>NOTE:</strong> You can use this method with any other image hosting service. Like for example- Google Photos.</p>
-<div class="o61Id1B2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="AoI0GuCm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -314,7 +379,7 @@ h2 {
 <p>Now having that high loading times for images in a blog is a very bad thing. Sometimes the user will just scroll past the image without even seeing it as it takes a long time to load. Also, it looks very bad when your image loading takes a long time.</p>
 <p>On average the image loading time in a blog should be between 0.1ms to 0.4ms. If it&#8217;s more than that, then it&#8217;s considered a very poor performance which can also hamper the image of your blog.&nbsp;</p>
 <p>To fix that, what we can do is use an image CDN. An image CDN will cache our images on lightning-fast edge servers that will then be served to users at a very high speed.&nbsp;</p>
-<div class="Nc0LRqbM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ZZAPrMoh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -324,7 +389,7 @@ h2 {
 <p>Although there are lots of Image CDN services out there, I will recommend you to use <a href="https://netmiko.com/tutorials/use-statically-cdn-on-a-wordpress-blog/">Statically Image CDN</a> or <a href="https://netmiko.com/tutorials/use-jetpack-cdn-without-jetpack-plugin/">Jetpack Image CDN </a>as both of these are free to use and have no bandwidth limit. Meaning you can use these on high-traffic sites also.</p>
 <p>Now, let&#8217;s see how we can Serve Dropbox Images through a CDN.</p>
 <p>Here are the steps &#8211;&nbsp;</p>
-<div class="hvvr7C7a" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="o0psOUNb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -342,7 +407,7 @@ h2 {
 <blockquote><p>You can easily serve images through a cdn in WordPress by using a Plugin called CDN Enabler.</p></blockquote>
 <p>To begin, first, Log In to the admin dashboard of your WordPress site. Now, we will need to install and activate the “<em>CDN Enabler</em>” plugin.</p>
 <p><strong>1.</strong> On the left menu of your admin dashboard, go to Plugins&gt;Add New. Here in the search bar, search for “CDN Enabler”. Install and activate the plugin.</p>
-<div class="arbBsO82" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="NCZbEq3U" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -352,7 +417,7 @@ h2 {
 <p><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-cdn-enabler-plugin-1024x576.png.webp" alt="" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-cdn-enabler-plugin-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-cdn-enabler-plugin-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-cdn-enabler-plugin-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-cdn-enabler-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px"></p>
 <p><strong>2.</strong> You can now Access the plugin settings by going to Settings&gt;CDN Enabler.</p>
 <p>Once the plugin is installed and activated we will have to configure some settings in the CDN Enabler plugin.</p>
-<div class="pbrQ6OxX" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ZfYdjIXW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -363,7 +428,7 @@ h2 {
 <p>Go to CDN Enabler settings from “Settings&gt;CDN Enabler” in the Admin menu. After that follow the steps below.</p>
 <p>Once you are in the CDN Enabler settings, you will need to add a hostname. The hostname is the domain name of the CDN service you are using. I&#8217;ll show you how you can do this using statically image CDN, which is a free service.&nbsp;</p>
 <p>You can see this post if you want to use jetpack image cdn instead &#8211; <a href="https://netmiko.com/tutorials/use-jetpack-cdn-without-jetpack-plugin/">How to use Jetpack Image CDN without Jetpack plugin</a>.</p>
-<div class="kirWDjLy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="5BfmK0js" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -373,7 +438,7 @@ h2 {
 <p><strong>1.</strong> In the Hostname type ”cdn.statically.io”. Here cdn.statically.io is our hostname from where our dropbox images will be served through a cdn.</p>
 <p><strong>2.</strong> After that in the CDN inclusions remove the default file extensions add these file extensions &#8211; “<em>.avif .gif .jpeg .jpg .mp3 .png .svg .webp</em>”. Add these one by one per line.</p>
 <p><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-cdn-inclusions-in-cdn-enabler-plugin-1024x576.png.webp" alt="add cdn inclusions in cdn enabler plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-cdn-inclusions-in-cdn-enabler-plugin-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-cdn-inclusions-in-cdn-enabler-plugin-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-cdn-inclusions-in-cdn-enabler-plugin-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-cdn-inclusions-in-cdn-enabler-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px"></p>
-<div class="bKclRPr4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="VgDuPA6S" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -383,7 +448,7 @@ h2 {
 <p><strong>3.</strong> Now in CDN Exclusions we’ll add these file extensions &#8211; “<em>.js .json .mp4 .pdf .apk .css</em>”. After adding both inclusion and exclusion scroll down a little and click on Save Changes.</p>
 <p><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-exclusions-in-cdn-enabler-plugin-1024x576.png.webp" alt="add exclusions in cdn enabler plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-exclusions-in-cdn-enabler-plugin-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-exclusions-in-cdn-enabler-plugin-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-exclusions-in-cdn-enabler-plugin-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-exclusions-in-cdn-enabler-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px"></p>
 <p>Okay, so the configuration of the plugin is done, now let&#8217;s add the custom PHP code in our WordPress theme to serve the dropbox images through cdn.</p>
-<div class="X5el12Ep" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="R0XNXxdS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -394,7 +459,7 @@ h2 {
 <p>Now, for the plugin to serve the external images like dropbox images through the cdn we will have to add two pieces of code to our WordPress functions.php file.</p>
 <p>The first piece of code will help in serving all the internal images which you uploaded to your WordPress site through cdn and the second code will help in serving all the images with the domain name “dl.dropboxusercontent.com” from cdn.</p>
 <p>As you know that dropbox images are served through the domain name “dl.dropboxusercontent.com/s/k2ka1k3ahljs8re/cat1.jpg”</p>
-<div class="uYwATimz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="I2mkKp1e" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -404,7 +469,7 @@ h2 {
 <p>which we will rewrite to its cdn version like “cdn.statically.io/img/dl.dropboxusercontent.com/s/k2ka1k3ahljs8re/cat1.jpg”</p>
 <blockquote><p>If you want to know how you can host images on dropbox and use them on your WordPress site without import then check this post out &#8211; <a href="https://netmiko.com/tutorials/external-image-without-import-wordpress/">External images without import on WordPress</a>.</p></blockquote>
 <p><b></b><strong>1.</strong> Now, let&#8217;s add the custom PHP code to our WordPress site. First, go to “Appearance&gt;Theme Editor” from your WordPress admin dashboard.</p>
-<div class="Eg9RLU8u" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="PkmiM35i" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -420,7 +485,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
     $rewritten_contents = str_replace( 'example.com/', 'example.com/img/mydomain.com/', $rewritten_contents );
 </code></pre>
 <p>Here, in place of example.com add the CDN hostname which is “<em>cdn.statically.io</em>”. And after that in place of mydomain.com add your domain name.</p>
-<div class="8IgQKLYO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="T7dpYuDQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
@@ -440,7 +505,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
 </code></pre>
 <p>Make sure to check everything, if the domain names are correct or not, and then click on “Update Files” at the bottom.</p>
 <p>That&#8217;s it, the external dropbox images on your WordPress site should now load through the image cdn, instead of directly loading from dropbox. Also, the internal images of your site will now load through the image cdn instead of loading directly from your server.</p>
-<div class="EorHyQYw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="hFUyuu3d" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-661"> </div>
@@ -451,7 +516,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
 <blockquote><p>Continue Reading if you want to know how to use dropbox image on your WordPress website without importing it.</p></blockquote>
 <h2>Get link of Image Hosted on Dropbox &#8211;</h2>
 <p>You cannot use the regular image link (www.dropbox.com/cat.png) of dropbox to embed an image into your WordPress website or anywhere else. To get the direct image link of the dropbox image follow the steps from below &#8211;</p>
-<div class="f8gOf2Up" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="tOlNRl5F" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-662"> </div>
@@ -466,7 +531,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
 <p>Now change the dropbox image link from “<em>https://www.dropbox.com/s/k2ka1k3ahljs8re/cat1.jpg</em>” to “<em>https://dl.dropboxusercontent.com/s/k2ka1k3ahljs8re/cat1.jpg</em>”.</p>
 <blockquote><p>All you need to change here is the domain name. From “www.dropbox.com” to “dl.dropboxusercontent.com”.</p></blockquote>
 <p>You can now embed this image link to your WordPress site using external media without import plugin.</p>
-<div class="e7FE3ExT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="LXHmO127" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-663"> </div>
@@ -477,7 +542,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
 <p>To be able to use external images like dropbox hosted images on your WordPress website you&#8217;ll need to install a plugin that will allow us to add externally hosted images to our WordPress website without importing it.</p>
 <p><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-loaded-from-external-host-1024x576.png.webp" alt="" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-loaded-from-external-host-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-loaded-from-external-host-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-loaded-from-external-host-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-loaded-from-external-host.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px"></p>
 <p>Meaning that all you need is the image link and then you can use that image on your website without storing it on your server.</p>
-<div class="a0Z6xL6g" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="B2vCxZVx" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-664"> </div>
@@ -487,7 +552,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
 <p>To do that first go to Plugins&gt;Add New. Here search for “<em>External Media without Import</em>”. Install and Activate the plugin.</p>
 <p><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-external-media-without-import-plugin.-1024x576.png.webp" alt="install and activate external media without import plugin." loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-external-media-without-import-plugin.-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-external-media-without-import-plugin.-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-external-media-without-import-plugin.-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/install-and-activate-external-media-without-import-plugin..png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px"></p>
 <p>After activating the plugin you can add images to your media library by going to Media&gt;Add External Media without Import.</p>
-<div class="xc3qUs5y" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="VYC2VXzy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-665"> </div>
@@ -497,7 +562,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
 <p>Here paste the “dl.dropboxusercontent.com” image link and then click on Add. If you get an error “Failed to get info of the image(s).” Then below in the width make it “1280” and in height make it “720”. Then click on Add again.</p>
 <p><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-images-in-external-media-without-import-plugin-1024x576.png.webp" alt="add images in external media without import plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-images-in-external-media-without-import-plugin-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-images-in-external-media-without-import-plugin-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-images-in-external-media-without-import-plugin-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/add-images-in-external-media-without-import-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px"></p>
 <p>Once the image has been added successfully you can now use that image on anything like a logo, blog post, etc. The image will be found in the media library.</p>
-<div class="H4z7ahPC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9Dj0duMR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-666"> </div>
@@ -508,7 +573,7 @@ function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
 <p>After adding the dropbox hosted image to a post if we left click the image and then click on “Open image in new tab” then you&#8217;ll see that the image is loading through “cdn.statically.io/img/dl.dropboxusercontent.com/cat.png” instead of loading directly through the dropbox server.</p>
 <p><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-served-through-cdn-1024x576.png.webp" alt="image served through cdn" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-served-through-cdn-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-served-through-cdn-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-served-through-cdn-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/image-served-through-cdn.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px"></p>
 <p>You might see the image loading a little slow at first but once it&#8217;s cached around the world, it will load at lightning-fast speeds.</p>
-<div class="pkMvG8L7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="kl2wIBiD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-667"> </div>

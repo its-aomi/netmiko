@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="How to Install Weka on Ubuntu">
 <link rel="canonical" href="https://netmiko.com/install-weka-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-weka-ubuntu/","name":"How to Install Weka on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.04ms meta | 10.68ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.79ms meta | 10.95ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="classic-theme-styles-css" href="https://netmiko.com/wp-includes/css/classic-themes.min.css" type="text/css" media="all">
@@ -54,6 +54,108 @@
 			.antibounce-container { background: ; }
 			.antibounce-card { color: ; }
 			.antibounce-card .button { background: ; color:  }
+a.close {
+    color: red;
+}
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+width: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
+.close {
+font-size:15px;
+margin-top:30px;
+}
+.cnt223 {
+    /* min-width: 200px; */
+    width: 400px;
+    min-height: 150px;
+    margin: 100px auto;
+    background: #f3f3f3;
+    position: relative;
+    z-index: 103;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #000;
+    margin-top: -100px;
+}
+.cnt223 p{
+clear: both;
+    color: #555555;
+    /* text-align: justify; */
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 25px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 25px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+#download a {
+    color: #fff;
+    text-decoration: none;
+}
+.wp-block-image {
+    box-shadow: 0 0 0 1px #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
 a.close {
     color: red;
 }
@@ -119,43 +221,6 @@ width: 25px;
 }
 .cnt223 .x:hover{
 cursor: pointer;
-}
-
-#download a {
-    color: #fff;
-    text-decoration: none;
-}
-.wp-block-image {
-    box-shadow: 0 0 0 1px #444;
-}
-h2.widget-title {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-body.home .articles-wrapper>h2 {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-.article-card header p {
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    margin-bottom: 10px;
-    text-align: center;
-}
-h3 {
-    margin-bottom: 10px;
-}
-strong {
-    font-weight:600 !important;
-}
-.search-wrapper {
-    content-visibility: hidden;
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-h2 {
-    margin-bottom: 20px;
 }
 }
 .lyte-wrapper::before {
@@ -303,7 +368,7 @@ h2 {
 		<p>Today I will walk you through the steps to Install Weka on Ubuntu 20.04. The installation process is very easy and you should be able to finish the installation of Weka in less than 5 mins.</p>
 <h2>What is Weka 3?</h2>
 <p>According to the official website of <a href="https://www.cs.waikato.ac.nz/ml/weka/">Weka</a>. Weka is a Machine Learning Software and a collection of machine learning algorithms. It contains tools for data preparation, association rules mining, visualization, etc.</p>
-<div class="7QubaAAG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="j8fOugNy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -319,7 +384,7 @@ h2 {
 </code></pre>
 <p>This will output the version of java installed on your ubuntu system. If you don’t have java installed then the output in the terminal will say “Command &#8216;java&#8217; not found”. </p>
 <p>Now to install java JRE on your ubuntu you will first have to update your package index using this command &#8211;</p>
-<div class="3svUahE0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="PB7RjLFK" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -334,7 +399,7 @@ h2 {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install default-jdk -y
 </code></pre>
 <p>Once both Java JRE and Java JDK are installed, you can verify the installation using the command “java &#8211;version” and “javac -version”.</p>
-<div class="C8cFr02e" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0riOXXY1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -347,7 +412,7 @@ h2 {
 <h4>Download Weka using Terminal</h4>
 <p>Before downloading Weka using the terminal, first create a new directory where we will install Weka. </p>
 <p>To do that first make sure you are in the home directory. Use “<em>cd ~</em>” to change the working directory to home. After that use the command given below to create a new directory-</p>
-<div class="yewzJ3Fc" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="oDIvkEa0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -362,7 +427,7 @@ h2 {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget https://prdownloads.sourceforge.net/weka/weka-3-8-5-azul-zulu-linux.zip
 </code></pre>
 <p>As you are currently in the Home directory, Weka Zip file will be downloaded to the Home directory and not in the downloads directory. </p>
-<div class="53cuBbJT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="jB5PzgCR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -375,7 +440,7 @@ h2 {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">unzip weka-3-8-5-azul-zulu-linux.zip</code></pre>
 <p>After unzipping the Weka zip, move all the files from the unzipped folder to the “<em>weka</em>” folder that we created in the first step. </p>
 <p>To do that first open your file manager and go inside the unzipped weka zip file. It will be named “weka-3-8-5” go inside that folder and using your mouse select all the files stored inside of it. Then right click and select “Copy” after that go back to home directory and go inside the “weka” directory, right click and paste.</p>
-<div class="6jbjmjVJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="U5xLhXLd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -386,7 +451,7 @@ h2 {
 <p>To download Weka using your web browser, first go to this link here &#8211; <a href="https://prdownloads.sourceforge.net/weka/weka-3-8-5-azul-zulu-linux.zip">https://prdownloads.sourceforge.net/weka/weka-3-8-5-azul-zulu-linux.zip</a>   This is the direct download link for the Weka zip file.</p>
 <p>If you are using Firefox browser then you&#8217;ll get a popup asking whether to “Save File” or “Open With” select <strong>Save File</strong> and click on OK, which will start the downloading.</p>
 <p>Once the download is complete go to your Downloads directory and locate the “Weka-3-8-5-azul-zulu-linux.zip”. Right-click on the zip file and click on the Extract here option.</p>
-<div class="oftUSivU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="5hIqjebv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -396,7 +461,7 @@ h2 {
 <p>This will unzip the zip file. Once unzipped, right-click the unzipped file and click on “Move to”. Select the home directory and move the Weka unzipped folder to the home directory.</p>
 <p>Now, here in the Home directory <strong>create a new folder called “weka” by right clicking &gt; New Folder</strong>, name the folder weka and click on create. </p>
 <p>After that, copy all the files from the “weka-3-8-5” folder to the “weka” folder.</p>
-<div class="YCUXjZyj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="eCymzHi1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -414,7 +479,7 @@ h2 {
 <li>./weka.sh</li>
 </ul>
 <p>And that&#8217;s it, that is how you can download and install Weka Machine Learning Software on Ubuntu 20.04. If you have any questions regarding the download and installation process of weka then comment below. Thank you.</p>
-<div class="XEE1p2s7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="x948ctG0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>

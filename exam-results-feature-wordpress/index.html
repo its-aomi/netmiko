@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="How to Add Exam Results Search to a WordPress website">
 <link rel="canonical" href="https://netmiko.com/exam-results-feature-wordpress/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/exam-results-feature-wordpress/","name":"How to Add Exam Results Feature to a WordPress website"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 6.49ms meta | 10.62ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.88ms meta | 10.85ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="classic-theme-styles-css" href="https://netmiko.com/wp-includes/css/classic-themes.min.css" type="text/css" media="all">
@@ -54,6 +54,108 @@
 			.antibounce-container { background: ; }
 			.antibounce-card { color: ; }
 			.antibounce-card .button { background: ; color:  }
+a.close {
+    color: red;
+}
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+width: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
+.close {
+font-size:15px;
+margin-top:30px;
+}
+.cnt223 {
+    /* min-width: 200px; */
+    width: 400px;
+    min-height: 150px;
+    margin: 100px auto;
+    background: #f3f3f3;
+    position: relative;
+    z-index: 103;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #000;
+    margin-top: -100px;
+}
+.cnt223 p{
+clear: both;
+    color: #555555;
+    /* text-align: justify; */
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 25px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 25px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+#download a {
+    color: #fff;
+    text-decoration: none;
+}
+.wp-block-image {
+    box-shadow: 0 0 0 1px #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
 a.close {
     color: red;
 }
@@ -119,43 +221,6 @@ width: 25px;
 }
 .cnt223 .x:hover{
 cursor: pointer;
-}
-
-#download a {
-    color: #fff;
-    text-decoration: none;
-}
-.wp-block-image {
-    box-shadow: 0 0 0 1px #444;
-}
-h2.widget-title {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-body.home .articles-wrapper>h2 {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-.article-card header p {
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    margin-bottom: 10px;
-    text-align: center;
-}
-h3 {
-    margin-bottom: 10px;
-}
-strong {
-    font-weight:600 !important;
-}
-.search-wrapper {
-    content-visibility: hidden;
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-h2 {
-    margin-bottom: 20px;
 }
 }
 .lyte-wrapper::before {
@@ -302,7 +367,7 @@ h2 {
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I will show you how you can add exam results feature to a WordPress website for releasing exam results on your college or school&#8217;s website.</p>
 <p>With the help of this tutorial, you will be able to add students&#8217; results at the backend of your college or schools WordPress website and then the student will be able to search the results at the frontend of the website using their roll no like this &#8211; </p>
-<div class="NvhWwGgN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="4lDMLa1h" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -313,7 +378,7 @@ h2 {
 <p>You can manually enter the students&#8217; results in the backend or you can upload a CSV file to the WordPress site and upload all results at once. Okay now, let&#8217;s see how we can do that.</p>
 <h2>Enable Construction Mode [OPTIONAL]</h2>
 <p>As we will be installing and adding a plugin and also entering data that is not supposed to be available to students before the results date, we will enable construction mode which will make your website unavailable to users until the release of the results.</p>
-<div class="Z4oBgfHG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0VrwWcDB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -323,7 +388,7 @@ h2 {
 <p>To begin you will need to first log in to your WordPress website, after logging in go to your WordPress website go to Plugins &gt; Add New. In the search bar search for “<em>Under Construction</em>”.</p>
 <p>Install the “Under Construction” plugin by the developer WebFactory. Install the Plugin and activate it.</p>
 <p>															<img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/under-construction-plugin-wordpress-1024x400.png.webp" alt="under construction plugin wordpress" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/under-construction-plugin-wordpress-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/under-construction-plugin-wordpress-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/under-construction-plugin-wordpress-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/under-construction-plugin-wordpress.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="ixqkb4rh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="YY9gieey" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -333,7 +398,7 @@ h2 {
 <p>After activating the plugin you can enable construction mode by going to Settings &gt; UnderConstruction. Go to the Main tab and <em>enable Under Construction Mode</em>, scroll down, and in Automatic End Date &amp; Time you can set a time when Construction mode will end.</p>
 <p>															<img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enable-under-construction-mode-wordpress-1024x400.png.webp" alt="" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enable-under-construction-mode-wordpress-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enable-under-construction-mode-wordpress-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enable-under-construction-mode-wordpress-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enable-under-construction-mode-wordpress.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>After setting up the settings click on Save Changes to enable Construction mode on your website. Now only the admins of the WordPress website will be able to access it until the time finishes.</p>
-<div class="rDrlHTe0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="UjuML4PW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -345,7 +410,7 @@ h2 {
 <p>The plugin that we are going to use for our WordPress website to add the feature of uploading students&#8217; results and searching the results by roll or registration no is called “<a href="https://wordpress.org/plugins/easy-student-results/">Easy Student Result</a>”.</p>
 <p>To Install the plugin first Log in to your WordPress website, then go to Plugins &gt; Add New. Search for “<em>Easy Student Result</em>”, install and activate the plugin created by &#8211; <em>Nurul Umbhiya</em>.</p>
 <p>															<img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/easy-students-result-plugin-wordpress-1024x320.png.webp" alt="easy students result plugin wordpress" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/easy-students-result-plugin-wordpress-1024x320.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/easy-students-result-plugin-wordpress-300x94.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/easy-students-result-plugin-wordpress-768x240.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/easy-students-result-plugin-wordpress.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="pQjduxcn" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="haoJZ9vx" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -357,7 +422,7 @@ h2 {
 <h2>Setup Easy Student Result Plugin<br>
 </h2>
 <p>After installing the plugin you will need to now set up the plugin. I will show you all the things that you will need to do to add a student&#8217;s results and show the result on the front end of your WordPress website.</p>
-<div class="EY2OSPz8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="4L4FBbKj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -369,7 +434,7 @@ h2 {
 <h3>Add Department / Class<br>
 </h3>
 <p>To add a department you will need to first go to <em>Student Results &gt; Department</em> from the admin menu.</p>
-<div class="A6PIDyWp" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ZoD9ROfS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -379,7 +444,7 @@ h2 {
 <p>Here first you will need to add the department name in short uppercase word without any space, like Mathematics will be “MATHS”, Biology will be “BIO”. </p>
 <p>After that in department slug you will need to add the url-friendly version of the name of the department, this should be always in lowercase and should not contain space or any symbol. For example &#8211;  For the Mathematics department the url should be “mathematics”, no Uppercase.</p>
 <p>															<img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-department-name-and-slug-in-easy-students-result-plugin-1024x400.png.webp" alt="enter department name and slug in easy students result plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-department-name-and-slug-in-easy-students-result-plugin-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-department-name-and-slug-in-easy-students-result-plugin-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-department-name-and-slug-in-easy-students-result-plugin-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-department-name-and-slug-in-easy-students-result-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="PUfkO4bq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="3sxayzZp" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -391,7 +456,7 @@ h2 {
 <h3>Add Semester<br>
 </h3>
 <p>To add a semester to any department you will need to first go to <em>Student Results &gt; Department</em>, here on the right side of the departments you will see an option “<em>Configure Semester</em>”, click on the configure option on whatever department you want to add a semester</p>
-<div class="3ckIZL4u" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="a2cUQg91" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -401,7 +466,7 @@ h2 {
 <p>															<img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-semester-in-easy-student-results-plugin-1024x320.png.webp" alt="configure semester in easy student results plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-semester-in-easy-student-results-plugin-1024x320.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-semester-in-easy-student-results-plugin-300x94.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-semester-in-easy-student-results-plugin-768x240.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-semester-in-easy-student-results-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>In Name enter the Semester name, like if you are adding a semester in Mathematics department then enter like “1st Semester Maths”. After that, in slug enter the semester name in a URL-friendly way, no uppercase, no number, and no symbol.</p>
 <p>Once done click on Add New semester to add a new semester to the department you selected to configure.</p>
-<div class="nuTlKgbP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="w2gnugDt" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -412,7 +477,7 @@ h2 {
 <p>Now to add different batches of classes you will need to go to <em>Student Results &gt; Batch</em>. Click on Add New to add a new batch, like &#8211; 1st SEM MATHS / 2019 or something.</p>
 <p>															<img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-batch-in-easy-student-results-plugin-1024x400.png.webp" alt="add batch in easy student results plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-batch-in-easy-student-results-plugin-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-batch-in-easy-student-results-plugin-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-batch-in-easy-student-results-plugin-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-batch-in-easy-student-results-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>In Batch/Year, enter the batch name and the batch year, below in Department select the department that the batch belongs to from the dropdown, after that in Session, select the time when that batch took the admission and click on Add New Batch to add the batch.</p>
-<div class="y7KFRXN4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0NeSrh2z" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
@@ -423,7 +488,7 @@ h2 {
 <p>Now you will need to add courses / Subjects, you can add courses by going to <em>Student Results &gt; Courses</em>, click on Add Course to add a new course. </p>
 <p>First enter your course name, after that enter the course code, in Department / Class select the department from the dropdown, in Semester / Section select the semester from the dropdown.</p>
 <p>															<img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-course-in-easy-student-results-plugin-1024x400.png.webp" alt="add course in easy student results plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-course-in-easy-student-results-plugin-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-course-in-easy-student-results-plugin-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-course-in-easy-student-results-plugin-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-course-in-easy-student-results-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="81Y2vPQ3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="o0b9ogNY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-661"> </div>
@@ -434,7 +499,7 @@ h2 {
 <h3>Add Grades</h3>
 <p>To add different grades like “A,B,C,D or A+,B+,C+,D+”. you will need to first go to <em>Student Results &gt; Grade</em>, here, by default there will be some grades already created, you can delete them by hovering over on the top of the grade.</p>
 <p>After deleting the default grades you can add new grades by clicking on Add new.</p>
-<div class="plmbLUtk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="akuvPycg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-662"> </div>
@@ -444,7 +509,7 @@ h2 {
 <p>Now in Alphabetic grade enter the grade in alphabets like “A, B, C”. In marks enter the marks required for a student to get that grade, like 80 &#8211; 100 for A Grade. After that, if your school/college uses grade points then you can add them.</p>
 <p>															<img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-grades-in-easy-student-results-plugin-1024x400.png.webp" alt="add grades in easy student results plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-grades-in-easy-student-results-plugin-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-grades-in-easy-student-results-plugin-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-grades-in-easy-student-results-plugin-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-grades-in-easy-student-results-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>In Grade Classification enter the description of that grade, like you can give Excellent for A Grade, Average for B Grade, etc. click on Add new Grade to add the grade.</p>
-<div class="rDnYlxyF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="fB5PHOcE" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-663"> </div>
@@ -456,7 +521,7 @@ h2 {
 <p>Name the exam with a unique name, like “Maths-1st-SEM-2019-January”. After that select the date when the exam was held and click on Add New Exam to add a new exam.</p>
 <h3>Add Students</h3>
 <p>Now to add the main thing, which is students you will need to go to <em>Student Results &gt; Students</em> and click on Add Students to add a new student.</p>
-<div class="Ibu6z1Ck" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="tGZIO93P" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-664"> </div>
@@ -466,7 +531,7 @@ h2 {
 <p>First, enter the name of the student at the very top, after that enter the registration no and roll no of the student, do note that the registration no &amp; roll no cannot be zero ( It should be greater than zero ).</p>
 <p>															<img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-student-in-easy-student-results-plugin-1024x400.png.webp" alt="add student in easy student results plugin" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-student-in-easy-student-results-plugin-1024x400.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-student-in-easy-student-results-plugin-300x117.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-student-in-easy-student-results-plugin-768x300.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-student-in-easy-student-results-plugin.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>After that select the Department/Class, Batch/Year, Semester/Section from the dropdowns. Once done scroll down and fill up all the personal details of the student and click on Publish to Add the student.</p>
-<div class="SkWVkFb4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="2c5tzFn4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-665"> </div>
@@ -478,7 +543,7 @@ h2 {
 <p>Now the final thing that you will need to add is of course the results. To add the results and assign marks to different students you will need to first go to <em>Student Results &gt; Results</em>. Click on Add new.</p>
 <p>After that, you will need to add a new exam record, here first select the exam from the dropdown, after that select the Department/Class, Batch/Year, Semester/Section. </p>
 <p>Once done, now select all the students that appeared in the exam and select the courses/subjects they appeared in by selecting them using your mouse. If some students did not appear in any exam then just uncheck them.</p>
-<div class="X6W5RYE2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="LBJfCjgC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-666"> </div>
@@ -489,7 +554,7 @@ h2 {
 <p>After that click on Add New Exam Record to add a new record.</p>
 <h3>Add Marks to Results</h3>
 <p>Now to add Marks to the results you will need to click on the <em>Add Marks option at the Results Record tab</em> after adding any exam records. </p>
-<div class="OkiFzSsf" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="7CPB6aXh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-667"> </div>
@@ -499,7 +564,7 @@ h2 {
 <p>															<img decoding="async" width="1024" height="360" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/click-add-marks-option-in-easy-student-results-1024x360.png.webp" alt="click add marks option in easy student results" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/click-add-marks-option-in-easy-student-results-1024x360.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/click-add-marks-option-in-easy-student-results-300x105.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/click-add-marks-option-in-easy-student-results-768x270.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/click-add-marks-option-in-easy-student-results.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>Here again, click on Add marks on the right side of the student that you want to give the marks to. You can now add the marks a student got in different subjects, just enter the marks someone got in the Marks obtained section and select the grade that the user got.</p>
 <p>After filling up all the required things, click on Update to assign the exam marks to the student.</p>
-<div class="Kgry3pPS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="P9DjZSfe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-668"> </div>
@@ -516,7 +581,7 @@ h2 {
 <li style="font-weight: 400;" aria-level="1">[esr_students] for displaying all students&#8217; results without searching.</li>
 </ol>
 <p>To add the shortcodes you can just create a new page and add the shortcode in the page using a shortcode block. Publish the page and after that, your students will be able to search their results by providing the required info.</p>
-<div class="x6vjx0K5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="AT07Z1RK" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_20 - incontent_20 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-669"> </div>
@@ -528,7 +593,7 @@ h2 {
 </h2>
 <p>There is one problem with the Easy Student Result plugin that is, it creates lots of <em>404 URLs</em> that will cause lots of problems for you as google will crawl those pages and get tons of 404 errors which is not something good.</p>
 <p>To fix that, you can prevent Google from crawling the pages automatically created by the plugin, just add the code line given below to the <em>robots.txt</em> file of your WordPress website and it should fix the problem.</p>
-<div class="scGPLbPz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0RY7OXnx" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_21 - incontent_21 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-670"> </div>
@@ -541,7 +606,7 @@ Disallow: /rps_result_student/</code></pre>
 <h2>Adding Additional Features</h2>
 <p>If you would like to make the process of adding students&#8217; results to the backend of your WordPress website in the Easy Student Results plugin easier, then you can just purchase the <em>premium add-ons</em> provided by the app developer.</p>
 <p>Go to the Student Results &gt; Premium Addons from the admin menu and buy the addon that you would like to add to your plugin. Premium addons like CSV import results search by students name, Hiding students results from each other are some of the premium features of the plugin.</p>
-<div class="n3lxb5Ru" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="GX0njZtY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_22 - incontent_22 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-671"> </div>
@@ -554,7 +619,7 @@ Disallow: /rps_result_student/</code></pre>
 <p>You can add different subjects in the Easy Students Results by going to Student Results &gt; Courses. Just click on add course and add the subject that you would like to add. </p>
 <h3>Is the Easy Students Results plugin safe to use?</h3>
 <p>The Easy Students Results plugin is safe to use, but as the plugin hasn&#8217;t been updated in almost 2years you might get conflicts with other plugins or themes installed on your WordPress website.</p>
-<div class="TJFjlujR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9xZ22byU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_23 - incontent_23 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-672"> </div>
@@ -563,7 +628,7 @@ Disallow: /rps_result_student/</code></pre>
 </div>
 <p>Always make a new backup of your website before installing any plugin, you can use VaultPress or UpDraft Backups for backing up your WordPress website for free with just a few steps.</p>
 <p>That is how you can Add Exam Results Feature to a WordPress website. If you are facing any problem while installing the plugin or setting up anything like adding courses, exams, etc then you can always contact me by mail at &#8211; <a href="mailto:admin@localhost">admin@localhost</a>. I will try to reply as soon as I can to fix your problem. Thank you.</p>
-<div class="mt61SrXL" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="MjFpqDOg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_24 - incontent_24 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-673"> </div>

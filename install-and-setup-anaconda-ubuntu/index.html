@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="how to install and setup anaconda on ubuntu 20.04">
 <link rel="canonical" href="https://netmiko.com/install-and-setup-anaconda-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-and-setup-anaconda-ubuntu/","name":"How to Install and Setup Anaconda on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 5.50ms meta | 10.91ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.71ms meta | 10.71ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="classic-theme-styles-css" href="https://netmiko.com/wp-includes/css/classic-themes.min.css" type="text/css" media="all">
@@ -54,6 +54,108 @@
 			.antibounce-container { background: ; }
 			.antibounce-card { color: ; }
 			.antibounce-card .button { background: ; color:  }
+a.close {
+    color: red;
+}
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+width: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
+.close {
+font-size:15px;
+margin-top:30px;
+}
+.cnt223 {
+    /* min-width: 200px; */
+    width: 400px;
+    min-height: 150px;
+    margin: 100px auto;
+    background: #f3f3f3;
+    position: relative;
+    z-index: 103;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #000;
+    margin-top: -100px;
+}
+.cnt223 p{
+clear: both;
+    color: #555555;
+    /* text-align: justify; */
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 25px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 25px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+#download a {
+    color: #fff;
+    text-decoration: none;
+}
+.wp-block-image {
+    box-shadow: 0 0 0 1px #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
 a.close {
     color: red;
 }
@@ -119,43 +221,6 @@ width: 25px;
 }
 .cnt223 .x:hover{
 cursor: pointer;
-}
-
-#download a {
-    color: #fff;
-    text-decoration: none;
-}
-.wp-block-image {
-    box-shadow: 0 0 0 1px #444;
-}
-h2.widget-title {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-body.home .articles-wrapper>h2 {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-.article-card header p {
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    margin-bottom: 10px;
-    text-align: center;
-}
-h3 {
-    margin-bottom: 10px;
-}
-strong {
-    font-weight:600 !important;
-}
-.search-wrapper {
-    content-visibility: hidden;
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-h2 {
-    margin-bottom: 20px;
 }
 }
 .lyte-wrapper::before {
@@ -303,7 +368,7 @@ h2 {
 		<p>Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won&#8217;t have any problem installing <a href="https://anaconda.com/">anaconda</a> on your ubuntu system.</p>
 <h2>Create a new directory for Anaconda</h2>
 <p>Now, let&#8217;s start the installation process. The first step will be to create a new directory in our home directory where Anaconda will be downloaded. Just to keep things organised.</p>
-<div class="CURt2OEA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Jik2TbEZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -315,7 +380,7 @@ h2 {
 </code></pre>
 <p>Here, the &#8220;anaconda&#8221; is the name of the directory which you can name anything that you like.</p>
 <p>You can also create a new directory by going to your File Manager&gt;Home. After that right-click inside the Home directory and click on “New Folder”. </p>
-<div class="PjZGRayQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="fqpqdyjL" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -327,7 +392,7 @@ h2 {
 <p>Now, the next step will be to download Anaconda from its official website <a href="https://www.anaconda.com/">Anaconda.com</a>. There are two ways to download anaconda, you can download it directly from its website or you can download it using the terminal.</p>
 <h3>Download Anaconda using Browser &#8211; </h3>
 <p>Let me show you both the ways to download anaconda. First I&#8217;ll show you how you can download anaconda directly from its website using a web browser.</p>
-<div class="0KXPDKG4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="KpNLxKTa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -345,7 +410,7 @@ h2 {
 </h3>
 <p>Now, let&#8217;s see the steps to download Anaconda using the terminal. First, change your working directory to the directory where you want to download Anaconda.</p>
 <p>In our case its the folder that we created in the first step, so we will change our directory to that one using this command &#8211;</p>
-<div class="38Z0FhXz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="GcuoHH4z" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -360,7 +425,7 @@ h2 {
 <p>If you don&#8217;t have wget installed on your ubuntu system then you can install it using “<em>apt-get install wget</em>”.</p>
 <blockquote>
 <p>Note: The download link keeps changing after the latest updates, so the above command might not work after some time. It&#8217;s better to just download anaconda using the web browser or get the latest download link from <a href="https://www.anaconda.com/products/individual#Downloads">here</a>.</p>
-<div class="gl5kFtcW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Xw7LsNAF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -373,7 +438,7 @@ h2 {
 <p>Before starting the installation process we will have to first “Verify the data integrity with SHA-256”.</p>
 <p>To do that, first go to <a href="https://docs.anaconda.com/anaconda/install/hashes/">https://docs.anaconda.com/anaconda/install/hashes/</a>. Here click on the “64-bit Linux py3 &#8221;.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-1024x576.png.webp" alt="anaconda hash 64-bit linux" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-64-bit-linux.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="BNhG0kTU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="sskn2ZwW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -383,7 +448,7 @@ h2 {
 <p>I have python 3 installed on my ubuntu that&#8217;s why I have selected the py3 option, if you have python 2 then select the py2 one.</p>
 <p>After that click on the version of anaconda that you downloaded. In our case it will be &#8211; “Hashes for Anaconda3-2021.05-Linux-x86_64.sh” this will be different if you downloaded a different version of anaconda. Check the downloaded file for the version name.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-1024x576.png.webp" alt="anaconda hash 2020-5 64-bit version- linux" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/anaconda-hash-2020-5-64-bit-version-linux.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="GkkZX11p" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="wmp7ErBD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -393,7 +458,7 @@ h2 {
 <p>Now here you will need to copy the hash shown at the right side of “sha256”. Copy it and paste it somewhere, we’ll need it after this step.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-1024x576.png.webp" alt="sha256 of anaconda 64-bit linux" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/sha256-of-anaconda-64-bit-linux.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>Before proceeding to the next step, change your working directory to home directory. As our working directory was anaconda.</p>
-<div class="61kcFvF4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="zZZhKe1W" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -406,7 +471,7 @@ h2 {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sha256sum /home/username/anaconda/Anaconda3-2021.05-Linux-x86_64.sh</code></pre>
 <p>Now after you enter this command in your terminal, there will be a hash shown in the terminal which you will need to compare with the hash shown on the website.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-1024x576.png.webp" alt="compare hashes of anaconda" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/compare-hashes-of-anaconda.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="eNujIS3g" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Sw5oNHJZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -417,7 +482,7 @@ h2 {
 <p>Now, change your working directory to anaconda by using this command &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd anaconda</code></pre>
 <p>After that in the terminal type “bash filename”. The file name will be the name of the anaconda file that you downloaded.</p>
-<div class="SlnjhkyT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="365o7NTH" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -429,7 +494,7 @@ h2 {
 <p>Press Enter, this will start the installation process.</p>
 <p>First press “enter” to continue then it will ask you to read the terms and agreement, hold and keep pressing enter to continue.</p>
 <p>Once the Agreement ends it will ask you to accept it. Enter “Yes” to continue. After accepting the agreement it will show you the location where anaconda will be installed. Press Enter to continue.</p>
-<div class="HnxozXBd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="nVKx6j4Y" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
@@ -439,7 +504,7 @@ h2 {
 <p>It will take some time to finish the installation of anaconda, just before the installation finishes it will ask whether “You wish the installer to initialize Anaconda3 by running conda init”. Enter “Yes” to finish the installation of Anaconda on ubuntu. </p>
 <p>Now you will need to run the source command or close the activate terminal and open a new terminal window for anaconda to work.</p>
 <p>Type this command to verify the installation of Anaconda &#8211;</p>
-<div class="51PL4dj0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="VNkozXVs" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-661"> </div>
@@ -454,7 +519,7 @@ h2 {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">conda config &#8211; set auto_activate_base True 
 </code></pre>
 <p style="text-align: center;">Or</p>
-<div class="yTLdebum" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="IPDbU6Y3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-662"> </div>
@@ -489,7 +554,7 @@ h2 {
 <h3>Q1. How to Uninstall Anaconda on Ubuntu 20.04?<br>
 </h3>
 <p>You can uninstall Anaconda by typing “<em>rm -rf ~/anaconda3</em>” in the terminal. If you want to fully uninstall Anaconda and its related files then in a terminal type “conda install anaconda-clean” and after that type “anaconda-clean &#8211;yes”.</p>
-<div class="e4IY4Gag" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="D5ua0dsZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-663"> </div>

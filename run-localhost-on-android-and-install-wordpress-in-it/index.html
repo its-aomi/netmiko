@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="How to Run Localhost on Android and install WordPress in it">
 <link rel="canonical" href="https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/","name":"How to Run Localhost on Android and Install WordPress in it"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 3.96ms meta | 10.72ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.77ms meta | 10.74ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="classic-theme-styles-css" href="https://netmiko.com/wp-includes/css/classic-themes.min.css" type="text/css" media="all">
@@ -54,6 +54,108 @@
 			.antibounce-container { background: ; }
 			.antibounce-card { color: ; }
 			.antibounce-card .button { background: ; color:  }
+a.close {
+    color: red;
+}
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+width: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
+.close {
+font-size:15px;
+margin-top:30px;
+}
+.cnt223 {
+    /* min-width: 200px; */
+    width: 400px;
+    min-height: 150px;
+    margin: 100px auto;
+    background: #f3f3f3;
+    position: relative;
+    z-index: 103;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px #000;
+    margin-top: -100px;
+}
+.cnt223 p{
+clear: both;
+    color: #555555;
+    /* text-align: justify; */
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 25px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 25px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+#download a {
+    color: #fff;
+    text-decoration: none;
+}
+.wp-block-image {
+    box-shadow: 0 0 0 1px #444;
+}
+h2.widget-title {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+body.home .articles-wrapper>h2 {
+    font-size: 1.2rem;
+    padding: 0.4em 0;
+}
+.article-card header p {
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    margin-bottom: 10px;
+}
+strong {
+    font-weight:600 !important;
+}
+.search-wrapper {
+    content-visibility: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+h2 {
+    margin-bottom: 20px;
+}
 a.close {
     color: red;
 }
@@ -119,43 +221,6 @@ width: 25px;
 }
 .cnt223 .x:hover{
 cursor: pointer;
-}
-
-#download a {
-    color: #fff;
-    text-decoration: none;
-}
-.wp-block-image {
-    box-shadow: 0 0 0 1px #444;
-}
-h2.widget-title {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-body.home .articles-wrapper>h2 {
-    font-size: 1.2rem;
-    padding: 0.4em 0;
-}
-.article-card header p {
-    font-weight: 700 !important;
-    font-size: 20px !important;
-    margin-bottom: 10px;
-    text-align: center;
-}
-h3 {
-    margin-bottom: 10px;
-}
-strong {
-    font-weight:600 !important;
-}
-.search-wrapper {
-    content-visibility: hidden;
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-h2 {
-    margin-bottom: 20px;
 }
 }
 .lyte-wrapper::before {
@@ -302,7 +367,7 @@ h2 {
 	<div class="entry-content" itemprop="articleBody">
 		<p>Do you know that you can run localhost on your Android device? Well, it’s very easy to run a local webserver on your android device using an app that you can download from the play store.  </p>
 <p>So, in this post, we’ll see how we can run localhost on our Android device and also install WordPress on it. After setting this up, we will be able to access our webserver at “<em>http://0.0.0.0:8080</em>” and also be able to access our WordPress website.</p>
-<div class="bAvEBMBE" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="jiSCmSXj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -316,7 +381,7 @@ h2 {
 <p>To begin, first, open your play store and then search for “<a href="https://play.google.com/store/apps/details?id=com.sylkat.apache">AWebServer</a>”. Install the app that&#8217;s developed by slykat.</p>
 </blockquote>
 <p>Now open the AWebServer app. When you first open the app, the app will install its components which will take a little bit of time. After that, it will ask you for storage permissions, allow it.</p>
-<div class="QAjXoBw5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="f3rno4AO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -328,7 +393,7 @@ h2 {
 </h2>
 <p>Now after the installation of the app finishes we will have to create a local folder on our device where the webserver files will be stored.</p>
 <p>First, open any file manager that you use, now once you are inside the file manager, go to internal storage.</p>
-<div class="bMD2bn5K" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="k0uztdPy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -345,7 +410,7 @@ h2 {
 <p>			<a href="https://es-file-explorer.en.uptodown.com/android" role="button"><br>
 						Download ES File Explorer<br>
 					</a></p>
-<div class="4qxySrX8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="xWnhTOge" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -357,7 +422,7 @@ h2 {
 <p>Now that we have installed the AWebServer app and also created a new folder for it, we’ll need to change the Document root address to the new folder instead of the default one, so that we can easily add and remove files from our local web server.</p>
 <p>First, open the web server app and then click on the Document Root “Select” option. Now select “<em>Internal</em>” then click on OK.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/change-root-folder-of-awebserver-app-1024x576.png.webp" alt="change root folder of awebserver app" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/change-root-folder-of-awebserver-app-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/change-root-folder-of-awebserver-app-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/change-root-folder-of-awebserver-app-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/change-root-folder-of-awebserver-app.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="Q5T3VDh6" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="fNsBngcP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -371,7 +436,7 @@ h2 {
 <h2>Start the Local Web Server &#8211;<br>
 </h2>
 <p>After installing and finishing the setup of the AWebServer app, to start the web server all we have to do is to click on the “Start” button at the right side of Service.</p>
-<div class="guNSPuR6" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="zNPnBdcj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -381,7 +446,7 @@ h2 {
 <p>After the web server starts, you can access the server by going to the HTTP address shown at the top. It will be like &#8211; “http://0.0.0.0:8080”.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/starting-local-webserver-in-awebserver-app-1024x576.png.webp" alt="starting local webserver in awebserver app" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/starting-local-webserver-in-awebserver-app-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/starting-local-webserver-in-awebserver-app-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/starting-local-webserver-in-awebserver-app-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/starting-local-webserver-in-awebserver-app.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>Now, by default, there will be nothing in that address and you will only see the index of the files inside the “www” folder that you created. So, let&#8217;s <em>create an index.html file</em> for the root address.</p>
-<div class="dnMWP7BV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="34FSIpX1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -393,7 +458,7 @@ h2 {
 <p>Open the ES File Explorer then go to Internal Storage. Now scroll down and go inside the “www” folder that you created.</p>
 <p>Once you are inside the www folder click on the three dots at the top right corner. Then click on “<em>+ New</em>” and select File.</p>
 <p>Name the file “index.html” and then click on OK. After creating the index.html file click on it. </p>
-<div class="1dhGjgBS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="7wV4S6I4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -403,7 +468,7 @@ h2 {
 <p>Here you will have lots of options to select from, but what you need to select is “ES Note Editor” and then click on “This Time Only”. After the file opens, click on the Edit button at the top bar.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/open-index-file-using-es-note-editor-1024x576.png.webp" alt="open index file using es note editor" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/open-index-file-using-es-note-editor-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/open-index-file-using-es-note-editor-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/open-index-file-using-es-note-editor-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/open-index-file-using-es-note-editor.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>Then copy-paste the HTML code from below or add your own HTML code.</p>
-<div class="D6w3OOJc" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ti2ZQyn3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -424,7 +489,7 @@ h2 {
 <p>After pasting the HTML code click on the Save button at the top.</p>
 <p>Now if you access the webserver by going to <a href="http://0.0.0.0:8080/">http://0.0.0.0:8080</a> you&#8217;ll see that it has changed to what you added to your index file.</p>
 <p>Okay, so that&#8217;s how you can run a localhost web server on your android device easily. Continue reading below if you want to know how you can host WordPress in a localhost web server on android.</p>
-<div class="TSPAgeTp" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="wPJOOYMm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -436,7 +501,7 @@ h2 {
 <p>Okay, so now that we have completed the setup of the local web server, let&#8217;s install WordPress on it.</p>
 <p>To install WordPress on localhost on our android device we will first have to download WordPress from the official website of WordPress, which is <a href="https://wordpress.org/">wordpress.org</a>. Go to this website and click on “Get WordPress”.</p>
 <p>Scroll down a little and then click on the “Download WordPress” button. After the download finishes, open ES File Explorer. Go to Internal Storage then inside the downloads folder.</p>
-<div class="mxkSx3Bw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="pX2ZugrE" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
@@ -446,7 +511,7 @@ h2 {
 <p>Now click on the downloaded wordpress.zip file and then open it using ES Zip Viewer. Go inside the WordPress folder and long-press one folder. After that, you will get the option to “select all” at the top. Click that and select all.</p>
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/select-all-the-files-inside-wordpress-zip-folder-1024x576.png.webp" alt="select all the files inside wordpress zip folder" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/select-all-the-files-inside-wordpress-zip-folder-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/select-all-the-files-inside-wordpress-zip-folder-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/select-all-the-files-inside-wordpress-zip-folder-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/select-all-the-files-inside-wordpress-zip-folder.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>Now click on the Extract option at the bottom. And then select the “Choose Path” option. After that click on the /sdcard/ and select the “www” folder, then click on OK twice.</p>
-<div class="ZqvDlJ8k" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="adyBCqEQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-661"> </div>
@@ -458,7 +523,7 @@ h2 {
 <p>Make sure to delete the index.html file that we created in the www folder.</p>
 </blockquote>
 <p>Now open the AWebServer app.</p>
-<div class="M9KT2hhI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="k8dhI0C6" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-662"> </div>
@@ -468,7 +533,7 @@ h2 {
 <p>Here in the app go to the MySql option and then click on the start button. </p>
 <p>Now, open your browser and go to “<a href="http://0.0.0.0:8080/mysqladmin/">http://0.0.0.0:8080/mysqladmin/</a>”. Here login to your PHPMyAdmin dashboard by entering your password and username. The default username and password for PHPMyAdmin is “root”.</p>
 <p>After logging in to your PHPMyAdmin click on the Databases option at the top. Now in “database name” type the name as “website” which will be the database name. Just below the database name select the language. Click on the dropdown and then look for “utf8_general_ci” and select it, then click on create.</p>
-<div class="Jm9V9IWb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="07bycbrA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-663"> </div>
@@ -478,7 +543,7 @@ h2 {
 <p>															<img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/create-a-new-database-in-awebserver-app-1024x576.png.webp" alt="create-a-new-database-in-awebserver-app" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/create-a-new-database-in-awebserver-app-1024x576.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/create-a-new-database-in-awebserver-app-300x169.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/create-a-new-database-in-awebserver-app-768x432.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/create-a-new-database-in-awebserver-app.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
 <p>After creating the database go to <a href="http://0.0.0.0:8080/wp-admin/">http://0.0.0.0:8080/wp-admin/</a>, here follow the WordPress instructions to complete the installation of WordPress on localhost in android.</p>
 <p>The database name will be “website”, password and username will be “root” and the Database Host will be <em>0.0.0.0:3306</em></p>
-<div class="iSfX5f8H" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="b4On6I8O" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-664"> </div>
@@ -487,7 +552,7 @@ h2 {
 </div>
 <p>After following all the steps your website will be available at &#8211; “0.0.0.0:8080” and its admin dashboard will be available at “0.0.0.0:8080/wp-admin”.</p>
 <p>And that is how you can run localhost on android and also install WordPress on it. The steps are easy and you can easily follow them. If you liked this post and this post helped you in any way, then make sure to comment below and also share it with your friends. Thank You.</p>
-<div class="sncma7Ey" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="wDiMpmsf" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-665"> </div>
