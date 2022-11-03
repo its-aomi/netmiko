@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="install koha on ubuntu 20.04">
 <link rel="canonical" href="https://netmiko.com/install-koha-on-ubuntu-linux/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-koha-on-ubuntu-linux/","name":"How to Install KOHA on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.54ms meta | 11.03ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 6.27ms meta | 10.78ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="classic-theme-styles-css" href="https://netmiko.com/wp-includes/css/classic-themes.min.css" type="text/css" media="all">
@@ -84,6 +84,9 @@ z-index: 101;
 .close {
 font-size:15px;
 margin-top:30px;
+}
+.cnt223 {
+    width: 350px;
 }
 .cnt223 {
     /* min-width: 200px; */
@@ -366,7 +369,7 @@ cursor: pointer;
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today we will learn how we can install and set up the Koha free library system in our Ubuntu Linux.</p>
 <p>In this tutorial, we will show you the complete installation process of koha, after which you will be able to easily install it on your Ubuntu Linux by yourself.</p>
-<div class="uxTb0Uti" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="oTfvnc39" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -383,7 +386,7 @@ cursor: pointer;
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get upgrade</code></pre>
 <p>Now we will have to flush our apt cache files, for which we have to type the following commands &#8211;</p>
-<div class="2etHLWgl" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="s6zXNPk9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -398,7 +401,7 @@ cursor: pointer;
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo echo deb https://debian.koha-community.org/koha stable main | sudo tee /etc/apt/sources.list.d/koha.list
 </code></pre>
 <p>Type the command given above and after that press enter and after which type the command given below which will download the source package key.</p>
-<div class="DxBbb4fd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ru6EhCVk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -409,7 +412,7 @@ cursor: pointer;
 <p>If this command is not working then it means that you have not installed wget. To install wget copy the command below after that try again.</p>
 <p>To install wget in ubuntu you have to use this command &#8211; &#8220;apt-get install wget&#8221; using which wget will be installed in your system.</p>
 <p>Now we will update our ubuntu system again with the help of sudo apt-get update command.</p>
-<div class="Mpb3MP7j" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="vz6jG4Sz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -423,7 +426,7 @@ cursor: pointer;
 </code></pre>
 <p>It will take some time to download depending upon your internet connection.</p>
 <p>Now we have to change the port number in it for the staff client, to change the port number we have to open one of its conf file and edit it. <br>To open the conf file we will type the command given below and give the address of the directory where our conf file is located. The path will be same for everyone.</p>
-<div class="2tdkJXUx" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="lnEkLEo9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -440,7 +443,7 @@ cursor: pointer;
 <p>Now we will download MySQL server for the database which we need to run koha.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get install mysql-server</code></pre>
 <p>After typing this command, the MySQL server will be installed in your ubuntu, if it asks you for a password, then type your password in it.</p>
-<div class="MXPEx6ES" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="aNHsxUlG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -452,7 +455,7 @@ cursor: pointer;
 <p>We will type this command to enable rewrite.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo a2enmod rewrite</code></pre>
 <p>And to enable cgi will use this command.</p>
-<div class="gO9yFQc3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="JSkFK5Uw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -469,7 +472,7 @@ cursor: pointer;
 <h2>Create Koha instance &#8211;<br>
 </h2>
 <p>Now we have to create an instance of koha. To create an instance of koha, we will type the following command in our terminal which is &#8211;</p>
-<div class="cm12Ycdr" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="we8dr1fO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -482,7 +485,7 @@ cursor: pointer;
 <p>After this we have to add a port in our apache&#8217;s ports conf file just like we previously added in koha&#8217;s conf file. For this we will edit the ports conf file of our apache server.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo gedit  /etc/apache2/ports.conf</code></pre>
 <p>Inside this file, we have to add the port we had previously added in koha&#8217;s conf file under “listen 80”, which in our case is “listen 8080”. After that we will save it and then hit exit from the file editor.</p>
-<div class="L3dl2X6Y" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="bus4ookr" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -498,7 +501,7 @@ cursor: pointer;
 <h2>Enable Koha Instance &#8211;<br>
 </h2>
 <p>Now we will have to disable the default site of our apache server and enable our koha instance for which we have to type the commands given below.</p>
-<div class="HbVKZXII" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="B3iG1WHn" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -519,7 +522,7 @@ cursor: pointer;
 </code></pre>
 <h2>Know Master Password &#8211;</h2>
 <p>Now you have to type the command given below to know the master password of your koha installation, from which you will get its password which you will need later to log in to koha web installer.</p>
-<div class="zu0DzAIB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="eZGVluEX" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
@@ -532,7 +535,7 @@ cursor: pointer;
 <p>Koha is now installed in our ubuntu and now we have to set it up, keep reading below for the setup process.</p>
 <h2>Setup Koha &#8211; </h2>
 <p>Now we have to open any web browser in which we will go to localhost, for which we will type “localhost:8080” in the browser, if you had given a different port then, remove 8080 then give the port you added.</p>
-<div class="BVnWVNHD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ByAuI9RI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-661"> </div>
@@ -542,7 +545,7 @@ cursor: pointer;
 <p>Now we have to type our username and password. Here in the username, by default it is “ koha_library ” and the master password we copied a while back is our password. After that we will click on login.</p>
 <p>After this we will follow the instructions of the web installer and click on continue to the next step. And when we get the option to select your marc flavor then we have to select any one of the two options and then click on continue to the next step.</p>
 <p>Now, here we have to select all the things that we want in our koha installation and then we will scroll down and click on import.</p>
-<div class="pddx5M7k" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9hn3VBA5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-662"> </div>
@@ -555,7 +558,7 @@ cursor: pointer;
 <p>Whatever password and username you provide here, keep them well noted somewhere because you will need them to login to koha.</p>
 <h3>Create Library &#8211; </h3>
 <p>Now we have to create a library in the web installer. Here we have to give library code which you can give anything and you can give anything in name also. And then we will click on submit button here. The library code will be &#8220;library&#8221; and the name will be &#8220;library&#8221;.</p>
-<div class="gnOmuAAh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="3WxScsS2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-663"> </div>
@@ -567,7 +570,7 @@ cursor: pointer;
 <h3>Create administrator patron &#8211;</h3>
 <p>Now we have to enter our identity here i.e. we have to enter our name and card number. The card number can be anything like “1”  or “001” “000001” etc.</p>
 <p>Now we will scroll down a bit and there we will confirm our administrator password and then click on submit.</p>
-<div class="KqDXbHQu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="V7xBfyCV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-664"> </div>
@@ -581,7 +584,7 @@ cursor: pointer;
 <h2>Web Installer Setup Complete &#8211;<br>
 </h2>
 <p>Now the setup of our web installer is complete and now we will click on start using koha. Here now we will login with the username and password of our library by selecting our library. Now we are logged in to our koha admin dashboard and we can use it now.</p>
-<div class="4QCV6xyD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="bVKHRz9E" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-665"> </div>
@@ -612,7 +615,7 @@ cursor: pointer;
 <h3>How to fix Perl modules missing error.</h3>
 <p>If you also get the error of Perl modules missing then you will get the option of recheck dependencies below which if you click then it will recheck dependencies again and this time your error will be fixed.</p>
 <p>Here is the command to install perl modules &#8211; &#8220;sudo apt install liblocale-codes-perl&#8221;</p>
-<div class="Oxws5CMW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0OGr9Zas" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-666"> </div>
@@ -625,7 +628,7 @@ cursor: pointer;
 <p>Koha is an integrated library system that is open source and free and is used by schools, colleges and libraries around the world.</p>
 <h3>Can we install koha on windows?</h3>
 <p>Yes, you can install koha in your windows computer also. It is very easy to install koha in windows as compared to ubuntu. You will find many videos on YouTube that how you can install koha in windows, Search on YouTube and you will definitely get a good video.</p>
-<div class="W5PpuJmg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="7AkqZbnT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-667"> </div>

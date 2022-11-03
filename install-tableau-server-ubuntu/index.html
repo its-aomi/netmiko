@@ -34,7 +34,7 @@
 <meta name="twitter:image:alt" content="How to Install Tableau Server on Ubuntu">
 <link rel="canonical" href="https://netmiko.com/install-tableau-server-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-tableau-server-ubuntu/","name":"How to Install Tableau Server on Ubuntu 18.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 3.88ms meta | 10.67ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.59ms meta | 10.93ms boot -->
 
 <link rel="stylesheet" id="wp-block-library-css" href="https://netmiko.com/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
 <link rel="stylesheet" id="classic-theme-styles-css" href="https://netmiko.com/wp-includes/css/classic-themes.min.css" type="text/css" media="all">
@@ -84,6 +84,9 @@ z-index: 101;
 .close {
 font-size:15px;
 margin-top:30px;
+}
+.cnt223 {
+    width: 350px;
 }
 .cnt223 {
     /* min-width: 200px; */
@@ -366,7 +369,7 @@ cursor: pointer;
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I&#8217;ll walk you through the steps to Install Tableau Server on Ubuntu 18.04. You can easily install a Tableau server on your ubuntu device after following this tutorial. Now before we see the installation process of tableau server, let&#8217;s see what tableau is.</p>
 <p><b>Tableau Server</b> &#8211; is a web-based data analysis tool that allows for the analysis of data in a wide variety of formats. It also enables users to create interactive dashboards that can be published on the internet.</p>
-<div class="Zc6RMdYb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="vbJMaBfn" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div>
 <div id="ezoic-pub-ad-placeholder-648"> </div>
@@ -381,7 +384,7 @@ cursor: pointer;
 <p>We will use wget to download tableau, so make sure you have wget installed on your ubuntu. You can check whether you have wget installed on your ubuntu or not by using this command &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget &#8211; version</code></pre>
 <p>After entering the above command you will get an output in the terminal which will say something like “ GNU wget 1.20.3 built on linux-gnu “ this means that wget is installed, if it says command not found then it means wget is not installed on your ubuntu.</p>
-<div class="CSslmZqz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="QwdAhDaN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-649"> </div>
@@ -394,7 +397,7 @@ cursor: pointer;
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget https://downloads.tableau.com/tssoftware/tableau-server-2021-3-4_amd64.deb 
 </code></pre>
 <p>The size of the Tableau server is 2.5GB, so it will take some time to finish downloading depending upon your internet connection.</p>
-<div class="qNqv0KGm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="F6fJU2ZD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longer_content - longer_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-652"> </div>
@@ -405,7 +408,7 @@ cursor: pointer;
 <h3>Download Tableau Server using Web Browser </h3>
 <p>To download tableau server using your web browser, first, open your web browser and paste this link in the web browser &#8211; <a href="https://www.tableau.com/downloads/server/deb">https://www.tableau.com/downloads/server/deb</a> </p>
 <p>This is the direct download link for Tableau Server. After downloading the Tableau server deb file, move the downloaded file from the Downloads folder to the home directory, as by default anything you download using the browser will be downloaded to the downloads directory.</p>
-<div class="UUPxOUjF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Z5zgaxRQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - longest_content - longest_content -->
 <div>
 <div id="ezoic-pub-ad-placeholder-653"> </div>
@@ -420,7 +423,7 @@ cursor: pointer;
 sudo apt-get upgrade
 </code></pre>
 <p>After that, we will need to <em>install GDebi-core</em> which we use for installing local deb packages. You can install gdebi-core by entering this command in the terminal &#8211; </p>
-<div class="gX28CBVD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="6beghsEd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-654"> </div>
@@ -433,7 +436,7 @@ sudo apt-get upgrade
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo gdebi -n tableau-server-2021-3-4_amd64.deb 
 </code></pre>
 <p>Wait for it to finish installing the tableau deb file, it will take some time. </p>
-<div class="xYIw3Yws" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="X5Lnjr2c" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-655"> </div>
@@ -443,7 +446,7 @@ sudo apt-get upgrade
 <p>Now to start the Tableau Services Manager we’ll have to run the “./initialize-tsm” file located at the path “<em>/</em>opt/tableau/tableau_server/packages/scripts_version/initialize-tsm”.</p>
 <p>After the installation of the tableau deb file, at the end of the installation, you will get an output in the terminal that will give you the command that you will need to enter for a single node or initial node installation. It will be in this format &#8211; “<em>sudo /opt/tableau/tableau_server/packages/scripts_version/initialize-tsm &#8211;accepteula</em>”.</p>
 <p>															<img decoding="async" width="1024" height="200" src="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm-1024x200.png.webp" alt="initialize tsm" loading="lazy" srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm-1024x200.png.webp 1024w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm-300x59.png.webp 300w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm-768x150.png.webp 768w,  https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px">															</p>
-<div class="eE0zu9MG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="xrx45fbU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-656"> </div>
@@ -453,7 +456,7 @@ sudo apt-get upgrade
 <p>Copy the command shown in the terminal and enter it.</p>
 <p>Once this finishes you can now use the web installer to finish the installation process of Tableau server.</p>
 <p>Connect to the web interface of Tableau server by going to <a href="http://tableau:8850/">http://your-server-ip:8850</a> or if you want to run it locally then its <a href="http://tableau:8850/">http://tableau:8850</a> or <a href="http://localhost:8850/">http://localhost:8850</a> </p>
-<div class="Oh6vZSsD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0dQo4U58" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-657"> </div>
@@ -465,7 +468,7 @@ sudo apt-get upgrade
 <p>After going to the web address of the Tableau server, you will be asked to first log in. Log in using your username and your password. </p>
 <p>After logging in you will be on the <strong>Activation</strong> page of Tableau, here if you have a product key then enter it. If you don&#8217;t, then at the bottom you will get the option to try Tableau for free for 14 days. Click on “<em>Start Tableau Server Trial</em>” to continue.</p>
 <p>After that, you will be on the <strong>Register</strong> page where you will need to enter all the information that is asked there, and after that click on <em>Register</em>.</p>
-<div class="MJxqjb6V" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="c84ugoSr" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-658"> </div>
@@ -477,7 +480,7 @@ sudo apt-get upgrade
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">tabcmd initialuser &#8211; server 'localhost:80' &#8211; username 'your_username_here' 
 </code></pre>
 <p>Add a username of your choice and log in to your Tableau server using this username. </p>
-<div class="UMRRuRwJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="pbB2O5W2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-659"> </div>
@@ -489,7 +492,7 @@ sudo apt-get upgrade
 <h3>Is Tableau server supported on Ubuntu 20.04 ?<br>
 </h3>
 <p>No, currently Tableau server is not supported on ubuntu 20.04. However, the developers of tableau have said that they are working on making tableau server supported on other versions of ubuntu. They said that 2 years ago, so I don&#8217;t think the Tableau server for ubuntu 20.04 is coming anytime soon.</p>
-<div class="x3ogTMPy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="7Ja2VNph" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div>
 <div id="ezoic-pub-ad-placeholder-660"> </div>
