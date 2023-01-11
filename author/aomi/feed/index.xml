@@ -12,7 +12,7 @@
 	<atom:link href="https://netmiko.com/author/aomi/feed/" rel="self" type="application/rss+xml" />
 	<link>https://netmiko.com</link>
 	<description>News &#38; Tech</description>
-	<lastBuildDate>Wed, 11 Jan 2023 06:52:11 +0000</lastBuildDate>
+	<lastBuildDate>Wed, 11 Jan 2023 07:49:35 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -36,145 +36,157 @@
 		
 			</item>
 		<item>
-		<title>Python Program to Find the Sum of Squares of Digits of a Number</title>
-		<link>https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/</link>
+		<title>How to find default user and password for Bitnami WordPress on AWS</title>
+		<link>https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/</link>
+					<comments>https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/#respond</comments>
 		
 		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sun, 08 Jan 2023 01:42:20 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6604</guid>
+		<pubDate>Sat, 10 Dec 2022 04:53:29 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6491</guid>
 
-					<description><![CDATA[This article presents a Python program for finding and printing the sum of the squares of the digits of a number entered by the user. Python Program to Find the]]></description>
-										<content:encoded><![CDATA[<p>This article presents a Python program for finding and printing the sum of the squares of the digits of a number entered by the user. This code prompts the user to enter a number and stores it in a variable called . It then initializes a variable called to the value of and another variable called to 0. It enters a while loop that continues executing as long as is not equal to 0.</p>
-<p><a href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/" rel="nofollow">Source</a></p>]]></content:encoded>
+					<description><![CDATA[Here is how you can find the default username and default password of a bitnami wordpress installation on AWS.]]></description>
+										<content:encoded><![CDATA[<p>Here is how you can find the default username and default password of a bitnami wordpress installation on AWS.</p>
+<p><a href="https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+					<wfw:commentRss>https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Mini Music Player using CSS &#038; Vue Js</title>
+		<link>https://netmiko.com/mini-music-player-using-css-vue-js/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Thu, 17 Nov 2022 03:41:29 +0000</pubDate>
+				<category><![CDATA[Uncategorized]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6469</guid>
+
+					<description><![CDATA[A modern looking Mini Music Player using CSS &#38; Vue Js. Made by Muhammed Erdem. The codes are separated in three parts, so copy all three parts combine them and]]></description>
+										<content:encoded><![CDATA[<p>A modern looking Mini Music Player using CSS &amp; Vue Js. Made by Muhammed Erdem. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use two separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code Here is the CSS Code Here is the JavaScript Code Here is the Complete Code...</p>
+<p><a href="https://netmiko.com/mini-music-player-using-css-vue-js/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/1.mp3" length="4556729" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/2.mp3" length="7920841" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/3.mp3" length="5226496" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/4.mp3" length="4990169" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/5.mp3" length="5110336" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/6.mp3" length="5343976" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/7.mp3" length="4367825" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/8.mp3" length="5607113" type="audio/mpeg" />
+<enclosure url="https://raw.githubusercontent.com/muhammederdem/mini-player/master/mp3/9.mp3" length="4752156" type="audio/mpeg" />
+
+			</item>
+		<item>
+		<title>CSS &#038; JavaScript Marquee Logo Wall</title>
+		<link>https://netmiko.com/css-javascript-marquee-logo-wall/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Thu, 17 Nov 2022 03:31:46 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6467</guid>
+
+					<description><![CDATA[A logo wall made using CSS and JavaScript, it can move vertically and horizontally. Made by Ryan Mulligan. The codes are separated in three parts, so copy all three parts]]></description>
+										<content:encoded><![CDATA[<p>A logo wall made using CSS and JavaScript, it can move vertically and horizontally. Made by Ryan Mulligan. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use two separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code Here is the CSS code. Here is the JavaScript Code Here is the Complete...</p>
+<p><a href="https://netmiko.com/css-javascript-marquee-logo-wall/" rel="nofollow">Source</a></p>]]></content:encoded>
 					
 		
 		
 			</item>
 		<item>
-		<title>Python Program to Find Product of Mid Digits</title>
-		<link>https://netmiko.com/python-program-to-find-product-of-mid-digits/</link>
+		<title>90s Boombox Design using CSS &#038; Html</title>
+		<link>https://netmiko.com/90s-boombox-design-using-css-html/</link>
 		
 		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sun, 08 Jan 2023 01:39:22 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6602</guid>
+		<pubDate>Thu, 17 Nov 2022 03:19:49 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6465</guid>
 
-					<description><![CDATA[This article presents a Python program for finding and printing the product of the middle digits of a number entered by the user at runtime. For example, if the user]]></description>
-										<content:encoded><![CDATA[<p>This article presents a Python program for finding and printing the product of the middle digits of a number entered by the user at runtime. For example, if the user enters the number 2351, the output will be the product of the middle digits, which is 3 * 5, or 15. This code prompts the user to enter a number and stores it in a variable called . It then initializes a variable called to the value...</p>
-<p><a href="https://netmiko.com/python-program-to-find-product-of-mid-digits/" rel="nofollow">Source</a></p>]]></content:encoded>
+					<description><![CDATA[A simple css boombox design made using pure CSS and HTML. The Boom box is made by Sonal Shah. The codes are separated in two parts, so copy all two]]></description>
+										<content:encoded><![CDATA[<p>A simple css boombox design made using pure CSS and HTML. The Boom box is made by Sonal Shah. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code Here is the Complete Code...</p>
+<p><a href="https://netmiko.com/90s-boombox-design-using-css-html/" rel="nofollow">Source</a></p>]]></content:encoded>
 					
 		
 		
 			</item>
 		<item>
-		<title>Python Program to Find Sum of First and Last Digit</title>
-		<link>https://netmiko.com/python-program-to-find-sum-of-first-and-last-digit/</link>
+		<title>Pure CSS Cyberpunk 2077 Buttons</title>
+		<link>https://netmiko.com/css-cyberpunk-2077-buttons/</link>
 		
 		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sun, 08 Jan 2023 01:35:09 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6600</guid>
+		<pubDate>Fri, 04 Nov 2022 02:39:18 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6463</guid>
 
-					<description><![CDATA[This article presents some Python programs for finding and printing the sum of the first and last digits of a number entered by the user at runtime. For example, if]]></description>
-										<content:encoded><![CDATA[<p>This article presents some Python programs for finding and printing the sum of the first and last digits of a number entered by the user at runtime. For example, if the user enters the number 2493, the output will be the sum of the first digit (2) and the last digit (3), which is 5. This code prompts the user to enter a number and stores it in a variable called . It then initializes a variable...</p>
-<p><a href="https://netmiko.com/python-program-to-find-sum-of-first-and-last-digit/" rel="nofollow">Source</a></p>]]></content:encoded>
+					<description><![CDATA[CSS Buttons with Cyberpunk 2077 Animation on Hover. Made by Jhey. The codes are separated in two parts, so copy all two parts combine them and after that run the]]></description>
+										<content:encoded><![CDATA[<p>CSS Buttons with Cyberpunk 2077 Animation on Hover. Made by Jhey. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the complete code for one single index.html file.</p>
+<p><a href="https://netmiko.com/css-cyberpunk-2077-buttons/" rel="nofollow">Source</a></p>]]></content:encoded>
 					
 		
 		
 			</item>
 		<item>
-		<title>Python Programs to Find Sum of Digits of a Number</title>
-		<link>https://netmiko.com/python-programs-to-find-sum-of-digits-of-a-number/</link>
+		<title>Confetti Button using CSS &#038; React</title>
+		<link>https://netmiko.com/confetti-button-css-react/</link>
 		
 		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sun, 08 Jan 2023 01:32:35 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6598</guid>
+		<pubDate>Fri, 04 Nov 2022 02:22:37 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6461</guid>
 
-					<description><![CDATA[In this article, you will learn how to find and print the sum of the digits of a number entered by the user at runtime using four different approaches in]]></description>
-										<content:encoded><![CDATA[<p>In this article, you will learn how to find and print the sum of the digits of a number entered by the user at runtime using four different approaches in Python: a while loop, a for loop, a function, and a class. For example, if the user enters the number 123, the output will be 1 + 2 + 3, which is 6. This code prompts the user to enter a number and stores it in a variable called .</p>
-<p><a href="https://netmiko.com/python-programs-to-find-sum-of-digits-of-a-number/" rel="nofollow">Source</a></p>]]></content:encoded>
+					<description><![CDATA[A cool Confetti Button animation made using CSS &#38; React. Made by Marco Biedermann. The codes are separated in three parts, so copy all three parts combine them and after]]></description>
+										<content:encoded><![CDATA[<p>A cool Confetti Button animation made using CSS &amp; React. Made by Marco Biedermann. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use three separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the JavaScript Code. Script &ndash; script type=&rdquo;module&rdquo;.</p>
+<p><a href="https://netmiko.com/confetti-button-css-react/" rel="nofollow">Source</a></p>]]></content:encoded>
 					
 		
 		
 			</item>
 		<item>
-		<title>Python Programs to Count Digits in a Number</title>
-		<link>https://netmiko.com/python-programs-to-count-digits-in-a-number/</link>
+		<title>Wi-Fi Fail Animation using CSS &#038; JavaScript</title>
+		<link>https://netmiko.com/wi-fi-fail-animation-css-javascript/</link>
 		
 		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sun, 08 Jan 2023 01:23:37 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6596</guid>
+		<pubDate>Fri, 04 Nov 2022 02:15:15 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6459</guid>
 
-					<description><![CDATA[This article presents two Python programs for counting the total number of digits in a given number. The first program uses a while loop, and the second program uses the]]></description>
-										<content:encoded><![CDATA[<p>This article presents two Python programs for counting the total number of digits in a given number. The first program uses a while loop, and the second program uses the built-in function. For example, if the user inputs the number 1234, the output will be 4 because the number contains 4 digits. This code prompts the user to enter a number and stores it in a variable called . It then initializes a...</p>
-<p><a href="https://netmiko.com/python-programs-to-count-digits-in-a-number/" rel="nofollow">Source</a></p>]]></content:encoded>
+					<description><![CDATA[A simple Wi-Fi Fail Animation made using CSS &#38; JavaScript. It has a Connect button and animation. Made by Jon Kantner. The codes are separated in three parts, so copy]]></description>
+										<content:encoded><![CDATA[<p>A simple Wi-Fi Fail Animation made using CSS &amp; JavaScript. It has a Connect button and animation. Made by Jon Kantner. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use three separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the JavaScript Code.</p>
+<p><a href="https://netmiko.com/wi-fi-fail-animation-css-javascript/" rel="nofollow">Source</a></p>]]></content:encoded>
 					
 		
 		
 			</item>
 		<item>
-		<title>Python Programs to Reverse a Number</title>
-		<link>https://netmiko.com/python-programs-to-reverse-a-number/</link>
+		<title>Nosferatu Pure CSS Animation</title>
+		<link>https://netmiko.com/nosferatu-css-animation/</link>
 		
 		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sun, 08 Jan 2023 01:18:21 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6594</guid>
+		<pubDate>Fri, 04 Nov 2022 02:01:15 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6457</guid>
 
-					<description><![CDATA[This article presents five approaches in Python for finding and printing the reverse of a number entered by the user. The first approach uses a while loop, the second uses]]></description>
-										<content:encoded><![CDATA[<p>This article presents five approaches in Python for finding and printing the reverse of a number entered by the user. The first approach uses a while loop, the second uses a for loop, the third uses a list, the fourth uses a function, and the fifth uses recursion. This code prompts the user to enter a number and stores it in a variable called . It then initializes a variable called to 0 and a...</p>
-<p><a href="https://netmiko.com/python-programs-to-reverse-a-number/" rel="nofollow">Source</a></p>]]></content:encoded>
+					<description><![CDATA[A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and after that run the code.]]></description>
+										<content:encoded><![CDATA[<p>A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the complete code for one single index.html file.</p>
+<p><a href="https://netmiko.com/nosferatu-css-animation/" rel="nofollow">Source</a></p>]]></content:encoded>
 					
 		
 		
 			</item>
 		<item>
-		<title>Python Programs to Check Perfect Number</title>
-		<link>https://netmiko.com/python-programs-to-check-perfect-number/</link>
+		<title>Netflix Intro Animation using Pure CSS</title>
+		<link>https://netmiko.com/netflix-intro-animation-css/</link>
 		
 		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sun, 08 Jan 2023 01:07:32 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6592</guid>
+		<pubDate>Thu, 03 Nov 2022 02:23:47 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6453</guid>
 
-					<description><![CDATA[This article has two Python programs for checking whether a number entered by the user is a perfect number. The first program uses a for loop, and the second program]]></description>
-										<content:encoded><![CDATA[<p>This article has two Python programs for checking whether a number entered by the user is a perfect number. The first program uses a for loop, and the second program uses a while loop. This code prompts the user to enter a number and stores it in a variable called . It then initializes a variable called to 0. Next, it enters a for loop that iterates over the range of numbers from 1 to .</p>
-<p><a href="https://netmiko.com/python-programs-to-check-perfect-number/" rel="nofollow">Source</a></p>]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Python Programs to Check Palindrome Number</title>
-		<link>https://netmiko.com/python-programs-to-check-palindrome-number/</link>
-		
-		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sat, 07 Jan 2023 03:46:52 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6568</guid>
-
-					<description><![CDATA[In this article, we provide three Python programs that determine if a user-entered number is a palindrome number. The first program is a simple implementation, while the second uses a]]></description>
-										<content:encoded><![CDATA[<p>In this article, we provide three Python programs that determine if a user-entered number is a palindrome number. The first program is a simple implementation, while the second uses a function, and the third uses a class. Before discussing the programs, let&rsquo;s quickly define what a palindrome number is. A palindrome number is a number that is equal to its reverse. For example, the number 121 is a...</p>
-<p><a href="https://netmiko.com/python-programs-to-check-palindrome-number/" rel="nofollow">Source</a></p>]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Python Programs to Check Armstrong Number</title>
-		<link>https://netmiko.com/python-programs-to-check-armstrong-number/</link>
-		
-		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
-		<pubDate>Sat, 07 Jan 2023 03:41:06 +0000</pubDate>
-				<category><![CDATA[Uncategorized]]></category>
-		<guid isPermaLink="false">https://netmiko.com/?p=6566</guid>
-
-					<description><![CDATA[In this article, we provide three Python programs that determine if a user-entered number is an Armstrong number. The first program is a simple implementation, while the second uses a]]></description>
-										<content:encoded><![CDATA[<p>In this article, we provide three Python programs that determine if a user-entered number is an Armstrong number. The first program is a simple implementation, while the second uses a user-defined function, and the third uses a class. This program prompts the user to enter a number, which is then stored in the variable. The value of is then stored in a temporary variable and the number of digits...</p>
-<p><a href="https://netmiko.com/python-programs-to-check-armstrong-number/" rel="nofollow">Source</a></p>]]></content:encoded>
+					<description><![CDATA[Netflix Logo Intro Animation made using Html &#38; Pure CSS by Claudio Bonfati. It has a very smooth animation. The codes are separated in three parts, so copy all three]]></description>
+										<content:encoded><![CDATA[<p>Netflix Logo Intro Animation made using Html &amp; Pure CSS by Claudio Bonfati. It has a very smooth animation. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use three separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the complete code for one single index.</p>
+<p><a href="https://netmiko.com/netflix-intro-animation-css/" rel="nofollow">Source</a></p>]]></content:encoded>
 					
 		
 		

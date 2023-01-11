@@ -41,7 +41,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-1024x576.png">
 <link rel="canonical" href="https://netmiko.com/install-ssl-certificate-in-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-ssl-certificate-in-ubuntu/","name":"Install SSL Certificate In Ubuntu 20.04 &#8211; AWS SSL Setup"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.37ms meta | 12.77ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 4.34ms meta | 12.15ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,14 +165,14 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I&#8217;ll walk you through the steps to Install an SSL certificate in our ubuntu server. By which we can use HTTPS connection in our server which is a secure connection.</p>
-<div class="K8TqOkZt" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="hToaPOha" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
 </div>
 <p>The web server we are going to use in this tutorial is installed on Amazon EC2 and in this we have used Ubuntu 20.04.</p>
 <p>Now let us see how we can install SSL in our Ubuntu web server step by step. For this, first we will create an instance in our Amazon AWS console in which we will install ubuntu 20.04 .</p>
-<div class="C0O6PYzC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="QsFtTNJK" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -181,7 +181,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/installing-ubuntu-1024x576.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/installing-ubuntu-300x169.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/installing-ubuntu-768x432.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/installing-ubuntu.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="576" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="installing ubuntu in a aws server" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-1024x576.png"><noscript><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-1024x576.png" alt="installing ubuntu in a aws server" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/08/installing-ubuntu.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p><strong>1.</strong> To create a new ubuntu server we will first go to EC2 Management Console of amazon aws and click on Launch Instance button there. After that, we have to select a Machine Image where we will select <em>Ubuntu Server 20.04 LTS</em> and click on Next.</p>
 <p><strong>2.</strong> Now we will select <em>t2.micro</em> for Instance Type because we are making this server in free tier of amazon aws. If you want to select any other then you can do that but keep in mind that you can Afford the one you want to select. After that we will click on Next &#8211; configure instance details.</p>
-<div class="voKpJAVY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="q2uesprv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -189,7 +189,7 @@ img.emoji {
 <p><strong>3.</strong> In Configure instance details we will not change anything, just 2 things we have to change is iam role where we have to select a role. To create a new role, click on Create new role on the side. After that we have to select <em>Enable termination protection</em> after which we will click on Next &#8211; add storage.</p>
 <p><strong>4.</strong> We will allow the storage to remain 8GB, after which we will click on Next &#8211; Add Tags.</p>
 <p><strong>5.</strong> Here we will type &#8220;<em>project</em>&#8221; in key option and in value we will type &#8220;<em>ssl-ubuntu</em>&#8221; and then after that we will click on next &#8211; configure security group in it.</p>
-<div class="0VIJdtB4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="CVJPOxTR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -198,7 +198,7 @@ img.emoji {
 <p><strong>7.</strong> Here we will select a keypair and then click on launch. In 1 minute your instance will be created in which ubuntu will be installed.</p>
 <h2>Add Elastic IP to the Server</h2>
 <p>Now we will assign an elastic IP address to our ec2 instance so that if ever we stop this instance then our IP will not change.</p>
-<div class="mCRhho3n" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="WNim1mHd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -206,7 +206,7 @@ img.emoji {
 <p>To make the IP address elastic, we will first go to <em>Network and Security</em> from the menu and from there we will click on Elastic IP.</p>
 <p>Here we will click on <em>Allocate Elastic IP address</em> and then click on Allocate which will give us an Elastic IP address.  </p>
 <p>Now we will click on that IP address and there will be the option of <em>associate IP address</em>, on which we will click and then select the instance we just created and then click on associate IP address. We have now assigned our instance an elastic IP address.</p>
-<div class="JbNG8gd2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="gQzmY9s1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -216,7 +216,7 @@ img.emoji {
 <p>Now we will go to the DNS settings of our domain provider and then in the DNS settings we will add an A record which will point above this IP address.</p>
 <h2>Connect to the instance</h2>
 <p>To connect to the instance, we will first go to the instances and then select the instance we have and here we will get the option of connect, on which we will click, after clicking on it, we will click on the session manager and then click on connect. This will allow us to open Cloudshell in our browser and run commands without having to use SSH or putty.</p>
-<div class="7P1kKGMu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="nRvAHhVW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -227,7 +227,7 @@ img.emoji {
 <p><strong>2.</strong> After this we will enter another command. With this command we will add an apt repository to the server.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo add-apt-repository ppa:ondrej/php</code></pre>
 <p><strong>3.</strong> Now we will install PHP 8 in our server, for which we will type this command. Now apache and php8 are installed in our web server.</p>
-<div class="ewg7WrVU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="VXdnzc4K" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -239,7 +239,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl enable apache2</code></pre>
 <h2>Create Virtual Host in the Webserver</h2>
 <p>Now we have to put some code in a configuration file which I have given below, you just have to enter your domain name instead of yourdomain.com.</p>
-<div class="2Z8WC861" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="a4DViBAB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -259,7 +259,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo vi /etc/apache2/sites-available/000-default.conf</code></pre>
 <p>And click Enter, after which the vim editor will open here, where we have to paste the above config file code we have copied here. Now save it and then restart the apache server.</p>
 <p>Now we have to create a folder</p>
-<div class="Y83Q5R8K" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="TlJKqthQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -273,7 +273,7 @@ img.emoji {
 <p>After which you will install Certbot. For this use this command.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo snap install --classic certbot</code></pre>
 <p>After Certbot is installed, we will run Certbot for which we will use this command.</p>
-<div class="IsOpXOJu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="rPVvrN6h" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -282,7 +282,7 @@ img.emoji {
 <p>Now certbot will ask us for an email which you can enter any of your email after which it will ask 2 questions which we have to click on Y. And then it will ask us the names of the domains on which we want to install SSL.</p>
 <p>Select the domain and press enter after selecting it. Now it will generate and issue SSL certificate for that domain.</p>
 <p>We have now installed SSL in our ubuntu server.</p>
-<div class="jfE8KuG8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="SOgVNGDR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -290,7 +290,7 @@ img.emoji {
 <p>And finally we will create an index.php file for which we will type this command.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo vi index.php</code></pre>
 <p>After this, a php file will be created and saved in it. And this is how we can install SSL certificate in our ubuntu web server which is hosted on amazon aws, that too for absolutely free.</p>
-<div class="HwcMZzXN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="fUIykBNt" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -428,17 +428,20 @@ It can set the mood,...</p>
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
-				<a href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
-<span class="sr-only">link to Python Program to Find the Sum of Squares of Digits of a Number</span></a>
+				<a href="https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
+<span class="sr-only">link to How to find default user and password for Bitnami WordPress on AWS</span></a>
 
 				<div class="copy-container">
 					<header>
-						<p><a itemprop="name" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Python Program to Find the Sum of Squares of Digits of a Number</a></p>
+						<p><a itemprop="name" href="https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/">How to find default user and password for Bitnami WordPress on AWS</a></p>
 					</header>
 					<div class="excerpt">
-						<p>This article presents a Python program for finding and printing the sum of the squares of the digits of a number entered by the user.
-Python Program to Find the Sum of Squares of Digits of a...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Continue Reading</a></div>					</div>
+						<p>https://www.youtube.com/watch?v=q49LvgvJ-lU
+
+Here is how you can find the default username and default password of a bitnami wordpress installation on AWS.
+
+</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/">Continue Reading</a></div>					</div>
 					<!-- <div class="button-container">
 						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
 					</div> -->
@@ -449,11 +452,11 @@ Python Program to Find the Sum of Squares of Digits of a...</p>
 					<meta itemprop="name" content="NETMIKO.COM">
 				</span>
 				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp">
-				<meta itemprop="name" content="Python Program to Find the Sum of Squares of Digits of a Number">
-				<meta itemprop="headline" content="Python Program to Find the Sum of Squares of Digits of a Number">
+				<meta itemprop="name" content="How to find default user and password for Bitnami WordPress on AWS">
+				<meta itemprop="headline" content="How to find default user and password for Bitnami WordPress on AWS">
 				<meta itemprop="author" content="Aomi Bora">
-				<meta itemprop="datePublished" content="2023-01-08">
-				<meta itemprop="dateModified" content="2023-01-08">
+				<meta itemprop="datePublished" content="2022-12-10">
+				<meta itemprop="dateModified" content="2023-01-11">
 
 			</article>
 					</div>

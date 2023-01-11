@@ -38,7 +38,7 @@
 <link rel="prev" href="https://netmiko.com/blog/page/3/">
 <link rel="next" href="https://netmiko.com/blog/page/5/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/blog/","name":"Blog"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.50ms meta | 10.83ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.93ms meta | 10.92ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -143,18 +143,11 @@ img.emoji {
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/python-program-to-check-alphabet-or-not-using-function/">Python Program to Check Alphabet or Not using Function</a></p>
+      <p><a href="https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/">Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code:
-def checkAlphabet(x):
-    if len(x) &gt; 1:
-        return 0
-    else:
-        if c &gt;= 'a' and c &lt;= 'z':
-            return 1
-        elif c &gt;= 'A' and c &lt;=...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-check-alphabet-or-not-using-function/">Continue Reading</a></div>      </div>
+        <p>Today I'll show you how you can host a WordPress website on an NGINX server with varnish caching for a fast and optimized WordPress website. If you want to host a WordPress website that can handle...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -176,48 +169,222 @@ def checkAlphabet(x):
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "Python Program to Check Alphabet or Not using Function",
-				"url": "https://netmiko.com/python-program-to-check-alphabet-or-not-using-function/",
-				"articleBody": "Here is the Code:
-def checkAlphabet(x):
-    if len(x) &gt; 1:
-        return 0
-    else:
-        if c &gt;= 'a' and c &lt;= 'z':
-            return 1
-        elif c &gt;= 'A' and c &lt;= 'z':
-            return 1
-        else:
-            return 2
-
-print(\"Enter a Character: \", end=\"\")
-c = input()
-
-chk = checkAlphabet(c)
-if chk==1:
-    print(\"\n\\"\" +c+ \"\\" is an alphabet.\")
-elif chk==2:
-    print(\"\n\\"\" +c+ \"\\" is not an alphabet!\")
-else:
-    print(\"\nInvalid Input!\")
-Explanation:
-This is a Python program that checks whether an input character is an alphabet or not. This defines a function checkAlphabet() that takes in a character x as an argument and returns 0 if x is an invalid input, 1 if x is an alphabet, or 2 if x is not an alphabet.
-
-The function first checks if the length of x is greater than 1. If it is, it returns 0. If the length of x is 1, it uses an if-elif statement to check whether x is between 'a' and 'z' (inclusive) or between 'A' and 'Z' (inclusive). If x is between 'a' and 'z' or 'A' and 'Z', it returns 1. If x is not between 'a' and 'z' or 'A' and 'Z', it returns 2.
-
-The program then prompts the user to enter a character and stores it in the variable c. It calls the checkAlphabet() function and passes c as an argument. The function checks whether c is an alphabet, not an alphabet, or an invalid input and returns the appropriate value.
-
-The program then checks the value of chk (which is assigned the return value of the checkAlphabet() function). If chk is 1, the program prints a message saying that the character is an alphabet. If chk is 2, the program prints a message saying that the character is not an alphabet. If chk is 0, the program prints an error message.",
-				"headline": "Python Program to Check Alphabet or Not using Function",
+				"name": "Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04",
+				"url": "https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/",
+				"articleBody": "Today I'll show you how you can host a WordPress website on an NGINX server with varnish caching for a fast and optimized WordPress website. If you want to host a WordPress website that can handle lots of traffic without crashing on a cheap cloud hosting like digital ocean basic plan then this is the perfect tutorial for you, with the help of this tutorial your WordPress website will be able to handle 5000+ visitors daily at a cost of just 5$ per month.
+			Why NGINX instead of Apache?
+		
+		The reason I recommended you to use Nginx instead of Apache for your WordPress site’s web server is that Nginx can handle more traffic and load compared to an Apache server, as Apache server uses more memory compared to Nginx because it creates a new thread for each request which consumes memory.		
+			Creating a Ubuntu Server 		
+		Okay so this step is for those people who haven't created an ubuntu server yet, I will show you how you can create a ubuntu 20.04 server on AWS and also on Digital Ocean. Skip this part if you already have a ubuntu server.		
+			Amazon AWS
+		
+		To create a new Ubuntu server or Instance on AWS you will need to first log in to your AWS account, here go to the EC2 dashboard and click on “Launch Instance” to start the process of creating a new Ubuntu instance.
+First, you will need to choose an Amazon Machine Image (AMI), in the search bar search for Ubuntu, this will display a few ubuntu machine images, you will need to select the “Ubuntu Server 20.04 LTS (HVM)” which comes under free tier, click on select on the right side.		
+																														
+		After that you will need to choose an instance type, choose the instance that suits your need, like t2.micro or t.2small for a small and medium blog, choose the instance type that you can afford, and click on next.In the Configure Instance Details, you don't need to change anything, click on next to continue. In the Storage Tab enter the amount of storage that you need and the storage type that you need, like SSD or Magnetic, once done click on next. In Tags, no need to do anything, click next again.
+																														
+		Now in the Configure Security Group tab, you will need to add two security group rules, which are HTTP and HTTPS. Click on “Add Rule”, in type select “HTTP”, again add another rule for “HTTPS”. Click Review and Launch to continue.		
+																														
+		In the Review Tab, check if everything is correct or not, things like Instance type, storage, and Machine image are important things to check before launching the instance. If everything is correct then click on “Launch”. It will now ask you to add a Key Pair to the instance, select create a new Key pair option from the dropdown, name the keypair and click on download to download a .pem or .ppk file. Save this file somewhere safe because you will need it to log in to your server.		
+																														
+		After downloading the Key pair, click on Launch to launch a ubuntu server.It will take a few minutes for the instance to run so wait a few minutes. Once done you can proceed to log in to the server.
+			Digital Ocean
+		
+		If you are using Digital ocean then here are the steps to create a ubuntu server or droplet. To begin, log in to your digital ocean dashboard.Click on Create then select Droplets, to create a new droplet. In image Choose Ubuntu 20.04, after that in plans select the plan that suits your need.		
+																														
+		Scroll down and in the data center region select the server that is closest to your customers or users. After that in the Additional option check the “IpV6” and “Monitoring”.		
+																														
+		Now in authentication select Password and enter a very secure password, make sure to note it down somewhere safe. Scroll down and in Hostname enter your domain name and scroll down again and click on Create Droplet.
+This will create a new ubuntu server for you.		
+			Connect Domain -
+		
+		If you want to connect a domain name to your server then you can follow these steps otherwise you can skip this step if you just want to use the IP address.Login to your domain provider and select your domain name and go to its DNS settings.Add a new “A” Record, in the name field enter “@” and in value enter the IP address of your server.After that add a “CNAME” Record, in the name enter “www” and in value enter your domain name.		
+																														
+		Wait for the DNS propagation to finish and your domain will be connected.		
+			Install Putty 
+		
+		Now to login to the ubuntu server, we will need to install Putty, you can download putty from its official website at - https://www.putty.org/. Download the latest version of putty from the website and install it.
+			Login to Ubuntu Server 
+		
+		Once you have created the ubuntu server and installed putty, you can now log in to your server. This process is different for different cloud hostings, I will show you the steps for AWS and Digital Ocean. You can google how to log in to your cloud server if you are using something else.		
+			Amazon AWS -
+		
+		If you want to log in to your ubuntu server hosted on AWS then here are the steps. Open putty, in the hostname, enter the IP address of your amazon instance, after that on the left side click on “SSH” twice, this will display some more options, click on “Auth”, after that click on Browse and select the .ppk or .pem Key Pair downloaded during instance launch.		
+																														
+		
+After that in putty click on open to connect to your AWS instance. In the terminal, it will ask “Login as”, enter root and you will be logged in to your AWS ubuntu server.		
+			Digital Ocean -
+		
+		If you are using digital ocean then just copy the Ip address of the Droplet and open putty, in hostname enter the Ip address and click on open.Login as Root, enter the password that you used when setting up the digital ocean droplet. That's it you will be now logged into your ubuntu server.		
+			Install NGINX 
+		
+		Okay now it's time to set up the server, we will be installing WordPress on Lemp Stack so the first thing we will need to do is install NGINX. All you need to do is copy &amp; paste the commands given below in the putty terminal.
+First, update your ubuntu apt packages before starting the installation process, you can update your apt packages using this command - 		
+			sudo apt-get update &amp;&amp; sudo apt-get upgrade
+		
+		After that you can now download Nginx, to do that use this command - 		
+			sudo apt-get install nginx		
+		Once Nginx is installed check its status using the command “sudo service nginx status”, if it shows an output that says “Active(running) then Nginx is installed and running properly. Exit the status screen by pressing “q”.After this, you will need to set up a firewall for ubuntu and also add a rule for ufw.		
+			sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx Full'
+		
+		After adding the rule enable the ufw firewall and also check its status.
+			sudo ufw enable
+sudo ufw status		
+		Once done you can now check if Nginx is working properly or not, to do that enter the IP address of your Ubuntu server in a browser. This will display the “Welcome to Nginx” page which means that Nginx is working perfectly.		
+																														
+			Install MySQL 		
+		Now we will install the MySQL database, again before starting the installation make sure to update the apt packages again - 		
+			sudo apt-get update		
+		After that enter the MySQL installation command, you might need to press “y” after entering the command.		
+			sudo apt-get install mysql-server
+		
+		After MySQL finishes installing, check its status and exit status screen once done. You can exit status by pressing “q”.
+			sudo service mysql status		
+		After this, you will need to now create a root password for your MySQL, and remove anonymous users, Disable remote root login, remove the test database and reload privilege tables.First create a root password, to do that first enter the command given below - 		
+			sudo mysql_secure_installation
+		
+		In the terminal you will now get an output asking “Would you like to set up the VALIDATE PASSWORD component?”, just enter any key to continue. After that, you will be asked to enter a new password and confirm the password.Create a strong password and confirm it.After that you will be asked to remove the anonymous users, press y to continue. After that it will ask “Disallow remote root login”, press y to continue.
+After that, in both remove test databases and reload privilege tables press and enter “y” to finish setting up the MySQL database.		
+			Install PHP		
+		Now we will install PHP for our Nginx server, to begin first you will need to add the universe repository of Ubuntu to your system, use the command given below for adding the universe repo.		
+			sudo add-apt-repository universe		
+		After adding the repo, update the apt packages and install php-fpm and php-mysql. You can install them by using these commands - 		
+			sudo apt-get install php-fpm
+sudo apt-get install php-mysql
+		
+		After installing both php-fpm and php-mysql you will need to configure Nginx for installing WordPress in it.
+			Configure NGINX 
+		
+		To configure Nginx for php you will need to first edit the default config file of your Nginx server, to do that we will be using nano editor, you can also use vim editor for this, enter this command in terminal -		
+			sudo nano /etc/nginx/sites-available/default
+		
+		The file path for the server block can be different sometimes.That command will open the default config file in the nano editor, you will now need to change a few things inside this file to set up the Nginx server. The first thing will be to add index.php.Inside this file scroll down and look for the “Add index.php to the list” option, here between the index and index.html enter index.php. Just below that in “server_name” enter your domain name or IP address. 
+																														
+		After that remove the “try_files $uri $uri/ =404;” line below it and replace it with the line given below.		
+			try_files $uri $uri/ /index.php?$args;
+		
+		Once done, just below it you will need to uncomment 3 lines of code, you can uncomment them by removing the “#”, the lines that you will need to uncomment are - location ~ .php$ {include snippets/fastcgi-php.conf;fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;After that, also uncomment the closing bracket below the “fastcgi_pass 127.0.0.1:9000;” line. Once done, recheck everything and save the file by clicking “CTRL+X &gt; Y &gt; Enter”.
+																														
+		After saving the file, check if there are any errors in the file by using the command -		
+			sudo nginx -t
+		
+		This will display an output in the terminal like, “Syntax is OK” and “test is successful”, this means that there are no errors after editing the file and you can now proceed to the next step.First, reload your Nginx config using the command - 		
+			sudo service nginx reload
+		
+		You can check if php on your Nginx server is working or not by creating a new .php file at location “/var/www/html/” by using the command - 		
+			sudo nano /var/www/html/test.php
+		
+		
+			Install phpMyAdmin		
+		Now to be able to set up and manage MySQL databases on your WordPress website you will need to install and set up phpMyAdmin.To begin first update your apt packages using the command “sudo apt update”, after that download PHPMyAdmin using the command - 		
+			sudo apt-get install phpmyadmin
+		
+		During the download, it will ask you to enter “y” enter y and press enter to continue, when asked to choose a web server you will need to press TAB Key and press enter to continue.		
+																														
+		After that select yes and press enter in “Configure database for phpmyadmin”, The setup will now ask you for a password for PHPMyAdmin, enter the same password that you used during MySQL installation, select OK and press Enter, you might get asked to confirm the password.
+Once phpMyAdmin is installed you will need to link your PHPMyAdmin to your root directory, to do that enter the command given below.		
+			sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+		
+		Once done go to your web browser and go to domain.com/phpmyadmin or ip_addresss/phpmyadmin to check if PHPMyAdmin is working perfectly or not. If it is then now you will need to create a superuser to log in to your admin dashboard.First, enter the command given below to enter MySQL.		
+			sudo mysql -u root -p
+		
+		After this you will now need to create a username and password for phpmyadmin, the format for the command will be “CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';”, where change the username to anything you like and change the password to a secure password.
+			CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+		
+		After that, grant all the root privileges to the user using the command below, change the username to the one you added using the above command -		
+			GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
+		
+		Once done, exit using the command “exit”.[ OPTIONAL BUT RECOMMENDED STEP ]You should secure your phpMyAdmin by following this tutorial here - https://bit.ly/3FG2lso		
+			Create a MySQL Database 
+		
+		Now after installing phpmyadmin, log in to the dashboard by going to your_domain.com/phpmyadmin, log in using the username and password that you provided.
+After logging in, on the top left click on “Databases”, here in “database name” enter a database name like “wordpress_database” and click on create to create the database. After that proceed to the installation of WordPress.		
+																														
+			Install WordPress 
+		
+		Now we can start the installation of WordPress, first, go to the official website of WordPress at - https://wordpress.org and download the latest version of the WordPress zip file.Once done extract the downloaded zip file and go inside it, here look for “wp-config-sample.php”, right click and rename it to just “wp-config.php”, after renaming it, edit the PHP file using a note editor by right clicking and open with &gt; note pad. 		
+																														
+		
+		Inside the wp-config file look for “MySQL database username” and change the “database_name_here” to your database name. Below that change the “username_here” to your MySQL username, below that change password to your database password.		
+																														
+		Once done, save the file. After that select all the files using your mouse and archive them to a zip file named wordpress.zip.		
+																														
+		Now, open Filezilla and log in using the Ip address of your server, username will be root, enter the password of your server, and select port 22. For AWS you will need to use the key pair to log in to Filezilla, the steps can be seen here - https://youtu.be/-80-39VNzOA. After logging in, go to the file path “/var/www/html”, and inside the html, directory upload the edited wordpress.zip that you created. Wait for the upload to finish, after the wordpress.zip finishes uploading open putty and log in to your server.
+																														
+		First, you will need to install unzip, to do that update your apt packages and install unzip - 		
+			sudo apt-get install zip unzip 
+		
+		After installing unzip, you can now unzip the WordPress zip file, to do that change your directory to “/var/www/html/” using the command - 		
+			cd /var/www/html/
+		
+		After changing the directory use the unzip command to unzip the WordPress zip file -		
+			unzip wordpress.zip
+		
+		Once the zip file finishes unzipping without any error, remove the zip file from the directory -
+			rm wordpress.zip
+		
+		That's it, WordPress is now installed successfully on your Nginx server.		
+			Setup WordPress		
+		To set up WordPress just enter your Ip address in a browser, if you have a domain connected then enter your domain name.You will be redirected to the setup page of WordPress where you will need to first enter your site title, then enter a username for logging in to the server and a secure password, after that enter the admin email and Click “Install WordPress”.Once WordPress install finishes you can log in to your website by going to “domain_or_IP/wp-login.php”.In your WordPress website, check if everything is working or not, things like are you able to install and activate themes and plugins or not, does changing permalinks break your website. Try out different things and keep refreshing your website for potential errors.
+If there is none then congratulations, your WordPress website is now almost ready to use, why almost?? Because there are still two things that we have left to set up on our WordPress website, the first is an SSL Certificate and the second one is Varnish Cache for an optimized web server.		
+			Install SSL Certificate 
+		
+		Okay so now you have two options to add an SSL Certificate to your WordPress website with an Nginx server, the first is directly installing a free SSL certificate in your web server, the second one is to use Cloudflare to add the SSL certificate.Both methods are easy to do, if you don't want to use Cloudflare then you can use the direct install method and if you are using Cloudflare then use Cloudflare to add the SSL.		
+			Install SSL Nginx-Ubuntu
+		
+		To install SSL directly in our server we will use certbot, to begin first update your apt packages using the command “sudo apt-get update”, after that install the certbot using the command - 
+			sudo apt-get install certbot python3-certbot-nginx
+		
+		If you are getting any errors then try “sudo apt-get install certbot python-certbot-nginx” instead. After installing the certbot, run the command given below to get an SSL Certificate for your domain or IP. 		
+			sudo certbot --nginx
+		
+		At first, you will be asked for an email address, enter an email then press enter, after that accept the terms and conditions by pressing a, after that enter y to receive a newsletter from let's encrypt. After that, you will need to select the domain name or IP address that you want to get the SSL for.After that, you will be asked whether you want to redirect all the traffic from HTTP to HTTPS or not, enter 2 and press enter. Now your SSL certificate will be assigned to your domain or IP address and HTTP traffic will now get redirected to HTTPS.
+NOTE: The SSL certificate that you will get will only be valid for 90days, which means you will need to renew it after 90days using putty again.		
+			Install SSL using Cloudflare
+		
+		If you don't want to install an SSL directly on your server then you can use Cloudflare’s SSL to serve your website over HTTPS. To do that make a Cloudflare account and connect your domain name, after that log in to the dashboard and go to the SSL/TLS tab.Here Scroll down and select Flexible, after that go to Edge certificates and scroll down and enable the “Always use HTTPS” option.		
+																														
+		That's it, all the frontend users will now be served using a secure SSL certificate.
+			Install Varnish Cache
+		
+		Now the final thing that we will need to install on our Nginx server is Varnish Cache. Varnish Cache is an HTTP accelerator used for caching HTTP requests to make a web server response time faster.To Install Varnish on your Nginx server, first update its apt package using the command “sudo apt-get update”, after that use this command to install varnish cache.		
+			sudo apt-get install varnish -y
+		
+		After installing varnish check if it is installed or not by entering the command “varnish -v” in the terminal, this will show you the version of varnish installed.After that, you will need to change the port to which Varnish listens to. Enter the command given below which will again open the default configuration file of Nginx.
+			sudo nano /etc/nginx/sites-available/default		
+		Inside the file scroll down and look for “Virtual host Configuration”, change both the listen 80 to 8088. Once done save the file and restart the Nginx server.		
+																														
+			systemctl restart nginx
+		
+		Now you will need to edit the varnish.service file, to do that we will use nano editor, use the command - 		
+			sudo nano /lib/systemd/system/varnish.service
+		
+		Inside the file change the default port 6081 to 80, save it, and after that reload daemon.		
+			systemctl daemon-reload
+		
+		Now you will need to edit the default.vcl file, use the command - 
+			sudo nano /etc/varnish/default.vcl
+		
+		Inside the vcl file in “backend default” change the port from “8080” to “8088”. Save and Exit.After that restart varnish - 		
+			systemctl restart varnish
+		
+		Now check if varnish is working correctly or not by entering this command -		
+			curl -I your-server-ip
+		
+		
+		In the terminal, you will get the output which will show if varnish is working or not.That’s it, you have now successfully installed a WordPress website on an NGINX Server with Varnish Cache in Ubuntu 20.04. If you are facing any problems then comment below, thank you for reading. ",
+				"headline": "Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-07",
+				"datePublished": "2021-12-27",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-07",
+				"dateModified": "2023-01-11",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -235,18 +402,11 @@ The program then checks the value of chk (which is assigned the return value of 
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/python-program-to-check-alphabet-or-not/">Python Program to Check Alphabet or Not</a></p>
+      <p><a href="https://netmiko.com/host-wordpress-on-alibaba-cloud-free/">How to Host a WordPress Website on Alibaba Cloud for Free</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code:
-print("Enter a Character: ", end="")
-c = input()
-if len(c)&gt;1:
-    print("\nInvalid Input!")
-else:
-    if c&gt;='a' and c&lt;='z':
-        print("\n\"" +c+ "\" is an...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-check-alphabet-or-not/">Continue Reading</a></div>      </div>
+        <p>Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need to do to get a new WordPress website set up on Alibaba cloud.The...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/host-wordpress-on-alibaba-cloud-free/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -268,36 +428,108 @@ else:
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "Python Program to Check Alphabet or Not",
-				"url": "https://netmiko.com/python-program-to-check-alphabet-or-not/",
-				"articleBody": "Here is the Code:
-print(\"Enter a Character: \", end=\"\")
-c = input()
-if len(c)&gt;1:
-    print(\"\nInvalid Input!\")
-else:
-    if c&gt;='a' and c&lt;='z':
-        print(\"\n\\"\" +c+ \"\\" is an alphabet.\")
-    elif c&gt;='A' and c&lt;='z':
-        print(\"\n\\"\" +c+ \"\\" is an alphabet.\")
-    else:
-        print(\"\n\\"\" +c+ \"\\" is not an alphabet!\")
-Explanation:
-This is a Python program that checks whether an input character is an alphabet or not. The program first prompts the user to enter a character and stores it in the variable c.
-
-The program then checks if the length of c is greater than 1. If it is, it means that the user has entered more than one character, which is an invalid input. In this case, the program prints an error message and exits. If the length of c is 1, it means that the user has entered a single character, which is a valid input. The program then continues with the next step.
-
-The program uses an if-elif-else statement to check whether the input character is an alphabet or not. If c is between 'a' and 'z' (inclusive) or between 'A' and 'Z' (inclusive), it means that c is an alphabet. In this case, the program prints a message saying that c is an alphabet. If c is not between 'a' and 'z' or 'A' and 'Z', it means that c is not an alphabet. In this case, the program prints a message saying that c is not an alphabet.",
-				"headline": "Python Program to Check Alphabet or Not",
+				"name": "How to Host a WordPress Website on Alibaba Cloud for Free",
+				"url": "https://netmiko.com/host-wordpress-on-alibaba-cloud-free/",
+				"articleBody": "Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need to do to get a new WordPress website set up on Alibaba cloud.The steps for hosting a WordPress website on Alibaba cloud are very easy, you just need a little bit of time and your website will be up and running.
+			Why Host WordPress on Alibaba Cloud?
+		
+		Because it's free and fast!! You get a slice of 1 core CPU, 1Gb memory that you can increase later, and 40Gb of storage for the website files, that's more than enough for a new low traffic blog, or a moderate traffic blog. Instead of paying hundreds of dollars on web hosting you can host your website for free for 1year on Alibaba cloud, and once your website becomes successful you can move to another host or just stick to Alibaba cloud. Cloud is very cheap compared to other types of web hosting, you only pay for what you use.You can easily run a high-traffic blog that gets 2-3k visitors per day on Alibaba cloud for just 5$ a month.
+			Register in Alibaba Cloud 		
+		Okay, so now let's get started, to begin we will need to first create a free trial account on Alibaba cloud, to sign up for the free trial of Alibaba cloud, click on this link - https://www.alibabacloud.com/free, you can also search on google for “Alibaba free trial” in case the link changes.On the Alibaba free trial page click on the “Get started for Free” button, this will redirect you to the sign-in page, in the sign-in page click on the “Register Now” link at the bottom right.		
+																														
+		On the signup page, you will need to select “individual account” and click on next, after that you will need to enter your email address and create a very secure password that contains a capital letter, symbol, and number. Confirm the password and click on sign up.
+																														
+		On the next page, you will need to select your country and verify your phone number, you can verify using your phone number or your email address, whatever you feel comfortable with. I recommend you to verify using your phone number.Click on “Send Message” which will send you a verification code on your phone number or email, enter it in the signup page, agree to the agreement and click on Sign Up once again to create an Alibaba Cloud Account.		
+																														
+		After this your Alibaba cloud account will be created, now you will need to Enter some basic information about you, like name, address, postal code, and phone number. Select Individual Account at the top.Enter your phone number and click on verify, you will get a verification code at the phone number provided, enter it and verify your phone number again, after that click on submit.
+Now in the Payment Information tab, you will need to provide your payment info, the payment method will be different for different countries, if it asks for a credit card then provide it there, don't worry you won't be charged a cent for it, payment info is asked to prevent spam accounts.After providing your payment info, you will automatically get redirected to the confirmation page of Alibaba cloud, click on “Free Trial” to start the activation process of the free trial of Alibaba Cloud.		
+																														
+			Create ECS Instance in Alibaba Cloud
+		
+		After clicking on Free Trial you will be redirected to the free trial page of Alibaba cloud, here scroll down a little and select the products that you want to use.If you just want to host a simple WordPress blog with low to medium traffic then just select the Burstable t5, 1 core CPU, 1Gb memory, 40Gb SSD storage which will give you a trial period of 12months, meaning that you host your low to medium traffic website free for 12 months.		
+																														
+		You can also use the Burstable t6/t5, 2 core CPU, 2Gb memory which is more powerful and can handle high traffic, but the problem with this is that the trial period will only be 3months for this, so better choose the 1 core CPU one with 12 months.
+Just select it and click on “Try Now”, after which you will now need to set up the server aka ECS, you will need to first select the Data server region, select the server which is closest to your customers, in “operating system” select “WordPress on LAMP Ubuntu 16”.		
+																														
+		If you want you can also select a different operating system like Ubuntu 18.04, but remember that you will set up WordPress manually using the terminal if you do that, I recommend you to just use the WordPress LAMP which automatically does everything for us.After selecting your data center and operating system, accept the Terms and conditions and click on Try now. This will automatically set up a WordPress ECS instance for you.
+If you get any error like “Sorry you have already tried the instance” or something then don't worry and go to your Alibaba Cloud Console from the top-right menu, then go to Elastic Compute Service (ECS) from the top left corner menu, then go to “Instances”.There you will see your WordPress instance.		
+																														
+			Change Disk Image
+		
+		Now after creating an ECS instance you will need to change the disk image of your instance. To do that first go to your console&gt;Elastic compute service&gt;Instances. Here select your instance and click on STOP at the bottom.Select Force stop, and also check the “Proceed to forcibly stop” option and click on OK, this will stop the instance, this might take a few minutes, keep refreshing the page until the status says “Stopped”.
+Once the instance stops, select the instance once again, and below click on the More button, after that select Disk &amp; Image &gt; Replace System Disk. Click on OK on the popup.		
+																														
+		After that, you will be in the operating system settings where to change the disk image of your instance you will need to click on MarketPlace Image then “Select from Image Market”.That will open up the Marketplace, In the search bar you will need to search for “WordPress”, which will bring up a lot of different options, the WordPress image that you will need to select is the “WordPress on LEMP CentOS7.2 64 bits powered by IGS”. Click on USE to continue.		
+																														
+		After that scroll down and in Security settings, click on Password and enter a secure password, confirm it, and accept the Terms of service below. Click on Create Order to continue the payment, it's free so no need to pay anything, just finish the purchase and once the purchase completes, go back to your console.
+			Configure Security Groups 
+		
+		Now the last thing to do before we can access our WordPress website is to configure security groups. To configure Security groups go to your console and then go to “Network &amp; Security” by clicking on the top left menu, after that in Network &amp; Security go to “Security groups”.Here click on “Add rules” on the right side of your Instance, Click on “Quick rule Creation” to add a new rule.In Common Port (TCP) check “http”, in Custom Port range enter “21/22”, in Authorization Object enter “0.0.0.0/0” and click on OK to add that rule.		
+																														
+		Again click on Quick rule creation and add another rule, this time in Common Port check “https” in Custom Port enter “31/32” and in Authorization Object enter “0.0.0.0/0”, click on OK to add that rule, once done go back to Instances.		
+																														
+		Now here in Instances check if the status of your WordPress Instance is Running or not, if it's not running then select the instance and click on start to start it. 
+Doesn't matter if the instance was running or not, you will have to restart the instance to proceed, select the instance and click on restart. Once done you can now proceed to set up the WordPress website.		
+			Setup WordPress
+		
+		To set up your WordPress site hosted on Alibaba cloud free tier you will need to copy the Internet IP address of the Instance. Copy it and paste it into a web browser.You will need to configure your WordPress installation, select your language, and click on continue. Give your website name, username, a secure password, your email, make sure to remember the password and username because you will need it to log in to your WordPress website.Once done click on Install WordPress, after the installation finishes click on Log In and log in to your WordPress website using the provided username and password.
+			Add a Custom Domain
+		
+		Okay so, now let's see how we can connect a custom domain like yourdomain.com instead of the IP Address of the Server. Because an IP address is not easy to remember and also not professional for a WordPress blog.You can add a custom domain to your WordPress website hosted on Alibaba cloud using two methods, the first is directly from your domain registrar and the second one is by using Cloudflare (which is recommended).		
+			By using your domain registrar
+		
+		To add a custom domain to your Alibaba cloud-hosted website you will need to first log in to your domain registrar dashboard from where you bought your domain name. Hereafter logging in, select your domain name and go to its DNS settings.
+In DNS settings you will need to add a new “A” record, the name field will be “@” and the value will be the IP Address of your Alibaba cloud instance. After that add another record which will be a CNAME.		
+																														
+		The name field will be “www” and the value will be your domain name. After adding both these values you will need to wait a few minutes to a few hours depending upon how fast the DNS propagates, once it does then you can access your website through the domain name instead of its IP address.		
+			By Using Cloudflare 		
+		If you have Cloudflare connected to your domain then you can use Cloudflare to add a custom domain to your WordPress website hosted on Alibaba Cloud. If you don't have Cloudflare connected to your domain then here are the steps to add Cloudflare - Create an account at https://dash.cloudflare.com/sign-up, add your domain name and complete the rest of the steps.Add Cloudflare nameservers to your DNS Settings by going to your domain provider, select your domain name and go to its Nameservers settings, remove the default nameservers and add the ones given by Cloudflare.Wait for the DNS Propagation to finish.
+Okay so once Cloudflare is connected to your domain, go to the DNS settings in your Cloudflare dashboard, here add an A record with the name “@” and value the IP address of your Alibaba cloud instance.After that add a CNAME with the name “www” and value your domain name, that's it your website will be now connected to a custom domain. The plus point of using Cloudflare is that it gives you free CDN and DDOS protection and also hides the real IP address of your website.		
+			Add SSL to Alibaba Cloud Hosted Website
+		
+		To add an SSL certificate to your Alibaba cloud-hosted WordPress website you can use Cloudflare that provides you with free SSL. To enable the SSL certificate login to your Cloudflare dashboard.
+In the dashboard of Cloudflare go to SSL/TLS tab and make the SSL setting to “Flexible” this will serve your website with HTTPS to the users, after that you will need to redirect all the users using HTTP to HTTPS.		
+																														
+		To redirect everyone using HTTP to HTTPS you will need to go to SSL/TLS tab and then go to the Edge Certificates tab, here scroll down and find Always Use HTTPS, enable it and all your users using HTTP will now get redirected to HTTPS.		
+			Fix WordPress Asking for FTP details Alibaba Cloud 
+		
+		After installing WordPress on Alibaba cloud if you are trying to install a plugin or a theme and WordPress asks for your FTP username and password then here's how you can fix it.		
+			Using Plugin - 
+		
+		First, log in to your WordPress admin and go plugins, click on Add New and search for “File Manager” click on install, this will ask you for your FTP details, you can get it by logging in to your Alibaba Cloud Console.
+Go to your instances and copy your IP address, go back to your WordPress dashboard, and in the FTP hostname enter “sftp://your_ip_address” or “your_ip_address”, in username enter “root” and in the password enter the password that you gave when changing disk image.After that click on proceed and install the plugin, once the plugin is installed open it, in the file manager look for “wp-config.php”, right-click on it, and select edit. After that enter the PHP codes from below in the wp-config file below “define (‘DB COLLATE’)”.		
+			define(&ldquo;FTP_HOST&rdquo;, 'ftp.yourhost.com');
+define(&ldquo;FTP_USER&rdquo;, 'root');                                          
+define(&ldquo;FTP_PASS&rdquo;, 'password');
+define('FS_METHOD', 'direct');
+define('FTP_BASE', '/data/wwwroot/default/');
+define('FTP_CONTENT_DIR', '/data/wwwroot/default/wp-content/');
+define('FTP_PLUGIN_DIR ', '/data/wwwroot/default/wp-content/plugins/');
+		
+		Here, ftp.yourhost.com will be “sftp://your_instance_ip_address”, username and password would be the one from the disk image change step. Add all these to the wp-config file and save it.Go back to your Alibaba Cloud instance and restart it to see changes, also refresh your website.
+			Using FileZilla -
+		
+		To fix the problem using FileZilla you will need to first connect to your FTP server using Filezilla, in hostname enter the IP address of your Alibaba cloud instance, in username enter root, and in password enter the password set during disk image change. Click Connect.After connecting to the server, go to the file path at - /data/wwwroot/defaultInside this file path, you will need to find wp-config, download it, and using note editor add the codes given above in the article. Save it and upload it back to the server.Restart the Alibaba Cloud instance to save the changes.
+			Change WordPress URL & Site Address		
+		One final thing left to do is to change the WordPress Address and Site Address, as the default URL will be the IP address instead of your domain name.To change your url go to your wordpress admin and then go to settings &gt; General. Here remove the IP Address and enter your domain name.		
+																														
+			PHP version Not Supported
+		
+		Okay so this is something that you might face if you install WordPress on Alibaba cloud, you will be unable to install some plugins due to an unsupported version of PHP. To fix this problem you will need to update the PHP of your server.You can see this tutorial on how you can update PHP - https://www.digitalocean.com/community/questions/how-to-update-nginx-php. 
+You can connect to your Alibaba cloud instance by ssh or by using putty.That's it, that is how you can host a WordPress website on Alibaba cloud for free, the free trial of Alibaba cloud will last for 12 months, so enjoy your free WordPress hosting for one year. Thank you for reading.		
+			FAQ - 		
+			How much traffic does a WordPress Website hosted on Alibaba Cloud Free tier Handle?		
+		A WordPress website that is hosted on Alibaba Cloud free trial can handle at least 1500 to 3000 users per day with proper caching and optimization. If you use a CDN for both images and static resources then the website can easily handle more than 3000+ visitors per day.",
+				"headline": "How to Host a WordPress Website on Alibaba Cloud for Free",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-07",
+				"datePublished": "2021-12-23",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-07",
+				"dateModified": "2023-01-11",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -315,19 +547,11 @@ The program uses an if-elif-else statement to check whether the input character 
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/python-program-to-check-prime-number-using-class/">Python Program to Check Prime Number using Class</a></p>
+      <p><a href="https://netmiko.com/save-screen-recording-to-usb-and-sdcard-directly/">How to Save Screen Recording directly to USB/SD card in Android</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code:
-class Codes:
-    def checkPrime(self, x):
-        for i in range(2, x):
-            if n%i==0:
-                return 1
-
-print("Enter a Number: ", end="")
-n =...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-check-prime-number-using-class/">Continue Reading</a></div>      </div>
+        <p>Today I will show you how you can save the screen recordings of your android device directly to the SD card or an external USB/Flash drive without saving them in the internal storage of your android...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/save-screen-recording-to-usb-and-sdcard-directly/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -349,40 +573,47 @@ n =...</p>
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "Python Program to Check Prime Number using Class",
-				"url": "https://netmiko.com/python-program-to-check-prime-number-using-class/",
-				"articleBody": "Here is the Code:
-class Codes:
-    def checkPrime(self, x):
-        for i in range(2, x):
-            if n%i==0:
-                return 1
-
-print(\"Enter a Number: \", end=\"\")
-n = int(input())
-
-obj = Codes()
-p = obj.checkPrime(n)
-if p==1:
-    print(\"\nNot Prime Number\")
-else:
-    print(\"\nPrime Number\")
-Explanation:
-This is a Python program that checks whether a number is prime or not. It defines a class called Codes and a method checkPrime() inside it. The method takes in a number x as an argument and returns 1 if x is not a prime number, or None if x is a prime number.
-
-The program then prompts the user to enter a number and stores it in the variable n. It creates an object of the Codes class called obj and calls the checkPrime() method on it, passing n as an argument. The method checks whether n is a prime number and returns 1 if it is not, or None if it is.
-
-The program then checks the value of p (which is assigned the return value of the checkPrime() method). If p is 1, the program prints a message saying that the number is not a prime number. If p is None, the program prints a message saying that the number is a prime number.",
-				"headline": "Python Program to Check Prime Number using Class",
+				"name": "How to Save Screen Recording directly to USB/SD card in Android",
+				"url": "https://netmiko.com/save-screen-recording-to-usb-and-sdcard-directly/",
+				"articleBody": "Today I will show you how you can save the screen recordings of your android device directly to the SD card or an external USB/Flash drive without saving them in the internal storage of your android device.As you know that all the screen recording that you do using your phone’s screen recorder is saved in the internal storage of your phone, it doesn't give you the option to save the recording somewhere else, like on an sd card or USB. 
+Now to fix that you can easily download a third-party screen recorder which gives you the option to save your screen recording using that app on your sd card, but the problem with using a third-party screen recorder is that you will have a watermark on your recording, which is something that doesn't look professional and is better to avoid.If your phone doesn't have a pre-installed screen recorder and you are using a third-party screen recorder then don't worry, I'll show you how you can save screen recording directly to sd card/USB on both third-party apps and pre-installed screen recorders on our phone.		
+			Inbuilt Screen Recorder
+		
+		If you are trying to directly save screen recording done by the inbuilt screen recorder of your phone, then here is how you can do it. 
+To begin first open the play store, here in the play store search for “Auto Move to SD Card”, the app developer is GoNext, you can also click on this link to download the app from play store - https://play.google.com/store/apps/details?id=com.gonext.automovetosdcard. Install it, but don't open it.		
+																														
+		Now you will need to find out the location where your inbuilt screen recorder saves its recorded files, to do that first open your screen recorder and create a small recording, save it, and after that open your file manager.In file manager search for your screen recording, most of the time it is stored in the “DCIM&gt;Screen Recorder” folder of your internal storage, but if it's not there then you will need to find it manually. Once you find the Screen Recording folder you can proceed to the next step.		
+																														
+		Now take your sd card or a USB and insert it into your android phone, after that open the downloaded Auto Move to SD Card app.
+Here on the home screen click on the “Start Now” button and skip the tutorial that the app shows, After that click on the green “Auto Transfer” button.		
+																														
+		In the Auto Transfer tab you will need to choose the source folder and the destination folder, in the source folder you will need to select the folder where your screen recordings are stored after finishing.In my case it will be “Internal Storage/DCIM/Screen Recordings”, it might or might not be different for you.The destination folder will be the folder in the SD card or USB where you want to screen recording to go directly instead of saving in the internal storage of the phone. After selecting the folder just turn the automatic transfer “ON” by clicking on the button at the top right.		
+																														
+		Now every file that goes into the Screen Recording folder will be automatically transferred to the SD card or USB.
+			Fix Auto Move to SD card not working 
+		
+		Okay so after turning on auto transfer in the app with the location selected, if it's not working and the screen recordings are still getting saved in your internal phone storage then here are the possible reasons and fixes.1. Background Running - This app runs in the background and moves every file created in the source folder to the destination folder, which means that if your phone doesn't allow it to run in the background then this app will not work.To fix this, go to the app setting then select the Auto move to SD card app and then turn on “Autostart”, after that in Background settings allow it to run in the background instead of restricting it from running in the background.2. Turn Off Battery Saver - If you have the battery saver turned on then turn it off, battery saver stops apps running in the background which means that it will prevent the Auto Move to Sd card app from running properly. 
+3. Recheck Source and Destination - You might wanna check the source and destination in the app, check if it is in the right place or not. Sometimes people just select a different folder and wonder why the app is not working.Make sure the source is the folder where your screen recordings get saved by default, and the destination folder is the SD Card / USB where you want the screen recording to go.4. Check Compatibility - If you are using a very old phone, or a cheap Chinese phone, then there might be a chance that the Auto Move to SD Card app is not compatible with your android phone. With the recent changes in google’s policy, there are lots of features that require additional permissions to work.		
+			Third Party Screen Recorder		
+		If you want the third-party screen recorder that you downloaded from the play store to save the screen recordings directly to the SD card / USB instead of the internal storage of your android phone then here is how you can do that.
+All you need to do is first open the screen recorder, I am using Xscreen recorder so here are the steps for it, the steps will be the same for all third-party screen recorders.Go to settings, here look for “Save location, Recording location or storage location”, it will be different for different apps, now it will give you two options, you can choose to either save the Screen Recordings of that app in your internal storage or SD Card, just select SD Card.		
+																														
+		All your screen recording done by that app will now get stored in the SD Card or the USB connected to your Android phone.		
+			Manually Move Screen Recordings		
+		Okay so here’s the easiest way to save the screen recordings to your SD card or USB, all you need to do is open your file manager, here open the folder where your screen recordings are stored.
+Here, inside the Screen Recordings folder long press and select all the videos that you want to move to SD Card / USB, after that click on the move option and select the location where you want to move it, in our case, it will be SD card, so just select the SD card and click on “Paste” to move the Screen recording from Internal Storage to SD Card.		
+																														
+		That's it, it will take some time to finish if your screen recording size is very big. And that is how you can Save Screen Recording directly to a USB/SD card in Android. Just use any method that you find easier to do and does not require that much effort.If the Auto move to SD card app is not working for you then you can use any other alternative apps like Auto File Transfer, Move to SD Card, Link2SD, etc, all these apps will work just fine.Thanks for reading, if you are having any problems then comment below.",
+				"headline": "How to Save Screen Recording directly to USB/SD card in Android",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-07",
+				"datePublished": "2021-12-21",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-07",
+				"dateModified": "2021-12-21",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -400,22 +631,11 @@ The program then checks the value of p (which is assigned the return value of th
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/python-program-to-check-prime-number-using-function/">Python Program to Check Prime Number using Function</a></p>
+      <p><a href="https://netmiko.com/dual-boot-linux-mint-20-with-windows-10/">How to Dual boot Linux Mint 20 with Windows 10</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code:
-def checkPrime(x):
-    for i in range(2, x):
-        if n%i==0:
-            return 1
-
-print("Enter a Number: ", end="")
-n = int(input())
-
-p = checkPrime(n)
-if p==1:
-   ...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-check-prime-number-using-function/">Continue Reading</a></div>      </div>
+        <p>Today I will walk you through the steps to dual boot Linux Mint with Windows 10. The version of Linux mint that I will be using is Linux Mint 20, which is the latest version of Linux Mint. Before...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/dual-boot-linux-mint-20-with-windows-10/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -437,40 +657,77 @@ if p==1:
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "Python Program to Check Prime Number using Function",
-				"url": "https://netmiko.com/python-program-to-check-prime-number-using-function/",
-				"articleBody": "Here is the Code:
-def checkPrime(x):
-    for i in range(2, x):
-        if n%i==0:
-            return 1
-
-print(\"Enter a Number: \", end=\"\")
-n = int(input())
-
-p = checkPrime(n)
-if p==1:
-    print(\"\n\" +str(n)+ \" is not a Prime Number\")
-else:
-    print(\"\n\" +str(n)+ \" is a Prime Number\")
-Explanation:
-This is a Python program that checks whether a number is prime or not. This defines a function checkPrime() that takes in a number x as an argument and returns 1 if x is not a prime number, or None if x is a prime number.
-
-The function uses a for loop to iterate over the range 2 to x-1 (i.e., from 2 to x exclusive). For each iteration, it checks if x is divisible by the current loop variable i. If x is divisible by i, the function returns 1 and exits. If x is not divisible by i, the function continues with the next iteration of the loop.
-
-The program then prompts the user to enter a number and stores it in the variable n. It calls the checkPrime() function and passes n as an argument. The function checks whether n is a prime number and returns 1 if it is not, or None if it is.
-
-The program then checks the value of p (which is assigned the return value of the checkPrime() function). If p is 1, the program prints a message saying that the number is not a prime number. If p is None, the program prints a message saying that the number is a prime number.",
-				"headline": "Python Program to Check Prime Number using Function",
+				"name": "How to Dual boot Linux Mint 20 with Windows 10",
+				"url": "https://netmiko.com/dual-boot-linux-mint-20-with-windows-10/",
+				"articleBody": "Today I will walk you through the steps to dual boot Linux Mint with Windows 10. The version of Linux mint that I will be using is Linux Mint 20, which is the latest version of Linux Mint. Before starting the installation process let's see all the requirements you will need to fulfill to be able to install Mint.
+Flash Drive (USB) - You will need a flash drive that has at least 10GB of storage, try to use an empty Flash drive to avoid any conflict.Hard Disk - The hard disk on your computer must have at least 50GB of free space, this is to make sure that Linux mint runs properly. Besides, if you are going to use it a lot then you will need 50GB of space.Stable Internet connection -  You will need a stable internet connection to download Linux Mint and the flashing software.Once you have all these things ready, you can now proceed to the installation.
+			Download Linux Mint 		
+		The first step for us will be to download the ISO file of Linux mint, to do that you can either search for “Download Linux Mint” on google or directly go to their official website at - https://linuxmint.com/download.php. On the download page, you will need to select the edition of Linux Mint that you want, I will select the Cinnamon edition, as it is the most popular one. You can also select any edition of Linux mint you want, the installation process will remain the same. Click on download to continue. 		
+																														
+		You will be then redirected to the Linux Mint Cinnamon Edition page, where you will need to scroll down and find “Download Mirrors”, click on any of the mirrors that are closest to you. 
+Once you click on the mirror link, if you are using chrome or Firefox then you will get a popup asking you to either save the file or open it, click save file and your download will start.		
+																														
+			Download BalenaEtcher
+		
+		After downloading the Linux Mint ISO file, you will need to download BalenaEtcher, which is an open-source flashing tool to flash OS images on Flash drives and SD cards.To download Etcher first go to their website at - https://www.balena.io/etcher/, here click on the Download for windows button, the website will automatically detect your OS, in case if it doesn't then you can just use the down arrow on the right side of the download button and select the right version for your device.		
+																														
+		Just click “save file” and save the setup.exe of Etcher.
+			Install Etcher 		
+		Once the etcher setup.exe is downloaded, double click on it to run the setup wizard of Etcher, first you will need to agree to the license by clicking “I Agree”. This will start the installation of Etcher which will take a little bit of time, once installed it will open automatically.		
+			Flash Linux Mint ISO
+		
+		Now once Etcher is installed you can now flash the downloaded Linux Mint ISO file to the Flash drive, to do that first open Etcher.After that take your Flash drive and plug it in, now in etcher, you will need to click on “Flash from file”, this will open your file manager where you will need to select the downloaded Linux Mint ISO file, click on open to continue.
+																														
+		In “Select Target” you will need to select your Flash drive and after that click on “Flash!” to start the flashing process, you might get a popup from “Windows command processor” to allow something, just click yes and it will start the flashing.		
+																														
+		The flashing process will take a few minutes depending upon the speed of your flash drive. Once done you will now have a bootable USB with Linux Mint that you can use on any device that you want.NOTE: Sometimes you might get a popup asking you to erase your computer hard disk to be able to use it after flashing the USB, just close the popup and it will be fine.
+			Backup Windows (Optional)
+		
+		Now before installing Linux Mint on your computer you might wanna create a backup of your system, just to be on the safer side if something goes wrong. This step is optional but it's a good idea to create a backup.There are lots of videos on youtube that show you how you can create a backup of your Windows computer to external storage and restore it. So, I would recommend you to check them out.Once you have created a backup of your website, you can now start the installation of Linux Mint.
+			Boot into Linux Mint Live Mode from USB
+		
+		Okay so once everything is ready you can now start the installation of Linux mint. To do that, first, click on your Windows icon and click on “Restart”, now to install Linux mint we will need to enter the “Boot Menu”, I am using a Lenovo laptop so I will enter “F12” Rapidly during the restart to enter the Boot menu.You can google how you can enter the boot menu on your device if it's hp, Asus, Dell, or something else.In the Boot Menu, you will need to select the “UEFI” option using your arrow keys, do make sure that the Flash drive is connected to the computer. Press enter in “UEFI” to enter the GNU GRUB.		
+																														
+		
+		Here in gnu grub, you will see multiple booting options, the one that you will need to select is the “Start Linux Mint 20 Cinnamon 64-bit”, if you are facing any problem when using that booting option then you can try the “Start Linux Mint 20 Cinnamon 64-bit (Compatibility Mode)”. Press enter to continue.		
+																														
+		Once Linux Mint boots up, you will be in the live mode, which means that Linux mint is now running directly from your Flash Drive, now as we need a dual bootable computer where we can use both Linux Mint and windows, we will need to install Linux Mint instead of just running it on live mode.		
+			Install Linux Mint 		
+		To Install Linux Mint, you will need to first click on the “Install Linux Mint '' icon at the home screen of the Live mode, double click on it to start the installation of Linux mint.
+																														
+		After clicking on the “Install Linux Mint” icon you will be asked to select your language, select it and click continue. In “Keyboard Layout” select your keyboard language and click continue.In the next tab which is “Multimedia Codecs” you get an option to install the multimedia codecs required to play any video or audio in your Linux Mint, I recommend you to check it because sometimes you might need it, check the “Install Multimedia Codecs and click continue.In the “Installation Type” tab you will need to select what kind of installation you want to do, there will be two options, first one is “Install Linux Mint alongside Windows Boot Manager” which is the one that we will select as we want a dual boot Linux Mint Installation. 		
+																														
+		The second option is “Erase Disk and Install Linux Mint” which will erase everything we have on our hard disk and install Linux Mint, this option is used when you want to just install one OS on your computer.
+Select the “Install Linux Mint alongside Windows Boot Manager”  option and click on continueNow, after that in the “Install Linux Mint alongside Windows Boot Manager”  tab, you will need to choose how much storage you want to allocate to Linux Mint, use the slider and drag it to allocate storage. I recommend allocating at least 50 GB of storage for Linux Mint. 		
+																														
+		Once the required storage is allocated, click on “Install Now”. You might get a popup asking to “write the changes to Disk”, click on continue. This will start the installation of Linux Mint in the background. You still have some things to set.On the next tab select your time zone, after that you will have to now provide the login details and a few other things.
+Enter your name, your computer name (name it anything), a short username, a short but secure password. After that keep the other things to default, you can select Log in automatically if you don't want to enter a password for logging in. The installation will take a few minutes to complete, so just sit back and relax till then, once the installation finishes it will ask you to restart the computer, just click on Restart now to restart.It will ask you to remove your flash drive from the computer when it is restarting, so just remove your flash drive and click enter when asked, after that wait for it to automatically boot into Linux Mint, you don't need to press anything.		
+																														
+		Once your Linux Mint boots up, log in using your username and password, and check if everything is working perfectly or not. Things like the internet, apps, settings, etc.
+			Test Dual Booting		
+		Now that Linux Mint is working on your computer, it's now time to check whether Windows is working or not. First shut down your Linux Mint.Now to Boot into Linux Mint or Windows 10 you will need to select whether you want to boot into Linux or Windows at the boot menu that you will get when starting your computer.In the Boot menu if you want to boot into Linux Mint then select “Linux Mint 20 Cinnamon” and if you want to boot into Windows 10 then select “ Windows boot Manager”, select your OS and press enter to boot into that OS.		
+																														
+		Boot into windows and check if all the things are working or not, check your hard drive to see if you accidentally didn't delete everything stored there or something.
+And, that's it, that is how you can create a dual boot flash drive easily and Dual boot Linux Mint 20 with Windows 10. You can now use both the OS on the same computer without any problem…If you have any questions or have any problems then comment below. Thank you.		
+			FAQ - 		
+			Can I use a SD card to dual boot Linux Mint with Windows 10?		
+		Yes, you can easily use a SD card to flash Linux Mint in it and use it for Dual Booting, just make sure the SD card is empty and has plenty of storage and has faster transfer speed.		
+			Some things are not working after installing Linux Mint as dual boot.
+		
+		If things such as the internet, apps, etc are not working on your Linux Mint installation then you will need to try to install the compatibility mode version of Linux Mint, as there might be some compatibility issue.When booting into Live Mode of Linux Mint you get two options to boot into Linux Mint, the first one is the normal one and the second one is the “Start Linux Mint 20 Cinnamon 64-bit (Compatibility Mode)”, boot into compatibility mode and check if all things are working or not.
+If all things are working perfectly then proceed to install Linux Mint by following the steps given above.		
+			Fix System Rebooting Automatically to Windows.		
+		Now when starting your computer after installing Linux Mint, if your computer boots automatically into windows instead of showing the grub menu where you can select which OS you want to boot into then here is how you can fix that problem. To fix the problem all you will need to do is to move the Linux Mint up in the order in the GRUB menu, to do that first restart your computer and go into the boot by clicking F2/F12 OR F10 depending upon your computer brand multiple times. Now once you are in the boot menu. You will need to now select Linux Mint and move it to the top using the F5 key, after that press F10 to save it, once done you can exit the boot menu. This should fix the problem of the system automatically booting into windows.",
+				"headline": "How to Dual boot Linux Mint 20 with Windows 10",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-07",
+				"datePublished": "2021-12-20",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-07",
+				"dateModified": "2021-12-20",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -488,24 +745,11 @@ The program then checks the value of p (which is assigned the return value of th
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/python-program-to-check-prime-number-using-while-loop/">Python Program to Check Prime Number using while Loop</a></p>
+      <p><a href="https://netmiko.com/ezoic-access-now-approval/">How to Get Approved for Ezoic Access Now Easily</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code:
-print("Enter a Number: ", end="")
-n = int(input())
-
-p = 0
-i = 2
-while i&lt;n:
-    if n%i==0:
-        p = 1
-        break
-    i = i+1
-
-if p==0:
-    print("\n" +str(n)+ "...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-check-prime-number-using-while-loop/">Continue Reading</a></div>      </div>
+        <p>If you are thinking of switching from any other ad network to ezoic for monetization of your website, or just thinking of going for ezoic instead of AdSense on your first try, then this guide will...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/ezoic-access-now-approval/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -527,42 +771,66 @@ if p==0:
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "Python Program to Check Prime Number using while Loop",
-				"url": "https://netmiko.com/python-program-to-check-prime-number-using-while-loop/",
-				"articleBody": "Here is the Code:
-print(\"Enter a Number: \", end=\"\")
-n = int(input())
-
-p = 0
-i = 2
-while i&lt;n:
-    if n%i==0:
-        p = 1
-        break
-    i = i+1
-
-if p==0:
-    print(\"\n\" +str(n)+ \" is a Prime Number\")
-else:
-    print(\"\n\" +str(n)+ \" is not a Prime Number\")
-Explanation:
-This is a Python program that checks whether a number is prime or not. It uses a while loop to iterate over the range of numbers to check for divisibility.
-
-The program first prompts the user to enter a number and stores it in the variable n. It then initializes a variable p to 0 and a variable i to 2.
-
-The program then enters a while loop that continues as long as i is less than n. For each iteration, it checks if n is divisible by i. If n is divisible by i, it sets the value of p to 1 and breaks out of the loop. If n is not divisible by i, the program increments i by 1 and continues with the next iteration of the loop.
-
-After the while loop finishes executing, the program checks the value of p and prints the appropriate message.",
-				"headline": "Python Program to Check Prime Number using while Loop",
+				"name": "How to Get Approved for Ezoic Access Now Easily",
+				"url": "https://netmiko.com/ezoic-access-now-approval/",
+				"articleBody": "If you are thinking of switching from any other ad network to ezoic for monetization of your website, or just thinking of going for ezoic instead of AdSense on your first try, then this guide will help you in knowing all the things you will need to do to get approved for ezoic.In this guide, I will talk about ezoic monetization requirements, ezoic access now and will also discuss all the things you need to know to get started on ezoic monetization.
+			What is Ezoic		
+		Ezoic is an award-winning platform for publishers that has lots of different features and tools to help a publisher earn more revenue and also increase traffic. Ezoic uses AI to improve your earnings and uses tools like Leap, Tag tester, Video, etc, to increase your traffic.Overall ezoic is packed with all the features a website needs to keep growing faster. Now let's talk about what the ezoic Access Now is.		
+			What is Ezoic Access Now
+		
+		Ezoic Access Now program is a program for publishers that are getting less than 10000 visitors per month, which means that you don't need a lot of traffic to get approved for ezoic monetization.
+The ezoic access now program is aimed at improving the revenue and traffic of smaller websites that are just starting out, it gives plenty of optimization tools for a new website to improve their quality and revenue. It also provides you with informative materials on how you can grow your website.Tools like Ezoic Leap, Ezoic Edge, Ezoic Cloud, Intelliprotect, Videos, Big Analytics, Free WordPress hosting, etc, are some of the tools and features that you get if you sign up for Ezoic access now and get approved.Now if you have a small niche blog or an authority website with few visitors daily, then the ezoic access now program is the place to start, for earning some revenue and improving your website’s performance and quality.
+			Ezoic Monetization Requirements 		
+		Okay so, now let's talk about all the requirements you must fulfill to get approved for ezoic. Do read all the things and apply them to your blog/website to get approved for ezoic.		
+			1. Traffic - 
+		
+		Even though ezoic says that they don't require you to have a minimum of traffic to get approved for access now program, still it is a good thing to first get at least a few daily visitors from google because if there is no one to click on your ads, then there is no point of placing ads... Organic Google traffic is better for ezoic as it is of high quality, getting traffic from social media such as Facebook and Youtube will also work, but those will not be of high quality like organic.
+			2. Original Content
+		
+		Ezoic will only approve websites for their Access now program that have original content, content that is written by you with your knowledge, copying someone else’s content and rewriting it in your language will not work.Websites in a niche such as, news, lyrics, gambling, sports news, etc, that have little to no original content will not be approved for ezoic, other niches like tech, gardening, recipes will have a chance of getting approved if they write unique and original content. And YLYM (Your Money or Your Life) websites like health, finance will only get approved if they have enough E-A-T (Expertise, Authoritativeness, Trustworthiness).
+So, try to write content that is original, and that ranks well in google organic search. Content that doesn't provide any new value will not be accepted in ezoic access now.		
+			3. Authentic Traffic		
+		All the traffic that you get on your website must be Authentic, meaning that all the website visitors must be real humans and not bots. You cannot encourage someone to visit your website just to get a visitor. All the visitors that you get will need to visit your website for the service or info that you are providing.Using PBNs or Botnets to get website visitors are some of the things that you cannot do if you want to get approved for ezoic.Ezoic will check whether the traffic you get on your website is genuine or not, if it turns out to be fake and bots generated traffic, or just people visiting your website from social media with very low time on the page then you will not get approved for ezoic access now.
+Get Authentic traffic from google search by doing SEO and ranking your blog posts higher in the search engine.		
+			4. Content Categories
+		
+		All the content that you publish on your website must be legal and should follow google AdSense guidelines on google ads policy. Google has a few categories in which if you make content then your website might not be able to place ads or you might face some limitations on placing ads. You can read the full google ads policy here.Content that promotes, sells, or contains illegal info, products, are not eligible for ezoic, content that contains sexual materials, alcohol, copyrighted materials, or content made for kids is also not eligible for ezoic.
+Only write content that is legal and provides value to the already existing content on the internet.		
+			5. Site Navigation		
+		For visitors visiting your website, it should be easier to navigate your website without having to go through lots of things. For example, if your website is about pets and it has different categories like dogs, cats, hamsters, now if someone wants to go to the dog's category then the visitor should be able to do that easily.There should be proper menus with all the links to the content that you offer on your website, if possible also add a search bar to your website. Other things such as fonts and text colors on your website should be easier to read. Like, don't make the text color grey with the background color black. Keep the fonts at the medium size and don't choose some not easy to read fonts.
+Keep your website design simple and with proper menus and search bar.		
+			6. Public Content 		
+		All the content that you write on your website should be open to the public and should not be behind a paywall or login page.You cannot place ezoic ads on websites that need you to either pay to see the content on the website or need you to log in using any account to see the content. If you don't want to remove that then you will need to look for something else to monetize your content.Okay, so now that we have talked about the requirements, let's now see how we can apply for the ezoic access now program and get accepted for ezoic monetization.
+			Apply for Ezoic Monetization
+		
+		Now if you have fulfilled all the requirements for ezoic monetization then you can now proceed to create an account in ezoic, to begin first go to https://www.ezoic.com/ezoic-access-now/. On the registration page, after you enter your email and confirm the email, after entering your email you will need to enter your domain name here, click next to continue.		
+																														
+		After that, you will be asked what features of ezoic you want to use, just select all of the features and click on next. You will be redirected to the publisher dashboard of ezoic after that.		
+																														
+		On the publisher dashboard, you will need to watch all the videos that ezoic wants you to see for you to understand ezoic better, like what it is and how it helps your website. You will need to watch the whole video and after that below, you will be asked some questions, you will need to answer them to continue to the next video.
+Finish the whole course and after that in getting started, set up all the things you will need for ezoic to show ads on your website.		
+																														
+		The first thing will be to integrate your website with ezoic, to do that you can use Cloudflare, if you don't want complicated stuff then you can also use the ezoic WordPress plugin for integration.Once integrated you will need to apply for google ad exchange and ad manager, the process of getting approved for google ad exchange and ad manager generally takes between 1 - 2 days, so you will need to wait sometime for that.You will also need to set up the ads.txt for which you can follow this tutorial - How to setup Ads.txt in Ezoic Using Adstxt Manager.
+After that you will need to place at least ten placeholders on your website, placeholders are locations where ezoic will display ads. You can follow this guide on Ezoic placeholders setup - How to place Ezoic Placeholders on a WordPress website.The last thing after that will be to turn on traffic, which means proxying all the traffic you get from ezoic. Just turn on all three, desktop, tablet, and mobile.Now generally it takes around 10 working days for ezoic to review your website, so just wait until you get an email from them regarding your approval for ezoic monetization. Once you get approved, ads will start to show on your website.NOTE: It might take around 10 days for the earnings to show up on your dashboard.
+			Why was my Website Rejected by Ezoic?
+		
+		If you applied for ezoic monetization and ezoic rejected it then here are the possible reasons for it - Not original contentThin contentCopyrighted contentBad navigationDeceptive ContentNo trafficNot Ad friendly Not UniqueNot Original content - The content on your website is not original and is either scraped from others, spun content, or copied directly, if you did any of these violations then remove all those copied content and write original content yourself.Thin Content - The blog posts that you write on your blog are very short in length, which means it does not provide any value to the existing content. Try to write content that is at least 700+ words and satisfies the visitor's search intention.
+Copyrighted Content - The content that you write on your website has materials that are copyrighted and thus are not allowed to be used, things like song lyrics, images, videos, etc that are copyrighted will prevent ezoic from approving your website for monetization.Consider removing them and adding your own original images and videos.Bad Navigation - Bad navigation is also one of the reasons for not getting approved by ezoic, the review team must have found it difficult to navigate on your website. Make your blog design simple and clean, remove all the useless things to fix the problem. Deceptive Content - The content on your website might be deceptive, meaning that your website is claiming something and giving the user something else. Like if your blog post title is about “how to pet a cat” but when the user clicks on the post they see that the post is talking about “how to pet a dog” instead. 
+No Traffic - Traffic is something that you will need to get approved for ezoic monetization, you don't need a lot, but still, you will need at least 1000 visitors per month. So around 30 - 50 visitors per day. You can easily get that much traffic by doing SEO and sharing your blog posts on social media. No traffic = No earnings, so better get some traffic before applying for ezoic.Not Ad Friendly - Before you write something on your blog, think twice whether the topic that you are writing is suitable for regular users or not, things like sexual content, drugs, alcohol are some things you should not write about. Think twice then write.Not Unique - Now this is one of the most common reasons for getting rejected by ezoic, if your website is not unique enough then there are chances that your website might not get approved for ezoic. From unique, they mean writing on topics that are not oversaturated and competitive. 
+Don't create those spammy tech, recipe websites and think that you will get ezoic approval for that, try to create something unique. And these are the things that might be the reason for your ezoic monetization rejection.		
+			Conclusion - 
+		
+		Getting Approval from Ezoic is hard, but if you have a good amount of original and unique content then you can easily get approved for ezoic and show those premium ads on your website. Just remember to post original, unique, ads friendly posts and get a few visitors daily from google search and social media and you will get approved in no time. Thank you.",
+				"headline": "How to Get Approved for Ezoic Access Now Easily",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-07",
+				"datePublished": "2021-12-19",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-07",
+				"dateModified": "2021-12-19",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -580,22 +848,11 @@ After the while loop finishes executing, the program checks the value of p and p
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/python-program-to-check-prime-number-using-for-loop/">Python Program to Check Prime Number using for Loop</a></p>
+      <p><a href="https://netmiko.com/install-kali-linux-android-no-root/">How to Install Kali Linux on Android Phone without Root</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code:
-print("Enter a Number: ", end="")
-n = int(input())
-
-p = 0
-for i in range(2, n):
-    if n%i==0:
-        p = 1
-        break
-
-if p==0:
-    print("\n" +str(n)+ " is a Prime...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-check-prime-number-using-for-loop/">Continue Reading</a></div>      </div>
+        <p>Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to install on our android device is called...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-kali-linux-android-no-root/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -617,40 +874,84 @@ if p==0:
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "Python Program to Check Prime Number using for Loop",
-				"url": "https://netmiko.com/python-program-to-check-prime-number-using-for-loop/",
-				"articleBody": "Here is the Code:
-print(\"Enter a Number: \", end=\"\")
-n = int(input())
-
-p = 0
-for i in range(2, n):
-    if n%i==0:
-        p = 1
-        break
-
-if p==0:
-    print(\"\n\" +str(n)+ \" is a Prime Number\")
-else:
-    print(\"\n\" +str(n)+ \" is not a Prime Number\")
-Explanation:
-This is a Python program that checks whether a number is prime or not. A prime number is a positive integer greater than 1 that has no positive integer divisors other than 1 and itself.
-
-The program first prompts the user to enter a number and stores it in the variable n. It then initializes a variable p to 0.
-
-The program then uses a for loop to iterate over the range 2 to n-1 (i.e., from 2 to n exclusive). For each iteration, it checks if n is divisible by the current loop variable i. If n is divisible by i, it sets the value of p to 1 and breaks out of the loop.
-
-After the for loop finishes executing, the program checks the value of p. If p is 0, it means that n is not divisible by any of the numbers in the range 2 to n-1, so n must be a prime number. In this case, the program prints a message saying that n is a prime number. If p is 1, it means that n is divisible by at least one of the numbers in the range 2 to n-1, so n must not be a prime number. In this case, the program prints a message saying that n is not a prime number.",
-				"headline": "Python Program to Check Prime Number using for Loop",
+				"name": "How to Install Kali Linux on Android Phone without Root",
+				"url": "https://netmiko.com/install-kali-linux-android-no-root/",
+				"articleBody": "Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to install on our android device is called Kali NetHunter.What is Kali Nethunter -  Kali NetHunter is an Android-based penetration testing platform that provides an interactive and user-friendly environment to perform a variety of network security-related tasks.
+Kali NetHunter is a customized version of Kali Linux which has been pre-installed on an Android device. It includes all the tools present in the Kali Linux distribution, but it supports wireless networks and has been optimized for touchscreen devices.		
+			Download Requirements for Kali NetHunter 		
+		Before starting the installation process of Kali Linux on our Android device we will need to first download some requirements that we will need in order to run and install Kali Linux NetHunter.To download and install Kali Linux NetHunter will need to first install Termux, NetHunter-KeX client, and Hacker’s keyboard.
+Here termux is used to download and install Kali Linux NetHunter, NetHunter-KeX is used to run the GUI ( Graphical user interface ) and the hacker’s keyboard is a helpful virtual keyboard containing all the symbols required in the kali terminal.		
+			Download Termux - 
+		
+		To download Termux, first, open your google play store and search for \"Termux\", here click on Install to install the Termux app. You can also download and install the termux app from its official website at - https://termux.com. If you downloaded Termux from the play store then you might get a “repository under maintenance error” which you can fix by changing the repo of termux, just enter the command given below in the terminal - 		
+			termux-change-repo		
+		
+		This will display a popup where the main repository will be selected by default, now all you need to do is select all three repositories, main, game, and science. Once done click on “OK” to save it.		
+																														
+		After that you will need to select the mirror, the “official repositories” will be selected by default, change it to “Mirrors by Grimler” after that click on OK to save it.		
+																														
+		If you are still getting a repository under maintenance error then just download Termux from F-Droid, as the play store version of Termux is not maintained. Get Termux from F-Droid.
+			Download Kali NetHunter App Store & KEX -		
+		Kali Nethunter App Store is required to install all other things that we will need to install and run Kali NetHunter on our Android device.Download the Nethunter App store by going to https://store.nethunter.com/ and clicking on “DOWNLOAD STORE APP” which will download the NetHunter app store apk.		
+																														
+		Once downloaded, install the app and continue to the next step which is to download NetHunter kex.
+Open the NetHunter App Store and at the bottom, you will get a search button, search for Nethunter Kex, click on it and click on Install. 		
+																														
+		Once the download finishes you might need to allow NetHunter Store to install apps from unknown sources, open settings and allow it, and install NetHunter Kex.NetHunter kex is required to run Kali Linux Nethunter using the graphical user interface aka GUI. If you want you can also use Kali Linux using just its command line.
+			Download Hacker’s Keyboard -		
+		You can download Hacker’s Keyboard from Playstore or NetHunter App Store, just search for Hacker’s Keyboard on Play Store or NetHunter Play Store and download it and install it.After installing it, open it and follow the steps to set it up. NOTE: Hacker’s keyboard is optional, you can also use your default keyboard on Termux or Kali Linux.		
+			Install Kali Linux NetHunter		
+		Okay so now let us see how we can download and install Kali Linux NetHunter on our Android device using termux, to begin first open your termux app and update its packages.		
+			pkg update -y
+		
+		
+		Now setup the storage of termux using the command below, you might get a popup asking you to allow termux storage permissions, accept it to continue- 		
+			termux-setup-storage
+		
+		After that you will need to download and install wget which we will need to download kali Linux, you can download and install wget on termux using this command -		
+			pkg install wget -y
+		
+		Once wget is installed, you can now download kali, do note that in order to run and use Kali Linux NetHunter on your Android device you will need at least 10GB of free space, so make sure to have some empty storage for the installation. 		
+			wget -O install-nethunter-termux https://offs.ec/2MceZWr 		
+		
+		Once Kali Linux Nethunter finishes downloading you will need to make the downloaded file executable to install it, use this command to make the downloaded kali Linux file executable - 		
+			chmod +x install-nethunter-termux		
+		Now run the script which will download the full version of Kali Linux NetHunter, it will take a few minutes to complete, so keep the termux app in Foreground and wait for the installation to complete. 		
+			./install-nethunter-termux
+		
+		Once Kali Linux NetHunter is fully downloaded and installed it will ask you for input at the end of the installation process, the question will be “ Delete downloaded Rootfs file”, just enter “y” and click enter to finish the installation.		
+																														
+		
+		Once done, make sure to update kali packages using the command - 		
+			sudo apt update &amp;&amp; sudo apt full-upgrade -y
+		
+		And that's it, that's how you can install Kali Linux on your Android device without root, now after the installation finishes, you will be in the command line interface of Kali Linux where you can do anything you want. Use command “nethunter” to enter the CLI, or use “nethunter -r” to enter root.Now for users that want a GUI interface instead of using just the command line, you can follow the rest of the steps below.
+			Run Kali Linux NetHunter GUI 		
+		To use Kali Linux NetHunter in GUI mode, you will need to first set a kex password, you can set a kex password by entering the following command -		
+			kex passwd		
+		After entering the command, you will need to enter a password, verify the password, and once done you will need to type “kex” in the terminal to know your RFB Port.		
+			kex 
+		
+		After entering the kex command, in the terminal, you will get the RFB Port number.
+Now go back and open the NetHunter Kex app, here if it asks for storage permissions then allow it, after that on the right side of localhost:1 there will be a port number, you will need to remove the default port number and enter your RFB Port number here.After that below in the VNC Password, enter the kex password and click on “Connect” at the top right corner.		
+																														
+		You will now be in the GUI interface of Kali Linux NetHunter, you can use a mouse or your fingers to control it, it will work just like the Kali Linux PC, it will have everything that is available in the original Kali Linux.
+To exit Kali Linux NetHunter, go back to Temux and enter “kex stop” to stop the server. And that's it, that is how you can use Kali Linux NetHunter in GUI using NetHunter Kex. 		
+			Conclusion - 		
+		Installing and Running Kali Linux on your Android phone is very easy, it just takes a little bit of time and patience. You just need a good device with plenty of free space if you want to install Kali Linux. Thanks for reading, comment below if you are facing any problems.Do note that this tutorial is only for educational purposes and does not promote illegal activities that someone can do by following this tutorial. NETMIKO.COM will not be responsible for anything that might happen to your android device and others through this tutorial.
+			FAQ -		
+			How to Install Termux from F-Droid? 		
+		Did you downloaded Termux from the Playstore and is now unable to do anything because of errors? That happens because the play store version of Termux is not maintained anymore, meaning no one is updating it anymore. To get the latest version of Termux you can use F-Droid, to begin first go to - https://f-droid.org/packages/com.termux/. Here scroll down and in the latest version of Termux click on Download Now.This will download the latest version of Termux Apk which you can install and use.",
+				"headline": "How to Install Kali Linux on Android Phone without Root",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-07",
+				"datePublished": "2021-12-17",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-07",
+				"dateModified": "2021-12-17",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -673,7 +974,7 @@ After the for loop finishes executing, the program checks the value of p. If p i
 <a class="page-numbers" href="https://netmiko.com/blog/page/5/"><span class="screen-reader-text">Page </span>5</a>
 <a class="page-numbers" href="https://netmiko.com/blog/page/6/"><span class="screen-reader-text">Page </span>6</a>
 <span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="https://netmiko.com/blog/page/17/"><span class="screen-reader-text">Page </span>17</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/10/"><span class="screen-reader-text">Page </span>10</a>
 <a class="next page-numbers" href="https://netmiko.com/blog/page/5/">NEXT &raquo;</a></nav>
 </section>
 

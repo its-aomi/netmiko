@@ -38,7 +38,7 @@
 <link rel="prev" href="https://netmiko.com/blog/page/6/">
 <link rel="next" href="https://netmiko.com/blog/page/8/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/blog/","name":"Blog"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 3.99ms meta | 12.11ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 3.91ms meta | 12.63ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -143,21 +143,11 @@ img.emoji {
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/how-to-take-continuous-input-in-python/">How to Take Continuous Input in Python</a></p>
+      <p><a href="https://netmiko.com/install-ros-ubuntu/">How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code :
-print("Enter 10 Values: ")
-
-nums = []
-for i in range(10):
-    val = input()
-    nums.insert(i, val)
-
-print("\nYou've entered:")
-for i in range(10):
-    print(nums[i],...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/how-to-take-continuous-input-in-python/">Continue Reading</a></div>      </div>
+        <p>Today I will walk you through the steps to <strong>install ROS Noetic and ROS Melodic on your Ubuntu 20.04</strong>. The steps will be very easy and you should be able to complete the installation...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-ros-ubuntu/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -179,30 +169,221 @@ for i in range(10):
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "How to Take Continuous Input in Python",
-				"url": "https://netmiko.com/how-to-take-continuous-input-in-python/",
-				"articleBody": "Here is the Code :
-print(\"Enter 10 Values: \")
-
-nums = []
-for i in range(10):
-    val = input()
-    nums.insert(i, val)
-
-print(\"\nYou've entered:\")
-for i in range(10):
-    print(nums[i], end=\" \")
-
-print()
-Explanation:
-This is a simple Python program that prompts the user to enter 10 values, one at a time. It then stores the values in a list called nums. The for loop iterates 10 times, and on each iteration it uses the input() function to get the user's input and stores it in a variable called val. The insert() method of the nums list is used to insert the value of val at the index specified by the loop variable i.
-
-After the user has entered all 10 values, the program prints out the values that the user entered. It does this by using another for loop to iterate over the values in the nums list and printing each value using the print() function. The end parameter of the print() function is set to a space character so that the values are printed on the same line with a space between them. Finally, the program prints an empty line using the print() function with no arguments.",
-				"headline": "How to Take Continuous Input in Python",
+				"name": "How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-ros-ubuntu/",
+				"articleBody": "Today I will walk you through the steps to install ROS Noetic and ROS Melodic on your Ubuntu 20.04. The steps will be very easy and you should be able to complete the installation very quickly.Before we begin to see the Installation process of ROS, let's see what ROS is and why it is the preferred choice of many hobbyists, engineers, and robotics designers throughout the world.
+			What is ROS?		
+		Robot Operating System, in short “ROS” is an open-source framework for researchers and developers to build and reuse code between robotics applications. It is a collection of software libraries and frameworks used in robotics development.There is also ROS 2, which is the more advanced and newer version of the framework that has the features that were missing in the previous ROS. 		
+			Install ROS Noetic on Ubuntu 20.04 
+		
+		Okay, so the first ROS version that we are going to install is ROS Noetic Ninjemys. To begin, first, make sure you have root permissions on your ubuntu system as we need root permission to download and install ROS.
+			Add ROS Source List 		
+		The first step will be to add the ROS Source List to our ubuntu system so that we can easily download and install all the resources for ROS using our command terminal. Before adding the ROS source list to your ubuntu system, be sure to first update your ubuntu packages using the update command.		
+			sudo apt-get update
+		
+		After that, you can add the ROS source list by using the command below -
+			sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+		
+		After adding the source list run the update command again to refresh the ubuntu packages list.		
+			sudo apt-get update		
+			Add ROS Keys		
+		To be able to add the ROS keys, first install curl in your ubuntu. You can do that by using the command below-		
+			sudo apt-get install curl
+		
+		After installing curl, Copy-Paste the command given below in the terminal, if everything is working fine then you should see an output in the terminal that says “OK”, which means you can continue with the installation of ROS Noetic.		
+			curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -		
+																														
+		
+		After adding the ROS keys you can run the ROS Noetic installation commands that will start the installation process of ROS Noetic on your ubuntu.		
+			Download and Install ROS Noetic
+		
+		You can install the full version of ROS Noetic using the command given below which will download all the things you need for ROS Noetic, like GUI, 2D/3D simulators etc.		
+			sudo apt-get install ros-noetic-desktop-full -y
+		
+		Now, if you don't want to download all the extra features then you can just download the ROS-Base with this command - 
+			sudo apt-get install ros-noetic-desktop -y		
+		The full version of ROS Noetic is recommended as it will have all the features, packages, libraries that you might and will need. So, just download the full version of ROS Noetic which will take approximately 3GB of storage.		
+			ROS Noetic Environment Setup
+		
+		Now to be able to run ROS Noetic in your terminal you will have to source the setup.bash file in every terminal window you want to run ROS Noetic in. You can do that by entering the command given below in the terminal.		
+			source /opt/ros/noetic/setup.bash		
+		But, sourcing the bash file every time you open a new terminal will be very inconvenient, that's why you can automate this process by adding the source command to your bashrc file.
+You can echo the source command using the command given below -		
+			echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc		
+		ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (STARTS)Or, you can manually add the source command to your bashrc file using the gedit editor.		
+			gedit ~/.bashrc		
+		Add the “source /opt/ros/noetic/setup.bash” line to the end of the bashrc file, save and then exit.
+ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (ENDS)Once you have echo or added the source command to the bashrc file run the source command to finish the setup.		
+			source ~/.bashrc		
+		And, that's it. The installation of ROS Noetic is now complete. You can use the command “roscore” to verify the installation of ROS Noetic.		
+			Install ROS Melodic on Ubuntu 20.04 
+		
+		Okay so if you want to install ROS Melodic instead of ROS Noetic then here are the steps to do that.The installation steps are the same as ROS Noetic, with just a little bit of changes. Once you have added the source list and the ROS keys you can download ROS Melodic using the command below.
+			sudo apt-get install ros-melodic-desktop-full -y
+		
+		Or, you can download the smaller version of ROS Melodic which doesn't contain the extra features like 2D/3D simulator etc.		
+			sudo apt-get install ros-melodic-desktop -y
+		
+		Once ROS Melodic is downloaded and installed, finish the installation process by setting up the Environment variable. First add the source command to the bashrc file using echo command. 		
+			echo &quot;source /opt/ros/melodic/setup.bash&quot; &gt;&gt; ~/.bashrc
+		
+		This command will add the source command to the bashrc file, you can also add it manually by editing the bashrc file using the gedit editor.
+			gedit ~/.bashrc		
+		After that run the source command to finish the installation process of ROS Melodic.		
+			source ~/.bashrc		
+			Install Important Packages
+		
+		Now for both ROS Noetic and ROS Melodic you will need some common tools that are required to run and use some features of ROS. Here are the most common tools that you will need to install.python-rosdeppython-rosinstallpython-rosinstall-generatorpython-wstoolbuild-essential
+You can install all these tools and dependencies by using “sudo apt-get install &lt;tool-name&gt;” like -		
+			sudo apt-get install python-rosinstall
+		
+		Now, there is one tool that you will need a lot when using ROS, and that tool is rosdep. You can install rosdep by using the command given below - 		
+			sudo apt-get install python-rosdep
+		
+		After installing rosdep, run the following command to initialize rosdep. 		
+			sudo rosdep init
+		
+			rosdep update		
+		
+			Conclusion - 
+		
+		And that's it, that's how you can download, install and set up ROS Noetic and ROS Melodic on your ubuntu 20.04. If you have any questions regarding the installation process of ROS then be sure to comment below. Thank You.",
+				"headline": "How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-05",
+				"datePublished": "2021-11-21",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-05",
+				"dateModified": "2021-11-21",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-apache-spark-on-ubuntu/">How to Install Apache Spark on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today, in this post I will show you how you can install Apache Spark on Ubuntu 20.04. This will be a step-by-step tutorial on installing apache spark. Now let's start the tutorial.		
+			Create a...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-apache-spark-on-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install Apache Spark on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-apache-spark-on-ubuntu/",
+				"articleBody": "Today, in this post I will show you how you can install Apache Spark on Ubuntu 20.04. This will be a step-by-step tutorial on installing apache spark. Now let's start the tutorial.		
+			Create a Directory for Apache Spark 
+		
+		Okay, so the first step will be to create a new directory in the home directory where we will download and Install Apache Spark.
+You can create a new directory manually by going to your File Manager&gt;Home directory, then right click&gt;New Folder, name the folder “spark” and click on create.Or, you can create a new directory using the terminal by using the command given below - 		
+			mkdir -p spark		
+			Install Java Development kit (JDK)
+		
+		Now, to be able to run and use Apache Spark we will need Java JDK installed in our Ubuntu system. To check whether you have java installed on your Ubuntu you can run the following command in the terminal.
+			java --version		
+		If it says “Command “java” not found” then it means that java is not installed. To install java you can use the commands given below.		
+			sudo apt-get update
+		
+			sudo apt-get install default-jdk -y		
+		Close the terminal window and open a new terminal window, you can verify the installation of java by typing “java --version” in the terminal.		
+			Download Apache Spark
+		
+		You can download Apache Spark through a web browser or you can download it using the terminal. I’ll show you both ways, first, I’ll show you how you can download Apache Spark using the terminal. 
+			Download Apache Spark using Terminal 
+		
+		First, open your terminal and change your working directory to the “spark” directory that you created in the first step.		
+			cd spark
+		
+		Then using wget we will be downloading Apache Spark to that directory. To check if you have wget installed type ”wget --version” if the command is not found then install wget using the command -		
+			apt-get install wget
+		
+		After installing wget, enter the following command to install the latest version of Apache Spark, which is currently 3.2.0.
+			wget https://dlcdn.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
+		
+		Here we are installing Apache Spark version 3.2.0 with package type “Pre-built for Apache Hadoop 3.3 and later”.You can get links for different versions from https://spark.apache.org/downloads.html.		
+			Download Apache Spark using Browser 		
+		If you want to download Apache spark using the web browser then just go to this link here - https://spark.apache.org/downloads.html.
+Here select the version of Apache Spark you want to install in the first dropdown, in the second dropdown select the package type, after you select the version and package type of Apache Spark, you will get the download link in the 3rd line.		
+																														
+		Click on the download link, You will be redirected to another page with the download links for Apache Spark. Click on the top link to start the download. 		
+																														
+		You can also copy that link and download it from the terminal using wget.
+		After downloading Apache Spark, right-click the downloaded file and move it to the “spark” folder that you created in the home directory.		
+			Install Apache Spark In Ubuntu		
+		Now, the installation process of Apache Spark is very easy. The first step will be to untar the tar file that we downloaded. To do that, first, change your working directory to the “spark” directory if you haven't already.		
+			cd spark		
+		After that enter the following command shown below that will untar the tar file. “tar -xvf filename” is the command to untar the tar file, the file name will be the name of the downloaded tar file that you want to untar.
+			tar -xvf spark-3.2.0-bin-hadoop3.2.tgz
+		
+		After you untar the tar file, you will need to set up the environment variable path for Apache Spark. To do that first change your working directory to home directory using the command below -		
+			cd ~		
+		Now, after changing the directory, using the gedit editor edit the Bashrc file. 		
+			gedit ~/.bashrc
+		
+		This command will open the bashrc file in the gedit text editor, scroll down to the bottom of the bashrc file, and in the end add these lines -
+			SPARK_HOME=/home/username/spark/spark-3.2.0-bin-hadoop3.2
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+		
+		Change “username” to your own username, the file name at the end will be the name of the tar file that you untar-ed. After that on the top right corner click on the save button and exit the editor.Finish the installation by using the source command -		
+			source ~/.bashrc
+		
+		That’s it, the installation of Apache spark is now completed, close the current terminal window and open a new one.
+			Verify the Installation of Apache Spark
+		
+		Now, the last step in the installation of Apache Spark will be to verify whether Spark was installed correctly or not. You can do that by entering the following command in the terminal -		
+			spark-shell 		
+		If this command opens the Spark shell then it means that the Apache Spark installation was successful.		
+			Access Spark context Web UI		
+		You can access Spark Web UI by typing “spark-shell” in the terminal, which will start the Spark shell and also will give you the URL of Spark Context Web UI.
+ [lyte id='glF50MdXSdk' /]
+And, that is how you can install Apache Spark on Ubuntu 20.04. If you are facing any problem with the installation then comment below or contact me on Twitter. Thank you.		
+			FAQ -		
+			How to Uninstall or Remove Apache Spark from Ubuntu?
+		
+		You can remove or uninstall Apache Spark by deleting the directory where Apache Spark was installed. Open your File Manager and right-click on the Spark folder and click “Move to Trash”.
+You can also remove the directory using the terminal by using this command -		
+			rm -rf spark		
+			How to Fix Apache Spark crashing on Ubuntu?
+		
+		Whenever you are running Spark on your ubuntu, make sure that there is plenty of RAM available. Allocate at least 80% of your RAM to Apache Spark for its proper working.",
+				"headline": "How to Install Apache Spark on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-12",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-12",
         "image": {
           "@type": "ImageObject",
           "url": "",
@@ -225,16 +406,11 @@ After the user has entered all 10 values, the program prints out the values that
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/how-to-get-string-input-from-user-in-python/">How to Get String Input from User in Python</a></p>
+      <p><a href="https://netmiko.com/install-and-setup-anaconda-ubuntu/">How to Install and Setup Anaconda on Ubuntu 20.04</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code :
-print("Enter String: ", end="")
-val = input()
-print("\nYou've entered:", val)
-Explanation:
-This is a simple Python program that prompts the user to enter a string value. The...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/how-to-get-string-input-from-user-in-python/">Continue Reading</a></div>      </div>
+        <p>Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won't have any problem installing anaconda on your ubuntu...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-and-setup-anaconda-ubuntu/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -256,24 +432,81 @@ This is a simple Python program that prompts the user to enter a string value. T
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "How to Get String Input from User in Python",
-				"url": "https://netmiko.com/how-to-get-string-input-from-user-in-python/",
-				"articleBody": "Here is the Code :
-print(\"Enter String: \", end=\"\")
-val = input()
-print(\"\nYou've entered:\", val)
-Explanation:
-This is a simple Python program that prompts the user to enter a string value. The input() function is used to get the user's input, and the print() function is used to print out the string that the user entered. The end parameter of the print() function is set to an empty string so that the cursor does not move to the next line after the prompt is printed. This allows the user's input to be entered on the same line as the prompt. Once the user has entered their input and pressed the return key, the program will print out the string that the user entered.",
-				"headline": "How to Get String Input from User in Python",
+				"name": "How to Install and Setup Anaconda on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-and-setup-anaconda-ubuntu/",
+				"articleBody": "Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won't have any problem installing anaconda on your ubuntu system.		
+			Create a new directory for Anaconda		
+		Now, let's start the installation process. The first step will be to create a new directory in our home directory where Anaconda will be downloaded. Just to keep things organised.
+To create a new directory using the terminal use this command -		
+			mkdir -p anaconda
+		
+		Here, the \"anaconda\" is the name of the directory which you can name anything that you like.You can also create a new directory by going to your File Manager&gt;Home. After that right-click inside the Home directory and click on “New Folder”. 
+Name the folder “anaconda” and then click on create.		
+			Download Anaconda  		
+		Now, the next step will be to download Anaconda from its official website Anaconda.com. There are two ways to download anaconda, you can download it directly from its website or you can download it using the terminal.		
+			Download Anaconda using Browser - 		
+		Let me show you both the ways to download anaconda. First I'll show you how you can download anaconda directly from its website using a web browser.
+ Go to https://www.anaconda.com/products/individual#Downloads on your web browser and select the version of anaconda you want to install. Click on the 64-bit(x86) Installer. In the firefox download popup select “save file” and click “OK”. This will start the download of Anaconda.By default, the file will be downloaded to the Downloads folder. You will need to right-click the downloaded .sh file and then click on “move”. Then select the new anaconda folder that you created and move the downloaded .sh file to that folder.
+			Download Anaconda using Terminal -
+		
+		Now, let's see the steps to download Anaconda using the terminal. First, change your working directory to the directory where you want to download Anaconda.In our case its the folder that we created in the first step, so we will change our directory to that one using this command -		
+			cd anaconda
+		
+		After changing the working directory we’ll download anaconda to that directory using this command -
+			wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
+		
+		If you don't have wget installed on your ubuntu system then you can install it using “apt-get install wget”.Note: The download link keeps changing after the latest updates, so the above command might not work after some time. It's better to just download anaconda using the web browser or get the latest download link from here.		
+			Install Anaconda on Ubuntu 20.04 
+		
+		Before starting the installation process we will have to first “Verify the data integrity with SHA-256”.
+To do that, first go to https://docs.anaconda.com/anaconda/install/hashes/. Here click on the “64-bit Linux py3 ''.		
+																														
+		I have python 3 installed on my ubuntu that's why I have selected the py3 option, if you have python 2 then select the py2 one.After that click on the version of anaconda that you downloaded. In our case it will be - “Hashes for Anaconda3-2021.05-Linux-x86_64.sh” this will be different if you downloaded a different version of anaconda. Check the downloaded file for the version name.
+																														
+		Now here you will need to copy the hash shown at the right side of “sha256”. Copy it and paste it somewhere, we’ll need it after this step.		
+																														
+		Before proceeding to the next step, change your working directory to home directory. As our working directory was anaconda.
+			cd ~
+		
+		Now in the terminal, you will have to type this command - “sha256sum /1path/username/2path/filename” where 1path will be home, the username will be your username, 2path will be anaconda folder, the filename will be the name of the downloaded anaconda.sh file.		
+			sha256sum /home/username/anaconda/Anaconda3-2021.05-Linux-x86_64.sh		
+		Now after you enter this command in your terminal, there will be a hash shown in the terminal which you will need to compare with the hash shown on the website.		
+																														
+		If it matches then continue to the next step to install anaconda on ubuntu 20.04.
+Now, change your working directory to anaconda by using this command -		
+			cd anaconda		
+		After that in the terminal type “bash filename”. The file name will be the name of the anaconda file that you downloaded.		
+			bash Anaconda3-2021.05-Linux-x86_64.sh
+		
+		Press Enter, this will start the installation process.First press “enter” to continue then it will ask you to read the terms and agreement, hold and keep pressing enter to continue.
+Once the Agreement ends it will ask you to accept it. Enter “Yes” to continue. After accepting the agreement it will show you the location where anaconda will be installed. Press Enter to continue.It will take some time to finish the installation of anaconda, just before the installation finishes it will ask whether “You wish the installer to initialize Anaconda3 by running conda init”. Enter “Yes” to finish the installation of Anaconda on ubuntu. Now you will need to run the source command or close the activate terminal and open a new terminal window for anaconda to work.
+Type this command to verify the installation of Anaconda -		
+			conda --version
+		
+			Finish Anaconda Setup 		
+		Now after installing anaconda, by default every time you open a new terminal, your terminal will have the base environment activated with it like “(base) username@root:~$” in the terminal.Which you can activate or deactivate by using the command shown below. 
+			conda config --set auto_activate_base True 
+		
+		Or		
+			conda config --set auto_activate_base False
+		
+		Here, if you set it “True” then new terminal windows will have the base environment activated automatically. If you set it “False” then it won't. Close the terminal and open a new one to see the change.If this post helped you in installing anaconda then be sure to share it with others that need it. If you are facing any problem while installing anaconda then comment below or contact me through email at - netmikoblog@gmail.com. Thank you.
+ [lyte id='ezxtBEYAHsk' /]
+			FAQ -
+		
+			Q1. How to Uninstall Anaconda on Ubuntu 20.04?
+		
+		You can uninstall Anaconda by typing “rm -rf ~/anaconda3” in the terminal. If you want to fully uninstall Anaconda and its related files then in a terminal type “conda install anaconda-clean” and after that type “anaconda-clean --yes”.",
+				"headline": "How to Install and Setup Anaconda on Ubuntu 20.04",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-05",
+				"datePublished": "2021-11-10",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-05",
+				"dateModified": "2021-11-10",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -291,21 +524,11 @@ This is a simple Python program that prompts the user to enter a string value. T
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/how-to-get-a-character-input-from-user-in-python/">How to Get a Character Input from User in Python</a></p>
+      <p><a href="https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/">How to Fix Postman Crashing on Startup in Ubuntu</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code :
-print("Enter a Character Value: ", end="")
-
-val = input()
-
-if len(val)==1:
-    print("\nYou've entered:", val)
-else:
-    print("\nInvalid Input!")
-Explanation:
-This is a...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/how-to-get-a-character-input-from-user-in-python/">Continue Reading</a></div>      </div>
+        <p>Today in this post I will talk about how we can fix the crashing of Postman on ubuntu during startup and also during regular usage. I will show you some common causes and also some technical ones...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -327,29 +550,44 @@ This is a...</p>
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "How to Get a Character Input from User in Python",
-				"url": "https://netmiko.com/how-to-get-a-character-input-from-user-in-python/",
-				"articleBody": "Here is the Code :
-print(\"Enter a Character Value: \", end=\"\")
-
-val = input()
-
-if len(val)==1:
-    print(\"\nYou've entered:\", val)
-else:
-    print(\"\nInvalid Input!\")
-Explanation:
-This is a simple Python program that prompts the user to enter a single character value. The input() function is used to get the user's input, and the len(val) function is used to check if the length of the input is equal to 1 (i.e., if the user has entered a single character). If the length of the input is 1, then the program prints out the character that the user entered. If the length of the input is not 1, then the program prints out an \"Invalid Input!\" message.",
-				"headline": "How to Get a Character Input from User in Python",
+				"name": "How to Fix Postman Crashing on Startup in Ubuntu",
+				"url": "https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/",
+				"articleBody": "Today in this post I will talk about how we can fix the crashing of Postman on ubuntu during startup and also during regular usage. I will show you some common causes and also some technical ones that might be the reason for the postman software to crash on your ubuntu system. I will provide you with the solutions for all those problems in this post.
+Okay, let's now start and see the possible causes of the postman crash and also fix it.		
+			1. Update Postman 
+		
+		Now, this is the first thing that you should do. Go to the Postman downloads page and download and update to the latest version of postman right away.Because the reason for the crash might be some glitch in the software that is in your version of postman, updating postman will help in fixing the crash if it was caused by any bug or glitch.
+			2. Uninstall and Reinstall
+		
+		If updating postman didn't help then you should try uninstalling and reinstalling the postman software. Now before you uninstall postman, make sure that you have made backups of collections, environments, data dumps, and globals stored, etc. You will lose the data stored in postman if you uninstall it without backup.
+		You can easily import those backups after you have installed a fresh version of postman.Now after you have uninstalled postman from your system you will have to delete all the files that were stored in postman. You can find these files in the directory where you installed postman. You should do this because we want a fresh installation of postman and don't want any files from the previous installation.
+After deleting the old files, install the latest version of postman and import your data. This method should fix the crashing if something was wrong with the postman software. If it's still not fixed then see the other possible causes below.		
+			3. Prevent Conflicts Between Programs 		
+		During the Ubuntu startup, is there a different program that is also running in the background or foreground along with postman? 
+Chances are that a single program or multiple programs are creating conflict during the startup processes that is making postman to crash.To fix this, what you can do is that you can close all other programs and just run postman alone. Also turn off auto start for all other programs. This will make sure that during the startup process only postman runs.		
+			4. Increase Your RAM 
+		
+		So how much RAM does your device have, 2gb? 4gb? Because chances are that you might be running out of RAM, and that's causing postman to not run properly and thus it is crashing.
+This happens because during the startup process, lots of different programs are also trying to start which means everyone is hungry for RAM.This is a very common problem with users that use Ubuntu in a virtual box. Because the RAM is very limited in the virtual box as you are sharing it with your windows computer. Giving the virtual box a little more RAM can help.But if you are not using a virtual box to run Ubuntu, then you will have to upgrade your pc or laptop’s ram in order to fix this.
+			4. Check Compatibility -		
+		Now, this is something that is not that common because these days almost every pc will be able to run postman. But if you are using an old pc then there might be a little bit of chance that postman is not compatible with your pc.If your pc is not old then you can try the other methods to fix the crash of postman on Ubuntu.		
+			5. Disable Antivirus -		
+		Are you using an antivirus on your computer? Like Bitdefender, quick heal, etc.? Then there might be a very high chance that during the installation process of postman some important files were removed from postman software.
+This is a very common problem when installing any software on a computer with antivirus installed and running during any software installation. Sometimes the antivirus software will detect safe files as unsafe during the installation process and then remove them from the installation process. This means that your installation will be completed but the installed software like postman will have some important files missing.This can cause lots of different problems like crashing and missing features. So, that's why whenever installing any trusted software from a trusted site make sure you disable the antivirus.
+Note: Only disable antivirus for trusted software downloaded from trusted sources.		
+			Conclusion - 
+		
+		Okay, so that is how you can Fix Postman Crashing on Startup in Ubuntu. It's very easy to fix the crash, just follow the steps shown above and you will have your problem fixed.The most common reasons for postman crashing on ubuntu are due to low memory and due to missing files. Which you can fix by uninstalling and reinstalling postman with antivirus disabled.Thank you for reading, comment below if you need any help.",
+				"headline": "How to Fix Postman Crashing on Startup in Ubuntu",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-05",
+				"datePublished": "2021-11-06",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-05",
+				"dateModified": "2021-11-06",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -367,19 +605,11 @@ This is a simple Python program that prompts the user to enter a single characte
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/how-to-get-floating-point-input-from-user-in-python/">How to Get Floating-point Input from User in Python</a></p>
+      <p><a href="https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/">How to Run Localhost on Android and Install WordPress in it</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code :
-print("Enter a Floating-point Value: ", end="")
-
-try:
-    val = float(input())
-    print("\nYou've entered:", val)
-
-except ValueError:
-    print("\nInvalid...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/how-to-get-floating-point-input-from-user-in-python/">Continue Reading</a></div>      </div>
+        <p>Do you know that you can run localhost on your Android device? Well, it’s very easy to run a local webserver on your android device using an app that you can download from the play store.  So, in...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -401,31 +631,71 @@ except ValueError:
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "How to Get Floating-point Input from User in Python",
-				"url": "https://netmiko.com/how-to-get-floating-point-input-from-user-in-python/",
-				"articleBody": "Here is the Code :
-print(\"Enter a Floating-point Value: \", end=\"\")
-
-try:
-    val = float(input())
-    print(\"\nYou've entered:\", val)
-
-except ValueError:
-    print(\"\nInvalid Input!\")
-Explanation:
-This code is prompting the user to input a floating-point value and attempting to store it in a variable called val. It is using a try block to handle the case where the user's input cannot be converted to a floating-point value. In that case, a ValueError exception will be raised and the code in the except block will be executed, printing an error message. If the input can be converted to a floating-point value, it will be stored in val and a message will be printed along with the value.
-
-&nbsp;",
-				"headline": "How to Get Floating-point Input from User in Python",
+				"name": "How to Run Localhost on Android and Install WordPress in it",
+				"url": "https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/",
+				"articleBody": "Do you know that you can run localhost on your Android device? Well, it’s very easy to run a local webserver on your android device using an app that you can download from the play store.  So, in this post, we’ll see how we can run localhost on our Android device and also install WordPress on it. After setting this up, we will be able to access our webserver at “http://0.0.0.0:8080” and also be able to access our WordPress website.
+To be able to run a localhost web server on our android device, we will use an app called “AWebServer”. This app is available on the play store and this app will help us make a local webserver on our device.		
+			Install AWebServer App -
+		
+		To begin, first, open your play store and then search for “AWebServer”. Install the app that's developed by slykat.
+Now open the AWebServer app. When you first open the app, the app will install its components which will take a little bit of time. After that, it will ask you for storage permissions, allow it.After the app installation finishes, go to your file manager and create a new folder where our webserver files will be stored.		
+			Create a New Folder -
+		
+		Now after the installation of the app finishes we will have to create a local folder on our device where the webserver files will be stored.
+First, open any file manager that you use, now once you are inside the file manager, go to internal storage.Inside the internal storage create a new folder, I am using ES File Explorer so here are the steps -Open ES File Explorer and then go to Internal Storage. Here click on the three dots at the top right corner. Click on “+ New” then select Folder.Enter the folder name as “www” then click on “OK”. The folder will be now created.Now follow the rest of the steps below to finish setting up the AWebServer App.
+			
+						Download ES File Explorer 
+					
+			Change Root Folder -
+		
+		Now that we have installed the AWebServer app and also created a new folder for it, we’ll need to change the Document root address to the new folder instead of the default one, so that we can easily add and remove files from our local web server.First, open the web server app and then click on the Document Root “Select” option. Now select “Internal” then click on OK.		
+																														
+		Here select the www folder that you created and then click on the “SELECT” button. That's it. The app setup is now complete and you can now start the webserver. 
+			Start the Local Web Server -
+		
+		After installing and finishing the setup of the AWebServer app, to start the web server all we have to do is to click on the “Start” button at the right side of Service.After the web server starts, you can access the server by going to the HTTP address shown at the top. It will be like - “http://0.0.0.0:8080”.		
+																														
+		Now, by default, there will be nothing in that address and you will only see the index of the files inside the “www” folder that you created. So, let's create an index.html file for the root address.
+			Create an Index.html File for Root -
+		
+		Open the ES File Explorer then go to Internal Storage. Now scroll down and go inside the “www” folder that you created.Once you are inside the www folder click on the three dots at the top right corner. Then click on “+ New” and select File.Name the file “index.html” and then click on OK. After creating the index.html file click on it. Here you will have lots of options to select from, but what you need to select is “ES Note Editor” and then click on “This Time Only”. After the file opens, click on the Edit button at the top bar.		
+																														
+		
+Then copy-paste the HTML code from below or add your own HTML code.		
+			&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;
+    HOME
+        &lt;/title&gt;
+    &lt;/head&gt;
+&lt;/body&gt;
+    HOME
+&lt;/body&gt;
+&lt;html&gt;
+		
+		After pasting the HTML code click on the Save button at the top.Now if you access the webserver by going to http://0.0.0.0:8080 you'll see that it has changed to what you added to your index file.
+Okay, so that's how you can run a localhost web server on your android device easily. Continue reading below if you want to know how you can host WordPress in a localhost web server on android.		
+			Install and Setup WordPress on Localhost Android -
+		
+		Okay, so now that we have completed the setup of the local web server, let's install WordPress on it.To install WordPress on localhost on our android device we will first have to download WordPress from the official website of WordPress, which is wordpress.org. Go to this website and click on “Get WordPress”.
+Scroll down a little and then click on the “Download WordPress” button. After the download finishes, open ES File Explorer. Go to Internal Storage then inside the downloads folder.Now click on the downloaded wordpress.zip file and then open it using ES Zip Viewer. Go inside the WordPress folder and long-press one folder. After that, you will get the option to “select all” at the top. Click that and select all.		
+																														
+		Now click on the Extract option at the bottom. And then select the “Choose Path” option. After that click on the /sdcard/ and select the “www” folder, then click on OK twice.
+Wait for the extraction to complete. After the WordPress file extraction finishes go to the www folder and there will be a new folder called “WordPress”. Go inside the WordPress folder and select all the files inside of it. Then move all the files from /www/wordpress/ to just the “www” folder. Make sure to delete the index.html file that we created in the www folder.Now open the AWebServer app.Here in the app go to the MySql option and then click on the start button. Now, open your browser and go to “http://0.0.0.0:8080/mysqladmin/”. Here login to your PHPMyAdmin dashboard by entering your password and username. The default username and password for PHPMyAdmin is “root”.
+After logging in to your PHPMyAdmin click on the Databases option at the top. Now in “database name” type the name as “website” which will be the database name. Just below the database name select the language. Click on the dropdown and then look for “utf8_general_ci” and select it, then click on create.		
+																														
+		After creating the database go to http://0.0.0.0:8080/wp-admin/, here follow the WordPress instructions to complete the installation of WordPress on localhost in android.The database name will be “website”, password and username will be “root” and the Database Host will be 0.0.0.0:3306
+After following all the steps your website will be available at - “0.0.0.0:8080” and its admin dashboard will be available at “0.0.0.0:8080/wp-admin”.And that is how you can run localhost on android and also install WordPress on it. The steps are easy and you can easily follow them. If you liked this post and this post helped you in any way, then make sure to comment below and also share it with your friends. Thank You.",
+				"headline": "How to Run Localhost on Android and Install WordPress in it",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-05",
+				"datePublished": "2021-10-28",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-05",
+				"dateModified": "2021-10-28",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -443,17 +713,11 @@ This code is prompting the user to input a floating-point value and attempting t
 <article class="article-card horizontal no-thumb">
     <div class="copy-container">
     <header>
-      <p><a href="https://netmiko.com/how-to-get-integer-input-from-user-in-python/">How to Get Integer Input from User in Python</a></p>
+      <p><a href="https://netmiko.com/install-cplex-ubuntu/">How to Install IBM CPLEX on Ubuntu 20.04</a></p>
     </header>
       <div class="excerpt">
-        <p>Here is the Code :
-print("Enter an Integer Value: ", end="")
-val = int(input())
-
-print("\nYou've entered:", val)
-Explanation:
-This code is prompting the user to input an integer value and...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/how-to-get-integer-input-from-user-in-python/">Continue Reading</a></div>      </div>
+        <p>In this post, I will walk you through the steps on how you can install IBM CPLEX on Ubuntu 20.04.Here are the steps to Install IBM CPLEX on your Ubuntu -Download CPLEXInstall CPLEX Edit the Bashrc...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-cplex-ubuntu/">Continue Reading</a></div>      </div>
     <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
   </div>
 <!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
@@ -475,99 +739,86 @@ This code is prompting the user to input an integer value and...</p>
 			{
 				"@context": "http://schema.org/",
 				"@type": "BlogPosting",
-				"name": "How to Get Integer Input from User in Python",
-				"url": "https://netmiko.com/how-to-get-integer-input-from-user-in-python/",
-				"articleBody": "Here is the Code :
-print(\"Enter an Integer Value: \", end=\"\")
-val = int(input())
-
-print(\"\nYou've entered:\", val)
-Explanation:
-This code is prompting the user to input an integer value and storing it in a variable called val. Then it is printing a message along with the value of val that was entered by the user. The end parameter in the print() function allows you to specify what should be printed at the end of the line. In this case, it is an empty string so that the next output appears on the same line as the prompt.",
-				"headline": "How to Get Integer Input from User in Python",
+				"name": "How to Install IBM CPLEX on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-cplex-ubuntu/",
+				"articleBody": "In this post, I will walk you through the steps on how you can install IBM CPLEX on Ubuntu 20.04.Here are the steps to Install IBM CPLEX on your Ubuntu -Download CPLEXInstall CPLEX Edit the Bashrc fileFinish, Run CPLEX
+			Download IBM CPLEX - 		
+			Download directly using Browser -		
+		Okay, so the first step will be to download the IBM CPLEX bin file. You can download CPLEX by Going to this link here - http://www.mysmu.edu/faculty/hclau/is421.htmlHere select the .bin file for Linux 64-bit if your system is 64-bit. If it's 32-bit then you can go to the (OLD) Installation Package section and download the 32-bit version from there.You can also alternatively download CPLEX by going to IBM’s official website - https://www.ibm.com/products/ilog-cplex-optimization-studio. Here select the version you need. The free edition or the academic edition. 
+After downloading the CPLEX bin file, create a new folder and move the bin file to the new folder that you created. Name the folder “cplex”.		
+			Download using Terminal -
+		
+		To download IBM CPLEX using the terminal follow these steps - NOTE: You'll need root permission to be able to download CPLEX using the terminal. Download it directly from the internet if you don't have root permissions.
+1. Open the terminal, first update and upgrade your ubuntu using the command -		
+			sudo apt-get update
+		
+			sudo apt-get upgrade
+		
+		2. Create a new directory where we will download the CPLEX bin file. This is to make things organized instead of installing everything here and there.		
+			mkdir -p cplex		
+		This command will create a new directory called “cplex” in your ubuntu.
+3. Change the working directory to “cplex”.		
+			cd cplex		
+		4. After changing the directory you can download CPLEX to that directory using the command given below.		
+			wget http://www.mysmu.edu/faculty/hclau/CPLEX/cplex_studio128.linux-x86-64.bin
+		
+		If your ubuntu system don't have wget installed then you can install it using this command - 
+			sudo apt-get install wget
+		
+		After the download completes change your working directory back to the previous one -		
+			cd ..
+		
+		Once the download completes you can now follow the steps below to install CPLEX on ubuntu.		
+			Installing IBM CPLEX -
+		
+		Now let's see the installation process. To install CPLEX we will have to first run and execute the bin file that we downloaded. 
+But before that, we’ll have to change our working directory to the one where we downloaded the bin file.		
+			cd cplex
+		
+		After changing the directory we will execute the bin file. To do that we will run the following command-		
+			bash /home/username/cplex/cplex_studio128.linux-x86-64.bin 		
+		Here in the place of “username” type your own username.After executing the bash file follow the instructions of the installation process.
+Here it will ask you to select your language, select English by entering number 2. Choose different numbers for different languages as shown in the installation window. Click Enter.After that enter number “1” to accept the user agreement. Now here it will ask you to enter an ABSOLUTE PATH to install CPLEX on your system. You should give the path where you downloaded CPLEX. In our case, it will be -		
+			/home/username/cplex/CPLEX_Studio128
+		
+		After entering the absolute path, press enter and then enter “y” to continue. Follow the remaining steps shown in the terminal. 
+Now, after it asks you to press Enter to exit the installer. Press enter which will finish the installation.		
+			Edit Bashrc File -		
+		After that, now we will have to edit the bashrc file. To edit the bashrc file first change your working directory to the directory where you installed CPLEX. As we were already in the “cplex” directory we will use this command -		
+			cd CPLEX_Studio128
+		
+		Now, after changing the working directory we’ll edit the bashrc file using the gedit editor- 
+			gedit ~/.bashrc
+		
+		This command will open the bashrc file in the text editor where we will need to scroll down to the bottom of the file and add this line -		
+			export PATH=$PATH:/home/username/cplex/CPLEX_Studio128/cplex/bin/x86-64_linux
+		
+		Here, change “username” to your own username.Now after adding the following line in the file, click on the Save button at the top of the editor and then click on the close button.
+			Finish and Run CPLEX -		
+		Now after saving the file in the terminal type this command to finish the installation process of IBM CPLEX.		
+			source ~/.bashrc
+		
+		And, that's it. You can now run CPLEX on your Ubuntu by typing “cplex” in your terminal.		
+			cplex		
+		 [lyte id='c9uVSaQkd8o' /]
+			Frequently Asked Questions - 
+		
+			Do I need Root permission to install CPLEX ?
+		
+		No, you don't need root permission to install CPLEX. You can install it without root permission.
+			How do I download CPLEX from the IBM website?
+		
+		To download CPLEX from the IBM website you will need to first go to this link here. Now on the IBM website, we’ll need to select the Free Edition or the Academic Edition. After that, you'll need to create an IBM account after which you can download CPLEX from there.",
+				"headline": "How to Install IBM CPLEX on Ubuntu 20.04",
 				"author": "Aomi Bora",
-				"datePublished": "2023-01-05",
+				"datePublished": "2021-10-22",
 				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-05",
+				"dateModified": "2021-10-22",
         "image": {
           "@type": "ImageObject",
           "url": "",
-          "height": 0,
-          "width": 0        },
-				"publisher": {
-					"@context": "http://schema.org/",
-					"@type": "Organization",
-					"name": "NETMIKO.COM",
-          "logo":{
-             "@type":"ImageObject",
-             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
-             "width":600,
-             "height":60
-          }
-				}
-			}
-</script>
-
-<article class="article-card horizontal no-thumb">
-    <div class="copy-container">
-    <header>
-      <p><a href="https://netmiko.com/simplest-way-to-receive-user-input-in-python/">Simplest Way to Receive User Input in Python</a></p>
-    </header>
-      <div class="excerpt">
-        <p>Here is the code:
-print("Enter your Text: ")
-val = input()
-
-print("\nYour Text is :", val)
-<strong>Explanation:</strong>
-
-This code will prompt the user to enter some text, and then it will...</p>
-<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/simplest-way-to-receive-user-input-in-python/">Continue Reading</a></div>      </div>
-    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
-  </div>
-<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
-<!--  <meta itemprop="image" src="--><!--">-->
-<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
-<!--    <meta itemprop="name" content="--><!--">-->
-<!--  </span>-->
-<!--  <meta itemprop="logo" src="--><!--">-->
-<!--  <meta itemprop="headline" content="--><!--">-->
-<!--  <meta itemprop="author" content="--><!--">-->
-<!--  <meta itemprop="datePublished" content="--><!--">-->
-<!--  <meta itemprop="dateModified" content="--><!--">-->
-
-
-</article>
-
-
-<script type="application/ld+json">
-			{
-				"@context": "http://schema.org/",
-				"@type": "BlogPosting",
-				"name": "Simplest Way to Receive User Input in Python",
-				"url": "https://netmiko.com/simplest-way-to-receive-user-input-in-python/",
-				"articleBody": "Here is the code:
-print(\"Enter your Text: \")
-val = input()
-
-print(\"\nYour Text is :\", val)
-Explanation:
-
-This code will prompt the user to enter some text, and then it will store the text in a variable called val. The user's text will then be printed out to the console.
-
-The input() function is a built-in Python function that allows the user to enter text input. When the input() function is called, the program will pause and wait for the user to type in some text and then press the enter key. The text that the user enters is then stored as a string in the variable val.
-
-The print() function is a built-in Python function that prints out a message to the console. In this case, the message is the string \"Your Text is :\", followed by the value of the val variable. The print() function automatically adds a newline after the message, so the next output will be displayed on a new line.",
-				"headline": "Simplest Way to Receive User Input in Python",
-				"author": "Aomi Bora",
-				"datePublished": "2023-01-05",
-				"mainEntityOfPage": "False",
-				"dateModified": "2023-01-05",
-        "image": {
-          "@type": "ImageObject",
-          "url": "",
-          "height": 0,
-          "width": 0        },
+          "height": ,
+          "width":         },
 				"publisher": {
 					"@context": "http://schema.org/",
 					"@type": "Organization",
@@ -590,8 +841,7 @@ The print() function is a built-in Python function that prints out a message to 
 <span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>7</span>
 <a class="page-numbers" href="https://netmiko.com/blog/page/8/"><span class="screen-reader-text">Page </span>8</a>
 <a class="page-numbers" href="https://netmiko.com/blog/page/9/"><span class="screen-reader-text">Page </span>9</a>
-<span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="https://netmiko.com/blog/page/17/"><span class="screen-reader-text">Page </span>17</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/10/"><span class="screen-reader-text">Page </span>10</a>
 <a class="next page-numbers" href="https://netmiko.com/blog/page/8/">NEXT &raquo;</a></nav>
 </section>
 

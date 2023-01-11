@@ -11,31 +11,13 @@
 	<atom:link href="https://netmiko.com/comments/feed/" rel="self" type="application/rss+xml" />
 	<link>https://netmiko.com</link>
 	<description>News &#38; Tech</description>
-	<lastBuildDate>Mon, 24 Oct 2022 18:05:55 +0000</lastBuildDate>
+	<lastBuildDate>Sun, 12 Jun 2022 15:40:11 +0000</lastBuildDate>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=6.1.1</generator>
 	<item>
-		<title>
-		Comment on Hello world! by A WordPress Commenter		</title>
-		<link>https://netmiko.com/hello-world/#comment-1</link>
-
-		<dc:creator><![CDATA[A WordPress Commenter]]></dc:creator>
-		<pubDate>Mon, 24 Oct 2022 18:05:55 +0000</pubDate>
-		<guid isPermaLink="false">https://netmiko.com/?p=1#comment-1</guid>
-
-					<description><![CDATA[Hi, this is a comment.
-To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.
-Commenter avatars come from &lt;a href=&quot;https://en.gravatar.com/&quot;&gt;Gravatar&lt;/a&gt;.]]></description>
-			<content:encoded><![CDATA[<p>Hi, this is a comment.<br />
-To get started with moderating, editing, and deleting comments, please visit the Comments screen in the dashboard.<br />
-Commenter avatars come from <a href="https://en.gravatar.com/">Gravatar</a>.</p>
-]]></content:encoded>
-		
-			</item>
-		<item>
 		<title>
 		Comment on How to Install and Setup Anaconda on Ubuntu 20.04 by AOMIE		</title>
 		<link>https://netmiko.com/install-and-setup-anaconda-ubuntu/#comment-28</link>
@@ -193,6 +175,20 @@ This method is now not working for everyone. You should look for alternative met
 Try to install sra again, you might have missed a step or miss typed something.]]></description>
 			<content:encoded><![CDATA[<p>In reply to <a href="https://netmiko.com/install-sra-toolkit-in-ubuntu/#comment-4">Firdaus</a>.</p>
 <p>Try to install sra again, you might have missed a step or miss typed something.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on How to Install SRA Toolkit in Ubuntu 20.04 by Victor		</title>
+		<link>https://netmiko.com/install-sra-toolkit-in-ubuntu/#comment-5</link>
+
+		<dc:creator><![CDATA[Victor]]></dc:creator>
+		<pubDate>Sat, 16 Apr 2022 22:14:47 +0000</pubDate>
+		<guid isPermaLink="false">https://netmiko.com/?p=457#comment-5</guid>
+
+					<description><![CDATA[Thank you, you helped me a lot.]]></description>
+			<content:encoded><![CDATA[<p>Thank you, you helped me a lot.</p>
 ]]></content:encoded>
 		
 			</item>
