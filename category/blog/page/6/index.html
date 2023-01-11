@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+		<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-196633016-1"></script>
+	<script type="rocketlazyloadscript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-196633016-1');
+	</script>
+
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Category: Blog &#x2d; Page 6 &#x2d; NETMIKO.COM</title>
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Category: Blog &#x2d; Page 6">
+<meta property="og:url" content="https://netmiko.com/category/blog/page/6/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Category: Blog &#x2d; Page 6">
+<link rel="canonical" href="https://netmiko.com/category/blog/page/6/">
+<link rel="prev" href="https://netmiko.com/category/blog/page/5/">
+<link rel="next" href="https://netmiko.com/category/blog/page/7/">
+<!-- / The SEO Framework by Sybre Waaijer | 2.51ms meta | 10.59ms boot -->
+
+
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Comments Feed" href="https://netmiko.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Blog Category Feed" href="https://netmiko.com/category/blog/feed/">
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	
+
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+.main-c {display: flex;margin-bottom:10px;}.main-iframe {flex: 1;height:350px;}@media only screen and (min-width: 768px) {.main-c {display: flex;}.main-iframe {flex: 1;height:350px;}.iframe-container {position: relative;height: 350px;}.iframe-container iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}}code {background-color: #eee;}.wp-block-code::before {content: "Click Code to Copy";display: block;color: red;margin-top: -25px;margin-bottom: 25px;margin-left:-7px;padding: 10px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223 {width: 350px;}.cnt223 {min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 30px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top: -100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}#download a {color: #fff;text-decoration: none;}.wp-block-image {box-shadow: 0 0 0 1px #444;}h2.widget-title {font-size: 1.2rem;padding: 0.4em 0;}body.home .articles-wrapper>h2 {font-size: 1.2rem;padding: 0.4em 0;}.article-card header p {font-weight: 700 !important;font-size: 20px !important;margin-bottom: 10px;text-align: center;}h3 {margin-bottom: 10px;}strong {font-weight:600 !important;}@media only screen and (min-width: 768px) {h2 {margin-bottom: 20px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223{min-width: 600px;width: 600px;min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 15px 35px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top:-100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}}.lyte-wrapper::before {content: 'Watch the Video';display: block;background-color: #444;color: #f5f5f5;padding-left:5px;}.lyte-wrapper {margin-left: -1px !important;}.lyte, .lyMe {border: 5px solid #444;}.image-container {border: 5px solid #444;}</style>
+
+<style id="rocket-lazyload-inline-css" type="text/css">.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://netmiko.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/categories/10">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml">
+<script type="rocketlazyloadscript">document.createElement( "picture" );if(!window.HTMLPictureElement && document.addEventListener) {window.addEventListener("DOMContentLoaded", function() {var s = document.createElement("script");s.src = "https://netmiko.com/wp-content/plugins/webp-express/js/picturefill.min.js";document.body.appendChild(s);});}</script><meta name="description" content="">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+</head>
+
+
+<body class="archive paged category category-blog category-10 paged-6 category-paged-6 hfeed no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="300" height="125" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20125'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp"><noscript><img width="300" height="125" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" sizes="(max-width: 300px) 100vw, 300px"></noscript></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-1670" class="menu-item menu-item-type-taxonomy menu-item-object-category current-menu-item menu-item-1670"><a href="https://netmiko.com/category/blog/" aria-current="page">Blog</a></li>
+<li id="menu-item-1666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1666">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-1668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1668"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-1669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1669"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-1667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1667"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<header class="page-header">
+				<h1 class="page-title">Category: <span>Blog</span>
+</h1>			</header><!-- .page-header -->
+
+			<section class="articles-wrapper">
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-tableau-server-ubuntu/">How to Install Tableau Server on Ubuntu 18.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I'll walk you through the steps to Install Tableau Server on Ubuntu 18.04. You can easily install a Tableau server on your ubuntu device after following this tutorial. Now before we see the...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-tableau-server-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install Tableau Server on Ubuntu 18.04",
+				"url": "https://netmiko.com/install-tableau-server-ubuntu/",
+				"articleBody": "Today I'll walk you through the steps to Install Tableau Server on Ubuntu 18.04. You can easily install a Tableau server on your ubuntu device after following this tutorial. Now before we see the installation process of tableau server, let's see what tableau is.Tableau Server - is a web-based data analysis tool that allows for the analysis of data in a wide variety of formats. It also enables users to create interactive dashboards that can be published on the internet.
+			Download Tableau Server
+		
+		Okay, so the first step is to download the tableau server. You can download Tableau using the terminal or directly from the official website. I'll first show you how you can download tableau using the terminal -		
+			Download Tableau Server using terminal  
+		
+		We will use wget to download tableau, so make sure you have wget installed on your ubuntu. You can check whether you have wget installed on your ubuntu or not by using this command -		
+			wget --version		
+		After entering the above command you will get an output in the terminal which will say something like “ GNU wget 1.20.3 built on linux-gnu “ this means that wget is installed, if it says command not found then it means wget is not installed on your ubuntu.
+You can install wget on your ubuntu 18.04 by using the command -		
+			sudo apt-get install wget		
+		After installing wget, change your working directory to home using the command “cd ~” after that enter the command given below in the terminal which will start the download of Tableau server deb file.		
+			wget https://downloads.tableau.com/tssoftware/tableau-server-2021-3-4_amd64.deb 
+		
+		The size of the Tableau server is 2.5GB, so it will take some time to finish downloading depending upon your internet connection.Get the latest version of Tableau Server from here.
+			Download Tableau Server using Web Browser 		
+		To download tableau server using your web browser, first, open your web browser and paste this link in the web browser - https://www.tableau.com/downloads/server/deb This is the direct download link for Tableau Server. After downloading the Tableau server deb file, move the downloaded file from the Downloads folder to the home directory, as by default anything you download using the browser will be downloaded to the downloads directory.After moving the file start the Tableau Services Manager to install the tableau server.
+			Start Tableau Services Manager
+		
+		After downloading the Tableau server, in your terminal type the following commands to first update the index packages.		
+			sudo apt-get update
+sudo apt-get upgrade
+		
+		After that, we will need to install GDebi-core which we use for installing local deb packages. You can install gdebi-core by entering this command in the terminal - 		
+			sudo apt-get -y install gdebi-core		
+		After gdebi-core finishes downloading and installing, use gdebi to install the downloaded Tableau server deb file. The format for this will be - \"sudo gdebi -n downloaded-file-name\"For us, it will be this one - 		
+			sudo gdebi -n tableau-server-2021-3-4_amd64.deb 
+		
+		
+		Wait for it to finish installing the tableau deb file, it will take some time. Now to start the Tableau Services Manager we’ll have to run the “./initialize-tsm” file located at the path “/opt/tableau/tableau_server/packages/scripts_version/initialize-tsm”.After the installation of the tableau deb file, at the end of the installation, you will get an output in the terminal that will give you the command that you will need to enter for a single node or initial node installation. It will be in this format - “sudo /opt/tableau/tableau_server/packages/scripts_version/initialize-tsm --accepteula”.		
+																														
+		Copy the command shown in the terminal and enter it.
+Once this finishes you can now use the web installer to finish the installation process of Tableau server.Connect to the web interface of Tableau server by going to http://your-server-ip:8850 or if you want to run it locally then its http://tableau:8850 or http://localhost:8850 		
+			Login, Register and Setup Tableau Server
+		
+		After going to the web address of the Tableau server, you will be asked to first log in. Log in using your username and your password. After logging in you will be on the Activation page of Tableau, here if you have a product key then enter it. If you don't, then at the bottom you will get the option to try Tableau for free for 14 days. Click on “Start Tableau Server Trial” to continue.
+After that, you will be on the Register page where you will need to enter all the information that is asked there, and after that click on Register.Now here on the Setup page, select the identity store. I have selected “local” here. After that click on Initialize to Start the Initialization process of the Tableau server. Now the Initialization will take some time to finish like 10 min or something.After initialization finishes, you will be asked to create a Tableau server Administrator Account. To do that open your terminal and paste the command given below - 		
+			tabcmd initialuser --server 'localhost:80' --username 'your_username_here' 
+		
+		Add a username of your choice and log in to your Tableau server using this username. 
+And that's it, that's how you can Install Tableau Server on your ubuntu 18.04. If you found this tutorial helpful then be sure to comment below and also subscribe to my youtube channel here.		
+			FAQ - 		
+			Is Tableau server supported on Ubuntu 20.04 ?
+		
+		No, currently Tableau server is not supported on ubuntu 20.04. However, the developers of tableau have said that they are working on making tableau server supported on other versions of ubuntu. They said that 2 years ago, so I don't think the Tableau server for ubuntu 20.04 is coming anytime soon.",
+				"headline": "How to Install Tableau Server on Ubuntu 18.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-12-02",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-12-02",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/increase-file-upload-size-wordpress/">How to Increase Maximum Upload file Size in WordPress [cPanel, Apache and Nginx]</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Having problems because of the limited upload size on your WordPress site?? Don't worry, I'll show you how you can increase the maximum upload file size in your WordPress site to anything you...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/increase-file-upload-size-wordpress/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Increase Maximum Upload file Size in WordPress [cPanel, Apache and Nginx]",
+				"url": "https://netmiko.com/increase-file-upload-size-wordpress/",
+				"articleBody": "Having problems because of the limited upload size on your WordPress site?? Don't worry, I'll show you how you can increase the maximum upload file size in your WordPress site to anything you like.Now before we dive into the solution, you should know why your upload limit is very low on your WordPress website.
+The reason why the maximum upload file size is low for you is because you are probably using shared hosting, now the problem with shared hosting is that, shared hosting is trash… It's slow, it will crash if you don't have proper caching and if you overuse the resources they will just suspend your account.And that's the reason there’s a limit to the file upload, which is to prevent excessive use of resources that slows the shared hosting server.Okay so now let's start with the most popular method to increase upload size.
+			Increase Maximum Upload file Size in cPanel - 
+		
+		If you are using any sort of managed web hosting like shared hosting then you will get a cPanel dashboard from where you can control all the things of your website and host which means that you can change anything you like on your website. To begin, first, go to your web hosting provider and search for cPanel or hPanel. Now log in to your cPanel and search for “MultiPHP ini Editor”		
+																														
+		Click on the “MultiPHP ini Editor” and after that select your domain name from the drop-down menu. 
+																														
+		After selecting your domain you’ll get a few PHP directives shown below. Here you will need to change the values of “post_max_size” and “upload_max_filesize”. Change the values to whatever you need. NOTE: Change only the number and keep the “M” at the end like “250M”.		
+																														
+		After changing the values to your desired choice, click on the apply button at the bottom which will save the settings. Now if you go to your WordPress admin dashboard then you will see the changes		
+			Increase Maximum Upload file Size in Apache server		
+		Now, if your WordPress website is hosted on cloud hosting with an apache server then here are the steps that you can follow to increase the maximum upload file size.
+To begin first open Filezilla, once opened log in to your apache server using your IP, username, and password. Use port 22 and click on Quick Connect.Here we will have to find the php.ini file. Most of the time the file path for the \"php.ini\" file is “/etc/php/&lt;php_version&gt;/apache2/php.ini”.Here “php_version” is the version of PHP that your WordPress site is currently using. You can see which version of PHP your website is using by going to WordPress admin &gt; Tools &gt; Site health, there go to the “Info” tab and scroll down, and select server. You’ll see the PHP version your website is using.
+Now go back to Filezilla and go inside the PHP version folder that your website is using, where you will find the php.ini file.		
+																														
+		Right-click the php.ini file and click on download. After the download finishes, open the php.ini file with notepad or any other file editor that you use. Inside the php.ini you will need to search for “post_max_size” and “upload_max_filesize”. You can do that by using CTRL+F. Change the values to whatever you want and save the php.ini file.		
+																														
+		
+		After that go back to FileZilla and upload the php.ini file back to the path from where you downloaded it. A popup will appear saying “a file with that name already exists”, select the “Overwrite” option and click on “OK” to continue. 		
+																														
+		Once the file is uploaded, right-click and refresh. Now for the changes to work, you'll need to log in to your apache server using putty or directly from the cloud console of your hosting provider. Once logged in paste the command given below in the terminal and press enter - 		
+			service apache2 restart 		
+		
+		This command will restart your apache server and all the changes that you made will show in the frontend. After restarting your server, close the cloud shell and go back to your WordPress dashboard. Refresh the WordPress admin to see the changes.		
+			Increase Maximum Upload file Size in NGINX
+		
+		Now if your WordPress website is hosted on cloud hosting and with an Nginx server then here are the steps to increase maximum upload file size in Nginx.First, open FileZilla and login to your Nginx server, the file path for the php.ini in the Nginx server is “/etc/php/&lt;php_version&gt;/fpm/php.ini”. Go to this file path and download the php.ini file. 
+Open the downloaded php.ini with notepad and search for “post_max_size” and “upload_max_filesize”, change the values to whatever you want like change 8M to 200M and save the file.Go back to FileZilla and upload the edited php.ini file to the path from where you downloaded it. Select “overwrite” in the popup to continue. Once the file upload is finished, log in to your Nginx server using putty or directly from your cloud console. After logging in enter the command given below in the shell- 		
+			sudo nano /etc/nginx/nginx.conf
+		
+		
+		This command will open the nginx.conf file in the nano editor. Now all you need to do here is to add this line below “http”- 		
+			client_max_body_size 100M;
+		
+																														
+		After pasting the line in the nginx.conf file, save the file, and exit from the nano editor by using CTRL+X, it will ask you to save the file first which you can do by pressing “y”.Once the file is saved, paste the two commands given below one by one in the shell to finish.		
+			service php7.4-fpm reload
+service nginx reload
+		
+		
+		After this go back to your WordPress website and refresh it to see the changes.		
+			Increase Maximum Upload file Size using Plugin		
+		If you don't want to do all that technical stuff to just increase the maximum upload file size in your WordPress website then what you can do is that you can use a plugin called “WP Increase Upload File Size | Increase Maximum Execution Time”. It's a free plugin that you can use that can get the job done easily. Download the plugin from here - https://wordpress.org/plugins/wp-maximum-upload-file-size/#installation After downloading the plugin., log in to your WordPress admin dashboard and go to Plugins&gt;Add new. Upload the plugin and activate it. You can also search for this plugin directly from your wordpress admin by going to Plugins&gt;Add new, search for “WP Increase Upload File Size | Increase Maximum Execution Time”, Install and activate.
+																														
+		After activating the plugin you can go to the plugin settings from the admin menu on the left.Go to the plugin settings and from the dropdown select the Maximum Upload File Size and after that click on “save changes”, which will change the Maximum Upload File Size for your WordPress site.		
+																														
+		NOTE: Now using a plugin to change something on your WordPress site is easy, but watch out, sometimes you might break your site. When using cloud hosting you have more risk of breaking your site by uploading new plugins, this has happened to me a lot of times. Before uploading or changing a critical part of your WordPress site be sure to backup your site to external storage.
+		And that is how you can increase the maximum upload file size of a WordPress website that is using Apache, Nginx, and shared hosting Cpanel. If you have any questions or you are getting stuck on any step then comment below, thank you.		
+			FAQ - 		
+			Unable to locate php.ini in Apache and NGINX server.
+		
+		If you are using Apache server than the php.ini file will be located at “/etc/php/&lt;php_version&gt;/apache2/php.ini” and if you are using nginx then the location will be “/etc/php/&lt;php_version&gt;/fpm/php.ini”, but if yours is not there then try to find it in the “/etc/php/” directory, it will take some time but if you search all the folders inside that directory then you will eventually get the php.ini file.
+			Is it safe to increase the maximum upload size limit on your WordPress website ?
+		
+		Depends, if you are just increasing it a few mb or by a lot. There’s a reason the web hosting providers put a limit to the upload size. Increasing it by a lot can crash your wordpress website if it's on shared or cheap hosting.Now most of the people want to increase the upload size limit because they are unable to upload high quality images to their website, but if you are doing this to be able to upload videos then don't, you'll crash your website. If you want to host videos then buy vps servers or host it on youtube.For an average website like mine, you just need a maximum upload size of 64MB. You don't need more than that.  ",
+				"headline": "How to Increase Maximum Upload file Size in WordPress [cPanel, Apache and Nginx]",
+				"author": "Aomi Bora",
+				"datePublished": "2021-12-01",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-12-01",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/upload-profile-video-facebook-working-latest/">How to Upload Profile Video on Facebook [ 2022 Working Method ]</a></p>
+    </header>
+      <div class="excerpt">
+        <p>
+A Facebook profile video is a feature that is getting more and more popular on Facebook these days. Uploading a profile video on Facebook is an excellent way to make your page unique and...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/upload-profile-video-facebook-working-latest/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Upload Profile Video on Facebook [ 2022 Working Method ]",
+				"url": "https://netmiko.com/upload-profile-video-facebook-working-latest/",
+				"articleBody": "A Facebook profile video is a feature that is getting more and more popular on Facebook these days. Uploading a profile video on Facebook is an excellent way to make your page unique and memorable.
+
+
+
+It's a good way to introduce yourself to the people who don't know you and showcase your personality and display your style...
+
+
+
+
+
+
+
+Introducing yourself with a video on Facebook can be beneficial for your career or personal life. It helps you connect with potential partners, employers, new friends, and old friends alike.
+
+
+
+
+
+
+
+Why you are Unable to upload Profile Video
+
+
+
+Now if you can't upload a Facebook profile video to your Facebook account then it's because the feature of adding profile videos has been removed from Facebook in its latest versions, due to which users are unable to add videos to their profiles.
+
+
+
+And that is why I have made this blog post which will show you how you can add a profile video on Facebook. This is a working method that you can try, it will take less than 5 min so keep reading.
+
+
+
+
+
+
+
+How to Add Profile Video on Facebook
+
+
+
+Now as you know that in the latest versions of Facebook the \"Select profile video\" option has been removed, so in order to enable that option, we’ll have to download an older version of Facebook.
+
+
+
+You have to download the Facebook apk to add a profile video to your Facebook account.
+
+
+
+Click on the link below  👇👇👇 to visit our apk download page from where you can download Apks &amp; Mod Apks.
+
+
+
+Download Apks from Our Site
+
+
+
+
+
+
+
+Now before installing the downloaded older Facebook app, you'll have to first uninstall the Facebook app installed on your device.&nbsp;
+
+
+
+Before uninstalling the Facebook app, make sure that you remember the login info of your account as uninstalling the Facebook app will delete all the data associated with it.
+
+
+
+So if you had any login info saved, it will be deleted. After backing up your login info uninstall the latest version of Facebook and install the one that I gave you the link to.
+
+
+
+Once installed, open the Facebook app and go to your profile, here now click on the profile picture, and this time you'll see both the option to Select&nbsp;Profile Video and Take new Profile Video.
+
+
+
+
+
+
+
+After selecting your desired profile video, wait for it to upload and after it finishes uploading and you see your profile picture live on Facebook, exit the app and go to the playstore.&nbsp;
+
+
+
+In the playstore search for Facebook and click on the update button. This will update the Facebook app to the latest version but the profile video will remain, this way you won't miss on any new feature in new facebook versions and you'll also have a profile video.
+
+
+
+If you want you can continue using the old version of Facebook.
+
+
+
+
+
+
+
+Facebook Profile Video Size and Time limit
+
+
+
+Okay, so there's currently no limit on the video size that you can use as a profile video but there's actually no point in uploading a 4k profile video as the uploaded video will be compressed by Facebook.
+
+
+
+This means the size of the video that you upload will be reduced along with its quality. That's why just create a 1080p video and use it as a profile video.
+
+
+
+Now, when it comes to the time limit there’s a time limit on the length of the video that you can use as a profile video, and the limit is 7 seconds. This means whatever video you upload,&nbsp; it will be reduced to just 7 seconds.
+
+
+
+
+
+
+
+Select Profile Picture along with Profile Video
+
+
+
+Now when you are using a profile video then you won't be able to select a profile picture without removing the profile video.&nbsp;
+
+
+
+When using a profile video, the static profile picture will be selected from the 0.1 seconds of the profile video. This means that whatever you had at the start of the profile video will automatically become your static profile picture.
+
+
+
+
+
+
+
+Upload Video Profile picture on Facebook using PC
+
+
+
+If you are using the web version of Facebook then you won't be able to add profile video to your Facebook account. You'll need the mobile app to upload and add a profile video in both android and IOS.
+
+
+
+If you have any more questions then comment below. Thank you.
+
+
+
+[lyte id='_w2Oj-pxBoQ' /]
+
+
+
+FAQ -
+
+
+
+How do I fix the “App not Installed” error while Installing old Facebook app?
+
+
+
+If you are getting the ‘App not Installed’ error then it means that you have not uninstalled the other Facebook installed on your device. First, uninstall the current Facebook app then install the old one.&nbsp;
+
+
+
+If it still doesn't work then your device probably doesn't support that version of Facebook. Comment below with your device os and I'll give you the link for the supported version of Facebook.",
+				"headline": "How to Upload Profile Video on Facebook [ 2022 Working Method ]",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-29",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-29",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-weka-ubuntu/">How to Install Weka on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will walk you through the steps to Install Weka on Ubuntu 20.04. The installation process is very easy and you should be able to finish the installation of Weka in less than 5 mins.		
+			What...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-weka-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install Weka on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-weka-ubuntu/",
+				"articleBody": "Today I will walk you through the steps to Install Weka on Ubuntu 20.04. The installation process is very easy and you should be able to finish the installation of Weka in less than 5 mins.		
+			What is Weka 3?		
+		According to the official website of Weka. Weka is a Machine Learning Software and a collection of machine learning algorithms. It contains tools for data preparation, association rules mining, visualization, etc.
+			Install and Setup Weka on Ubuntu 20.04
+		
+			Install Java JRE and Java JDK 
+		
+		Now, to be able to run and use Weka, our Ubuntu System needs Java JRE and Java JDK installed. To check whether you have java installed on your system or not you can use the command given below in the terminal.		
+			java --version
+		
+		This will output the version of java installed on your ubuntu system. If you don’t have java installed then the output in the terminal will say “Command 'java' not found”. Now to install java JRE on your ubuntu you will first have to update your package index using this command -
+			sudo apt-get update		
+		After that you can Install Java JRE using this command -		
+			sudo apt install default-jre -y
+		
+		And you can Install Java JDK using this command -		
+			sudo apt install default-jdk -y
+		
+		Once both Java JRE and Java JDK are installed, you can verify the installation using the command “java --version” and “javac -version”.
+			Download Weka
+		
+		After installing Java you can now download Weka. You can download weka using your web browser or using the terminal. I'll show you both the ways to download weka.		
+			Download Weka using Terminal		
+		Before downloading Weka using the terminal, first create a new directory where we will install Weka. To do that first make sure you are in the home directory. Use “cd ~” to change the working directory to home. After that use the command given below to create a new directory-
+			mkdir -p weka		
+		Once done, you can now download Weka using wget. If you don't have wget installed then you can install wget using this command -		
+			sudo apt-get install wget
+		
+		After that you can download the Weka zip file using the this command - 		
+			wget https://prdownloads.sourceforge.net/weka/weka-3-8-5-azul-zulu-linux.zip
+		
+		As you are currently in the Home directory, Weka Zip file will be downloaded to the Home directory and not in the downloads directory. 
+After downloading the zip file you'll have to unzip the zip file. To do that use these commands to install unzip and extract the Weka zip file -		
+			sudo apt-get install unzip
+		
+			unzip weka-3-8-5-azul-zulu-linux.zip		
+		After unzipping the Weka zip, move all the files from the unzipped folder to the “weka” folder that we created in the first step. To do that first open your file manager and go inside the unzipped weka zip file. It will be named “weka-3-8-5” go inside that folder and using your mouse select all the files stored inside of it. Then right click and select “Copy” after that go back to home directory and go inside the “weka” directory, right click and paste.
+			Download Weka using Web Browser 		
+		To download Weka using your web browser, first go to this link here - https://prdownloads.sourceforge.net/weka/weka-3-8-5-azul-zulu-linux.zip   This is the direct download link for the Weka zip file.If you are using Firefox browser then you'll get a popup asking whether to “Save File” or “Open With” select Save File and click on OK, which will start the downloading.Once the download is complete go to your Downloads directory and locate the “Weka-3-8-5-azul-zulu-linux.zip”. Right-click on the zip file and click on the Extract here option.
+This will unzip the zip file. Once unzipped, right-click the unzipped file and click on “Move to”. Select the home directory and move the Weka unzipped folder to the home directory.Now, here in the Home directory create a new folder called “weka” by right clicking &gt; New Folder, name the folder weka and click on create. After that, copy all the files from the “weka-3-8-5” folder to the “weka” folder.
+			Run Weka 
+		
+		Now once you have downloaded Weka you can start using it. First, make sure to change your working directory to the weka directory that we made using “cd weka”. After that run this command to run weka -		
+			cd weka		
+			./weka.sh		
+		
+		Once you enter this command in the terminal weka will start and you can start using it right away. Now if you want to run weka again in a new terminal window then here is the simple step to do that.cd weka./weka.shAnd that's it, that is how you can download and install Weka Machine Learning Software on Ubuntu 20.04. If you have any questions regarding the download and installation process of weka then comment below. Thank you. [lyte id='nLjvWNDmu0Y' /]",
+				"headline": "How to Install Weka on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-25",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-25",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-ros-ubuntu/">How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will walk you through the steps to <strong>install ROS Noetic and ROS Melodic on your Ubuntu 20.04</strong>. The steps will be very easy and you should be able to complete the installation...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-ros-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-ros-ubuntu/",
+				"articleBody": "Today I will walk you through the steps to install ROS Noetic and ROS Melodic on your Ubuntu 20.04. The steps will be very easy and you should be able to complete the installation very quickly.Before we begin to see the Installation process of ROS, let's see what ROS is and why it is the preferred choice of many hobbyists, engineers, and robotics designers throughout the world.
+			What is ROS?		
+		Robot Operating System, in short “ROS” is an open-source framework for researchers and developers to build and reuse code between robotics applications. It is a collection of software libraries and frameworks used in robotics development.There is also ROS 2, which is the more advanced and newer version of the framework that has the features that were missing in the previous ROS. 		
+			Install ROS Noetic on Ubuntu 20.04 
+		
+		Okay, so the first ROS version that we are going to install is ROS Noetic Ninjemys. To begin, first, make sure you have root permissions on your ubuntu system as we need root permission to download and install ROS.
+			Add ROS Source List 		
+		The first step will be to add the ROS Source List to our ubuntu system so that we can easily download and install all the resources for ROS using our command terminal. Before adding the ROS source list to your ubuntu system, be sure to first update your ubuntu packages using the update command.		
+			sudo apt-get update
+		
+		After that, you can add the ROS source list by using the command below -
+			sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+		
+		After adding the source list run the update command again to refresh the ubuntu packages list.		
+			sudo apt-get update		
+			Add ROS Keys		
+		To be able to add the ROS keys, first install curl in your ubuntu. You can do that by using the command below-		
+			sudo apt-get install curl
+		
+		After installing curl, Copy-Paste the command given below in the terminal, if everything is working fine then you should see an output in the terminal that says “OK”, which means you can continue with the installation of ROS Noetic.		
+			curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -		
+																														
+		
+		After adding the ROS keys you can run the ROS Noetic installation commands that will start the installation process of ROS Noetic on your ubuntu.		
+			Download and Install ROS Noetic
+		
+		You can install the full version of ROS Noetic using the command given below which will download all the things you need for ROS Noetic, like GUI, 2D/3D simulators etc.		
+			sudo apt-get install ros-noetic-desktop-full -y
+		
+		Now, if you don't want to download all the extra features then you can just download the ROS-Base with this command - 
+			sudo apt-get install ros-noetic-desktop -y		
+		The full version of ROS Noetic is recommended as it will have all the features, packages, libraries that you might and will need. So, just download the full version of ROS Noetic which will take approximately 3GB of storage.		
+			ROS Noetic Environment Setup
+		
+		Now to be able to run ROS Noetic in your terminal you will have to source the setup.bash file in every terminal window you want to run ROS Noetic in. You can do that by entering the command given below in the terminal.		
+			source /opt/ros/noetic/setup.bash		
+		But, sourcing the bash file every time you open a new terminal will be very inconvenient, that's why you can automate this process by adding the source command to your bashrc file.
+You can echo the source command using the command given below -		
+			echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc		
+		ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (STARTS)Or, you can manually add the source command to your bashrc file using the gedit editor.		
+			gedit ~/.bashrc		
+		Add the “source /opt/ros/noetic/setup.bash” line to the end of the bashrc file, save and then exit.
+ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (ENDS)Once you have echo or added the source command to the bashrc file run the source command to finish the setup.		
+			source ~/.bashrc		
+		And, that's it. The installation of ROS Noetic is now complete. You can use the command “roscore” to verify the installation of ROS Noetic.		
+			Install ROS Melodic on Ubuntu 20.04 
+		
+		Okay so if you want to install ROS Melodic instead of ROS Noetic then here are the steps to do that.The installation steps are the same as ROS Noetic, with just a little bit of changes. Once you have added the source list and the ROS keys you can download ROS Melodic using the command below.
+			sudo apt-get install ros-melodic-desktop-full -y
+		
+		Or, you can download the smaller version of ROS Melodic which doesn't contain the extra features like 2D/3D simulator etc.		
+			sudo apt-get install ros-melodic-desktop -y
+		
+		Once ROS Melodic is downloaded and installed, finish the installation process by setting up the Environment variable. First add the source command to the bashrc file using echo command. 		
+			echo &quot;source /opt/ros/melodic/setup.bash&quot; &gt;&gt; ~/.bashrc
+		
+		This command will add the source command to the bashrc file, you can also add it manually by editing the bashrc file using the gedit editor.
+			gedit ~/.bashrc		
+		After that run the source command to finish the installation process of ROS Melodic.		
+			source ~/.bashrc		
+			Install Important Packages
+		
+		Now for both ROS Noetic and ROS Melodic you will need some common tools that are required to run and use some features of ROS. Here are the most common tools that you will need to install.python-rosdeppython-rosinstallpython-rosinstall-generatorpython-wstoolbuild-essential
+You can install all these tools and dependencies by using “sudo apt-get install &lt;tool-name&gt;” like -		
+			sudo apt-get install python-rosinstall
+		
+		Now, there is one tool that you will need a lot when using ROS, and that tool is rosdep. You can install rosdep by using the command given below - 		
+			sudo apt-get install python-rosdep
+		
+		After installing rosdep, run the following command to initialize rosdep. 		
+			sudo rosdep init
+		
+			rosdep update		
+		
+			Conclusion - 
+		
+		And that's it, that's how you can download, install and set up ROS Noetic and ROS Melodic on your ubuntu 20.04. If you have any questions regarding the installation process of ROS then be sure to comment below. Thank You.",
+				"headline": "How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-21",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-21",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-apache-spark-on-ubuntu/">How to Install Apache Spark on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today, in this post I will show you how you can install Apache Spark on Ubuntu 20.04. This will be a step-by-step tutorial on installing apache spark. Now let's start the tutorial.		
+			Create a...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-apache-spark-on-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install Apache Spark on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-apache-spark-on-ubuntu/",
+				"articleBody": "Today, in this post I will show you how you can install Apache Spark on Ubuntu 20.04. This will be a step-by-step tutorial on installing apache spark. Now let's start the tutorial.		
+			Create a Directory for Apache Spark 
+		
+		Okay, so the first step will be to create a new directory in the home directory where we will download and Install Apache Spark.
+You can create a new directory manually by going to your File Manager&gt;Home directory, then right click&gt;New Folder, name the folder “spark” and click on create.Or, you can create a new directory using the terminal by using the command given below - 		
+			mkdir -p spark		
+			Install Java Development kit (JDK)
+		
+		Now, to be able to run and use Apache Spark we will need Java JDK installed in our Ubuntu system. To check whether you have java installed on your Ubuntu you can run the following command in the terminal.
+			java --version		
+		If it says “Command “java” not found” then it means that java is not installed. To install java you can use the commands given below.		
+			sudo apt-get update
+		
+			sudo apt-get install default-jdk -y		
+		Close the terminal window and open a new terminal window, you can verify the installation of java by typing “java --version” in the terminal.		
+			Download Apache Spark
+		
+		You can download Apache Spark through a web browser or you can download it using the terminal. I’ll show you both ways, first, I’ll show you how you can download Apache Spark using the terminal. 
+			Download Apache Spark using Terminal 
+		
+		First, open your terminal and change your working directory to the “spark” directory that you created in the first step.		
+			cd spark
+		
+		Then using wget we will be downloading Apache Spark to that directory. To check if you have wget installed type ”wget --version” if the command is not found then install wget using the command -		
+			apt-get install wget
+		
+		After installing wget, enter the following command to install the latest version of Apache Spark, which is currently 3.2.0.
+			wget https://dlcdn.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
+		
+		Here we are installing Apache Spark version 3.2.0 with package type “Pre-built for Apache Hadoop 3.3 and later”.You can get links for different versions from https://spark.apache.org/downloads.html.		
+			Download Apache Spark using Browser 		
+		If you want to download Apache spark using the web browser then just go to this link here - https://spark.apache.org/downloads.html.
+Here select the version of Apache Spark you want to install in the first dropdown, in the second dropdown select the package type, after you select the version and package type of Apache Spark, you will get the download link in the 3rd line.		
+																														
+		Click on the download link, You will be redirected to another page with the download links for Apache Spark. Click on the top link to start the download. 		
+																														
+		You can also copy that link and download it from the terminal using wget.
+		After downloading Apache Spark, right-click the downloaded file and move it to the “spark” folder that you created in the home directory.		
+			Install Apache Spark In Ubuntu		
+		Now, the installation process of Apache Spark is very easy. The first step will be to untar the tar file that we downloaded. To do that, first, change your working directory to the “spark” directory if you haven't already.		
+			cd spark		
+		After that enter the following command shown below that will untar the tar file. “tar -xvf filename” is the command to untar the tar file, the file name will be the name of the downloaded tar file that you want to untar.
+			tar -xvf spark-3.2.0-bin-hadoop3.2.tgz
+		
+		After you untar the tar file, you will need to set up the environment variable path for Apache Spark. To do that first change your working directory to home directory using the command below -		
+			cd ~		
+		Now, after changing the directory, using the gedit editor edit the Bashrc file. 		
+			gedit ~/.bashrc
+		
+		This command will open the bashrc file in the gedit text editor, scroll down to the bottom of the bashrc file, and in the end add these lines -
+			SPARK_HOME=/home/username/spark/spark-3.2.0-bin-hadoop3.2
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+		
+		Change “username” to your own username, the file name at the end will be the name of the tar file that you untar-ed. After that on the top right corner click on the save button and exit the editor.Finish the installation by using the source command -		
+			source ~/.bashrc
+		
+		That’s it, the installation of Apache spark is now completed, close the current terminal window and open a new one.
+			Verify the Installation of Apache Spark
+		
+		Now, the last step in the installation of Apache Spark will be to verify whether Spark was installed correctly or not. You can do that by entering the following command in the terminal -		
+			spark-shell 		
+		If this command opens the Spark shell then it means that the Apache Spark installation was successful.		
+			Access Spark context Web UI		
+		You can access Spark Web UI by typing “spark-shell” in the terminal, which will start the Spark shell and also will give you the URL of Spark Context Web UI.
+ [lyte id='glF50MdXSdk' /]
+And, that is how you can install Apache Spark on Ubuntu 20.04. If you are facing any problem with the installation then comment below or contact me on Twitter. Thank you.		
+			FAQ -		
+			How to Uninstall or Remove Apache Spark from Ubuntu?
+		
+		You can remove or uninstall Apache Spark by deleting the directory where Apache Spark was installed. Open your File Manager and right-click on the Spark folder and click “Move to Trash”.
+You can also remove the directory using the terminal by using this command -		
+			rm -rf spark		
+			How to Fix Apache Spark crashing on Ubuntu?
+		
+		Whenever you are running Spark on your ubuntu, make sure that there is plenty of RAM available. Allocate at least 80% of your RAM to Apache Spark for its proper working.",
+				"headline": "How to Install Apache Spark on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-12",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-12",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 0,
+          "width": 0        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<nav class="pagination-wrapper" aria-label="article pagination">
+		<a class="prev page-numbers" href="https://netmiko.com/category/blog/page/5/">&laquo; PREV</a>
+<a class="page-numbers" href="https://netmiko.com/category/blog/"><span class="screen-reader-text">Page </span>1</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://netmiko.com/category/blog/page/4/"><span class="screen-reader-text">Page </span>4</a>
+<a class="page-numbers" href="https://netmiko.com/category/blog/page/5/"><span class="screen-reader-text">Page </span>5</a>
+<span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>6</span>
+<a class="page-numbers" href="https://netmiko.com/category/blog/page/7/"><span class="screen-reader-text">Page </span>7</a>
+<a class="page-numbers" href="https://netmiko.com/category/blog/page/8/"><span class="screen-reader-text">Page </span>8</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://netmiko.com/category/blog/page/10/"><span class="screen-reader-text">Page </span>10</a>
+<a class="next page-numbers" href="https://netmiko.com/category/blog/page/7/">NEXT &raquo;</a></nav>
+</section>
+
+		</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Simplified Coding Examples.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-682"> </div>
+<p><!-- End Ezoic - sidebar - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2023 Copyright NETMIKO.COM			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/netmiko(\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$))|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/netmiko.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"eclipse","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://netmiko.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><\/noscript>',a='<div class="play"><\/div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+</body>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+</html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+		<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-196633016-1"></script>
+	<script type="rocketlazyloadscript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-196633016-1');
+	</script>
+
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Blog &#x2d; Page 16 &#x2d; NETMIKO.COM</title>
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Latest posts: Blog&#8230;">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog &#x2d; Page 16">
+<meta property="og:description" content="Latest posts: Blog&#8230;">
+<meta property="og:url" content="https://netmiko.com/blog/page/16/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog &#x2d; Page 16">
+<meta name="twitter:description" content="Latest posts: Blog&#8230;">
+<link rel="canonical" href="https://netmiko.com/blog/page/16/">
+<link rel="prev" href="https://netmiko.com/blog/page/15/">
+<link rel="next" href="https://netmiko.com/blog/page/17/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/blog/","name":"Blog"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 4.78ms meta | 11.73ms boot -->
+
+
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Comments Feed" href="https://netmiko.com/comments/feed/">
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	
+
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+.main-c {display: flex;margin-bottom:10px;}.main-iframe {flex: 1;height:350px;}@media only screen and (min-width: 768px) {.main-c {display: flex;}.main-iframe {flex: 1;height:350px;}.iframe-container {position: relative;height: 350px;}.iframe-container iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}}code {background-color: #eee;}.wp-block-code::before {content: "Click Code to Copy";display: block;color: red;margin-top: -25px;margin-bottom: 25px;margin-left:-7px;padding: 10px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223 {width: 350px;}.cnt223 {min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 30px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top: -100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}#download a {color: #fff;text-decoration: none;}.wp-block-image {box-shadow: 0 0 0 1px #444;}h2.widget-title {font-size: 1.2rem;padding: 0.4em 0;}body.home .articles-wrapper>h2 {font-size: 1.2rem;padding: 0.4em 0;}.article-card header p {font-weight: 700 !important;font-size: 20px !important;margin-bottom: 10px;text-align: center;}h3 {margin-bottom: 10px;}strong {font-weight:600 !important;}@media only screen and (min-width: 768px) {h2 {margin-bottom: 20px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223{min-width: 600px;width: 600px;min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 15px 35px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top:-100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}}.lyte-wrapper::before {content: 'Watch the Video';display: block;background-color: #444;color: #f5f5f5;padding-left:5px;}.lyte-wrapper {margin-left: -1px !important;}.lyte, .lyMe {border: 5px solid #444;}.image-container {border: 5px solid #444;}</style>
+
+<style id="rocket-lazyload-inline-css" type="text/css">.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://netmiko.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml">
+<script type="rocketlazyloadscript">document.createElement( "picture" );if(!window.HTMLPictureElement && document.addEventListener) {window.addEventListener("DOMContentLoaded", function() {var s = document.createElement("script");s.src = "https://netmiko.com/wp-content/plugins/webp-express/js/picturefill.min.js";document.body.appendChild(s);});}</script><meta name="description" content="">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+</head>
+
+
+<body class="blog paged paged-16 hfeed no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="300" height="125" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20125'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp"><noscript><img width="300" height="125" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" sizes="(max-width: 300px) 100vw, 300px"></noscript></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-1670" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1670"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-1666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1666">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-1668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1668"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-1669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1669"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-1667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1667"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<header class="page-header">
+				<h1 class="page-title">Archives: Blog</h1>			</header><!-- .page-header -->
+
+			<section class="articles-wrapper">
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/million-visitors-on-shared-hosting/">How to make a Blog handle millions of visitors on shared hosting</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Is it even possible to host a blog that can handle millions of visitors on shared hosting? The answer is <strong>YES</strong>, it is possible to make a blog handle millions of visitors on shared...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/million-visitors-on-shared-hosting/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to make a Blog handle millions of visitors on shared hosting",
+				"url": "https://netmiko.com/million-visitors-on-shared-hosting/",
+				"articleBody": "Is it even possible to host a blog that can handle millions of visitors on shared hosting? The answer is YES, it is possible to make a blog handle millions of visitors on shared hosting.So, you might be thinking how is it even possible to do something like that. Like how can a shared hosting handle that much traffic? Well, the answer is easy. 
+We use a proper WordPress setup with all the things we need like caching and cdn to make a simple blog that can handle that much amount of traffic.Note: You can only make a blog handle that much traffic if it has less dynamic content. For example, our site netmiko.com has very little dynamic content.		
+			Why shared hosting is enough for a Blog -
+		
+		Shared hosting is something that many people think is trash and very slow and unreliable. But with proper caching and cdn you can make a shared hosting work like a VPS.
+With the usage of proper caching and cdn, I was able to make my blog that is hosted on HostGator shared hosting handle 5000 users per second. Yes, that's right “per second”.Now, If you compare it to a blog that is hosted on shared hosting without cache and cdn then that blog will barely be able to handle 5 users per second.Now again I want to tell you that these methods will only work if your blog is not very dynamic. Like the only thing that is dynamic on our blog is the search bar. And everything else is static and remains the same until I publish a new blog post.
+Now let’s see how we can make a simple WordPress blog handle millions of visitors on shared hosting.		
+			Choose web hosting and Install WordPress -		
+		The first thing we will need is reliable shared web hosting. There are lots of shared hosting companies out there but I recommend you to use HostGator which is reliable and fast. 		
+			
+						Get best shared hosting 
+					
+		One web host that I don't recommend is hostinger. I had one hell of a horrible experience with their shared hosting. So whatever you do, don't fall for their marketing tricks.
+You can use either HostGator or Bluehost shared hosting for your blog. We need shared hosting that can handle the sudden traffic surge.Now, after you have bought the web hosting you will need to install WordPress in it. During WordPress installation make sure to unselect any bloat plugins that are installed during a WordPress installation by default.
+Because we want a bloat-free WordPress installation, which is faster.		
+			Setup a Cloudflare account -
+		
+		Now, we will need to create a Cloudflare account and add our site to Cloudflare. Cloudflare will help in handling all the traffic instead of our web hosting. If you don't know what Cloudflare is and how it works then here is a simple explanation.
+So, basically, Cloudflare is a content delivery network (CDN) that stores and distributes the content of your website around the world.Meaning that all the contents of your website will be stored in different Cloudflare edge servers around the world and whenever a user visits your website then instead of fetching the contents of your site from your origin server the contents will be fetched from Cloudflare servers.This means that your web hosting won't need to handle that traffic because it will be handled by Cloudflare.
+1. To set up a Cloudflare account first go to cloudflare.com. Now, click on Sign UP.2. Enter your email and enter any password and click on create an account. After that, you will need to select Cloudflare for infrastructure.		
+																														
+		3. Here you will need to enter your domain name. After that, you need to scroll down and select the free plan. 
+																														
+		4. In Review DNS records scroll down and click continue. Now in Change your Nameservers you will need to copy the Cloudflare nameservers.		
+																														
+		5. Now go to your domain name provider from where you bought the domain name. Then go to Nameservers. Here remove the default nameservers and add the Cloudflare nameservers and save it. Changing Nameservers can be different for different companies so make sure to google it.6. Wait a few minutes for DNS to propagate.
+7. After adding the nameservers in your domain Registrar go back to Cloudflare and then click on “Done, check nameservers”.8. Now in the QuickStart guide click on “get started”. After that Turn on all the options and click save. Then click on Finish.		
+																														
+		It might take a few minutes to a few hours for DNS to propagate so check your Cloudflare dashboard after a few minutes. Here you will see a notice if Cloudflare is connected successfully.
+																														
+		Your Cloudflare account is created so now let's continue to the next step.		
+			Install and Setup WP Cloudflare Super Page Cache -
+		
+		Now to control the caching of Cloudflare we will use a lightweight plugin called “WP Cloudflare Super Page Cache”. You can search for it or download it from here.After downloading the plugin install it and then activate it. 
+You can access the WP Cloudflare plugin from settings&gt;WP Cloudflare Super Page Cache.1. Once you are in the setting of the plugin. Scroll down a little bit and then here you will need to add your Cloudflare email and Cloudflare API key.2. To get the API key go to cloudflare.com and then Log In using your email. After that select your site. 
+3. Now after selecting your site you will be in the overview so scroll down a little and on the Right side, you will see an option that says “Get your API token” click it.		
+																														
+		4. Here scroll down a little and there you will see “Global API Key”. On the right side of it, you will get the View option. Once you click the View option Cloudflare will ask you for your password.After entering the password you will get the API key which you will need to copy. Note: Don't share this API key with anyone.
+5. After copying the API key go back to WP Cloudflare Super Page Cache settings and then paste the API key and enter your email id of Cloudflare, then click Update settings.		
+																														
+		6. Now here you will need to scroll down and click on “select a domain name” and then select your domain. Then click on Update settings.7. After that here Click on “ENABLE PAGE CACHING NOW”. The plugin setup is now complete. To test that click on “TEST CACHE”.
+If it says that page caching is working correctly then it means that Cloudflare cdn is now enabled on your site.You can change some settings you don't want from WP Cloudflare Super Page Cache settings. But I would recommend keeping the default settings as they work on all kinds of blogs.Your site can now handle millions of visitors per month on shared web hosting.See the Website Load Test here. But there is still one more thing that needs to be set up to avoid crashing your site. And that thing is images.
+			Setup CDN for Images -
+		
+		Now, the problem with Cloudflare is that whenever you clear the cache of your website then all the cached images, HTML, js, CSS of your site will be cleared meaning that Cloudflare will request all the resources of your website from your webserver until its cached in Cloudflare again.This means that there will be a surge in resource usage which can crash your website. This is not a problem with sites that don't contain images in them, but if your site contains lots of images then you will need to use an external cdn for images.So, if you use an external image cdn then even if you clear the cache for your website Cloudflare will only be able to clear the cache of the Html, CSS, and js and not the images because the images will be served from an external cdn that Cloudflare has no control on.
+This means that all the Html, CSS, js will be served through Cloudflare and the images will be served through an external cdn which means that the load on our web hosting will be very low.Now, let's see how we can add an external image cdn. We will be using statically image cdn in our blog. You can see the full tutorial of how we can use statically cdn on our WordPress blog.1. To set up statically cdn for our blog we will first install the statically plugin. You can search for it and download it from here. Install and then activate the plugin.
+2. To start the setup click on the statically plugin icon in the admin menu. Now here you will need to generate a Statically API key. That you can get by going to this link here.3. Once you are on the statically website, scroll down a little and enter your email and domain. Agree to the privacy policy and then click on the Generate API key button.4. After that copy the API key shown there and then go back to statically plugin settings and paste the API key. After that click on save changes.
+And that's it, your images will now be served through statically image cdn instead of your origin server, and clearing the Cloudflare cache will not affect it.By default, the Image files will be cached on the CDN for 1 year.Now let's take a load test of our website to see how much load it can handle.		
+			Load test the blog -		
+		For load testing our website, we used Loader.io. Which is a free load testing application that tests our website using thousands of concurrent connections.
+To begin, I created an account in Loader.io and selected their free plan. After that in Target Host, I added my domain name and verified it using a txt file.Then I created a new test where in Test Type I selected “ Clients per second “ and the number of clients per second was 500. It's like 500 users visiting your site at one time per second.
+The test ran for 1min with 500+ users per second doing HTTPS get requests. The average response time was below 600ms and there were 0 Timeouts. This means that this setup can easily handle millions of visitors per month without any problem.		
+																														
+		You might see a high response time in the beginning but after that, the response time gets stable and goes lower once the page is cached properly.And that's how you can make a Blog handle millions of visitors on shared hosting.If you liked this post then do make sure to share it with your friends and also make sure to comment down below. If you face any problem or have a question then comment down below or dm me on Twitter or Instagram.",
+				"headline": "How to make a Blog handle millions of visitors on shared hosting",
+				"author": "Aomi Bora",
+				"datePublished": "2021-10-05",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-10-05",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/use-jetpack-cdn-without-jetpack-plugin/">How to use Jetpack Image CDN without Jetpack plugin</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will show you how you can use Jetpack Image CDN without installing the Jetpack plugin. Jetpack image cdn helps in increasing the image load speed and making a site faster.We will use a...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/use-jetpack-cdn-without-jetpack-plugin/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to use Jetpack Image CDN without Jetpack plugin",
+				"url": "https://netmiko.com/use-jetpack-cdn-without-jetpack-plugin/",
+				"articleBody": "Today I will show you how you can use Jetpack Image CDN without installing the Jetpack plugin. Jetpack image cdn helps in increasing the image load speed and making a site faster.We will use a Custom PHP code with the CDN enabler plugin to use Jetpack CDN without Jetpack plugin.
+Talking about a faster site, everybody wants a faster site. And when people talk about making a site’s loading speed faster, The first thing that comes to everyone's mind is a powerful web hosting like a VPS or Cloud.But what if I told you that you can get those god-like speeds using a shared hosting like HostGator shared hosting. To achieve a very fast website the first thing you must do is to use CDN for your site’s images. Because images are bulky, it takes a lot of space and bandwidth which can lower the performance of your website.
+If you look at our previous post that was “how to use statically cdn on a WordPress blog” then in that post I talked about how Image CDN has helped our site in reducing its bandwidth usage by almost 70%. This means that if you use Jetpack Image CDN ( Formerly Photon ) and Regular CDN for static resources along with a cache plugin in your WordPress site then your site can easily handle thousands of visitors daily even on a shared web hosting. So, what exactly is Jetpack Image CDN?
+			What is Jetpack Image CDN or Photon CDN?		
+		Jetpack Image CDN or Photon CDN is a Content Delivery Network. This means that the images on your website will be stored in edge servers around the world and whenever a user requests for the image then the image will be served to the user from the edge server instead of your origin server.The user will get the image from the closest edge server meaning that the user will be able to receive the image faster. Jetpack Image CDN will help you a lot in lowering the resource usage of your website. Because the images will be stored in edge servers and also served from there.
+And the best thing about Jetpack Image CDN is that it is free. and you can use it on your website without paying anything.Now, let us see how we can use Jetpack Image CDN without using the Jetpack plugin.		
+			Add Jetpack Image CDN without Jetpack plugin -		
+		To start using Jetpack Image CDN on your site without the use of the jetpack plugin you will have to first download the CDN enabler plugin. This is a very lightweight plugin that will allow us to use jetpack cdn.
+Note: Before you proceed further make sure you have the latest backup of your site. In case something goes wrong. 1. Now to start, first you will need to Log In to your admin dashboard. After logging into your admin dashboard you will need to go to plugins and then click on add new.		
+																														
+		2. Here you will need to search for CDN Enabler in the search bar. Now click on install and after the installation finishes, you will need to click on activate which will activate the plugin.
+																														
+		3. The CDN Enabler settings can be found in settings&gt;cdn enabler. Go to settings and then go to CDN Enabler.		
+																														
+		4. Now here you will need to add the CDN hostname which is - i0.wp.com, i1.wp.com, i2.wp.com, i3.wp.com. You can use any one of them.After that in CDN Inclusions you will need to add these - avif, gif, jpeg, jpg, mp3, png, svg, webpAnd in CDN Exclusions you will need to add these - js, json, mp4, pdf, apk, css		
+																														
+		After that scroll down and click on Save Changes. Don't click on Save Changes and Validate Configuration.
+5. Now after clicking on Save Changes. Go to Appearance&gt;Theme Editor.If you don't see any theme editor option then you will need to download a file manager plugin which you can deactivate after finishing up Jetpack Image CDN setup. 		
+																														
+		6. Here, click on the functions.php file. Where we will need to add a piece of code to make the cdn work.		
+																														
+		7. After clicking on the functions.php file you will need to scroll down to the bottom of the file and after you reach the bottom, here you will need to copy-paste and add the code given below.
+			// Jetpack image CDN START
+add_filter( 'cdn_enabler_contents_after_rewrite', 'filter_cdn_enabler_contents_after_rewrite' );
+function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
+    $rewritten_contents = str_replace( 'i0.wp.com/', 'i0.wp.com/example.com/', $rewritten_contents );
+    $rewritten_contents = str_replace( 'i0.wp.com/', 'i0.wp.com/example.com/', $rewritten_contents );
+    return $rewritten_contents;
+}
+// Jetpack image CDN END
+		
+																														
+		Here instead of “i0.wp.com”, you will need to add the CDN hostname that you gave in the CDN Enabler settings. And in the place of example.com, you will need to add your domain name.After adding these things you will need to click on the update file. This will save the file and which means that your site will now deliver the images through Jetpack Image CDN.8. To check whether it is working properly or not you will have to go to your site and then right-click on any image and then click on “Open image in new Tab”.
+																														
+		9. Here if the image URL is i0.wp.com or any hostname that you added then it means that Jetpack Image CDN is working properly.		
+																														
+		If you see a broken image then recheck all the settings. Because you might have missed a step or typed something wrong.Now if you face any problem while adding Jetpack Image CDN to your WordPress site then you can always use the Jetpack plugin. Which I don't recommend because it's a very bulky plugin. But if nothing works then you will have to use the Jetpack plugin eventually. 
+			Add Jetpack Image CDN using Jetpack plugin - 		
+		To add Jetpack Image CDN using the Jetpack plugin you will need to first go to plugins&gt;Add new and after that search for Jetpack here. Then click on install and after that click on Activate.Now after activating the plugin the plugin will redirect you to its setup page where you will need to complete the steps to enable jetpack cdn.Now here you need to click on “Setup Jetpack”. It will take some time and then display “Jetpack is activated!”. After that, on the top right corner, you will get an “x”. Click it.
+To access the complete settings of jetpack we will have to click on the jetpack icon on the admin menu. And then click on settings.In settings go to the performance tab. And after that scroll down a little and go to Performance &amp; speed. Now here you will need to enable the “Enable site accelerator”.And that's it. It will enable the Jetpack Image CDN on your site. Make sure to disable other settings if you don't want them.
+		And that's how you can add Jetpack Image CDN to your WordPress site without using the Jetpack plugin. And also add it using the Jetpack plugin.If you face any problem while setting up the Jetpack Image CDN then make sure to comment down below. If this post helped you to set up an image cdn in your WordPress site then make sure to share it with others that need it. [lyte id='Kf-bXdw4ZPo' /]",
+				"headline": "How to use Jetpack Image CDN without Jetpack plugin",
+				"author": "Aomi Bora",
+				"datePublished": "2021-10-01",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-10-01",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/use-statically-cdn-on-a-wordpress-blog/">How to use Statically CDN on a WordPress blog</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Do you own a WordPress blog that uses a lot of images? Well then, statically cdn is something that you must use on your blog. Because if you are hosting your blog on shared hosting then chances are...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/use-statically-cdn-on-a-wordpress-blog/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to use Statically CDN on a WordPress blog",
+				"url": "https://netmiko.com/use-statically-cdn-on-a-wordpress-blog/",
+				"articleBody": "Do you own a WordPress blog that uses a lot of images? Well then, statically cdn is something that you must use on your blog. Because if you are hosting your blog on shared hosting then chances are that you will soon run out of server resources. 
+This means that you will need to upgrade your hosting plan which will cost you extra money.So, you might ask what is statically cdn and how it can help my WordPress blog.		
+			What is Statically CDN?		
+		According to the developer of statically.io Frans Allen, statically is a free CDN for developers that helps web developers in serving their files through a cdn ( content delivery network ) throughout the world.
+It has lots of features like resizing images just by changing the URL, taking a screenshot of a site, serving the images of your website through cdn. You can also use it to deliver CSS, JS, SVG, HTML, and XML files through a cdn.You can follow Frans Allen on Twitter at @fransallen.		
+			How can statically cdn help my WordPress blog?
+		
+		Statically cdn can help you a lot in increasing your site’s speed by serving the images of your site from powerful and fast edge servers. 
+This means that when a visitor’s browser requests for an image on your blog then instead of fetching the image from your origin server the image will be fetched from these edge servers that have your image cached with them.Statically cdn also helps in reducing your site’s bandwidth usage. Because on a WordPress blog like mine almost 90% of the bandwidth is used by images. So, that's why you must use statically cdn for your blog.After I started using statically on this site the bandwidth usage almost dropped by 70%. Which is a lot. 
+So, now let’s see how we can add statically cdn to our WordPress blog. I will be showing you two ways to do this. The first method is recommended for beginners.		
+			Add statically using a plugin - 		
+		NOTE: Statically CDN plugin is no longer available in the wordpress repository, to use statically cdn on your wordpress blog, you will need to follow the other method given below which uses cdn enabler plugin.		
+		The easiest way to add statically cdn to your WordPress blog is to use the statically plugin. This is the recommended method as it is very easy to set it up and it also provides you some extra features like converting your images to webp version and clearing the cache.Now let's see how we can install and set up statically plugin on our WordPress blog.
+1. First go to your WordPress admin dashboard and then on the left sidebar go to plugins and click “add new”.		
+																														
+		2. Now in the search bar you will need to search for “Statically”. Click install and after that click on the activate button.		
+																														
+		3. You can access the statically plugin settings by clicking on the icon in the sidebar of the admin dashboard.
+																														
+		4. Now for statically plugin to work you will need an API key which you can make by going to the link shown here.		
+																														
+		5. Once you are in the statically.io website scroll a little bit down and here you can now get an API key by filling up the information required. Add your email, domain name without www and then accept the privacy policy and click “Generate API key”.		
+																														
+		6. Now after clicking the Generate API Key button you will get an API Key that you will need to copy. Make sure you keep this API key somewhere safe.
+																														
+		7. Now go to your statically settings again and paste the API key that you copied. And click on Save changes.		
+																														
+		8. By default Statically will serve your blog visitors the webp version of images which if you want to keep then you can keep it but if you don't want statically to change your image type then you will need to go to “Speed” to fix this.		
+																														
+		9. Here you will need to untick the “Automatically generate webp versions” and then click on the save changes button.
+																														
+		10. Now to check if statically cdn is working on your WordPress blog or not and serving images through cdn. You will need to open an incognito tab in your browser and type your blog URL. Here you will need to select any image and right-click on it and then click on the “open image in new tab”.		
+																														
+		11. Here you can see whether the image is being served through Statically cdn or not. You will see cdn.statically.io at the beginning of the URL which means it's working fine.
+																														
+		After the setup finishes make sure you check all the features of your blog whether they are working properly or not.Now let us see the second method which is more flexible meaning that you could add other cdn providers also using this method.		
+			Add statically using CDN Enabler -		
+		This method requires you to add some code in your WordPress functions.php so make sure you have a backup before proceeding any further. This method is only recommended for advanced users.
+1. First, go to plugins&gt;Add new. Now here you will need to search for “CDN enabler”. Click install and then click on activate.		
+																														
+		2. To access cdn enabler settings, you will need to go to settings, and there you will get the cdn enabler option. Click on it.		
+																														
+		3. Now here in the CDN hostname you will need to type “cdn.statically.io”. And after that in CDN Exclusions, you need to add some strings that will not be cached. Here are the strings that you need to exclude - .php, .js, .json, .mp4, .pdf, .apk, .css
+																														
+		4. After that go down a little and remove the default API key and Zone ID and then click on Save.		
+																														
+		5. Now you will need to go to Appearance&gt;theme editor and select the functions.php file. If there is no theme editor option then you will need to download a file manager plugin.		
+																														
+		6. Scroll down to the bottom of the functions.php file and then add this code to it.
+			add_filter( 'cdn_enabler_contents_after_rewrite', 'filter_cdn_enabler_contents_after_rewrite' );
+function filter_cdn_enabler_contents_after_rewrite( $rewritten_contents ) {
+    $rewritten_contents = str_replace( 'cdn.statically.io/', 'cdn.statically.io/img/mydomain/', $rewritten_contents );
+    $rewritten_contents = str_replace( 'cdn.statically.io/', 'cdn.statically.io/img/mydomain/', $rewritten_contents );
+    return $rewritten_contents;
+}		
+																														
+		In the place of mydomain you will need to add your domain name. And then click on the Update file button.Go to your site in incognito tab to check if it's working properly. You can always contact me on twitter or comment below if something is not working.		
+			Does using statically cdn increase image loading speed?		
+		Yes, it does, using statically cdn has helped me a lot in increasing my site’s load speed because my origin servers don't need to provide the users with the same image again and again. 
+Instead, the images are fetched from fast edge servers that have that image cached with them. Statically cdn has helped me in reducing the image load speed from 0.4 seconds to 0.2 seconds. Which doesn't sound like a lot but is a very big difference when it comes to user experience.		
+																														
+			Is statically cdn free?		
+		Yes, statically cdn is currently free and has no limit on any bandwidth. You can use it on an unlimited amount of websites with unlimited bandwidth. You can also donate to statically.io on its official website to keep it running. And follow its founder Frans Allen on Twitter here for updates regarding statically.
+			Is it safe to use statically?
+		
+		It is completely safe to use statically cdn. If you face any problem like broken images or weird redirects then you can just disable the plugin and the problem will be fixed. If you are unable to access the admin dashboard then you could just go to your web hosting file manager and go to wp-content&gt;plugins and then rename the statically plugin folder which will disable it.You can also try and use the second method if the first method creates any problem in your WordPress blog.
+			Is there any alternative to statically cdn?		
+		Yes, there is a very good alternative to statically cdn, which is jetpack cdn ( photon ).But the problem is that the jetpack plugin is very bulky meaning that the plugin will slow down your WordPress blog which is the thing that we are trying to prevent.So, I would recommend you to use statically cdn in your blog. 
+I will soon make a post on how you can use jetpack cdn on your WordPress blog without the jetpack plugin. Until then you can use statically. I will link to the blog post here as soon as I post it.Use Jetpack Image CDN with using Jetpack plugin.If you liked this post and it helped you in making your WordPress blog faster then make sure to share it with your friends and family and also recommend it to someone who needs it. If you face any problem while setting up statically cdn then do comment below and I will fix the problem for you. Thank you.",
+				"headline": "How to use Statically CDN on a WordPress blog",
+				"author": "Aomi Bora",
+				"datePublished": "2021-09-29",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-09-29",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/how-to-reduce-video-size-for-email/">How to Reduce video size for email without losing quality</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today we will see how we can reduce video size for email easily without losing any video quality. I will show you how you can reduce video size on iphone, mac, android and windows.The methods for...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/how-to-reduce-video-size-for-email/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Reduce video size for email without losing quality",
+				"url": "https://netmiko.com/how-to-reduce-video-size-for-email/",
+				"articleBody": "Today we will see how we can reduce video size for email easily without losing any video quality. I will show you how you can reduce video size on iphone, mac, android and windows.The methods for reducing video size are easy and you can easily follow these steps provided to get a small video size for your email. You can click on the Table of Contents above and select the device where you want to reduce video size for email.
+			How to reduce video size Android - 
+		
+		Okay, so let us first start with android. If you want to reduce video size without losing quality on android then there is an app that is very good at this job. The app name is video compressor panda and it is very easy to use for reducing video file size.		
+			Using Video Compressor Panda -
+		
+		You can get video compressor panda here. This app currently has a rating of 4.5 with 5+ million downloads. So, it's a very trusted app for reducing video size for email.Now let's see how we can use the video compressor panda. Firstly you will need to download the app from the link that i gave above or search for the app on playstore.
+After downloading the app you will need to open it. Now follow the steps below - 1. Select Video - After opening the app, here you can select the video that you want to reduce the size of for email. To select the video you need to click on the video then at the bottom right corner click next.		
+																														
+		2. Select Compression - Now here you will get a lot of different options to choose from for reducing video size. If you are looking to just get a small file size then select “medium or small”. But if you want a good quality video with a small size then select “Large file - just compress”. Then click compress.
+																														
+		3. Wait - Wait for the video compression to finish which will take like a few minutes depending upon the video file size and your phone’s specifications.		
+																														
+		4. Save video - After the video compression finishes you can compare the original video with the compressed video. And now here you have three options - You can either replace the original version of the video with compressed video, you can share it directly through the app or you can save it in your phone.		
+																														
+		5. Check video path - If you save it in your phone then a popup will appear which will show you where your video was saved.
+																														
+		And that's how you can reduce video size for email on android using the video compressor panda app.  		
+			Reduce video size on iPhone - 		
+			Using compress videos & resize video -		
+		To reduce video size on iPhone there is an app that is very easy to use and can help a lot in reducing video size for email. So let’s see the app. The app name is “Compress Videos &amp; Resize Video” and it has a rating of 4.7 on the app store. You can get the app here.
+Go to the link and install the app on your iPhone. Now after installing it you will need to open it.1. Click on the plus icon here to select the video that you want to compress.		
+																														
+		2. Now it will ask for permission to access your device files. Click OK to continue.
+																														
+		3. Here you can now select the video that you want to reduce the size of. Click on the circle at the top right corner to select the video and then click on next.		
+																														
+		4. Now here you will need to select the video quality that you want for your video. I would recommend you to keep the framerate as it is and then make the quality 80% and then click compress.		
+																														
+		5. Now you will need to wait a few seconds or minutes depending upon the file size for it to finish compressing the video. Note: Always keep the app in the foreground and do not keep it in the background as it will not work in the background.
+																														
+		6. After the compression finishes you can save the compressed video to your phone or you can delete the original video and replace it with the compressed one. I recommend that you keep the original video.		
+																														
+		That's how you can reduce video size on an iPhone and can reduce video size for email easily using this app.Now let's see the method to reduce video size on your Windows 10 computer.
+			How to reduce video size windows 10 -		
+			Using Handbrake -
+		
+		Now if you are on a windows computer then there is a very easy way to reduce video size. For this, we will be using Handbrake. You can get handbrake here.Go to the link and download handbrake. After that run the downloaded exe file and complete the installation.Now let's see the steps to reduce a video size using a handbrake.
+1. After installing handbrake you will need to open it. Now here you will need to click on the “open file” to select the video that you want to reduce the size of.		
+																														
+		2. Now select the video and then click on the open button. Which will open the selected video in handbrake.		
+																														
+		3. Now here you will need to do some settings that we need to reduce the video size. First, select the “web optimized option” and then click on the video option.
+																														
+		4. Now select constant framerate and after that using your mouse you will need to take the dial and scroll it towards the left and take it to 23 RF. After that click on the Start Encode option.		
+																														
+		5. After the encode finishes you will see “Queue Finished” at the bottom left corner. The video will be saved at the location shown at the bottom of handbrake. You can also manually change the location.That's how you can reduce video size for email on a windows 10 computer.
+And now for mac, let's see the best way to reduce video size on mac.		
+			How to reduce video size on Mac - 
+		
+			Using Handbrake -		
+		Just like windows, you can also use handbrake to reduce video size for email on your mac. The steps are also the same as windows so you can follow the windows steps to reduce video size on your mac.The only change you will notice is that instead of “open file” you will have to use “Open source” to select a video.
+You can download handbrake for mac here. And after that follow the following steps from here.And that is how you can reduce video size for email using different apps on android, iPhone, Mac, and windows. If you have any questions then you can comment below. If this post helped you in getting a lower video size then make sure you share it with your friends and family. 
+			How to reduce video size for Facebook?		
+		If you are looking to reduce video size for Facebook then you can use apps like video panda, compress video, handbrake, etc to do it. See the full article for a complete step-by-step tutorial on how you can reduce video size that you can use anywhere like on Facebook, email, youtube, etc. 		
+			Can I reduce video size without losing quality?
+		
+		Yes, you can easily reduce video size without losing the quality of it. Today there are lots of different apps and online websites that can help you in doing so. 
+You can see our article on “ How to reduce video size for email” which explains different ways to reduce video size on android, iPhone, Mac, and windows.		
+			Does using apps to lower video size lowers the video quality?
+		
+		When you use apps like video panda and compress video what it does is that it lowers the resolution of your video which reduces the video size. But the thing is that the difference between the quality of the compressed video and the original isn't that big.So, it just looks the same to our eyes. ",
+				"headline": "How to Reduce video size for email without losing quality",
+				"author": "Aomi Bora",
+				"datePublished": "2021-09-27",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-09-27",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/fix-hulu-error-code-rununk13/">How to Fix Hulu error code Rununk13 easily</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will show you how you can fix the connectivity error of the Hulu app which is “ error code rununk13 ”. The solutions I am going to give you for this error are pretty simple and will fix...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/fix-hulu-error-code-rununk13/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Fix Hulu error code Rununk13 easily",
+				"url": "https://netmiko.com/fix-hulu-error-code-rununk13/",
+				"articleBody": "Today I will show you how you can fix the connectivity error of the Hulu app which is “ error code rununk13 ”. The solutions I am going to give you for this error are pretty simple and will fix the error.		
+			Fix error code rununk13 - 
+		
+			1. Restart App -		
+		The first thing you should try when facing the error code rununk13 is to restart the Hulu app. You can do that by simply clicking the X button on the top right corner of the screen. 
+If you are using Hulu on your television then you will have to exit the app using your TV remote.Now you will need to open the Hulu app again and see if it works or not. If it doesn't then you will need to restart your computer or TV. Now if it still doesn't work after restarting your computer or TV then you will need to try the other methods given below.
+			2. Check internet connection -
+		
+		Sometimes the problem might be just with your internet connection and to check if your computer can connect to the internet properly you can just open any app that requires an internet connection.Open any app like youtube and check if it's working properly or not. You should also try restarting your wifi.		
+			3. Uninstall and Reinstall -
+		
+		Now if the above methods aren't working then you will need to uninstall the Hulu app and install it again. 
+This error code rununk13 generally happens when there's a problem with your Hulu app, internet connectivity, and “ Hulu servers \" which we will talk about in the method below this one”.Before you uninstall your Hulu app make sure you remember the password and the login email of your Hulu account as uninstalling the Hulu app will delete all the data stored in the app.After that, you can uninstall the Hulu app and install it again on your computer. There’s a very high chance that this method will fix the error code rununk13 in your Hulu app.
+			4. Check Hulu server outage - 
+		
+		If you are getting this error in your Hulu app then one possible reason might be a server outage of Hulu servers. There isn't any fix to this as the problem is in the origin of Hulu.But don't worry, these server outages are very common and will likely be fixed in a few minutes or in some rare cases in an hour or two. The only thing you can do here now is to wait some time for Hulu to fix the problem.So, how will you know if there's a server outage of Hulu? 
+Well, It's easy to see that. You can see whether Hulu is down or not by visiting the down detector here. After you go to the down detector site you can see if Hulu is down or not.		
+			5. Clear browser cache and cookies - 		
+																														
+		If you are using Hulu in your computer’s web browser and getting the error code rununk13 then you can try clearing the cache and cookies of your web browser.Note: Clearing the cookies of your browser will sign you out of all the websites that you have logged in using that browser. Meaning you will have to log in again on all the sites. So make sure you remember the emails and passwords used on these websites.
+Clear cache and cookies in chrome - To clear the cache and cookies in your chrome browser you will need to first click on the three dots on the top right corner of your browser.After that click settings and then you will need to search “ cache “ in the search bar. Now select “clear browsing data” here. And select all three options and click on the clear data button.This will take a little bit of time. After the cache and cookies have been cleared you will need to close the browser and open it again.
+Clear cache and cookies in Firefox -To clear cache and cookies in the Firefox browser you will need to click on the menu button at the top right corner of your browser. After that go to settings and search for “cache”.After that click on clear data and then click clear which will clear the cache and the cookies.Now after doing this you need to go to Hulu again and try to log in and see if it works.
+			How can I fix the error code rununk13 in chrome browser?		
+		If you are using chrome browser or any other browser and getting this error then here are a few things you should try to fix the problem.Update browser - You should first update your browser to the latest version. An older version of the browser might be the reason for this error.Disable extensions - This error might also occur due to conflict between the extensions installed in your browser. You need to disable the extensions one by one and check which extension might be causing the problem.Uninstall and reinstall - You should also try to uninstall your browser and install the latest version of it again.Clear cache and cookies - As I already talked about this above here. You need to clear the cache and cookies in your browser and check if it helps in fixing the error code rununk13.These are the things you should try if you are using Hulu in your web browser and getting this error code.
+			Why does my hulu app show error code rununk13?		
+		Your Hulu app shows this error code due to connectivity issues. Meaning that your Hulu app is unable to connect to the Hulu servers which happens mostly due to any problem with your Hulu app or with the Hulu servers.Sometimes it can also be due to your internet connection. If you are getting this error again and again even after fixing it then there might be some problem with your Hulu app.You should update your Hulu app to the latest version. If your Hulu app is already updated then you might need to uninstall the latest version of Hulu and install the previous version. Because sometimes the latest updates contain some bugs and glitches which might be causing this error.
+			How to contact hulu support to fix the error code rununk13?		
+		If none of the methods worked for you to fix the error then you might need to contact the Hulu support for it. They know their app best and will probably fix your problem.To contact Hulu support you need to go to this link here. This link will take you to the Hulu contact page from where you can explain your problem to them and get a solution. You will need to be logged in to your Hulu account in order to contact them.		
+			How to fix the error code rununk13?
+		
+		This error can be easily fixed by using the methods given above. Using these methods will fix the error and let you watch your favorite shows in peace. If none of the methods worked for you then you will need to contact Hulu support about this.
+		And those were the possible fixes to the error code rununk13 which is a very annoying error faced by a lot of Hulu users. These methods will fix this error.If this post helped you in fixing the error then make sure to share it with your friends and family that are also facing this issue. You can also contact me on Instagram and Twitter regarding any problem that you might be getting in your Hulu app.",
+				"headline": "How to Fix Hulu error code Rununk13 easily",
+				"author": "Aomi Bora",
+				"datePublished": "2021-09-25",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-09-25",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-sra-toolkit-in-ubuntu/">How to Install SRA Toolkit in Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all the commands to install it step by step below.So, do read this article till the...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-sra-toolkit-in-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install SRA Toolkit in Ubuntu 20.04",
+				"url": "https://netmiko.com/install-sra-toolkit-in-ubuntu/",
+				"articleBody": "Today in this article we will learn how we can install and set up the SRA Toolkit in our ubuntu 20.04. I have given all the commands to install it step by step below.So, do read this article till the end so that you will not face any problem in installing the SRA Toolkit in your ubuntu 20.04.		
+			Install SRA Toolkit in Ubuntu 20.04 -
+		
+		Now let's see how we can install sra toolkit in our Ubuntu 20.04. It will be easy and quick. 		
+			Update -
+		
+		Before installing the SRA toolkit, we will first update our packages. We will use the below commands to update our packages.		
+			sudo apt-get update		
+		After we updated our packages, now let us see how we will install the SRA Toolkit.
+			Create Local Directory -
+		
+		Before installing sra toolkit we have to create a local directory for this in our ubuntu system. To create a local directory, we will use the command given below, where you can create a directory of any name in place of “yourdirectoryname”.		
+			mkdir -p yourdirectoryname/local
+		
+		Now that we have created a directory, now we will have to change our working directory. We will use the command given below for this, which will change our current working directory to the one that we made.		
+			cd yourdirectoryname
+		
+			Download SRA Toolkit -
+		
+		Now you will have to download the sra toolkit inside this directory. We will download tar.gz of sra toolkit for this. To download this tar file copy the below commands and paste it in your terminal and press enter.
+			wget --output-document sratoolkit.tar.gz https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
+		
+			Check and Extract SRA Toolkit -
+		
+		Now we will check whether our sra toolkit has been downloaded or not in our directory. To check that we have to type the following command in the terminal while our working directory is “ yourdirectoryname”. You can also manually open your file manager and go to the \"yourdirectoryname\" folder where you can see the downloaded tar file.		
+			ls 		
+		After typing the above command, if you see sratoolkit.tar.gz in terminal then it means that sra toolkit has been downloaded which we have to extract now.To extract, we will use the below command which will extract the sra toolkit in the same directory.
+			tar -vxzf sratoolkit.tar.gz		
+			Append binary path to path environment variable - 		
+		Now we will have to append the path of our binary to the path environment variable. To append it we will copy the below command and then paste it in our terminal.		
+			export PATH=$PATH:$PWD/sratoolkit.2.11.1-ubuntu64/bin
+		
+		Here in this command if your system is 32-bit then you have to write ubuntu32 instead of ubuntu 64 and also sratoolkit version will be different due to updates. So make sure you use the correct version name in this command. You can see what version you downloaded in your terminal when downloading the tar file.After entering the above command, now we have to check whether our system can find this binary or not. To see that we will type the command given below.
+			which fastq-dump
+		
+		After typing this above command, if you see “ /yourdirectoryname/local/sratoolkit.2.11.1-ubuntu64/bin/fastq-dump” in your terminal it means that our system can find the binary.		
+			SRA Toolkit Configuration - 		
+		Now we have to configure our sra toolkit. To configure the sra toolkit, first of all type the following command in the terminal after which the configuration panel of the sra toolkit will open from where we can complete the final steps.		
+			vdb-config -i
+		
+		After entering the command you will get the configuration panel of sra toolkit where the red color mark on the side of the first option means that you have just selected that option and to change that you have to press “TAB KEY” in your computer keyboard.You can choose other options using tab key and enter key. 
+Keep pressing TAB KEY until your red mark appears at the side of CACHE. When your red mark is at the side of the CACHE option then you have to press ENTER KEY.After you hit enter and get inside the CACHE option here you will have to press TAB KEY again and then select the choose button below the location of user-repository option.Now after we have selected the choose option here we will have to select the directory that we created at the beginning of the tutorial, which in our case is yourdirectoryname. Enter the directory by selecting it with the help of the arrow key on our keyboard and then select the folder named local and press enter.
+After this, again with the help of TAB KEY, go to the option of OK and press it and then select the option yes and present enter.Now we have to click on save option here and then click on ok. After this we have to go to the exit button and then press enter.		
+			Check SRA Toolkit - 
+		
+		Now we have to see whether our sra toolkit is working and is functional or not. To see this, we will type the command given below in our terminal.
+			fastq-dump --stdout SRR390728 | head -n 8		
+		After typing the above command in the terminal you will need to wait a few seconds and after that if you see the following output in the terminal, then it means that the sra toolkit is working and is fully functional.		
+																														
+			Uninstall SRA Toolkit - 
+		
+		If for some reason you want to uninstall SRA Toolkit from your ubuntu system, then you can use the below command for this, which will completely uninstall the sra toolkit from your Ubuntu system.		
+			sudo apt-get purge --auto-remove sra-toolkit
+		
+		NOTE: In some cases you might need to run the source command for sra toolkit installation to complete. You can also close the active terminal window and open a new one.		
+				x				
+		And just like this you can install and setup sra toolkit in your ubuntu 20.04. If you liked this tutorial, then definitely share it with your friends who want to install sra toolkit in their ubuntu 20.04 system. If you face any problem in installing it, then comment below and I will definitely solve it and provide the solution to you. Thank you. [lyte id='6EHKuh0T3eI' /]
+
+			FAQ - 		
+			Can we install SRA Toolkit in our ubuntu 18.04 with the help of this tutorial.
+		
+		Yes, you can install and run sra toolkit in your Ubuntu 18.04 also with the help of this tutorial. The commands will remain same for your system but if your system is 32-bit then keep in mind that in the command “ export PATH=$PATH:$PWD/sratoolkit.2.11.1-ubuntu64/bin ” you have to use ubuntu32 instead of ubuntu64 along with a different sra toolkit version if yours is different.		
+			Can we create a directory with any name?
+		
+		Yes, you can create a directory with any name here, like we had created a directory here by the name of “yourdirectoryname” and “local”, you can create a directory with any such name.",
+				"headline": "How to Install SRA Toolkit in Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-09-15",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-09-15",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 0,
+          "width": 0        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<nav class="pagination-wrapper" aria-label="article pagination">
+		<a class="prev page-numbers" href="https://netmiko.com/blog/page/15/">&laquo; PREV</a>
+<a class="page-numbers" href="https://netmiko.com/blog/"><span class="screen-reader-text">Page </span>1</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://netmiko.com/blog/page/14/"><span class="screen-reader-text">Page </span>14</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/15/"><span class="screen-reader-text">Page </span>15</a>
+<span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>16</span>
+<a class="page-numbers" href="https://netmiko.com/blog/page/17/"><span class="screen-reader-text">Page </span>17</a>
+<a class="next page-numbers" href="https://netmiko.com/blog/page/17/">NEXT &raquo;</a></nav>
+</section>
+
+		</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Simplified Coding Examples.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-682"> </div>
+<p><!-- End Ezoic - sidebar - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2023 Copyright NETMIKO.COM			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/netmiko(\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$))|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/netmiko.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"eclipse","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://netmiko.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><\/noscript>',a='<div class="play"><\/div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+</body>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+</html>

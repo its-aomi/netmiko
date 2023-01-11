@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+		<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-196633016-1"></script>
+	<script type="rocketlazyloadscript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-196633016-1');
+	</script>
+
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Blog &#x2d; Page 14 &#x2d; NETMIKO.COM</title>
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Latest posts: Blog&#8230;">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog &#x2d; Page 14">
+<meta property="og:description" content="Latest posts: Blog&#8230;">
+<meta property="og:url" content="https://netmiko.com/blog/page/14/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog &#x2d; Page 14">
+<meta name="twitter:description" content="Latest posts: Blog&#8230;">
+<link rel="canonical" href="https://netmiko.com/blog/page/14/">
+<link rel="prev" href="https://netmiko.com/blog/page/13/">
+<link rel="next" href="https://netmiko.com/blog/page/15/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/blog/","name":"Blog"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 4.13ms meta | 11.88ms boot -->
+
+
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Comments Feed" href="https://netmiko.com/comments/feed/">
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	
+
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+.main-c {display: flex;margin-bottom:10px;}.main-iframe {flex: 1;height:350px;}@media only screen and (min-width: 768px) {.main-c {display: flex;}.main-iframe {flex: 1;height:350px;}.iframe-container {position: relative;height: 350px;}.iframe-container iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}}code {background-color: #eee;}.wp-block-code::before {content: "Click Code to Copy";display: block;color: red;margin-top: -25px;margin-bottom: 25px;margin-left:-7px;padding: 10px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223 {width: 350px;}.cnt223 {min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 30px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top: -100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}#download a {color: #fff;text-decoration: none;}.wp-block-image {box-shadow: 0 0 0 1px #444;}h2.widget-title {font-size: 1.2rem;padding: 0.4em 0;}body.home .articles-wrapper>h2 {font-size: 1.2rem;padding: 0.4em 0;}.article-card header p {font-weight: 700 !important;font-size: 20px !important;margin-bottom: 10px;text-align: center;}h3 {margin-bottom: 10px;}strong {font-weight:600 !important;}@media only screen and (min-width: 768px) {h2 {margin-bottom: 20px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223{min-width: 600px;width: 600px;min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 15px 35px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top:-100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}}.lyte-wrapper::before {content: 'Watch the Video';display: block;background-color: #444;color: #f5f5f5;padding-left:5px;}.lyte-wrapper {margin-left: -1px !important;}.lyte, .lyMe {border: 5px solid #444;}.image-container {border: 5px solid #444;}</style>
+
+<style id="rocket-lazyload-inline-css" type="text/css">.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://netmiko.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml">
+<script type="rocketlazyloadscript">document.createElement( "picture" );if(!window.HTMLPictureElement && document.addEventListener) {window.addEventListener("DOMContentLoaded", function() {var s = document.createElement("script");s.src = "https://netmiko.com/wp-content/plugins/webp-express/js/picturefill.min.js";document.body.appendChild(s);});}</script><meta name="description" content="">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+</head>
+
+
+<body class="blog paged paged-14 hfeed no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="300" height="125" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20125'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp"><noscript><img width="300" height="125" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" sizes="(max-width: 300px) 100vw, 300px"></noscript></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-1670" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1670"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-1666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1666">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-1668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1668"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-1669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1669"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-1667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1667"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<header class="page-header">
+				<h1 class="page-title">Archives: Blog</h1>			</header><!-- .page-header -->
+
+			<section class="articles-wrapper">
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-ros-ubuntu/">How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will walk you through the steps to <strong>install ROS Noetic and ROS Melodic on your Ubuntu 20.04</strong>. The steps will be very easy and you should be able to complete the installation...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-ros-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-ros-ubuntu/",
+				"articleBody": "Today I will walk you through the steps to install ROS Noetic and ROS Melodic on your Ubuntu 20.04. The steps will be very easy and you should be able to complete the installation very quickly.Before we begin to see the Installation process of ROS, let's see what ROS is and why it is the preferred choice of many hobbyists, engineers, and robotics designers throughout the world.
+			What is ROS?		
+		Robot Operating System, in short “ROS” is an open-source framework for researchers and developers to build and reuse code between robotics applications. It is a collection of software libraries and frameworks used in robotics development.There is also ROS 2, which is the more advanced and newer version of the framework that has the features that were missing in the previous ROS. 		
+			Install ROS Noetic on Ubuntu 20.04 
+		
+		Okay, so the first ROS version that we are going to install is ROS Noetic Ninjemys. To begin, first, make sure you have root permissions on your ubuntu system as we need root permission to download and install ROS.
+			Add ROS Source List 		
+		The first step will be to add the ROS Source List to our ubuntu system so that we can easily download and install all the resources for ROS using our command terminal. Before adding the ROS source list to your ubuntu system, be sure to first update your ubuntu packages using the update command.		
+			sudo apt-get update
+		
+		After that, you can add the ROS source list by using the command below -
+			sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+		
+		After adding the source list run the update command again to refresh the ubuntu packages list.		
+			sudo apt-get update		
+			Add ROS Keys		
+		To be able to add the ROS keys, first install curl in your ubuntu. You can do that by using the command below-		
+			sudo apt-get install curl
+		
+		After installing curl, Copy-Paste the command given below in the terminal, if everything is working fine then you should see an output in the terminal that says “OK”, which means you can continue with the installation of ROS Noetic.		
+			curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -		
+																														
+		
+		After adding the ROS keys you can run the ROS Noetic installation commands that will start the installation process of ROS Noetic on your ubuntu.		
+			Download and Install ROS Noetic
+		
+		You can install the full version of ROS Noetic using the command given below which will download all the things you need for ROS Noetic, like GUI, 2D/3D simulators etc.		
+			sudo apt-get install ros-noetic-desktop-full -y
+		
+		Now, if you don't want to download all the extra features then you can just download the ROS-Base with this command - 
+			sudo apt-get install ros-noetic-desktop -y		
+		The full version of ROS Noetic is recommended as it will have all the features, packages, libraries that you might and will need. So, just download the full version of ROS Noetic which will take approximately 3GB of storage.		
+			ROS Noetic Environment Setup
+		
+		Now to be able to run ROS Noetic in your terminal you will have to source the setup.bash file in every terminal window you want to run ROS Noetic in. You can do that by entering the command given below in the terminal.		
+			source /opt/ros/noetic/setup.bash		
+		But, sourcing the bash file every time you open a new terminal will be very inconvenient, that's why you can automate this process by adding the source command to your bashrc file.
+You can echo the source command using the command given below -		
+			echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc		
+		ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (STARTS)Or, you can manually add the source command to your bashrc file using the gedit editor.		
+			gedit ~/.bashrc		
+		Add the “source /opt/ros/noetic/setup.bash” line to the end of the bashrc file, save and then exit.
+ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (ENDS)Once you have echo or added the source command to the bashrc file run the source command to finish the setup.		
+			source ~/.bashrc		
+		And, that's it. The installation of ROS Noetic is now complete. You can use the command “roscore” to verify the installation of ROS Noetic.		
+			Install ROS Melodic on Ubuntu 20.04 
+		
+		Okay so if you want to install ROS Melodic instead of ROS Noetic then here are the steps to do that.The installation steps are the same as ROS Noetic, with just a little bit of changes. Once you have added the source list and the ROS keys you can download ROS Melodic using the command below.
+			sudo apt-get install ros-melodic-desktop-full -y
+		
+		Or, you can download the smaller version of ROS Melodic which doesn't contain the extra features like 2D/3D simulator etc.		
+			sudo apt-get install ros-melodic-desktop -y
+		
+		Once ROS Melodic is downloaded and installed, finish the installation process by setting up the Environment variable. First add the source command to the bashrc file using echo command. 		
+			echo &quot;source /opt/ros/melodic/setup.bash&quot; &gt;&gt; ~/.bashrc
+		
+		This command will add the source command to the bashrc file, you can also add it manually by editing the bashrc file using the gedit editor.
+			gedit ~/.bashrc		
+		After that run the source command to finish the installation process of ROS Melodic.		
+			source ~/.bashrc		
+			Install Important Packages
+		
+		Now for both ROS Noetic and ROS Melodic you will need some common tools that are required to run and use some features of ROS. Here are the most common tools that you will need to install.python-rosdeppython-rosinstallpython-rosinstall-generatorpython-wstoolbuild-essential
+You can install all these tools and dependencies by using “sudo apt-get install &lt;tool-name&gt;” like -		
+			sudo apt-get install python-rosinstall
+		
+		Now, there is one tool that you will need a lot when using ROS, and that tool is rosdep. You can install rosdep by using the command given below - 		
+			sudo apt-get install python-rosdep
+		
+		After installing rosdep, run the following command to initialize rosdep. 		
+			sudo rosdep init
+		
+			rosdep update		
+		
+			Conclusion - 
+		
+		And that's it, that's how you can download, install and set up ROS Noetic and ROS Melodic on your ubuntu 20.04. If you have any questions regarding the installation process of ROS then be sure to comment below. Thank You.",
+				"headline": "How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-21",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-21",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-apache-spark-on-ubuntu/">How to Install Apache Spark on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today, in this post I will show you how you can install Apache Spark on Ubuntu 20.04. This will be a step-by-step tutorial on installing apache spark. Now let's start the tutorial.		
+			Create a...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-apache-spark-on-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install Apache Spark on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-apache-spark-on-ubuntu/",
+				"articleBody": "Today, in this post I will show you how you can install Apache Spark on Ubuntu 20.04. This will be a step-by-step tutorial on installing apache spark. Now let's start the tutorial.		
+			Create a Directory for Apache Spark 
+		
+		Okay, so the first step will be to create a new directory in the home directory where we will download and Install Apache Spark.
+You can create a new directory manually by going to your File Manager&gt;Home directory, then right click&gt;New Folder, name the folder “spark” and click on create.Or, you can create a new directory using the terminal by using the command given below - 		
+			mkdir -p spark		
+			Install Java Development kit (JDK)
+		
+		Now, to be able to run and use Apache Spark we will need Java JDK installed in our Ubuntu system. To check whether you have java installed on your Ubuntu you can run the following command in the terminal.
+			java --version		
+		If it says “Command “java” not found” then it means that java is not installed. To install java you can use the commands given below.		
+			sudo apt-get update
+		
+			sudo apt-get install default-jdk -y		
+		Close the terminal window and open a new terminal window, you can verify the installation of java by typing “java --version” in the terminal.		
+			Download Apache Spark
+		
+		You can download Apache Spark through a web browser or you can download it using the terminal. I’ll show you both ways, first, I’ll show you how you can download Apache Spark using the terminal. 
+			Download Apache Spark using Terminal 
+		
+		First, open your terminal and change your working directory to the “spark” directory that you created in the first step.		
+			cd spark
+		
+		Then using wget we will be downloading Apache Spark to that directory. To check if you have wget installed type ”wget --version” if the command is not found then install wget using the command -		
+			apt-get install wget
+		
+		After installing wget, enter the following command to install the latest version of Apache Spark, which is currently 3.2.0.
+			wget https://dlcdn.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
+		
+		Here we are installing Apache Spark version 3.2.0 with package type “Pre-built for Apache Hadoop 3.3 and later”.You can get links for different versions from https://spark.apache.org/downloads.html.		
+			Download Apache Spark using Browser 		
+		If you want to download Apache spark using the web browser then just go to this link here - https://spark.apache.org/downloads.html.
+Here select the version of Apache Spark you want to install in the first dropdown, in the second dropdown select the package type, after you select the version and package type of Apache Spark, you will get the download link in the 3rd line.		
+																														
+		Click on the download link, You will be redirected to another page with the download links for Apache Spark. Click on the top link to start the download. 		
+																														
+		You can also copy that link and download it from the terminal using wget.
+		After downloading Apache Spark, right-click the downloaded file and move it to the “spark” folder that you created in the home directory.		
+			Install Apache Spark In Ubuntu		
+		Now, the installation process of Apache Spark is very easy. The first step will be to untar the tar file that we downloaded. To do that, first, change your working directory to the “spark” directory if you haven't already.		
+			cd spark		
+		After that enter the following command shown below that will untar the tar file. “tar -xvf filename” is the command to untar the tar file, the file name will be the name of the downloaded tar file that you want to untar.
+			tar -xvf spark-3.2.0-bin-hadoop3.2.tgz
+		
+		After you untar the tar file, you will need to set up the environment variable path for Apache Spark. To do that first change your working directory to home directory using the command below -		
+			cd ~		
+		Now, after changing the directory, using the gedit editor edit the Bashrc file. 		
+			gedit ~/.bashrc
+		
+		This command will open the bashrc file in the gedit text editor, scroll down to the bottom of the bashrc file, and in the end add these lines -
+			SPARK_HOME=/home/username/spark/spark-3.2.0-bin-hadoop3.2
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+		
+		Change “username” to your own username, the file name at the end will be the name of the tar file that you untar-ed. After that on the top right corner click on the save button and exit the editor.Finish the installation by using the source command -		
+			source ~/.bashrc
+		
+		That’s it, the installation of Apache spark is now completed, close the current terminal window and open a new one.
+			Verify the Installation of Apache Spark
+		
+		Now, the last step in the installation of Apache Spark will be to verify whether Spark was installed correctly or not. You can do that by entering the following command in the terminal -		
+			spark-shell 		
+		If this command opens the Spark shell then it means that the Apache Spark installation was successful.		
+			Access Spark context Web UI		
+		You can access Spark Web UI by typing “spark-shell” in the terminal, which will start the Spark shell and also will give you the URL of Spark Context Web UI.
+ [lyte id='glF50MdXSdk' /]
+And, that is how you can install Apache Spark on Ubuntu 20.04. If you are facing any problem with the installation then comment below or contact me on Twitter. Thank you.		
+			FAQ -		
+			How to Uninstall or Remove Apache Spark from Ubuntu?
+		
+		You can remove or uninstall Apache Spark by deleting the directory where Apache Spark was installed. Open your File Manager and right-click on the Spark folder and click “Move to Trash”.
+You can also remove the directory using the terminal by using this command -		
+			rm -rf spark		
+			How to Fix Apache Spark crashing on Ubuntu?
+		
+		Whenever you are running Spark on your ubuntu, make sure that there is plenty of RAM available. Allocate at least 80% of your RAM to Apache Spark for its proper working.",
+				"headline": "How to Install Apache Spark on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-12",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-12",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 0,
+          "width": 0        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-and-setup-anaconda-ubuntu/">How to Install and Setup Anaconda on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won't have any problem installing anaconda on your ubuntu...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-and-setup-anaconda-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install and Setup Anaconda on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-and-setup-anaconda-ubuntu/",
+				"articleBody": "Today I will walk you through the steps to install and set up anaconda on Ubuntu 20.04. The steps are very easy to follow so you won't have any problem installing anaconda on your ubuntu system.		
+			Create a new directory for Anaconda		
+		Now, let's start the installation process. The first step will be to create a new directory in our home directory where Anaconda will be downloaded. Just to keep things organised.
+To create a new directory using the terminal use this command -		
+			mkdir -p anaconda
+		
+		Here, the \"anaconda\" is the name of the directory which you can name anything that you like.You can also create a new directory by going to your File Manager&gt;Home. After that right-click inside the Home directory and click on “New Folder”. 
+Name the folder “anaconda” and then click on create.		
+			Download Anaconda  		
+		Now, the next step will be to download Anaconda from its official website Anaconda.com. There are two ways to download anaconda, you can download it directly from its website or you can download it using the terminal.		
+			Download Anaconda using Browser - 		
+		Let me show you both the ways to download anaconda. First I'll show you how you can download anaconda directly from its website using a web browser.
+ Go to https://www.anaconda.com/products/individual#Downloads on your web browser and select the version of anaconda you want to install. Click on the 64-bit(x86) Installer. In the firefox download popup select “save file” and click “OK”. This will start the download of Anaconda.By default, the file will be downloaded to the Downloads folder. You will need to right-click the downloaded .sh file and then click on “move”. Then select the new anaconda folder that you created and move the downloaded .sh file to that folder.
+			Download Anaconda using Terminal -
+		
+		Now, let's see the steps to download Anaconda using the terminal. First, change your working directory to the directory where you want to download Anaconda.In our case its the folder that we created in the first step, so we will change our directory to that one using this command -		
+			cd anaconda
+		
+		After changing the working directory we’ll download anaconda to that directory using this command -
+			wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
+		
+		If you don't have wget installed on your ubuntu system then you can install it using “apt-get install wget”.Note: The download link keeps changing after the latest updates, so the above command might not work after some time. It's better to just download anaconda using the web browser or get the latest download link from here.		
+			Install Anaconda on Ubuntu 20.04 
+		
+		Before starting the installation process we will have to first “Verify the data integrity with SHA-256”.
+To do that, first go to https://docs.anaconda.com/anaconda/install/hashes/. Here click on the “64-bit Linux py3 ''.		
+																														
+		I have python 3 installed on my ubuntu that's why I have selected the py3 option, if you have python 2 then select the py2 one.After that click on the version of anaconda that you downloaded. In our case it will be - “Hashes for Anaconda3-2021.05-Linux-x86_64.sh” this will be different if you downloaded a different version of anaconda. Check the downloaded file for the version name.
+																														
+		Now here you will need to copy the hash shown at the right side of “sha256”. Copy it and paste it somewhere, we’ll need it after this step.		
+																														
+		Before proceeding to the next step, change your working directory to home directory. As our working directory was anaconda.
+			cd ~
+		
+		Now in the terminal, you will have to type this command - “sha256sum /1path/username/2path/filename” where 1path will be home, the username will be your username, 2path will be anaconda folder, the filename will be the name of the downloaded anaconda.sh file.		
+			sha256sum /home/username/anaconda/Anaconda3-2021.05-Linux-x86_64.sh		
+		Now after you enter this command in your terminal, there will be a hash shown in the terminal which you will need to compare with the hash shown on the website.		
+																														
+		If it matches then continue to the next step to install anaconda on ubuntu 20.04.
+Now, change your working directory to anaconda by using this command -		
+			cd anaconda		
+		After that in the terminal type “bash filename”. The file name will be the name of the anaconda file that you downloaded.		
+			bash Anaconda3-2021.05-Linux-x86_64.sh
+		
+		Press Enter, this will start the installation process.First press “enter” to continue then it will ask you to read the terms and agreement, hold and keep pressing enter to continue.
+Once the Agreement ends it will ask you to accept it. Enter “Yes” to continue. After accepting the agreement it will show you the location where anaconda will be installed. Press Enter to continue.It will take some time to finish the installation of anaconda, just before the installation finishes it will ask whether “You wish the installer to initialize Anaconda3 by running conda init”. Enter “Yes” to finish the installation of Anaconda on ubuntu. Now you will need to run the source command or close the activate terminal and open a new terminal window for anaconda to work.
+Type this command to verify the installation of Anaconda -		
+			conda --version
+		
+			Finish Anaconda Setup 		
+		Now after installing anaconda, by default every time you open a new terminal, your terminal will have the base environment activated with it like “(base) username@root:~$” in the terminal.Which you can activate or deactivate by using the command shown below. 
+			conda config --set auto_activate_base True 
+		
+		Or		
+			conda config --set auto_activate_base False
+		
+		Here, if you set it “True” then new terminal windows will have the base environment activated automatically. If you set it “False” then it won't. Close the terminal and open a new one to see the change.If this post helped you in installing anaconda then be sure to share it with others that need it. If you are facing any problem while installing anaconda then comment below or contact me through email at - netmikoblog@gmail.com. Thank you.
+ [lyte id='ezxtBEYAHsk' /]
+			FAQ -
+		
+			Q1. How to Uninstall Anaconda on Ubuntu 20.04?
+		
+		You can uninstall Anaconda by typing “rm -rf ~/anaconda3” in the terminal. If you want to fully uninstall Anaconda and its related files then in a terminal type “conda install anaconda-clean” and after that type “anaconda-clean --yes”.",
+				"headline": "How to Install and Setup Anaconda on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-10",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-10",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/">How to Fix Postman Crashing on Startup in Ubuntu</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today in this post I will talk about how we can fix the crashing of Postman on ubuntu during startup and also during regular usage. I will show you some common causes and also some technical ones...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Fix Postman Crashing on Startup in Ubuntu",
+				"url": "https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/",
+				"articleBody": "Today in this post I will talk about how we can fix the crashing of Postman on ubuntu during startup and also during regular usage. I will show you some common causes and also some technical ones that might be the reason for the postman software to crash on your ubuntu system. I will provide you with the solutions for all those problems in this post.
+Okay, let's now start and see the possible causes of the postman crash and also fix it.		
+			1. Update Postman 
+		
+		Now, this is the first thing that you should do. Go to the Postman downloads page and download and update to the latest version of postman right away.Because the reason for the crash might be some glitch in the software that is in your version of postman, updating postman will help in fixing the crash if it was caused by any bug or glitch.
+			2. Uninstall and Reinstall
+		
+		If updating postman didn't help then you should try uninstalling and reinstalling the postman software. Now before you uninstall postman, make sure that you have made backups of collections, environments, data dumps, and globals stored, etc. You will lose the data stored in postman if you uninstall it without backup.
+		You can easily import those backups after you have installed a fresh version of postman.Now after you have uninstalled postman from your system you will have to delete all the files that were stored in postman. You can find these files in the directory where you installed postman. You should do this because we want a fresh installation of postman and don't want any files from the previous installation.
+After deleting the old files, install the latest version of postman and import your data. This method should fix the crashing if something was wrong with the postman software. If it's still not fixed then see the other possible causes below.		
+			3. Prevent Conflicts Between Programs 		
+		During the Ubuntu startup, is there a different program that is also running in the background or foreground along with postman? 
+Chances are that a single program or multiple programs are creating conflict during the startup processes that is making postman to crash.To fix this, what you can do is that you can close all other programs and just run postman alone. Also turn off auto start for all other programs. This will make sure that during the startup process only postman runs.		
+			4. Increase Your RAM 
+		
+		So how much RAM does your device have, 2gb? 4gb? Because chances are that you might be running out of RAM, and that's causing postman to not run properly and thus it is crashing.
+This happens because during the startup process, lots of different programs are also trying to start which means everyone is hungry for RAM.This is a very common problem with users that use Ubuntu in a virtual box. Because the RAM is very limited in the virtual box as you are sharing it with your windows computer. Giving the virtual box a little more RAM can help.But if you are not using a virtual box to run Ubuntu, then you will have to upgrade your pc or laptop’s ram in order to fix this.
+			4. Check Compatibility -		
+		Now, this is something that is not that common because these days almost every pc will be able to run postman. But if you are using an old pc then there might be a little bit of chance that postman is not compatible with your pc.If your pc is not old then you can try the other methods to fix the crash of postman on Ubuntu.		
+			5. Disable Antivirus -		
+		Are you using an antivirus on your computer? Like Bitdefender, quick heal, etc.? Then there might be a very high chance that during the installation process of postman some important files were removed from postman software.
+This is a very common problem when installing any software on a computer with antivirus installed and running during any software installation. Sometimes the antivirus software will detect safe files as unsafe during the installation process and then remove them from the installation process. This means that your installation will be completed but the installed software like postman will have some important files missing.This can cause lots of different problems like crashing and missing features. So, that's why whenever installing any trusted software from a trusted site make sure you disable the antivirus.
+Note: Only disable antivirus for trusted software downloaded from trusted sources.		
+			Conclusion - 
+		
+		Okay, so that is how you can Fix Postman Crashing on Startup in Ubuntu. It's very easy to fix the crash, just follow the steps shown above and you will have your problem fixed.The most common reasons for postman crashing on ubuntu are due to low memory and due to missing files. Which you can fix by uninstalling and reinstalling postman with antivirus disabled.Thank you for reading, comment below if you need any help.",
+				"headline": "How to Fix Postman Crashing on Startup in Ubuntu",
+				"author": "Aomi Bora",
+				"datePublished": "2021-11-06",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-11-06",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/">How to Run Localhost on Android and Install WordPress in it</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Do you know that you can run localhost on your Android device? Well, it’s very easy to run a local webserver on your android device using an app that you can download from the play store.  So, in...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Run Localhost on Android and Install WordPress in it",
+				"url": "https://netmiko.com/run-localhost-on-android-and-install-wordpress-in-it/",
+				"articleBody": "Do you know that you can run localhost on your Android device? Well, it’s very easy to run a local webserver on your android device using an app that you can download from the play store.  So, in this post, we’ll see how we can run localhost on our Android device and also install WordPress on it. After setting this up, we will be able to access our webserver at “http://0.0.0.0:8080” and also be able to access our WordPress website.
+To be able to run a localhost web server on our android device, we will use an app called “AWebServer”. This app is available on the play store and this app will help us make a local webserver on our device.		
+			Install AWebServer App -
+		
+		To begin, first, open your play store and then search for “AWebServer”. Install the app that's developed by slykat.
+Now open the AWebServer app. When you first open the app, the app will install its components which will take a little bit of time. After that, it will ask you for storage permissions, allow it.After the app installation finishes, go to your file manager and create a new folder where our webserver files will be stored.		
+			Create a New Folder -
+		
+		Now after the installation of the app finishes we will have to create a local folder on our device where the webserver files will be stored.
+First, open any file manager that you use, now once you are inside the file manager, go to internal storage.Inside the internal storage create a new folder, I am using ES File Explorer so here are the steps -Open ES File Explorer and then go to Internal Storage. Here click on the three dots at the top right corner. Click on “+ New” then select Folder.Enter the folder name as “www” then click on “OK”. The folder will be now created.Now follow the rest of the steps below to finish setting up the AWebServer App.
+			
+						Download ES File Explorer 
+					
+			Change Root Folder -
+		
+		Now that we have installed the AWebServer app and also created a new folder for it, we’ll need to change the Document root address to the new folder instead of the default one, so that we can easily add and remove files from our local web server.First, open the web server app and then click on the Document Root “Select” option. Now select “Internal” then click on OK.		
+																														
+		Here select the www folder that you created and then click on the “SELECT” button. That's it. The app setup is now complete and you can now start the webserver. 
+			Start the Local Web Server -
+		
+		After installing and finishing the setup of the AWebServer app, to start the web server all we have to do is to click on the “Start” button at the right side of Service.After the web server starts, you can access the server by going to the HTTP address shown at the top. It will be like - “http://0.0.0.0:8080”.		
+																														
+		Now, by default, there will be nothing in that address and you will only see the index of the files inside the “www” folder that you created. So, let's create an index.html file for the root address.
+			Create an Index.html File for Root -
+		
+		Open the ES File Explorer then go to Internal Storage. Now scroll down and go inside the “www” folder that you created.Once you are inside the www folder click on the three dots at the top right corner. Then click on “+ New” and select File.Name the file “index.html” and then click on OK. After creating the index.html file click on it. Here you will have lots of options to select from, but what you need to select is “ES Note Editor” and then click on “This Time Only”. After the file opens, click on the Edit button at the top bar.		
+																														
+		
+Then copy-paste the HTML code from below or add your own HTML code.		
+			&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;
+    HOME
+        &lt;/title&gt;
+    &lt;/head&gt;
+&lt;/body&gt;
+    HOME
+&lt;/body&gt;
+&lt;html&gt;
+		
+		After pasting the HTML code click on the Save button at the top.Now if you access the webserver by going to http://0.0.0.0:8080 you'll see that it has changed to what you added to your index file.
+Okay, so that's how you can run a localhost web server on your android device easily. Continue reading below if you want to know how you can host WordPress in a localhost web server on android.		
+			Install and Setup WordPress on Localhost Android -
+		
+		Okay, so now that we have completed the setup of the local web server, let's install WordPress on it.To install WordPress on localhost on our android device we will first have to download WordPress from the official website of WordPress, which is wordpress.org. Go to this website and click on “Get WordPress”.
+Scroll down a little and then click on the “Download WordPress” button. After the download finishes, open ES File Explorer. Go to Internal Storage then inside the downloads folder.Now click on the downloaded wordpress.zip file and then open it using ES Zip Viewer. Go inside the WordPress folder and long-press one folder. After that, you will get the option to “select all” at the top. Click that and select all.		
+																														
+		Now click on the Extract option at the bottom. And then select the “Choose Path” option. After that click on the /sdcard/ and select the “www” folder, then click on OK twice.
+Wait for the extraction to complete. After the WordPress file extraction finishes go to the www folder and there will be a new folder called “WordPress”. Go inside the WordPress folder and select all the files inside of it. Then move all the files from /www/wordpress/ to just the “www” folder. Make sure to delete the index.html file that we created in the www folder.Now open the AWebServer app.Here in the app go to the MySql option and then click on the start button. Now, open your browser and go to “http://0.0.0.0:8080/mysqladmin/”. Here login to your PHPMyAdmin dashboard by entering your password and username. The default username and password for PHPMyAdmin is “root”.
+After logging in to your PHPMyAdmin click on the Databases option at the top. Now in “database name” type the name as “website” which will be the database name. Just below the database name select the language. Click on the dropdown and then look for “utf8_general_ci” and select it, then click on create.		
+																														
+		After creating the database go to http://0.0.0.0:8080/wp-admin/, here follow the WordPress instructions to complete the installation of WordPress on localhost in android.The database name will be “website”, password and username will be “root” and the Database Host will be 0.0.0.0:3306
+After following all the steps your website will be available at - “0.0.0.0:8080” and its admin dashboard will be available at “0.0.0.0:8080/wp-admin”.And that is how you can run localhost on android and also install WordPress on it. The steps are easy and you can easily follow them. If you liked this post and this post helped you in any way, then make sure to comment below and also share it with your friends. Thank You.",
+				"headline": "How to Run Localhost on Android and Install WordPress in it",
+				"author": "Aomi Bora",
+				"datePublished": "2021-10-28",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-10-28",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-cplex-ubuntu/">How to Install IBM CPLEX on Ubuntu 20.04</a></p>
+    </header>
+      <div class="excerpt">
+        <p>In this post, I will walk you through the steps on how you can install IBM CPLEX on Ubuntu 20.04.Here are the steps to Install IBM CPLEX on your Ubuntu -Download CPLEXInstall CPLEX Edit the Bashrc...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-cplex-ubuntu/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install IBM CPLEX on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-cplex-ubuntu/",
+				"articleBody": "In this post, I will walk you through the steps on how you can install IBM CPLEX on Ubuntu 20.04.Here are the steps to Install IBM CPLEX on your Ubuntu -Download CPLEXInstall CPLEX Edit the Bashrc fileFinish, Run CPLEX
+			Download IBM CPLEX - 		
+			Download directly using Browser -		
+		Okay, so the first step will be to download the IBM CPLEX bin file. You can download CPLEX by Going to this link here - http://www.mysmu.edu/faculty/hclau/is421.htmlHere select the .bin file for Linux 64-bit if your system is 64-bit. If it's 32-bit then you can go to the (OLD) Installation Package section and download the 32-bit version from there.You can also alternatively download CPLEX by going to IBM’s official website - https://www.ibm.com/products/ilog-cplex-optimization-studio. Here select the version you need. The free edition or the academic edition. 
+After downloading the CPLEX bin file, create a new folder and move the bin file to the new folder that you created. Name the folder “cplex”.		
+			Download using Terminal -
+		
+		To download IBM CPLEX using the terminal follow these steps - NOTE: You'll need root permission to be able to download CPLEX using the terminal. Download it directly from the internet if you don't have root permissions.
+1. Open the terminal, first update and upgrade your ubuntu using the command -		
+			sudo apt-get update
+		
+			sudo apt-get upgrade
+		
+		2. Create a new directory where we will download the CPLEX bin file. This is to make things organized instead of installing everything here and there.		
+			mkdir -p cplex		
+		This command will create a new directory called “cplex” in your ubuntu.
+3. Change the working directory to “cplex”.		
+			cd cplex		
+		4. After changing the directory you can download CPLEX to that directory using the command given below.		
+			wget http://www.mysmu.edu/faculty/hclau/CPLEX/cplex_studio128.linux-x86-64.bin
+		
+		If your ubuntu system don't have wget installed then you can install it using this command - 
+			sudo apt-get install wget
+		
+		After the download completes change your working directory back to the previous one -		
+			cd ..
+		
+		Once the download completes you can now follow the steps below to install CPLEX on ubuntu.		
+			Installing IBM CPLEX -
+		
+		Now let's see the installation process. To install CPLEX we will have to first run and execute the bin file that we downloaded. 
+But before that, we’ll have to change our working directory to the one where we downloaded the bin file.		
+			cd cplex
+		
+		After changing the directory we will execute the bin file. To do that we will run the following command-		
+			bash /home/username/cplex/cplex_studio128.linux-x86-64.bin 		
+		Here in the place of “username” type your own username.After executing the bash file follow the instructions of the installation process.
+Here it will ask you to select your language, select English by entering number 2. Choose different numbers for different languages as shown in the installation window. Click Enter.After that enter number “1” to accept the user agreement. Now here it will ask you to enter an ABSOLUTE PATH to install CPLEX on your system. You should give the path where you downloaded CPLEX. In our case, it will be -		
+			/home/username/cplex/CPLEX_Studio128
+		
+		After entering the absolute path, press enter and then enter “y” to continue. Follow the remaining steps shown in the terminal. 
+Now, after it asks you to press Enter to exit the installer. Press enter which will finish the installation.		
+			Edit Bashrc File -		
+		After that, now we will have to edit the bashrc file. To edit the bashrc file first change your working directory to the directory where you installed CPLEX. As we were already in the “cplex” directory we will use this command -		
+			cd CPLEX_Studio128
+		
+		Now, after changing the working directory we’ll edit the bashrc file using the gedit editor- 
+			gedit ~/.bashrc
+		
+		This command will open the bashrc file in the text editor where we will need to scroll down to the bottom of the file and add this line -		
+			export PATH=$PATH:/home/username/cplex/CPLEX_Studio128/cplex/bin/x86-64_linux
+		
+		Here, change “username” to your own username.Now after adding the following line in the file, click on the Save button at the top of the editor and then click on the close button.
+			Finish and Run CPLEX -		
+		Now after saving the file in the terminal type this command to finish the installation process of IBM CPLEX.		
+			source ~/.bashrc
+		
+		And, that's it. You can now run CPLEX on your Ubuntu by typing “cplex” in your terminal.		
+			cplex		
+		 [lyte id='c9uVSaQkd8o' /]
+			Frequently Asked Questions - 
+		
+			Do I need Root permission to install CPLEX ?
+		
+		No, you don't need root permission to install CPLEX. You can install it without root permission.
+			How do I download CPLEX from the IBM website?
+		
+		To download CPLEX from the IBM website you will need to first go to this link here. Now on the IBM website, we’ll need to select the Free Edition or the Academic Edition. After that, you'll need to create an IBM account after which you can download CPLEX from there.",
+				"headline": "How to Install IBM CPLEX on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-10-22",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-10-22",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<nav class="pagination-wrapper" aria-label="article pagination">
+		<a class="prev page-numbers" href="https://netmiko.com/blog/page/13/">&laquo; PREV</a>
+<a class="page-numbers" href="https://netmiko.com/blog/"><span class="screen-reader-text">Page </span>1</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://netmiko.com/blog/page/12/"><span class="screen-reader-text">Page </span>12</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/13/"><span class="screen-reader-text">Page </span>13</a>
+<span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>14</span>
+<a class="page-numbers" href="https://netmiko.com/blog/page/15/"><span class="screen-reader-text">Page </span>15</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/16/"><span class="screen-reader-text">Page </span>16</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/17/"><span class="screen-reader-text">Page </span>17</a>
+<a class="next page-numbers" href="https://netmiko.com/blog/page/15/">NEXT &raquo;</a></nav>
+</section>
+
+		</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Simplified Coding Examples.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-682"> </div>
+<p><!-- End Ezoic - sidebar - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2023 Copyright NETMIKO.COM			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/netmiko(\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$))|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/netmiko.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"eclipse","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://netmiko.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><\/noscript>',a='<div class="play"><\/div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+</body>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+</html>

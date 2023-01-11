@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+		<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-196633016-1"></script>
+	<script type="rocketlazyloadscript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-196633016-1');
+	</script>
+
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>How to Host a WordPress Website on Alibaba Cloud for Free &#x2d; NETMIKO.COM</title>
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need to do to get a new WordPress&#8230;">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-1024x320.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Host a WordPress Website on Alibaba Cloud for Free">
+<meta property="og:description" content="Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need to do to get a new WordPress website set up on Alibaba cloud.">
+<meta property="og:url" content="https://netmiko.com/host-wordpress-on-alibaba-cloud-free/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta property="og:updated_time" content="2021-12-23T15:53+00:00">
+<meta property="article:published_time" content="2021-12-23T15:53+00:00">
+<meta property="article:modified_time" content="2021-12-23T15:53+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Host a WordPress Website on Alibaba Cloud for Free">
+<meta name="twitter:description" content="Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need to do to get a new WordPress website set up on Alibaba cloud.">
+<meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-1024x320.png">
+<link rel="canonical" href="https://netmiko.com/host-wordpress-on-alibaba-cloud-free/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/host-wordpress-on-alibaba-cloud-free/","name":"How to Host a WordPress Website on Alibaba Cloud for Free"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 6.84ms meta | 12.00ms boot -->
+
+
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Comments Feed" href="https://netmiko.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; How to Host a WordPress Website on Alibaba Cloud for Free Comments Feed" href="https://netmiko.com/host-wordpress-on-alibaba-cloud-free/feed/">
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	
+
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+.main-c {display: flex;margin-bottom:10px;}.main-iframe {flex: 1;height:350px;}@media only screen and (min-width: 768px) {.main-c {display: flex;}.main-iframe {flex: 1;height:350px;}.iframe-container {position: relative;height: 350px;}.iframe-container iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}}code {background-color: #eee;}.wp-block-code::before {content: "Click Code to Copy";display: block;color: red;margin-top: -25px;margin-bottom: 25px;margin-left:-7px;padding: 10px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223 {width: 350px;}.cnt223 {min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 30px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top: -100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}#download a {color: #fff;text-decoration: none;}.wp-block-image {box-shadow: 0 0 0 1px #444;}h2.widget-title {font-size: 1.2rem;padding: 0.4em 0;}body.home .articles-wrapper>h2 {font-size: 1.2rem;padding: 0.4em 0;}.article-card header p {font-weight: 700 !important;font-size: 20px !important;margin-bottom: 10px;text-align: center;}h3 {margin-bottom: 10px;}strong {font-weight:600 !important;}@media only screen and (min-width: 768px) {h2 {margin-bottom: 20px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223{min-width: 600px;width: 600px;min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 15px 35px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top:-100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}}.lyte-wrapper::before {content: 'Watch the Video';display: block;background-color: #444;color: #f5f5f5;padding-left:5px;}.lyte-wrapper {margin-left: -1px !important;}.lyte, .lyMe {border: 5px solid #444;}.image-container {border: 5px solid #444;}</style>
+
+<style id="rocket-lazyload-inline-css" type="text/css">.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://netmiko.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/2023">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml">
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Fhost-wordpress-on-alibaba-cloud-free%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Fhost-wordpress-on-alibaba-cloud-free%2F&#038;format=xml">
+<script type="rocketlazyloadscript">document.createElement( "picture" );if(!window.HTMLPictureElement && document.addEventListener) {window.addEventListener("DOMContentLoaded", function() {var s = document.createElement("script");s.src = "https://netmiko.com/wp-content/plugins/webp-express/js/picturefill.min.js";document.body.appendChild(s);});}</script><link rel="pingback" href="https://netmiko.com/xmlrpc.php">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Host a WordPress Website on Alibaba Cloud for Free | NETMIKO.COM">
+<meta property="og:description" content="Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need&hellip;">
+<meta property="og:url" content="https://netmiko.com/host-wordpress-on-alibaba-cloud-free/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need&hellip;">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+</head>
+
+
+<body class="post-template-default single single-post postid-2023 single-format-standard no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="300" height="125" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20125'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp"><noscript><img width="300" height="125" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" sizes="(max-width: 300px) 100vw, 300px"></noscript></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-1670" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1670"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-1666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1666">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-1668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1668"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-1669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1669"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-1667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1667"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-2023" class="post-2023 post type-post status-publish format-standard has-post-thumbnail hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">How to Host a WordPress Website on Alibaba Cloud for Free</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2021-12-23">
+<meta itemprop="dateModified" content="2021-12-23">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/aomi/">Aomi Bora</a></span> </span><meta itemprop="author" content="Aomi Bora">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/host-wordpress-on-alibaba-cloud-free/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need to do to get a new WordPress website set up on Alibaba cloud.</p>
+<div class="rVSSiweX" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+<p>The steps for hosting a WordPress website on Alibaba cloud are very easy, you just need a little bit of time and your website will be up and running.</p>
+<h2>Why Host WordPress on Alibaba Cloud?<br>
+</h2>
+<p>Because it&#8217;s <em>free and fast</em>!! You get a slice of 1 core CPU, 1Gb memory that you can increase later, and 40Gb of storage for the website files, that&#8217;s more than enough for a new low traffic blog, or a moderate traffic blog. </p>
+<div class="VLSNIbvk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+<p>Instead of paying hundreds of dollars on web hosting you can host your website for <em>free for 1year</em> on Alibaba cloud, and once your website becomes successful you can move to another host or just stick to Alibaba cloud. Cloud is very cheap compared to other types of web hosting, you only pay for what you use.</p>
+<p>You can easily run a high-traffic blog that gets 2-3k visitors per day on Alibaba cloud for just 5$ a month.</p>
+<h2>Register in Alibaba Cloud </h2>
+<p>Okay, so now let&#8217;s get started, to begin we will need to first create a free trial account on Alibaba cloud, to sign up for the free trial of Alibaba cloud, click on this link &#8211; <a href="https://www.alibabacloud.com/free">https://www.alibabacloud.com/free</a>, you can also search on google for “Alibaba free trial” in case the link changes.</p>
+<div class="EVG6eQoC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>
+<p>On the Alibaba free trial page click on the “Get started for Free” button, this will redirect you to the sign-in page, in the sign-in page click on the “Register Now” link at the bottom right.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/alibaba-cloud-click-on-register-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/alibaba-cloud-click-on-register-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/alibaba-cloud-click-on-register-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/alibaba-cloud-click-on-register.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="alibaba cloud click on register" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-1024x320.png" alt="alibaba cloud click on register" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/alibaba-cloud-click-on-register.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>On the signup page, you will need to select “<em>individual account</em>” and click on next, after that you will need to enter your email address and create a very secure password that contains a capital letter, symbol, and number. Confirm the password and click on sign up.</p>
+<div class="rWy5A06r" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_6 - incontent_6 -->
+<div id="ezoic-pub-ad-placeholder-655"> </div>
+<!-- End Ezoic - incontent_6 - incontent_6 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-email-in-alibaba-signup-page-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-email-in-alibaba-signup-page-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-email-in-alibaba-signup-page-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/enter-email-in-alibaba-signup-page.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="enter email in alibaba signup page" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-1024x320.png" alt="enter email in alibaba signup page" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/enter-email-in-alibaba-signup-page.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>On the next page, you will need to select your country and verify your phone number, you can verify using your phone number or your email address, whatever you feel comfortable with. I recommend you to verify using your phone number.</p>
+<p>Click on “<em>Send Message</em>” which will send you a verification code on your phone number or email, enter it in the signup page, agree to the agreement and click on Sign Up once again to create an Alibaba Cloud Account.</p>
+<div class="twbe2Mbk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_7 - incontent_7 -->
+<div id="ezoic-pub-ad-placeholder-656"> </div>
+<!-- End Ezoic - incontent_7 - incontent_7 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-1024x480.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-300x141.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-768x360.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="480" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20480'%3E%3C/svg%3E" alt="verify email or phone number for alibaba cloud account" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-1024x480.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-300x141.png 300w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-768x360.png 768w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-1024x480.png"><noscript><img decoding="async" width="1024" height="480" src="https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-1024x480.png" alt="verify email or phone number for alibaba cloud account" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-1024x480.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-300x141.png 300w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account-768x360.png 768w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-or-phone-number-for-alibaba-cloud-account.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>After this your Alibaba cloud account will be created, now you will need to Enter some basic information about you, like name, address, postal code, and phone number. Select Individual Account at the top.</p>
+<p>Enter your phone number and click on verify, you will get a verification code at the phone number provided, enter it and verify your phone number again, after that click on submit.</p>
+<div class="x3aE5dsb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_8 - incontent_8 -->
+<div id="ezoic-pub-ad-placeholder-657"> </div>
+<!-- End Ezoic - incontent_8 - incontent_8 -->
+</div>
+<p>Now in the Payment Information tab, you will need to provide your payment info, the payment method will be different for different countries, if it asks for a credit card then provide it there, don&#8217;t worry <em>you won&#8217;t be charged a cent</em> for it, payment info is asked to prevent spam accounts.</p>
+<p>After providing your payment info, you will automatically get redirected to the confirmation page of Alibaba cloud, click on “<em>Free Trial</em>” to start the activation process of the free trial of Alibaba Cloud.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="account creation confirmation page of alibaba cloud" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-1024x400.png" alt="account creation confirmation page of alibaba cloud" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/account-creation-confirmation-page-of-alibaba-cloud.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<div class="1N2gyAOA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_9 - incontent_9 -->
+<div id="ezoic-pub-ad-placeholder-658"> </div>
+<!-- End Ezoic - incontent_9 - incontent_9 -->
+</div>
+<h2>Create ECS Instance in Alibaba Cloud<br>
+</h2>
+<p>After clicking on Free Trial you will be redirected to the free trial page of Alibaba cloud, here scroll down a little and select the products that you want to use.</p>
+<p>If you just want to host a <em>simple WordPress blog</em> with low to medium traffic then just select the Burstable t5, 1 core CPU, 1Gb memory, 40Gb SSD storage which will give you a trial period of 12months, meaning that you host your low to medium traffic website free for 12 months.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-alibaba-ecs-product-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-alibaba-ecs-product-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-alibaba-ecs-product-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-alibaba-ecs-product.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="choose alibaba ecs product" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-1024x320.png" alt="choose alibaba ecs product" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-alibaba-ecs-product.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<div class="o8KOwbxu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_10 - incontent_10 -->
+<div id="ezoic-pub-ad-placeholder-659"> </div>
+<!-- End Ezoic - incontent_10 - incontent_10 -->
+</div>
+<p>You can also use the Burstable t6/t5, 2 core CPU, 2Gb memory which is more powerful and can handle high traffic, but the problem with this is that the trial period will only be 3months for this, so better choose the 1 core CPU one with 12 months.</p>
+<p>Just select it and click on “<em>Try Now</em>”, after which you will now need to set up the server aka ECS, you will need to first select the Data server region, select the server which is closest to your customers, in “operating system” select “<em>WordPress on LAMP Ubuntu 16</em>”.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-alibaba-ecs-specs-1024x440.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-alibaba-ecs-specs-300x129.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-alibaba-ecs-specs-768x330.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/configure-alibaba-ecs-specs.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="440" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20440'%3E%3C/svg%3E" alt="configure alibaba ecs specs" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-1024x440.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-300x129.png 300w, https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-768x330.png 768w, https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-1024x440.png"><noscript><img decoding="async" width="1024" height="440" src="https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-1024x440.png" alt="configure alibaba ecs specs" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-1024x440.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-300x129.png 300w, https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs-768x330.png 768w, https://netmiko.com/wp-content/uploads/2021/12/configure-alibaba-ecs-specs.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<div class="ZzJ5eUfP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_11 - incontent_11 -->
+<div id="ezoic-pub-ad-placeholder-660"> </div>
+<!-- End Ezoic - incontent_11 - incontent_11 -->
+</div>
+<p>If you want you can also select a different operating system like Ubuntu 18.04, but remember that you will set up WordPress manually using the terminal if you do that, I recommend you to just use the WordPress LAMP which automatically does everything for us.</p>
+<p>After selecting your data center and operating system, accept the Terms and conditions and click on Try now. This will automatically set up a WordPress ECS instance for you.</p>
+<p>If you get any error like “<em>Sorry you have already tried the instance</em>” or something then don&#8217;t worry and go to your Alibaba Cloud Console from the top-right menu, then go to Elastic Compute Service (ECS) from the top left corner menu, then go to “Instances”.</p>
+<div class="SjRuPs8h" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_12 - incontent_12 -->
+<div id="ezoic-pub-ad-placeholder-661"> </div>
+<!-- End Ezoic - incontent_12 - incontent_12 -->
+</div>
+<p>There you will see your WordPress instance.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="ecs delpoyment error alibaba cloud" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-1024x400.png" alt="ecs delpoyment error alibaba cloud" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/ecs-delpoyment-error-alibaba-cloud.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<h2>Change Disk Image<br>
+</h2>
+<p>Now after creating an ECS instance you will need to change the disk image of your instance. To do that first go to your <em>console</em>&gt;<em>Elastic compute service</em>&gt;<em>Instances</em>. Here select your instance and click on STOP at the bottom.</p>
+<div class="f5lUyb8R" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_13 - incontent_13 -->
+<div id="ezoic-pub-ad-placeholder-662"> </div>
+<!-- End Ezoic - incontent_13 - incontent_13 -->
+</div>
+<p>Select Force stop, and also check the “Proceed to forcibly stop” option and click on OK, this will stop the instance, this might take a few minutes, keep refreshing the page until the status says “<em>Stopped</em>”.</p>
+<p>Once the instance stops, select the instance once again, and below click on the More button, after that select Disk &amp; Image &gt; Replace System Disk. Click on OK on the popup.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="change disk image setting in alibaba cloud" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-1024x400.png" alt="change disk image setting in alibaba cloud" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/change-disk-image-setting-in-alibaba-cloud.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<div class="MuuATxRe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_14 - incontent_14 -->
+<div id="ezoic-pub-ad-placeholder-663"> </div>
+<!-- End Ezoic - incontent_14 - incontent_14 -->
+</div>
+<p>After that, you will be in the operating system settings where to change the disk image of your instance you will need to click on MarketPlace Image then “<em>Select from Image Market</em>”.</p>
+<p>That will open up the Marketplace, In the search bar you will need to search for “WordPress”, which will bring up a lot of different options, the WordPress image that you will need to select is the “<em>WordPress on LEMP CentOS7.2 64 bits powered by IGS</em>”. Click on USE to continue.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-wordpress-on-lemp-centOS-1024x480.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-wordpress-on-lemp-centOS-300x141.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-wordpress-on-lemp-centOS-768x360.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-wordpress-on-lemp-centOS.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="480" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20480'%3E%3C/svg%3E" alt="select wordpress on lemp centOS" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-1024x480.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-300x141.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-768x360.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-1024x480.png"><noscript><img decoding="async" width="1024" height="480" src="https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-1024x480.png" alt="select wordpress on lemp centOS" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-1024x480.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-300x141.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS-768x360.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-wordpress-on-lemp-centOS.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<div class="2kGO7cKg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_15 - incontent_15 -->
+<div id="ezoic-pub-ad-placeholder-664"> </div>
+<!-- End Ezoic - incontent_15 - incontent_15 -->
+</div>
+<p>After that scroll down and in Security settings, click on Password and enter a secure password, confirm it, and accept the Terms of service below. Click on Create Order to continue the payment, it&#8217;s free so no need to pay anything, just finish the purchase and once the purchase completes, go back to your console.</p>
+<h2>Configure Security Groups<br>
+</h2>
+<p>Now the last thing to do before we can access our WordPress website is to configure security groups. To configure Security groups go to your console and then go to “<em>Network &amp; Security</em>” by clicking on the top left menu, after that in Network &amp; Security go to “<em>Security groups</em>”.</p>
+<p>Here click on “<em>Add rules</em>” on the right side of your Instance, Click on “<em>Quick rule Creation</em>” to add a new rule.</p>
+<div class="Ts0yOYnd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_16 - incontent_16 -->
+<div id="ezoic-pub-ad-placeholder-665"> </div>
+<!-- End Ezoic - incontent_16 - incontent_16 -->
+</div>
+<p>In Common Port (TCP) check “http”, in Custom Port range enter “21/22”, in Authorization Object enter “0.0.0.0/0” and click on OK to add that rule.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-rule-in-security-group-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-rule-in-security-group-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-rule-in-security-group-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-rule-in-security-group.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="add http rule in security group" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-1024x400.png" alt="add http rule in security group" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-http-rule-in-security-group.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>Again click on Quick rule creation and add another rule, this time in Common Port check “<em>https</em>” in Custom Port enter “31/32” and in Authorization Object enter “0.0.0.0/0”, click on OK to add that rule, once done go back to Instances.</p>
+<div class="1584IYJA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_17 - incontent_17 -->
+<div id="ezoic-pub-ad-placeholder-666"> </div>
+<!-- End Ezoic - incontent_17 - incontent_17 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-https-rule-in-security-group-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-https-rule-in-security-group-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-https-rule-in-security-group-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-https-rule-in-security-group.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="add https rule in security group" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-1024x400.png" alt="add https rule in security group" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-https-rule-in-security-group.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>Now here in Instances check if the status of your WordPress Instance is Running or not, if it&#8217;s not running then select the instance and click on start to start it. </p>
+<p>Doesn&#8217;t matter if the instance was running or not, you will have to <em>restart the instance</em> to proceed, select the instance and click on restart. Once done you can now proceed to set up the WordPress website.</p>
+<div class="raURKhM9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_18 - incontent_18 -->
+<div id="ezoic-pub-ad-placeholder-667"> </div>
+<!-- End Ezoic - incontent_18 - incontent_18 -->
+</div>
+<h2>Setup WordPress<br>
+</h2>
+<p>To set up your WordPress site hosted on Alibaba cloud free tier you will need to copy the Internet IP address of the Instance. Copy it and paste it into a web browser.</p>
+<p>You will need to configure your WordPress installation, select your language, and click on continue. Give your website name, username, a secure password, your email, make sure to remember the password and username because you will need it to log in to your WordPress website.</p>
+<p>Once done click on Install WordPress, after the installation finishes click on Log In and log in to your WordPress website using the provided username and password.</p>
+<div class="u4utjnN0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_19 - incontent_19 -->
+<div id="ezoic-pub-ad-placeholder-668"> </div>
+<!-- End Ezoic - incontent_19 - incontent_19 -->
+</div>
+<h2>Add a Custom Domain<br>
+</h2>
+<p>Okay so, now let&#8217;s see how we can <em>connect a custom domain like yourdomain.com</em> instead of the IP Address of the Server. Because an IP address is not easy to remember and also not professional for a WordPress blog.</p>
+<p>You can add a custom domain to your WordPress website hosted on Alibaba cloud using two methods, the first is directly from your domain registrar and the second one is by using Cloudflare (which is recommended).</p>
+<h3>By using your domain registrar<br>
+</h3>
+<p>To add a custom domain to your Alibaba cloud-hosted website you will need to first <em>log in to your domain registrar</em> dashboard from where you bought your domain name. Hereafter logging in, select your domain name and go to its DNS settings.</p>
+<div class="yrEPF2Xw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_20 - incontent_20 -->
+<div id="ezoic-pub-ad-placeholder-669"> </div>
+<!-- End Ezoic - incontent_20 - incontent_20 -->
+</div>
+<p>In DNS settings you will need to add a new “<em>A</em>” record, the name field will be “<em>@</em>” and the value will be the <em>IP Address</em> of your Alibaba cloud instance. After that add another record which will be a CNAME.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="add dns records in domain dns settings" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png" alt="add dns records in domain dns settings" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>The name field will be “<em>www</em>” and the value will be your domain name. After adding both these values you will need to wait a few minutes to a few hours depending upon how fast the DNS propagates, once it does then you can access your website through the domain name instead of its IP address.</p>
+<div class="2VZMlFFu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_21 - incontent_21 -->
+<div id="ezoic-pub-ad-placeholder-670"> </div>
+<!-- End Ezoic - incontent_21 - incontent_21 -->
+</div>
+<h3>By Using Cloudflare </h3>
+<p>If you have Cloudflare connected to your domain then you can use Cloudflare to add a custom domain to your WordPress website hosted on Alibaba Cloud. If you don&#8217;t have Cloudflare connected to your domain then here are the steps to add Cloudflare &#8211; </p>
+<ol>
+<li style="font-weight: 400;" aria-level="1">Create an account at <a href="https://dash.cloudflare.com/sign-up">https://dash.cloudflare.com/sign-up</a>, add your domain name and complete the rest of the steps.</li>
+<li style="font-weight: 400;" aria-level="1">Add Cloudflare nameservers to your DNS Settings by going to your domain provider, select your domain name and go to its Nameservers settings, remove the default nameservers and add the ones given by Cloudflare.</li>
+<li style="font-weight: 400;" aria-level="1">Wait for the DNS Propagation to finish.</li>
+</ol>
+<p>Okay so once Cloudflare is connected to your domain, go to the DNS settings in your Cloudflare dashboard, here add an A record with the name “@” and value the IP address of your Alibaba cloud instance.</p>
+<p>After that add a CNAME with the name “www” and value your domain name, that&#8217;s it your website will be now connected to a custom domain. </p>
+<div class="c3tMp7O4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_22 - incontent_22 -->
+<div id="ezoic-pub-ad-placeholder-671"> </div>
+<!-- End Ezoic - incontent_22 - incontent_22 -->
+</div>
+<p>The plus point of using Cloudflare is that it gives you<em> free CDN and DDOS protection</em> and also hides the real IP address of your website.</p>
+<h2>Add SSL to Alibaba Cloud Hosted Website<br>
+</h2>
+<p>To add an SSL certificate to your Alibaba cloud-hosted WordPress website you can use Cloudflare that provides you with free SSL. To enable the SSL certificate login to your Cloudflare dashboard.</p>
+<p>In the dashboard of Cloudflare go to <em>SSL/TLS tab</em> and make the SSL setting to “<em>Flexible</em>” this will serve your website with HTTPS to the users, after that you will need to redirect all the users using HTTP to HTTPS.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-flexible-ssl-in-cloudflare-1024x376.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-flexible-ssl-in-cloudflare-300x110.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-flexible-ssl-in-cloudflare-768x282.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-flexible-ssl-in-cloudflare.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="376" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20376'%3E%3C/svg%3E" alt="select flexible ssl in cloudflare" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-1024x376.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-300x110.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-768x282.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-1024x376.png"><noscript><img decoding="async" width="1024" height="376" src="https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-1024x376.png" alt="select flexible ssl in cloudflare" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-1024x376.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-300x110.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare-768x282.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-flexible-ssl-in-cloudflare.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>To redirect everyone using HTTP to HTTPS you will need to go to SSL/TLS tab and then go to the Edge Certificates tab, here scroll down and find <em>Always Use HTTPS</em>, enable it and all your users using HTTP will now get redirected to HTTPS.</p>
+<h2>Fix WordPress Asking for FTP details Alibaba Cloud<br>
+</h2>
+<p>After installing WordPress on Alibaba cloud if you are trying to install a plugin or a theme and WordPress asks for your FTP username and password then here&#8217;s how you can fix it.</p>
+<h3>Using Plugin &#8211;<br>
+</h3>
+<p>First, log in to your WordPress admin and go plugins, click on Add New and search for “<em>File Manager</em>” click on install, this will ask you for your FTP details, you can get it by logging in to your Alibaba Cloud Console.</p>
+<p>Go to your instances and copy your IP address, go back to your WordPress dashboard, and in the <em>FTP hostname</em> enter “sftp://your_ip_address” or “your_ip_address”, in username enter “root” and in the password enter the password that you gave when changing disk image.</p>
+<p>After that click on proceed and install the plugin, once the plugin is installed open it, in the file manager look for “<em>wp-config.php</em>”, right-click on it, and select edit. After that enter the PHP codes from below in the wp-config file below “define (‘<em>DB COLLATE</em>’)”.</p>
+<pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-php">define(&ldquo;FTP_HOST&rdquo;, 'ftp.yourhost.com');
+define(&ldquo;FTP_USER&rdquo;, 'root');                                          
+define(&ldquo;FTP_PASS&rdquo;, 'password');
+define('FS_METHOD', 'direct');
+define('FTP_BASE', '/data/wwwroot/default/');
+define('FTP_CONTENT_DIR', '/data/wwwroot/default/wp-content/');
+define('FTP_PLUGIN_DIR ', '/data/wwwroot/default/wp-content/plugins/');
+</code></pre>
+<p>Here, ftp.yourhost.com will be “<em>sftp://your_instance_ip_address</em>”, username and password would be the one from the disk image change step. Add all these to the wp-config file and save it.</p>
+<p>Go back to your Alibaba Cloud instance and restart it to see changes, also refresh your website.</p>
+<h3>Using FileZilla &#8211;<br>
+</h3>
+<p>To fix the problem using FileZilla you will need to first connect to your FTP server using Filezilla, in hostname enter the IP address of your Alibaba cloud instance, in username enter root, and in password enter the password set during disk image change. Click Connect.</p>
+<p>After connecting to the server, go to the file path at &#8211; <em>/data/wwwroot/default</em></p>
+<p>Inside this file path, you will need to find wp-config, download it, and using note editor add the codes given above in the article. Save it and upload it back to the server.</p>
+<p>Restart the Alibaba Cloud instance to save the changes.</p>
+<h2>Change WordPress URL &#038; Site Address</h2>
+<p>One final thing left to do is to change the WordPress Address and Site Address, as the default URL will be the IP address instead of your domain name.</p>
+<p>To change your url go to your wordpress admin and then go to settings &gt; General. Here remove the IP Address and enter your domain name.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-wordpress-url-1024x240.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-wordpress-url-300x70.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-wordpress-url-768x180.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/change-wordpress-url.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="240" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20240'%3E%3C/svg%3E" alt="change wordpress url" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-1024x240.png"><noscript><img decoding="async" width="1024" height="240" src="https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-1024x240.png" alt="change wordpress url" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/change-wordpress-url.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<h2>PHP version Not Supported<br>
+</h2>
+<p>Okay so this is something that you might face if you install WordPress on Alibaba cloud, you will be unable to install some plugins due to an unsupported version of PHP. To fix this problem you will need to update the PHP of your server.</p>
+<p>You can see this tutorial on how you can update PHP &#8211; <a href="https://www.digitalocean.com/community/questions/how-to-update-nginx-php">https://www.digitalocean.com/community/questions/how-to-update-nginx-php</a>. </p>
+<p>You can connect to your Alibaba cloud instance by ssh or by using putty.</p>
+<p>That&#8217;s it, that is how you can host a WordPress website on Alibaba cloud for free, the free trial of Alibaba cloud will last for 12 months, so enjoy your free WordPress hosting for one year. Thank you for reading.</p>
+<h2>FAQ &#8211; </h2>
+<h3>How much traffic does a WordPress Website hosted on Alibaba Cloud Free tier Handle?</h3>
+<p>A WordPress website that is hosted on Alibaba Cloud free trial can handle at least <em>1500 to 3000 users per day</em> with proper caching and optimization. If you use a CDN for both images and static resources then the website can easily handle more than 3000+ visitors per day.</p>
+	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-2023 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Host a WordPress Website on Alibaba Cloud for Free",
+				"url": "https://netmiko.com/host-wordpress-on-alibaba-cloud-free/",
+				"articleBody": "Today I will walk you through the steps to host a WordPress Website on Alibaba Cloud for free. I will show you everything you need to do to get a new WordPress website set up on Alibaba cloud.The steps for hosting a WordPress website on Alibaba cloud are very easy, you just need a little bit of time and your website will be up and running.
+			Why Host WordPress on Alibaba Cloud?
+		
+		Because it's free and fast!! You get a slice of 1 core CPU, 1Gb memory that you can increase later, and 40Gb of storage for the website files, that's more than enough for a new low traffic blog, or a moderate traffic blog. Instead of paying hundreds of dollars on web hosting you can host your website for free for 1year on Alibaba cloud, and once your website becomes successful you can move to another host or just stick to Alibaba cloud. Cloud is very cheap compared to other types of web hosting, you only pay for what you use.You can easily run a high-traffic blog that gets 2-3k visitors per day on Alibaba cloud for just 5$ a month.
+			Register in Alibaba Cloud 		
+		Okay, so now let's get started, to begin we will need to first create a free trial account on Alibaba cloud, to sign up for the free trial of Alibaba cloud, click on this link - https://www.alibabacloud.com/free, you can also search on google for “Alibaba free trial” in case the link changes.On the Alibaba free trial page click on the “Get started for Free” button, this will redirect you to the sign-in page, in the sign-in page click on the “Register Now” link at the bottom right.		
+																														
+		On the signup page, you will need to select “individual account” and click on next, after that you will need to enter your email address and create a very secure password that contains a capital letter, symbol, and number. Confirm the password and click on sign up.
+																														
+		On the next page, you will need to select your country and verify your phone number, you can verify using your phone number or your email address, whatever you feel comfortable with. I recommend you to verify using your phone number.Click on “Send Message” which will send you a verification code on your phone number or email, enter it in the signup page, agree to the agreement and click on Sign Up once again to create an Alibaba Cloud Account.		
+																														
+		After this your Alibaba cloud account will be created, now you will need to Enter some basic information about you, like name, address, postal code, and phone number. Select Individual Account at the top.Enter your phone number and click on verify, you will get a verification code at the phone number provided, enter it and verify your phone number again, after that click on submit.
+Now in the Payment Information tab, you will need to provide your payment info, the payment method will be different for different countries, if it asks for a credit card then provide it there, don't worry you won't be charged a cent for it, payment info is asked to prevent spam accounts.After providing your payment info, you will automatically get redirected to the confirmation page of Alibaba cloud, click on “Free Trial” to start the activation process of the free trial of Alibaba Cloud.		
+																														
+			Create ECS Instance in Alibaba Cloud
+		
+		After clicking on Free Trial you will be redirected to the free trial page of Alibaba cloud, here scroll down a little and select the products that you want to use.If you just want to host a simple WordPress blog with low to medium traffic then just select the Burstable t5, 1 core CPU, 1Gb memory, 40Gb SSD storage which will give you a trial period of 12months, meaning that you host your low to medium traffic website free for 12 months.		
+																														
+		You can also use the Burstable t6/t5, 2 core CPU, 2Gb memory which is more powerful and can handle high traffic, but the problem with this is that the trial period will only be 3months for this, so better choose the 1 core CPU one with 12 months.
+Just select it and click on “Try Now”, after which you will now need to set up the server aka ECS, you will need to first select the Data server region, select the server which is closest to your customers, in “operating system” select “WordPress on LAMP Ubuntu 16”.		
+																														
+		If you want you can also select a different operating system like Ubuntu 18.04, but remember that you will set up WordPress manually using the terminal if you do that, I recommend you to just use the WordPress LAMP which automatically does everything for us.After selecting your data center and operating system, accept the Terms and conditions and click on Try now. This will automatically set up a WordPress ECS instance for you.
+If you get any error like “Sorry you have already tried the instance” or something then don't worry and go to your Alibaba Cloud Console from the top-right menu, then go to Elastic Compute Service (ECS) from the top left corner menu, then go to “Instances”.There you will see your WordPress instance.		
+																														
+			Change Disk Image
+		
+		Now after creating an ECS instance you will need to change the disk image of your instance. To do that first go to your console&gt;Elastic compute service&gt;Instances. Here select your instance and click on STOP at the bottom.Select Force stop, and also check the “Proceed to forcibly stop” option and click on OK, this will stop the instance, this might take a few minutes, keep refreshing the page until the status says “Stopped”.
+Once the instance stops, select the instance once again, and below click on the More button, after that select Disk &amp; Image &gt; Replace System Disk. Click on OK on the popup.		
+																														
+		After that, you will be in the operating system settings where to change the disk image of your instance you will need to click on MarketPlace Image then “Select from Image Market”.That will open up the Marketplace, In the search bar you will need to search for “WordPress”, which will bring up a lot of different options, the WordPress image that you will need to select is the “WordPress on LEMP CentOS7.2 64 bits powered by IGS”. Click on USE to continue.		
+																														
+		After that scroll down and in Security settings, click on Password and enter a secure password, confirm it, and accept the Terms of service below. Click on Create Order to continue the payment, it's free so no need to pay anything, just finish the purchase and once the purchase completes, go back to your console.
+			Configure Security Groups 
+		
+		Now the last thing to do before we can access our WordPress website is to configure security groups. To configure Security groups go to your console and then go to “Network &amp; Security” by clicking on the top left menu, after that in Network &amp; Security go to “Security groups”.Here click on “Add rules” on the right side of your Instance, Click on “Quick rule Creation” to add a new rule.In Common Port (TCP) check “http”, in Custom Port range enter “21/22”, in Authorization Object enter “0.0.0.0/0” and click on OK to add that rule.		
+																														
+		Again click on Quick rule creation and add another rule, this time in Common Port check “https” in Custom Port enter “31/32” and in Authorization Object enter “0.0.0.0/0”, click on OK to add that rule, once done go back to Instances.		
+																														
+		Now here in Instances check if the status of your WordPress Instance is Running or not, if it's not running then select the instance and click on start to start it. 
+Doesn't matter if the instance was running or not, you will have to restart the instance to proceed, select the instance and click on restart. Once done you can now proceed to set up the WordPress website.		
+			Setup WordPress
+		
+		To set up your WordPress site hosted on Alibaba cloud free tier you will need to copy the Internet IP address of the Instance. Copy it and paste it into a web browser.You will need to configure your WordPress installation, select your language, and click on continue. Give your website name, username, a secure password, your email, make sure to remember the password and username because you will need it to log in to your WordPress website.Once done click on Install WordPress, after the installation finishes click on Log In and log in to your WordPress website using the provided username and password.
+			Add a Custom Domain
+		
+		Okay so, now let's see how we can connect a custom domain like yourdomain.com instead of the IP Address of the Server. Because an IP address is not easy to remember and also not professional for a WordPress blog.You can add a custom domain to your WordPress website hosted on Alibaba cloud using two methods, the first is directly from your domain registrar and the second one is by using Cloudflare (which is recommended).		
+			By using your domain registrar
+		
+		To add a custom domain to your Alibaba cloud-hosted website you will need to first log in to your domain registrar dashboard from where you bought your domain name. Hereafter logging in, select your domain name and go to its DNS settings.
+In DNS settings you will need to add a new “A” record, the name field will be “@” and the value will be the IP Address of your Alibaba cloud instance. After that add another record which will be a CNAME.		
+																														
+		The name field will be “www” and the value will be your domain name. After adding both these values you will need to wait a few minutes to a few hours depending upon how fast the DNS propagates, once it does then you can access your website through the domain name instead of its IP address.		
+			By Using Cloudflare 		
+		If you have Cloudflare connected to your domain then you can use Cloudflare to add a custom domain to your WordPress website hosted on Alibaba Cloud. If you don't have Cloudflare connected to your domain then here are the steps to add Cloudflare - Create an account at https://dash.cloudflare.com/sign-up, add your domain name and complete the rest of the steps.Add Cloudflare nameservers to your DNS Settings by going to your domain provider, select your domain name and go to its Nameservers settings, remove the default nameservers and add the ones given by Cloudflare.Wait for the DNS Propagation to finish.
+Okay so once Cloudflare is connected to your domain, go to the DNS settings in your Cloudflare dashboard, here add an A record with the name “@” and value the IP address of your Alibaba cloud instance.After that add a CNAME with the name “www” and value your domain name, that's it your website will be now connected to a custom domain. The plus point of using Cloudflare is that it gives you free CDN and DDOS protection and also hides the real IP address of your website.		
+			Add SSL to Alibaba Cloud Hosted Website
+		
+		To add an SSL certificate to your Alibaba cloud-hosted WordPress website you can use Cloudflare that provides you with free SSL. To enable the SSL certificate login to your Cloudflare dashboard.
+In the dashboard of Cloudflare go to SSL/TLS tab and make the SSL setting to “Flexible” this will serve your website with HTTPS to the users, after that you will need to redirect all the users using HTTP to HTTPS.		
+																														
+		To redirect everyone using HTTP to HTTPS you will need to go to SSL/TLS tab and then go to the Edge Certificates tab, here scroll down and find Always Use HTTPS, enable it and all your users using HTTP will now get redirected to HTTPS.		
+			Fix WordPress Asking for FTP details Alibaba Cloud 
+		
+		After installing WordPress on Alibaba cloud if you are trying to install a plugin or a theme and WordPress asks for your FTP username and password then here's how you can fix it.		
+			Using Plugin - 
+		
+		First, log in to your WordPress admin and go plugins, click on Add New and search for “File Manager” click on install, this will ask you for your FTP details, you can get it by logging in to your Alibaba Cloud Console.
+Go to your instances and copy your IP address, go back to your WordPress dashboard, and in the FTP hostname enter “sftp://your_ip_address” or “your_ip_address”, in username enter “root” and in the password enter the password that you gave when changing disk image.After that click on proceed and install the plugin, once the plugin is installed open it, in the file manager look for “wp-config.php”, right-click on it, and select edit. After that enter the PHP codes from below in the wp-config file below “define (‘DB COLLATE’)”.		
+			define(&ldquo;FTP_HOST&rdquo;, 'ftp.yourhost.com');
+define(&ldquo;FTP_USER&rdquo;, 'root');                                          
+define(&ldquo;FTP_PASS&rdquo;, 'password');
+define('FS_METHOD', 'direct');
+define('FTP_BASE', '/data/wwwroot/default/');
+define('FTP_CONTENT_DIR', '/data/wwwroot/default/wp-content/');
+define('FTP_PLUGIN_DIR ', '/data/wwwroot/default/wp-content/plugins/');
+		
+		Here, ftp.yourhost.com will be “sftp://your_instance_ip_address”, username and password would be the one from the disk image change step. Add all these to the wp-config file and save it.Go back to your Alibaba Cloud instance and restart it to see changes, also refresh your website.
+			Using FileZilla -
+		
+		To fix the problem using FileZilla you will need to first connect to your FTP server using Filezilla, in hostname enter the IP address of your Alibaba cloud instance, in username enter root, and in password enter the password set during disk image change. Click Connect.After connecting to the server, go to the file path at - /data/wwwroot/defaultInside this file path, you will need to find wp-config, download it, and using note editor add the codes given above in the article. Save it and upload it back to the server.Restart the Alibaba Cloud instance to save the changes.
+			Change WordPress URL & Site Address		
+		One final thing left to do is to change the WordPress Address and Site Address, as the default URL will be the IP address instead of your domain name.To change your url go to your wordpress admin and then go to settings &gt; General. Here remove the IP Address and enter your domain name.		
+																														
+			PHP version Not Supported
+		
+		Okay so this is something that you might face if you install WordPress on Alibaba cloud, you will be unable to install some plugins due to an unsupported version of PHP. To fix this problem you will need to update the PHP of your server.You can see this tutorial on how you can update PHP - https://www.digitalocean.com/community/questions/how-to-update-nginx-php. 
+You can connect to your Alibaba cloud instance by ssh or by using putty.That's it, that is how you can host a WordPress website on Alibaba cloud for free, the free trial of Alibaba cloud will last for 12 months, so enjoy your free WordPress hosting for one year. Thank you for reading.		
+			FAQ - 		
+			How much traffic does a WordPress Website hosted on Alibaba Cloud Free tier Handle?		
+		A WordPress website that is hosted on Alibaba Cloud free trial can handle at least 1500 to 3000 users per day with proper caching and optimization. If you use a CDN for both images and static resources then the website can easily handle more than 3000+ visitors per day.",
+				"headline": "How to Host a WordPress Website on Alibaba Cloud for Free",
+				"author": "Aomi Bora",
+				"datePublished": "2021-12-23",
+				"mainEntityOfPage": "True",
+				"dateModified": "2021-12-23",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/aomi/" alt="link to Aomi Bora author page">
+				<div data-bg="http://0.gravatar.com/avatar/cf27d396d2875baa9d78108bb57c6643?s=96&#038;d=mm&#038;r=g" class="avatar-container rocket-lazyload">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/aomi/">Aomi Bora</a></p>
+				</header>
+				<p></p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/royalty-free-sound-effects/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
+<span class="sr-only">link to How to Download Royalty Free Sound Effects</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/royalty-free-sound-effects/">How to Download Royalty Free Sound Effects</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+
+If you're a content creator, whether it's for YouTube, social media, or any other platform, you know that audio is just as important as visual elements in your content.
+
+It can set the mood,...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/royalty-free-sound-effects/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="">
+				<meta itemprop="image" src="">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="NETMIKO.COM">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp">
+				<meta itemprop="name" content="How to Download Royalty Free Sound Effects">
+				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
+				<meta itemprop="author" content="Aomi Bora">
+				<meta itemprop="datePublished" content="2023-01-09">
+				<meta itemprop="dateModified" content="2023-01-11">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
+<span class="sr-only">link to Python Program to Find the Sum of Squares of Digits of a Number</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Python Program to Find the Sum of Squares of Digits of a Number</a></p>
+					</header>
+					<div class="excerpt">
+						<p>This article presents a Python program for finding and printing the sum of the squares of the digits of a number entered by the user.
+Python Program to Find the Sum of Squares of Digits of a...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="">
+				<meta itemprop="image" src="">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="NETMIKO.COM">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp">
+				<meta itemprop="name" content="Python Program to Find the Sum of Squares of Digits of a Number">
+				<meta itemprop="headline" content="Python Program to Find the Sum of Squares of Digits of a Number">
+				<meta itemprop="author" content="Aomi Bora">
+				<meta itemprop="datePublished" content="2023-01-08">
+				<meta itemprop="dateModified" content="2023-01-08">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Simplified Coding Examples.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-682"> </div>
+<p><!-- End Ezoic - sidebar - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2023 Copyright NETMIKO.COM			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/netmiko(\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$))|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/netmiko.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"eclipse","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://netmiko.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><\/noscript>',a='<div class="play"><\/div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+</body>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+</html>

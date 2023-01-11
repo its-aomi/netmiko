@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+		<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-196633016-1"></script>
+	<script type="rocketlazyloadscript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-196633016-1');
+	</script>
+
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Blog &#x2d; Page 10 &#x2d; NETMIKO.COM</title>
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Latest posts: Blog&#8230;">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog &#x2d; Page 10">
+<meta property="og:description" content="Latest posts: Blog&#8230;">
+<meta property="og:url" content="https://netmiko.com/blog/page/10/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog &#x2d; Page 10">
+<meta name="twitter:description" content="Latest posts: Blog&#8230;">
+<link rel="canonical" href="https://netmiko.com/blog/page/10/">
+<link rel="prev" href="https://netmiko.com/blog/page/9/">
+<link rel="next" href="https://netmiko.com/blog/page/11/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/blog/","name":"Blog"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 4.95ms meta | 11.00ms boot -->
+
+
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Comments Feed" href="https://netmiko.com/comments/feed/">
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	
+
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+.main-c {display: flex;margin-bottom:10px;}.main-iframe {flex: 1;height:350px;}@media only screen and (min-width: 768px) {.main-c {display: flex;}.main-iframe {flex: 1;height:350px;}.iframe-container {position: relative;height: 350px;}.iframe-container iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}}code {background-color: #eee;}.wp-block-code::before {content: "Click Code to Copy";display: block;color: red;margin-top: -25px;margin-bottom: 25px;margin-left:-7px;padding: 10px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223 {width: 350px;}.cnt223 {min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 30px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top: -100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}#download a {color: #fff;text-decoration: none;}.wp-block-image {box-shadow: 0 0 0 1px #444;}h2.widget-title {font-size: 1.2rem;padding: 0.4em 0;}body.home .articles-wrapper>h2 {font-size: 1.2rem;padding: 0.4em 0;}.article-card header p {font-weight: 700 !important;font-size: 20px !important;margin-bottom: 10px;text-align: center;}h3 {margin-bottom: 10px;}strong {font-weight:600 !important;}@media only screen and (min-width: 768px) {h2 {margin-bottom: 20px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223{min-width: 600px;width: 600px;min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 15px 35px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top:-100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}}.lyte-wrapper::before {content: 'Watch the Video';display: block;background-color: #444;color: #f5f5f5;padding-left:5px;}.lyte-wrapper {margin-left: -1px !important;}.lyte, .lyMe {border: 5px solid #444;}.image-container {border: 5px solid #444;}</style>
+
+<style id="rocket-lazyload-inline-css" type="text/css">.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://netmiko.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml">
+<script type="rocketlazyloadscript">document.createElement( "picture" );if(!window.HTMLPictureElement && document.addEventListener) {window.addEventListener("DOMContentLoaded", function() {var s = document.createElement("script");s.src = "https://netmiko.com/wp-content/plugins/webp-express/js/picturefill.min.js";document.body.appendChild(s);});}</script><meta name="description" content="">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+</head>
+
+
+<body class="blog paged paged-10 hfeed no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="300" height="125" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20125'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp"><noscript><img width="300" height="125" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" sizes="(max-width: 300px) 100vw, 300px"></noscript></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-1670" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1670"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-1666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1666">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-1668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1668"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-1669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1669"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-1667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1667"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			<header class="page-header">
+				<h1 class="page-title">Archives: Blog</h1>			</header><!-- .page-header -->
+
+			<section class="articles-wrapper">
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/">How to Setup &#038; Use Cloudinary Image CDN in WordPress</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I'll show you how you can Set up and use Cloudinary Image CDN in WordPress. The steps are very easy and simple to do and if you follow the steps properly then you will have Cloudinary Working...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Setup &#038; Use Cloudinary Image CDN in WordPress",
+				"url": "https://netmiko.com/setup-and-use-cloudinary-image-cdn-wordpress/",
+				"articleBody": "Today I'll show you how you can Set up and use Cloudinary Image CDN in WordPress. The steps are very easy and simple to do and if you follow the steps properly then you will have Cloudinary Working and running on your website in just 5 mins.
+
+Now for this tutorial i will be using the free tier of cloudinary which gives you 25Gb of Storage &amp; 25Gb of Bandwidth. Which is more than enough for a small blog that gets around 10000 visitors per month.
+
+
+
+You get all the things like media optimization tools and image cdn in the free tier so no worries about limited resources. If you have a bigger website then you can upgrade to their paid plan, which is definitely worth it for the price.
+
+
+
+What is Cloudinary Image CDN?
+How Cloudinary Image CDN works is that it serves the cached images of your wordpress blog or websites through their fast servers located around the globe.
+
+Whenever someone requests for an image from your website, cloudinary servers caches it so next time someone requests for the same image again then instead of your web hosting providing the image the cloudinary cdn servers will provide the image from the cdn servers.&nbsp;
+
+This helps save tons of bandwidth for your website and also makes the loading of the images faster for all users around the globe despite your server location.
+
+
+[lyte id='hYrgr-X1t6Y' /]
+Creating a Cloudinary Account
+Okay, so the first step will be to create a Cloudinary account. Now first you will need to go to the signup page of Cloudinary - https://cloudinary.com/users/register/free&nbsp;
+
+In the Signup page enter your name, email, a secure password, select your country, enter your website name. After that in the product select “media optimizer and delivery”, Then click on create account.
+
+												
+
+Now Cloudinary will send you an email on the email given in the signup form to verify, so open your email and click on the “Sign In to Validate your Email Address”.
+
+After you click on the link you will be on the setup page. Here first you will need to select your “Role”, you can select whatever you want like you can select web developer, Tech Executive Etc.
+
+
+
+After that you will need to now enter your cloudinary cloud name, which is basically the name of the url that our website's content will be served from. Enter a unique name like your domain name or something else that you want. If it says name already taken then change the name.
+
+
+
+Once done, select the server location. Which should be the closest region to your customers or visitors. Like if most of your visitors are from the USA then select the United States as the Cloud server. Click Finish when Done.
+Configure Cloudinary
+After you click on the Finish button, you will be redirected to the Dashboard of Cloudinary, Here click on the ‘Start Configuring’ button to start the Configuration process of Cloudinary Image CDN.
+
+In the Configuration settings you will need to first enter a media source name. Enter any name like “cdn for my website’ or something. After that in Type select ‘Web Address’, scroll down.
+
+
+
+Now in URL Base enter your Website URL. like ‘https://netmiko.com/’, if your website uses https then enter the https version of your url, if you don't use https then enter http version of your url.
+
+
+
+Click on”Create Media Source” to Continue.
+
+Now Cloudinary will ask you to update your Website media urls from your domain name to the domain provided by cloudinary. Now to do that you will need to open your website admin dashboard in another tab.
+
+
+Install and Setup CDN Enabler
+
+
+Now in the wordpress admin you will need to install a plugin called ‘CDN Enabler’ for changing your website’s media urls.
+
+To do that first go to Plugins &gt; Add New, here in the search bar search for “CDN Enabler”, install and activate the plugin to continue. You can also download and upload the plugin from here - https://wordpress.org/plugins/cdn-enabler/.
+
+Once the CDN Enabler plugin is installed and activated, go to its settings by going to “Settings &gt; CDN Enabler”.&nbsp;
+
+In the CDN Enabler settings you will need to first enter the hostname, the host name is the domain name that cloudinary provided you with, go back to cloudinary configuration and copy the domain name you will need to add, after that paste it in the hostname.
+
+
+
+
+NOTE: Only enter the domain name not url, like enter “example.com” not “http://example.com”.
+
+After that below in the CDN Inclusions remove the default file extensions and enter these file extensions - .avif .gif .jpeg .jpg .mp3 .png .svg .webp (One per line)
+
+In CDN Exclusions remove the default file extensions and enter these file extensions -&nbsp; .js .json .mp4 .pdf .apk .css (One per line).
+
+Once done scroll down and click on ‘Save Changes’ and Not “Save Changes and Validate Configuration’. Once it's saved go back to your Cloudinary Configuration and click on Done to finish the Setup of Cloudinary Image CDN on Wordpress.
+
+
+Test Cloudinary Image CDN
+Now to test whether cloudinary is working on your website or not you will have to go to your website, here right click any image in your site. Click on “Open image in a New Tab”.
+
+Now if the image is loading through cloudinary then you will have cloudinary.net in the domain name of the image url, if there is no cloudinary.net in the url and it's only your own domain name then it means cloudinary is not working.
+
+
+
+Try to follow the steps again if that's the case. If it's working then it means your images are now loading through cloudinary and saving your website hosting bandwidth and cpu power.
+Change Image Quality in Cloudinary CDN
+
+
+Now by default the images that are served though cloudinary cdn are compressed to make it more optimized and make it load faster, now if you don't want Cloudinary to do that and just want Cloudinary to serve the original images from the cdn this is how you can do it.
+
+Go login to your Cloudinary account, here go to the settings icon at the top bar, then go to the Delivery tab in the settings.
+
+In the Delivery settings, select the quality of the images that you want Cloudinary to use from the drop down. Select ‘Best Quality’ then click on Save Changes. That's it, Cloudinary will now serve your website images at the original quality.
+
+
+
+And that is how you can Add Cloudinary Image CDN to your wordpress website and set it up for faster images that load through cloudinary cdn. If you need any help then comment below, thank you.
+
+
+FAQ -
+What are the Free Alternatives of Cloudinary Image CDN?
+The best free alternatives for cloudinary are statically.io and Jetpack Photon. These Image CDNs are free without any limit on bandwidth. I have tutorials for how you can setup both statically and jetpack photon on my site so check them out if you're interested -&nbsp;
+
+ 	How to use Statically CDN on a WordPress blog
+ 	How to use Jetpack Image CDN without Jetpack plugin&nbsp;
+
+Does Cloudinary Image cdn makes your website faster?
+Yes, the cloudinary image cdn does help in making your wordpress website faster by loading your images and media files through fast cloud servers.
+
+As your images will now load through a cdn, the speed of your website will increase in return.",
+				"headline": "How to Setup &#038; Use Cloudinary Image CDN in WordPress",
+				"author": "Aomi Bora",
+				"datePublished": "2022-01-16",
+				"mainEntityOfPage": "False",
+				"dateModified": "2022-01-16",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/hide-product-image-woocommerce/">How to Hide Product Images in WooCommerce Product Page</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will show you how you can hide the product images on the woo commerce products page.
+
+With the help of this tutorial, you will be able to hide a single product image or all the product images...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/hide-product-image-woocommerce/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Hide Product Images in WooCommerce Product Page",
+				"url": "https://netmiko.com/hide-product-image-woocommerce/",
+				"articleBody": "Today I will show you how you can hide the product images on the woo commerce products page.
+
+With the help of this tutorial, you will be able to hide a single product image or all the product images on your woo-commerce products page. The steps to hide product images are very simple, it will take like 2 - 3 mins, so make sure to read this post to the end to prevent any errors.
+
+Note: Before following the tutorial make sure to make a backup of your WordPress website just in case something goes wrong, although the steps are simple and don't interfere with WordPress core, still it's a good thing to take a backup.
+Adding Custom CSS to hide Product Images
+To hide the WooCommerce product image we will be using CSS code. Now to add a custom CSS code to our website we will first have to log in to the WordPress admin dashboard.
+
+Now in the WordPress admin dashboard go to Appearance &gt;&nbsp; Customize. In the Customize menu, look for “Additional CSS”.
+
+
+
+In the Additional CSS settings, you can add custom CSS codes.
+Hide all product images in WooCommerce
+If you want to hide all the product images from your woo-commerce products pages, then you can copy the CSS code from below and paste it in the Additional CSS box.
+.woocommerce #content div.product .woocommerce-product-gallery {
+display:none;
+}
+.woocommerce #content div.product div.summary {
+float: left;
+}
+This code will hide every single product image from your products page in woocommerce. Now after adding this code if there is a “SALE” icon visible then you can copy and paste this css code to hide the sale icon.
+.woocommerce div.product span.onsale {display: none;}
+
+Once done, click on the Publish button at the top of your Customizer to save the changes.
+Hide Single Product image in WooCommerce
+If you don't want to hide all the product images from the products page and just want to hide a single product image then you can copy this CSS code instead of the other one shown above.
+.woocommerce #content div#product-14 .woocommerce-product-gallery {
+display:none;
+}
+.woocommerce #content div#product-14 div.summary {
+float: left;
+}
+.woocommerce div#product-14 span.onsale {
+display: none;
+}
+
+Here you will need to change the Product ID from “product-14” to whatever product id you want the image to be removed from. You can see the product ID of a product by going to “Products &gt; All Products”.
+
+Just hover your mouse over the product that you want to hide the image of, this will display the ID of the Product. Note the id and change the id in the CSS code above from “product-14” to your product id.
+
+
+
+Once done, click on the publish button to save the changes.
+
+After hiding the product images from the products page, if there is a sale icon then you can remove it by using the CSS codes from below.
+Hide the Sale Button in single product
+.woocommerce div#product-14 span.onsale {
+display: none;
+}
+
+Here change the product-14 to whatever your product iD is.
+Hide the Sale Button in All products
+.woocommerce div.product span.onsale {
+display: none;
+}
+
+Remove Product image from a Product
+This method is not recommended to use as after removing the image there will still be a placeholder of the image visible to users, which will look very bad.
+
+If you still want to remove the product image from your products page in woocommerce instead of hiding it, then here's how you can do that. First Go to “Products &gt; All Products”.
+
+Now using your mouse hover over the product that you want to remove the product image from, click on the edit option that will display when hovering over the product.
+
+
+
+Now you will need to scroll down and look for “Product Image”, just click on the Remove Product Image option and scroll up and click on the blue “Update” button. That's it, the product image will be now removed from the specific product.
+
+
+
+Now after publishing the changes if the images are still visible then you might need to clear the cache of your browser or website. If it still didn't work then you can comment below your website name and I will provide you with a custom CSS for your website.
+
+That's it, that is how you can Hide Product Images in WooCommerce Product Page easily with a few easy steps.
+
+[lyte id='w1RazEd9rUQ' /]",
+				"headline": "How to Hide Product Images in WooCommerce Product Page",
+				"author": "Aomi Bora",
+				"datePublished": "2022-01-08",
+				"mainEntityOfPage": "False",
+				"dateModified": "2022-01-08",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/index-now-plugin-wordpress-installation-setup-use/">How to Install, Setup &#038; Use Microsoft IndexNow Plugin on WordPress</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I'll show you how you can install, set up &amp; Use the Microsoft IndexNow plugin on your WordPress website.
+
+The <em>IndexNow plugin</em> by Microsoft is a new protocol created to help...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/index-now-plugin-wordpress-installation-setup-use/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install, Setup &#038; Use Microsoft IndexNow Plugin on WordPress",
+				"url": "https://netmiko.com/index-now-plugin-wordpress-installation-setup-use/",
+				"articleBody": "Today I'll show you how you can install, set up &amp; Use the Microsoft IndexNow plugin on your WordPress website.
+
+The IndexNow plugin by Microsoft is a new protocol created to help webmasters to submit their website URLs to search engines that are using the INdexNow protocol. This plugin will help in notifying the search engines when there's any change in your website.
+
+It will automatically notify the search engines of new posts, or deleted or updated posts. This will help in maintaining the SEO of your website or blog as the search engine will crawl, index your website better.
+Install &amp; Activate IndexNow Plugin
+You can install the Microsoft IndexNow plugin using two methods, you can either download it directly from the wordpress.org website or you can search it within your WordPress admin dashboard.
+
+If you want to download it directly from the official website, here is the link for that - https://wordpress.org/plugins/indexnow/.&nbsp;
+
+Just go to the link above and click on the download button, this will download an indexnow.zip file to your downloads folder. Once the download finishes go log in to your WordPress admin dashboard.
+
+
+
+After logging in to the admin dashboard, go to plugins &gt; Add New, here at the top click on “Upload Plugins” then choose the file.
+
+Select the downloaded indexnow zip file from your computer and click on Install Now. This might take a few seconds to complete, after it finishes installing click on Activate Plugin to activate the IndexNow plugin.
+
+
+
+Now, if you don't want to go through all of the steps above then you can install the IndexNow plugin by just logging in to your admin dashboard.
+
+Here go to Plugins &gt; Add New. In the search bar search for “IndexNow”, here now install the IndexNow Plugin by Microsoft. Once installed click on activate to activate the plugin.
+
+
+
+The settings of the IndexNow plugin can be found in the left admin menu. Here just click on the IndexNow option.
+Setup IndexNow Plugin
+After installing and activating the plugin you will have to now set up the plugin to be able to use it.
+
+If you click on the IndexNow plugin option from the admin menu the first time, then you will see the setup screen of the plugin. First, you will need to click on the “Let’s get Started” button.
+
+
+
+Now you will be in the plugin dashboard, here if you want then you can keep the default setting of auto submission of blog posts when they update, publish, or get deleted. Or you can make it manual so that it will not automatically submit the URLs to the search engines.
+
+If you want to change the submission of URLs in the IndexNow plugin from automatic to Manual then just click on the three dots at the “Automate URL submission” section and click on “Edit Preference”.
+
+
+
+The Edit preference for Automate URL Submission will be enabled by default, all you will need to do is choose the Disable option and click on Save. Now your website URLs won't get submitted to search engines automatically.
+How to use IndexNow Plugin
+Using the IndexNow plugin is fairly easy, after installing and setting up the plugin you can let it automatically submit the URLs of your website when they update or get deleted or you can make it manual.
+
+To manually submit a URL to the IndexNow plugin, first copy the URL of the post or page that you want to submit to the search engines.
+
+After that go to the IndexNow plugin dashboard from the admin menu. Here in the Manual URL Submissions section, click on the submit URL option. Enter your URL and click on Submit URL to submit the URL to the search engines.
+
+
+
+You can see the status of the URL whether it was submitted successfully or not below in the URLs submitted section.
+When will the Submitted URL in IndexNow Plugin get Indexed?
+Now after submitting the Url of your website's page or post to the IndexNow plugin you might be wondering when it will get indexed.
+
+For your page or post to get indexed in the different search engines, your post or page must follow the different guidelines of the search engines. The IndexNow plugin only notifies the search engine that the submitted URL exists on the web so that the search engines can try to index it.
+
+Submitting the Url to the IndexNow plugin doesn't mean that it will get Indexed. It only works as a tool to notify search engines about your URLs.
+How to Uninstall IndexNow plugin Completely
+If you don't want to use the IndexNow plugin anymore and want to get rid of all the data of the plugin then you can just deactivate and delete the plugin.
+
+Deleting the IndexNow plugin will remove all the data associated with the plugin from your WordPress website.
+
+That's it, that is how you can install, set up and use the IndexNow plugin By Microsoft to submit the Urls of your website for Indexing to different search engines like bing, yandex, google etc.
+
+[lyte id='IPncRthAsr0' /]",
+				"headline": "How to Install, Setup &#038; Use Microsoft IndexNow Plugin on WordPress",
+				"author": "Aomi Bora",
+				"datePublished": "2022-01-06",
+				"mainEntityOfPage": "False",
+				"dateModified": "2022-01-06",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-koha-library-software-windows/">How to Install Koha Library Software on Windows 10</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will show you how you can install Koha library Software on your Windows 10 operating system. Koha is an open-source integrated library system for libraries to keep track and store data. It is...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-koha-library-software-windows/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install Koha Library Software on Windows 10",
+				"url": "https://netmiko.com/install-koha-library-software-windows/",
+				"articleBody": "Today I will show you how you can install Koha library Software on your Windows 10 operating system. Koha is an open-source integrated library system for libraries to keep track and store data. It is used in libraries of schools and universities for library management.
+In this tutorial you will see the full installation process of koha library software on your windows computer, so make sure to read the article fully line by line to avoid getting into any problem while installing koha.		
+			Installing Koha Library Software on Windows 		
+		Okay, so the Koha Library Software is only available for the Linux operating system, which means that if you go to the official website of Koha then you will see that there are only download options for Linux and not windows.For Linux - Koha Installation Tutorial for Ubuntu 20.04Now to fix that problem there is a Modified version of Koha which is modified to be able to run on your windows operating system. This makes it easier for people to run and install Koha on their windows operating system as not a lot of people know how to use Linux.		
+			Download Koha for Windows		
+		To be able to install Koha Library Software you will need to first download it, to download the Windows version of Koha first click on this link here -		
+			
+						Click here
+					
+		
+		That link will open Mediafire, from where you can download the Windows version of Koha, to download just click on “DOWNLOAD”, the file size will be 592Mb so make sure that you have a stable internet connection.		
+																														
+		Wait for the download to finish. 		
+			Move & Unzip Koha
+		
+		After the download finishes, open your file manager and go to the downloads directory, here look for the Koha_for_Windows.zip file, select the file and right-click it, click on “CUT”.		
+																														
+		
+Now go to the root directory of your Windows PC and paste the Koha zip file there. You can paste it in any root directory like C:, D:, E:.		
+																														
+		In my case, I have moved the downloaded Koha zip file to the E: drive. So now after moving it, you will need to unzip the zip file. To do that select the Koha_for_Windows.zip and right-click it, click on “Extract Here”.This will extract all the contents of the zip file in your drive, this will take a little bit of time to finish extracting. After the extraction finishes the extracted folder that you will get will be named “usr”. 		
+																														
+			Running Koha Library Software 
+		
+		After extracting the zip file you will get an extracted folder named “usr”, now first make sure that the usr folder is directly in the root directory and not inside any folder, it should directly be in the root like “E:usr” and not “E:folderusr”.
+Now to run Koha in your Windows operating system just go inside the “usr” folder, here scroll down and look for the “StartMysqlServer.bat '' file, double click on the bat file to run it.		
+																														
+		After double-clicking the StartMySqlserver.bat file, the terminal of your windows computer will run the file for a second and automatically stop and close the terminal.After running the first bat file, you will need to run the second bat file which will be named “StartServer.bat”, again double click it and let it run in the terminal, now to be able to use koha you will need to keep the bat file running in the terminal, so minimize the terminal tab.Finally, run the third bat file which is named “ZebraServer.bat”. Again keep the terminal window running, so minimize the window.		
+			Access Koha Dashboard
+		
+		After running all the three bat files, you can now access the Koha Library Software dashboard by going to your localhost. 
+In your browser just enter http://localhost:8080, this will redirect you to the login page of Koha Library, the default username and password for logging into Koha Windows version is “admin”. You can now start using Koha on your Windows computer. The version of koha that is provided here is Version 3.16.01.  		
+			Access Koha WEB OPAC 
+		
+		To access the Web OPAC of Koha Library Software on windows you will need to go to http://localhost on your browser.		
+			Stopping Koha		
+		Once you are done and have finished your work, you can now stop Koha from running by first closing all the terminal windows that were running.After closing all the running terminal windows, go to your file manager and go inside the usr folder of Koha, here look for “StopMysqlServer.bat”, double click the bat file, and let it run, it will stop the Localhost server from running automatically.
+That's it, Koha will be now completely stopped. To run Koha again on your windows just run the three bat files in the usr folder.		
+			Uninstalling Koha from Windows
+		
+		To completely uninstall the Koha Windows version you will need to just delete the Koha usr folder from your computer. That’s it, that is how you can Install Koha Library Software on your windows operating system. If you have any questions or if you are facing any problem while installing koha, then comment below. Thank you.		
+			FAQ - 		
+			Is the Koha Library Windows version safe to use?
+		
+		The windows version of koha is safe, but I think it will be better if you could install the official version of koha on a Linux Machine Because in the Windows version of Koha you will not get a lot of security, and also you will not get any updates.It's better to just call a computer guy and install Linux on your computer. After that, you can follow this tutorial here - Install Koha Library Software on Ubuntu 20.04.",
+				"headline": "How to Install Koha Library Software on Windows 10",
+				"author": "Aomi Bora",
+				"datePublished": "2021-12-31",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-12-31",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/exam-results-feature-wordpress/">How to Add Exam Results Feature to a WordPress website</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will show you how you can add exam results feature to a WordPress website for releasing exam results on your college or school's website.With the help of this tutorial, you will be able to...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/exam-results-feature-wordpress/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Add Exam Results Feature to a WordPress website",
+				"url": "https://netmiko.com/exam-results-feature-wordpress/",
+				"articleBody": "Today I will show you how you can add exam results feature to a WordPress website for releasing exam results on your college or school's website.With the help of this tutorial, you will be able to add students' results at the backend of your college or schools WordPress website and then the student will be able to search the results at the frontend of the website using their roll no like this - 
+																														
+		You can manually enter the students' results in the backend or you can upload a CSV file to the WordPress site and upload all results at once. Okay now, let's see how we can do that.		
+			Enable Construction Mode [OPTIONAL]		
+		As we will be installing and adding a plugin and also entering data that is not supposed to be available to students before the results date, we will enable construction mode which will make your website unavailable to users until the release of the results.To begin you will need to first log in to your WordPress website, after logging in go to your WordPress website go to Plugins &gt; Add New. In the search bar search for “Under Construction”.
+Install the “Under Construction” plugin by the developer WebFactory. Install the Plugin and activate it.		
+																														
+		After activating the plugin you can enable construction mode by going to Settings &gt; UnderConstruction. Go to the Main tab and enable Under Construction Mode, scroll down, and in Automatic End Date &amp; Time you can set a time when Construction mode will end.		
+																														
+		After setting up the settings click on Save Changes to enable Construction mode on your website. Now only the admins of the WordPress website will be able to access it until the time finishes.		
+			Install Easy Student Result Plugin
+		
+		
+The plugin that we are going to use for our WordPress website to add the feature of uploading students' results and searching the results by roll or registration no is called “Easy Student Result”.To Install the plugin first Log in to your WordPress website, then go to Plugins &gt; Add New. Search for “Easy Student Result”, install and activate the plugin created by - Nurul Umbhiya.		
+																														
+		You can also install the plugin by downloading it from https://downloads.wordpress.org/plugin/easy-student-results.2.2.8.zip, after downloading the plugin go to Plugins &gt; Add new. Upload the plugin and activate it.NOTE: You might get an error saying “The plugin generated X characters of unexpected output during activation”, Don't worry, that's not a fatal error. Your website will be fine.
+			Setup Easy Student Result Plugin
+		
+		After installing the plugin you will need to now set up the plugin. I will show you all the things that you will need to do to add a student's results and show the result on the front end of your WordPress website.You can access the Plugin From the admin menu on the left side, it will be named “Student Results”.In the Easy Student Result Plugin, you can add Department, Batch, Courses, grade, exams, and Results of students. This is an all-in-one Plugin for Schools and colleges to maintain and publish students' results.		
+			Add Department / Class
+		
+		To add a department you will need to first go to Student Results &gt; Department from the admin menu.
+Here first you will need to add the department name in short uppercase word without any space, like Mathematics will be “MATHS”, Biology will be “BIO”. After that in department slug you will need to add the url-friendly version of the name of the department, this should be always in lowercase and should not contain space or any symbol. For example -  For the Mathematics department the url should be “mathematics”, no Uppercase.		
+																														
+		Scroll down, in “Full Name” Enter the full name of the subject. After that you can add a description to the subject, after that in Total Credit you can add the amount of credit someone needs to pass that exam, credits are time that a student has spent in the classroom. You can keep it blank if your college/school doesn't have a credit system.
+Once all the things are added, click on “Add new department” to add the department.		
+			Add Semester
+		
+		To add a semester to any department you will need to first go to Student Results &gt; Department, here on the right side of the departments you will see an option “Configure Semester”, click on the configure option on whatever department you want to add a semester		
+																														
+		In Name enter the Semester name, like if you are adding a semester in Mathematics department then enter like “1st Semester Maths”. After that, in slug enter the semester name in a URL-friendly way, no uppercase, no number, and no symbol.Once done click on Add New semester to add a new semester to the department you selected to configure.
+			Add Batch 		
+		Now to add different batches of classes you will need to go to Student Results &gt; Batch. Click on Add New to add a new batch, like - 1st SEM MATHS / 2019 or something.		
+																														
+		In Batch/Year, enter the batch name and the batch year, below in Department select the department that the batch belongs to from the dropdown, after that in Session, select the time when that batch took the admission and click on Add New Batch to add the batch.		
+			Add Courses 		
+		Now you will need to add courses / Subjects, you can add courses by going to Student Results &gt; Courses, click on Add Course to add a new course. 
+First enter your course name, after that enter the course code, in Department / Class select the department from the dropdown, in Semester / Section select the semester from the dropdown.		
+																														
+		In Course Detailed Information first enter the total marks of the subject. In credits enter the credits required to pass that subject. Select the course type from the dropdown, like if it's a theory subject or practical, enter the Prerequisite Subject &amp; Related subject if any, and click on Publish.		
+			Add Grades		
+		To add different grades like “A,B,C,D or A+,B+,C+,D+”. you will need to first go to Student Results &gt; Grade, here, by default there will be some grades already created, you can delete them by hovering over on the top of the grade.After deleting the default grades you can add new grades by clicking on Add new.
+Now in Alphabetic grade enter the grade in alphabets like “A, B, C”. In marks enter the marks required for a student to get that grade, like 80 - 100 for A Grade. After that, if your school/college uses grade points then you can add them.		
+																														
+		In Grade Classification enter the description of that grade, like you can give Excellent for A Grade, Average for B Grade, etc. click on Add new Grade to add the grade.		
+			Add Exams		
+		To add exams you will need to first go to Student Results &gt; Exams, there click on Add new to add a new exam. Name the exam with a unique name, like “Maths-1st-SEM-2019-January”. After that select the date when the exam was held and click on Add New Exam to add a new exam.
+			Add Students		
+		Now to add the main thing, which is students you will need to go to Student Results &gt; Students and click on Add Students to add a new student.First, enter the name of the student at the very top, after that enter the registration no and roll no of the student, do note that the registration no &amp; roll no cannot be zero ( It should be greater than zero ).		
+																														
+		After that select the Department/Class, Batch/Year, Semester/Section from the dropdowns. Once done scroll down and fill up all the personal details of the student and click on Publish to Add the student.
+			Add Results
+		
+		Now the final thing that you will need to add is of course the results. To add the results and assign marks to different students you will need to first go to Student Results &gt; Results. Click on Add new.After that, you will need to add a new exam record, here first select the exam from the dropdown, after that select the Department/Class, Batch/Year, Semester/Section. Once done, now select all the students that appeared in the exam and select the courses/subjects they appeared in by selecting them using your mouse. If some students did not appear in any exam then just uncheck them.		
+																														
+		After that click on Add New Exam Record to add a new record.
+			Add Marks to Results		
+		Now to add Marks to the results you will need to click on the Add Marks option at the Results Record tab after adding any exam records. 		
+																														
+		Here again, click on Add marks on the right side of the student that you want to give the marks to. You can now add the marks a student got in different subjects, just enter the marks someone got in the Marks obtained section and select the grade that the user got.After filling up all the required things, click on Update to assign the exam marks to the student.
+			Display Results in Frontend using Shortcode
+		
+		After adding all the results of students in the backend of your WordPress website, you can now add the search form in the frontend of the website from where students will be able to search their exam results using their roll no.To do that you can use the shortcodes -[esr_results] for Searching results using only roll no.[esr_results2] for Searching results using both roll no &amp; Registration no.[esr_students] for displaying all students' results without searching.To add the shortcodes you can just create a new page and add the shortcode in the page using a shortcode block. Publish the page and after that, your students will be able to search their results by providing the required info.
+																														
+			Edit the Robots.txt
+		
+		There is one problem with the Easy Student Result plugin that is, it creates lots of 404 URLs that will cause lots of problems for you as google will crawl those pages and get tons of 404 errors which is not something good.To fix that, you can prevent Google from crawling the pages automatically created by the plugin, just add the code line given below to the robots.txt file of your WordPress website and it should fix the problem.		
+			User-agent: *
+Disallow: /rps_result_student/		
+		After editing the robots.txt file, clear the cache of your WordPress website if you are using a caching plugin.
+			Adding Additional Features		
+		If you would like to make the process of adding students' results to the backend of your WordPress website in the Easy Student Results plugin easier, then you can just purchase the premium add-ons provided by the app developer.Go to the Student Results &gt; Premium Addons from the admin menu and buy the addon that you would like to add to your plugin. Premium addons like CSV import results search by students name, Hiding students results from each other are some of the premium features of the plugin.NOTE: The plugin hasn't been updated in almost 2 years, which means that the plugin developer might or might not be still active, so be careful when purchasing any premium addon as if you get into any problem then there will be no one to help you.
+			FAQ -		
+			How to add different subjects in the Easy Student Results plugin?		
+		You can add different subjects in the Easy Students Results by going to Student Results &gt; Courses. Just click on add course and add the subject that you would like to add. 		
+			Is the Easy Students Results plugin safe to use?		
+		The Easy Students Results plugin is safe to use, but as the plugin hasn't been updated in almost 2years you might get conflicts with other plugins or themes installed on your WordPress website.Always make a new backup of your website before installing any plugin, you can use VaultPress or UpDraft Backups for backing up your WordPress website for free with just a few steps.That is how you can Add Exam Results Feature to a WordPress website. If you are facing any problem while installing the plugin or setting up anything like adding courses, exams, etc then you can always contact me by mail at - admin@localhost. I will try to reply as soon as I can to fix your problem. Thank you.",
+				"headline": "How to Add Exam Results Feature to a WordPress website",
+				"author": "Aomi Bora",
+				"datePublished": "2021-12-30",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-12-30",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+
+<article class="article-card horizontal no-thumb">
+    <div class="copy-container">
+    <header>
+      <p><a href="https://netmiko.com/install-xapk-android-no-pc/">How to Install a XAPK on Android without PC</a></p>
+    </header>
+      <div class="excerpt">
+        <p>Today I will show you how you can install an XAPK file on your Android device without the need for a computer or PC. If you are downloading any app or game from the internet then chances are that the...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/install-xapk-android-no-pc/">Continue Reading</a></div>      </div>
+    <!-- <a class="button reverse" rel="nofollow" itemprop="mainEntityOfPage" href="<?//get_permalink( get_the_id() )?>">Continue Reading</a> -->
+  </div>
+<!--  <meta itemprop="thumbnailUrl" src="--><!--">-->
+<!--  <meta itemprop="image" src="--><!--">-->
+<!--  <span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+<!--    <meta itemprop="name" content="--><!--">-->
+<!--  </span>-->
+<!--  <meta itemprop="logo" src="--><!--">-->
+<!--  <meta itemprop="headline" content="--><!--">-->
+<!--  <meta itemprop="author" content="--><!--">-->
+<!--  <meta itemprop="datePublished" content="--><!--">-->
+<!--  <meta itemprop="dateModified" content="--><!--">-->
+
+
+</article>
+
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install a XAPK on Android without PC",
+				"url": "https://netmiko.com/install-xapk-android-no-pc/",
+				"articleBody": "Today I will show you how you can install an XAPK file on your Android device without the need for a computer or PC. If you are downloading any app or game from the internet then chances are that the file that you are downloading is a xapk instead of the regular apk file, now the problem with this file type is that you cannot install xapk directly like you can install an apk.
+To know why you will need to first know what a xapk is and how it is different from the regular apk.		
+			What is XAPK 
+		
+		XAPK is a new file type that contains all the files of an app or game, files like images, scripts, fonts, and the apk of the app or game are all stored in a single file extension called XAPK. This is very helpful for people that want to install apps and games from third-party websites and app stores.Previously, before the introduction of XAPK, people used to download both the apk and OBB files (data files) separately which was not very convenient, due to which XAPK was introduced by using which we can install an app or game completely with just one file.		
+			What is the difference between APK and XAPK
+		
+		The only difference between an APK &amp; XAPK is that an APK can be installed on your android phone directly without the need for an external app or without going through extra steps to install it.
+			Installing a XAPK on Android		
+		Okay, so now let's see how we can install an XAPK on our Android phone without the use of a PC. I will show you multiple methods to do this, the first one will be a direct install method and the other ones will be using apps.		
+			Using File Manager 		
+		To install an XAPK using a File manager you will need to first install zarchiver, which is a file manager app for android. You can download zarchiver from the play store by going to this link here - https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver, It's around 3Mb in size, install it and open it.If you are opening zarchiver for the first time, then you might get asked to allow storage permissions, allow it to continue. Inside zarchiver go to the folder where you have the xapk file downloaded.
+For most people, the downloaded files from the internet will be stored in the Download folder. Locate the xapk file and long press on it. This will bring up a menu from the bottom, click on “Rename”, now rename the xapk files extension from “.xapk” to “.zip”. Once done save it.		
+																														
+		Now click on the saved zip file, click on view. Now look for the OBB file, the OBB file will be named like “com.something.something”, long-press the OBB file and click on “Copy”.[ If there are multiple OBB files or you cannot find the obb file then use the other methods shown in this blog post ]On the top of the app click on your file path, after that click on Device Memory then go to Android, then OBB, and paste the OBB file there by clicking the clipboard icon at the bottom of the zarchiver app.		
+																														
+		
+After pasting the obb file, go back to the zip file and click on the .apk file, click on Install to install the xapk file on your android using zarchiver.		
+			Using Apkpure App 		
+		Now if the file manager method didn't work for you or it was too complicated then you can follow this method instead to install a xapk on your android.To begin, first, install the official apkpure app that you can search for on Google or you can use this link here - https://m.apkpure.com/apkpure-app.html, Download the latest version of Apkpure and install it.After downloading and installing apkpure, open it. Allow all the permissions it asks for, like storage and phone. After that in the apkpure app, click on “ME” at the bottom right corner, after that click on “App Management”.		
+																														
+		Now in the App Management tab go to APK/XAPK MANAGEMENT, here you will see all the xapks and apks downloaded on your device, click on install.
+Your phone will now ask for permissions to install from unknown sources, allow it, and go back to continue. If the app brings you back to the home screen then just go to apk/xapk management again and install the xapk that you want to install.That is how you can install a xapk on your android device using the apkpure app.		
+			Using Apk Installer by Uptodown 
+		
+		If Apkpure didn't work for you then you can use the Apk Installer by Uptodown, you can download the uptodown apk installer from google play store by simply searching for “Apk Installer by Uptodown” or you can just download it from its website at - https://uptodown-apk-installer.en.uptodown.com/android. Install the app and open it, it will ask for file and storage permissions, allow it to continue. On the home screen click on Install Apps.
+Now here you will see all the xapks and apks downloaded on your android phone, look for the xapk that you want to download and click on it. This will now take a few minutes to finish and your xapk will be installed.		
+			Using XAPK Installer 
+		
+		Now, as the name says, it is an app that is made for installing xapk files on your android. You can download XAPK Installer from the play store by searching for “XAPK Installer”, the developer is MTV Mobile.Download and install the app and open it, in the home screen of the app you will need to first provide the app two permissions to work, the first will be Install Packages and the second will be Read and Write permissions. Click on both of them and allow the app the permissions.After providing the necessary permissions to the app, click on the Install XAPK button and select the “Automatically search for XAPK” option.
+Once the search finishes, all the xapk files stored in your device will show up here, click on the download icon next to it to install the xapk on your android.And that is how you can install a xapk file using the xapk installer on android.		
+			What is the Recommended Method to install a XAPK?
+		
+		The method that I recommend you to use to install a xapk on your android device is using the apkpure app. Using Apkpure installer is easy and has fewer chances of error compared to other apps like uptodown installer and XAPK Installer.		
+			Best Apps to Install XAPK 
+		
+		
+Okay so if you are looking for the best apps to install xapk files on your android device then here are the best apps for installing xapk - Apkpure AppUptodown Apk InstallerXAPK InstallerApk Installer proApp Bundle InstallerIf you want the list for more apps then comment below.		
+			Fix XAPK not Working after Installing
+		
+		Okay, so if you installed an apk manually using the file manager and now the app is not working, then here are the reasons and fixes for it -
+Wrong Destination - When copying the data files on the xapk to its location you might have pasted the data files in the wrong path. You can fix this by uninstalling the app and reinstalling it again with the correct path.App opened before full install - You might have opened the installed app before copying the data files to the obb folder. Always install the app last, first copy the data files to their location then install the apk file that is inside the xapk.If you made one of these mistakes then chances are that your installed app or game will not work, reinstall the app again properly to fix it. Thank you.",
+				"headline": "How to Install a XAPK on Android without PC",
+				"author": "Aomi Bora",
+				"datePublished": "2021-12-28",
+				"mainEntityOfPage": "False",
+				"dateModified": "2021-12-28",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<nav class="pagination-wrapper" aria-label="article pagination">
+		<a class="prev page-numbers" href="https://netmiko.com/blog/page/9/">&laquo; PREV</a>
+<a class="page-numbers" href="https://netmiko.com/blog/"><span class="screen-reader-text">Page </span>1</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://netmiko.com/blog/page/8/"><span class="screen-reader-text">Page </span>8</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/9/"><span class="screen-reader-text">Page </span>9</a>
+<span aria-current="page" class="page-numbers current"><span class="screen-reader-text">Page </span>10</span>
+<a class="page-numbers" href="https://netmiko.com/blog/page/11/"><span class="screen-reader-text">Page </span>11</a>
+<a class="page-numbers" href="https://netmiko.com/blog/page/12/"><span class="screen-reader-text">Page </span>12</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://netmiko.com/blog/page/17/"><span class="screen-reader-text">Page </span>17</a>
+<a class="next page-numbers" href="https://netmiko.com/blog/page/11/">NEXT &raquo;</a></nav>
+</section>
+
+		</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Simplified Coding Examples.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-682"> </div>
+<p><!-- End Ezoic - sidebar - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2023 Copyright NETMIKO.COM			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/netmiko(\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$))|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/netmiko.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"eclipse","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://netmiko.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><\/noscript>',a='<div class="play"><\/div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+</body>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+</html>

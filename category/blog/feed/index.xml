@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Blog &#8211; Netmiko.com</title>
+	<atom:link href="https://netmiko.com/category/blog/feed/" rel="self" type="application/rss+xml" />
+	<link>https://netmiko.com</link>
+	<description>News &#38; Tech</description>
+	<lastBuildDate>Sat, 10 Dec 2022 05:05:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.1.1</generator>
+	<item>
+		<title>How to find default user and password for Bitnami WordPress on AWS</title>
+		<link>https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/</link>
+					<comments>https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/#respond</comments>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Sat, 10 Dec 2022 04:53:29 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6491</guid>
+
+					<description><![CDATA[Here is how you can find the default username and default password of a bitnami wordpress installation on AWS.]]></description>
+										<content:encoded><![CDATA[<p>Here is how you can find the default username and default password of a bitnami wordpress installation on AWS.</p>
+<p><a href="https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+					<wfw:commentRss>https://netmiko.com/how-to-find-default-user-and-password-for-bitnami-wordpress-on-aws/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>CSS &#038; JavaScript Marquee Logo Wall</title>
+		<link>https://netmiko.com/css-javascript-marquee-logo-wall/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Thu, 17 Nov 2022 03:31:46 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6467</guid>
+
+					<description><![CDATA[A logo wall made using CSS and JavaScript, it can move vertically and horizontally. Made by Ryan Mulligan. The codes are separated in three parts, so copy all three parts]]></description>
+										<content:encoded><![CDATA[<p>A logo wall made using CSS and JavaScript, it can move vertically and horizontally. Made by Ryan Mulligan. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use two separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code Here is the CSS code. Here is the JavaScript Code Here is the Complete...</p>
+<p><a href="https://netmiko.com/css-javascript-marquee-logo-wall/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>90s Boombox Design using CSS &#038; Html</title>
+		<link>https://netmiko.com/90s-boombox-design-using-css-html/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Thu, 17 Nov 2022 03:19:49 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6465</guid>
+
+					<description><![CDATA[A simple css boombox design made using pure CSS and HTML. The Boom box is made by Sonal Shah. The codes are separated in two parts, so copy all two]]></description>
+										<content:encoded><![CDATA[<p>A simple css boombox design made using pure CSS and HTML. The Boom box is made by Sonal Shah. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code Here is the Complete Code...</p>
+<p><a href="https://netmiko.com/90s-boombox-design-using-css-html/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Pure CSS Cyberpunk 2077 Buttons</title>
+		<link>https://netmiko.com/css-cyberpunk-2077-buttons/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Fri, 04 Nov 2022 02:39:18 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6463</guid>
+
+					<description><![CDATA[CSS Buttons with Cyberpunk 2077 Animation on Hover. Made by Jhey. The codes are separated in two parts, so copy all two parts combine them and after that run the]]></description>
+										<content:encoded><![CDATA[<p>CSS Buttons with Cyberpunk 2077 Animation on Hover. Made by Jhey. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the complete code for one single index.html file.</p>
+<p><a href="https://netmiko.com/css-cyberpunk-2077-buttons/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Confetti Button using CSS &#038; React</title>
+		<link>https://netmiko.com/confetti-button-css-react/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Fri, 04 Nov 2022 02:22:37 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6461</guid>
+
+					<description><![CDATA[A cool Confetti Button animation made using CSS &#38; React. Made by Marco Biedermann. The codes are separated in three parts, so copy all three parts combine them and after]]></description>
+										<content:encoded><![CDATA[<p>A cool Confetti Button animation made using CSS &amp; React. Made by Marco Biedermann. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use three separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the JavaScript Code. Script &ndash; script type=&rdquo;module&rdquo;.</p>
+<p><a href="https://netmiko.com/confetti-button-css-react/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Wi-Fi Fail Animation using CSS &#038; JavaScript</title>
+		<link>https://netmiko.com/wi-fi-fail-animation-css-javascript/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Fri, 04 Nov 2022 02:15:15 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6459</guid>
+
+					<description><![CDATA[A simple Wi-Fi Fail Animation made using CSS &#38; JavaScript. It has a Connect button and animation. Made by Jon Kantner. The codes are separated in three parts, so copy]]></description>
+										<content:encoded><![CDATA[<p>A simple Wi-Fi Fail Animation made using CSS &amp; JavaScript. It has a Connect button and animation. Made by Jon Kantner. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use three separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the JavaScript Code.</p>
+<p><a href="https://netmiko.com/wi-fi-fail-animation-css-javascript/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Nosferatu Pure CSS Animation</title>
+		<link>https://netmiko.com/nosferatu-css-animation/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Fri, 04 Nov 2022 02:01:15 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6457</guid>
+
+					<description><![CDATA[A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and after that run the code.]]></description>
+										<content:encoded><![CDATA[<p>A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the complete code for one single index.html file.</p>
+<p><a href="https://netmiko.com/nosferatu-css-animation/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Netflix Intro Animation using Pure CSS</title>
+		<link>https://netmiko.com/netflix-intro-animation-css/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Thu, 03 Nov 2022 02:23:47 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6453</guid>
+
+					<description><![CDATA[Netflix Logo Intro Animation made using Html &#38; Pure CSS by Claudio Bonfati. It has a very smooth animation. The codes are separated in three parts, so copy all three]]></description>
+										<content:encoded><![CDATA[<p>Netflix Logo Intro Animation made using Html &amp; Pure CSS by Claudio Bonfati. It has a very smooth animation. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use three separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the complete code for one single index.</p>
+<p><a href="https://netmiko.com/netflix-intro-animation-css/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>Animated Tab Bar using CSS &#038; JavaScript</title>
+		<link>https://netmiko.com/animated-tab-bar/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Thu, 03 Nov 2022 02:01:02 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6451</guid>
+
+					<description><![CDATA[Here is a simple animated tab bar made using HTML, CSS &#38; JavaScript. Made originally by abxlfazl khxrshidi. The codes are separated in three parts, so copy all three parts]]></description>
+										<content:encoded><![CDATA[<p>Here is a simple animated tab bar made using HTML, CSS &amp; JavaScript. Made originally by abxlfazl khxrshidi. The codes are separated in three parts, so copy all three parts combine them and after that run the code. You can use three separate files for HTML, CSS &amp; Js or you can just use one index.html file. Here is the Html Code. Here is the CSS Code. Here is the JavaScript Code.</p>
+<p><a href="https://netmiko.com/animated-tab-bar/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>How to Download and Install a Mod Apk</title>
+		<link>https://netmiko.com/about-mod-apk/</link>
+		
+		<dc:creator><![CDATA[Aomi Bora]]></dc:creator>
+		<pubDate>Mon, 17 Oct 2022 07:55:12 +0000</pubDate>
+				<category><![CDATA[Blog]]></category>
+		<guid isPermaLink="false">https://netmiko.com/?p=6428</guid>
+
+					<description><![CDATA[In this post, you will get to know all about what a mod apk is and how you can download and install a mod apk on your own phone. What]]></description>
+										<content:encoded><![CDATA[<p>In this post, you will get to know all about what a mod apk is and how you can download and install a mod apk on your own phone. A mod apk is a modified version of an Android app that is distributed outside the Google Play store. People modify apps to add features not found in the original version of the app or game, while some do it to remove ads, change how the app behaves or get in-game...</p>
+<p><a href="https://netmiko.com/about-mod-apk/" rel="nofollow">Source</a></p>]]></content:encoded>
+					
+		
+		
+			</item>
+	</channel>
+</rss>

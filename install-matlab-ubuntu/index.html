@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+		<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-196633016-1"></script>
+	<script type="rocketlazyloadscript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-196633016-1');
+	</script>
+
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>How to Install MATLAB on Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="Today I&#039;ll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish the installation of MATLAB&#8230;">
+<meta property="og:image" content="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install MATLAB on Ubuntu 20.04">
+<meta property="og:description" content="Today I&#039;ll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish the installation of MATLAB in less than 5 mins on your ubuntu by&#8230;">
+<meta property="og:url" content="https://netmiko.com/install-matlab-ubuntu/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta property="og:updated_time" content="2021-12-09T06:17+00:00">
+<meta property="article:published_time" content="2021-12-09T06:17+00:00">
+<meta property="article:modified_time" content="2021-12-09T06:17+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Install MATLAB on Ubuntu 20.04">
+<meta name="twitter:description" content="Today I&#039;ll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish the installation of MATLAB in less than 5 mins on your ubuntu by&#8230;">
+<meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png">
+<link rel="canonical" href="https://netmiko.com/install-matlab-ubuntu/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-matlab-ubuntu/","name":"How to Install MATLAB on Ubuntu 20.04"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 7.08ms meta | 11.76ms boot -->
+
+
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Comments Feed" href="https://netmiko.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; How to Install MATLAB on Ubuntu 20.04 Comments Feed" href="https://netmiko.com/install-matlab-ubuntu/feed/">
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	
+
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+.main-c {display: flex;margin-bottom:10px;}.main-iframe {flex: 1;height:350px;}@media only screen and (min-width: 768px) {.main-c {display: flex;}.main-iframe {flex: 1;height:350px;}.iframe-container {position: relative;height: 350px;}.iframe-container iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}}code {background-color: #eee;}.wp-block-code::before {content: "Click Code to Copy";display: block;color: red;margin-top: -25px;margin-bottom: 25px;margin-left:-7px;padding: 10px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223 {width: 350px;}.cnt223 {min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 30px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top: -100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}#download a {color: #fff;text-decoration: none;}.wp-block-image {box-shadow: 0 0 0 1px #444;}h2.widget-title {font-size: 1.2rem;padding: 0.4em 0;}body.home .articles-wrapper>h2 {font-size: 1.2rem;padding: 0.4em 0;}.article-card header p {font-weight: 700 !important;font-size: 20px !important;margin-bottom: 10px;text-align: center;}h3 {margin-bottom: 10px;}strong {font-weight:600 !important;}@media only screen and (min-width: 768px) {h2 {margin-bottom: 20px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223{min-width: 600px;width: 600px;min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 15px 35px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top:-100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}}.lyte-wrapper::before {content: 'Watch the Video';display: block;background-color: #444;color: #f5f5f5;padding-left:5px;}.lyte-wrapper {margin-left: -1px !important;}.lyte, .lyMe {border: 5px solid #444;}.image-container {border: 5px solid #444;}</style>
+
+<style id="rocket-lazyload-inline-css" type="text/css">.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://netmiko.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/1662">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml">
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-matlab-ubuntu%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Finstall-matlab-ubuntu%2F&#038;format=xml">
+<script type="rocketlazyloadscript">document.createElement( "picture" );if(!window.HTMLPictureElement && document.addEventListener) {window.addEventListener("DOMContentLoaded", function() {var s = document.createElement("script");s.src = "https://netmiko.com/wp-content/plugins/webp-express/js/picturefill.min.js";document.body.appendChild(s);});}</script><link rel="pingback" href="https://netmiko.com/xmlrpc.php">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install MATLAB on Ubuntu 20.04 | NETMIKO.COM">
+<meta property="og:description" content="Today I&#039;ll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish&hellip;">
+<meta property="og:url" content="https://netmiko.com/install-matlab-ubuntu/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Today I&#039;ll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish&hellip;">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+</head>
+
+
+<body class="post-template-default single single-post postid-1662 single-format-standard no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="300" height="125" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20125'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp"><noscript><img width="300" height="125" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" sizes="(max-width: 300px) 100vw, 300px"></noscript></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-1670" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1670"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-1666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1666">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-1668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1668"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-1669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1669"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-1667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1667"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-1662" class="post-1662 post type-post status-publish format-standard has-post-thumbnail hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">How to Install MATLAB on Ubuntu 20.04</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2021-12-09">
+<meta itemprop="dateModified" content="2021-12-09">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/aomi/">Aomi Bora</a></span> </span><meta itemprop="author" content="Aomi Bora">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/install-matlab-ubuntu/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+	<div class="entry-content" itemprop="articleBody">
+		<p>Today I&#8217;ll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish the installation of MATLAB in less than 5 mins on your ubuntu by following this tutorial.</p>
+<div class="O7YWnvtm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+<p><b>What is MATLAB &#8211; </b>Matlab, which stands for &#8220;matrix laboratory&#8221;, is a high-performance language for technical computing with extensive use in the engineering and scientific communities, it has a graphical interface for creating and running programs.</p>
+<h2>Create an MathWorks Account </h2>
+<p>Now to be able to download and Install MATLAB you will need a Math Works account and a License key.</p>
+<div class="lNoQdrlz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+<p>To begin, first, open your web browser and go to this link &#8211; <a href="https://mathworks.com/login">https://mathworks.com/login</a>, this is the official website for MATLAB, here you will need to click on “Create one” to create a new MATLAB account.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="mathworks signup page" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png" alt="mathworks signup page" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>Now enter all the required information like your email (<em>use university email if you have</em>), your country, in “Which best describes you” select “<em>student</em>”, after that click on yes in age confirmation, and click on the “Create&#8221; button below.</p>
+<div class="Uygmp0mv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="mathworks enter info for account signup" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png" alt="mathworks enter info for account signup" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>On the next page you will be asked to enter your work or university email ( If you have one ), if you don&#8217;t then continue by clicking on “Continue with current Email”, the benefits of work or university email can be seen <a href="http://mathworks.com/support/association/benefits_of_associating.html">here</a>.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account-300x47.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account-768x120.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="160" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20160'%3E%3C/svg%3E" alt="email confirmation popup for mathworks account" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-300x47.png 300w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-768x120.png 768w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png"><noscript><img decoding="async" width="1024" height="160" src="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png" alt="email confirmation popup for mathworks account" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-300x47.png 300w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-768x120.png 768w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<div class="7XEAzPEV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_6 - incontent_6 -->
+<div id="ezoic-pub-ad-placeholder-655"> </div>
+<!-- End Ezoic - incontent_6 - incontent_6 -->
+</div>
+<p>After that Mathworks will send you an email at the email address that you provided with the link to verify the email address, open your email app and see the email set by Mathworks, click on the link or the “<em>Verify Email</em>” button to verify your email.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="verify email for mathworks accountverify email for mathworks account" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png" alt="verify email for mathworks accountverify email for mathworks account" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>Now here you will need to finish the registration process by filling up a few more details, enter your name, last name, create a new password, confirm the password, in “<em>role</em>” select student, in “<em>department</em>” select the department you are in.</p>
+<div class="Tes5oTQ0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_7 - incontent_7 -->
+<div id="ezoic-pub-ad-placeholder-656"> </div>
+<!-- End Ezoic - incontent_7 - incontent_7 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="finish mathworks profile creation" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png" alt="finish mathworks profile creation" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>In the Location of School/University, enter your university location and name, after that scroll down and <em>accept the Agreement</em> and click on “Create” to finish creating your Mathworks account.</p>
+<p>After clicking on the create button your Mathworks account will be created and you will be redirected to the Mathworks dashboard, here you will need to now get a “<em>Licence Key</em>”, you can either buy the students license for 21 dollars or you can click on “<em>Try now</em>” to start a 30-day free trial.</p>
+<div class="DKN3qOKq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_8 - incontent_8 -->
+<div id="ezoic-pub-ad-placeholder-657"> </div>
+<!-- End Ezoic - incontent_8 - incontent_8 -->
+</div>
+<h2>Get MATLAB License </h2>
+<p>To Get a MATLAB Licence first Log in to your Mathworks account at <a href="https://mathworks.com/mwaccount/">https://mathworks.com/mwaccount/</a>, after that go to this link &#8211; <a href="https://mathworks.com/products/get-matlab.html">https://mathworks.com/products/get-matlab.html</a>, here you will get three options to select from, the first option will be to get a 30 days trial of MATLAB, If your university already has access to MATLAB then you can select the second option, if you want to buy MATLAB student license then click on the third option.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="choose matlab license" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png" alt="choose matlab license" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>I&#8217;ll show you how you can get a <em>free trial</em> and also how you can buy a <em>student license</em>. </p>
+<div class="CFLijEvd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_9 - incontent_9 -->
+<div id="ezoic-pub-ad-placeholder-658"> </div>
+<!-- End Ezoic - incontent_9 - incontent_9 -->
+</div>
+<h3>Trial Licence </h3>
+<p>To get a free Trial Licence of MATLAB you&#8217;ll need to click on the “<em>Download a Trial</em>” button on the products page of Mathworks.</p>
+<p>Here enter your address, zip code, click “NO” in the question of whether this request is on behalf of a faculty member, enter the year of graduation, select “<em>MATLAB Essentials</em>” from the trial usage dropdown and click on Submit.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="fill-matlab-trial-formfill-matlab-trial-form" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png" alt="fill-matlab-trial-formfill-matlab-trial-form" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<div class="1Hw5EGQi" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_10 - incontent_10 -->
+<div id="ezoic-pub-ad-placeholder-659"> </div>
+<!-- End Ezoic - incontent_10 - incontent_10 -->
+</div>
+<p>After clicking on Submit, you will be redirected to <a href="https://matlab.mathworks.com/">https://matlab.mathworks.com/</a>, from where you can download MATLAB.</p>
+<h3>Buy License </h3>
+<p>To buy a MATLAB student license first Log in to your Mathworks account at <a href="https://mathworks.com/mwaccount/">https://mathworks.com/mwaccount/</a>, after that go to the products page at &#8211; <a href="https://mathworks.com/products/get-matlab.html">https://mathworks.com/products/get-matlab.html</a>, here click on the “Buy” button.</p>
+<p>After that in the “Pricing and Licensing” page select Student and select the Student Licence, after that click on Buy now&gt;Add to cart&gt; Checkout. Complete the transaction and get your Student Licence Key for MATLAB.</p>
+<div class="7pxleS2n" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_11 - incontent_11 -->
+<div id="ezoic-pub-ad-placeholder-660"> </div>
+<!-- End Ezoic - incontent_11 - incontent_11 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/buy-matlab-student-license-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/buy-matlab-student-license-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/buy-matlab-student-license-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/buy-matlab-student-license.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="buy matlab student license" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-1024x400.png" alt="buy matlab student license" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/buy-matlab-student-license.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<h2>Download MATLAB<br>
+</h2>
+<p>After either purchasing a license key or using the trial version of MATLAB, you can download MATLAB by going to <a href="https://matlab.mathworks.com/">https://matlab.mathworks.com/</a>, here log in using your Mathworks account info.</p>
+<p>After logging in to the dashboard of MATLAB you will need to click on the “<em>Install MATLAB on your Computer</em>” option. </p>
+<div class="0GzkoJ0D" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_12 - incontent_12 -->
+<div id="ezoic-pub-ad-placeholder-661"> </div>
+<!-- End Ezoic - incontent_12 - incontent_12 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page-1024x240.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page-300x70.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page-768x180.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="240" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20240'%3E%3C/svg%3E" alt="open matlab downloads page" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png"><noscript><img decoding="async" width="1024" height="240" src="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png" alt="open matlab downloads page" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>In the download page you will need to click on the “<em>Download for Linux</em>” button, if it&#8217;s showing Download for Windows then click on the arrow at the right side of the button and select Linux.</p>
+<p>The downloaded zip file will be saved to your Ubuntu <em>downloads directory</em> by default, or you might get a popup asking where to save the file. After downloading the MATLAB zip file it is time to install MATLAB on your ubuntu 20.04.</p>
+<div class="lQkMn0YW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_13 - incontent_13 -->
+<div id="ezoic-pub-ad-placeholder-662"> </div>
+<!-- End Ezoic - incontent_13 - incontent_13 -->
+</div>
+<h2>Install MATLAB on Ubuntu</h2>
+<h3>Update Index Packages</h3>
+<p>Okay, so the first step will be to first open your ubuntu terminal and update the index packages, this is a good habit to do whenever starting any installation on your ubuntu system.</p>
+<pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update 
+sudo apt-get upgrade</code></pre>
+<p>Now you can start the installation of MATLAB on ubuntu 20.04, before starting the installation make sure that you have sudo permissions, as we will need sudo permissions for installing MATLAB.</p>
+<h3>Unzip MATLAB<br>
+</h3>
+<p>Now you will need to unzip the downloaded MATLAB zip file, you can do that by right-clicking the downloaded zip and then clicking on “<em>Extract here</em>”, you can also unzip it using the terminal by entering “sudo unzip -X -K file_name.zip -d extracted_file_destination”.</p>
+<div class="faXaGtKr" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_14 - incontent_14 -->
+<div id="ezoic-pub-ad-placeholder-663"> </div>
+<!-- End Ezoic - incontent_14 - incontent_14 -->
+</div>
+<p>The version of MATLAB that I have downloaded is r2021b. First, change your directory to the one where you downloaded the zip,</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd Downloads
+</code></pre>
+<p>After that use the command “<em>ls</em>” to see all the files in that directory, after that use the unzip command and unzip the downloaded MATLAB zip, using this command the zip files will be extracted to a new folder called “<em>matlab_new</em>” you can name it anything you want.</p>
+<pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo unzip -X -K matlab_R2021b_glnxa64.zip -d matlab_new</code></pre>
+<p>Once the zip file is unzipped to “<em>matlab_new</em>” folder, change your directory to that folder using the command &#8211;</p>
+<div class="xmB13aM9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_15 - incontent_15 -->
+<div id="ezoic-pub-ad-placeholder-664"> </div>
+<!-- End Ezoic - incontent_15 - incontent_15 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd matlab_new</code></pre>
+<h3>Install MATLAB</h3>
+<p>To install MATLAB you will need to run the install script that is in the extracted folder, here, after you have changed your directory type the command given below to go to the root of the “matlab_new” folder.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo su</code></pre>
+<p>After that you will need to enter the xhost command, which you will need to open the GUI installer of MATLAB.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">xhost +SI:localuser:root
+</code></pre>
+<p>After that to run the MATLAB GUI installer you will need to <em>run the install script</em>, to run that script type the following command in the terminal &#8211;</p>
+<div class="T0t7bmJV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_16 - incontent_16 -->
+<div id="ezoic-pub-ad-placeholder-665"> </div>
+<!-- End Ezoic - incontent_16 - incontent_16 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">./install</code></pre>
+<p>This will start the GUI Installer of MATLAB, at first you will be asked to Log in, log in using the Mathworks account Email and Password.</p>
+<p>Now here in the Agreement, click on the yes option to <em>accept the agreement</em>, and after that click on “NEXT”.</p>
+<p>In the “<em>Licensing</em>” page the trial or paid license that you have on your Mathworks account will automatically get selected, if you want you can select a different one or enter an activation key. Click NEXT to continue.</p>
+<div class="utn6Ao1z" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_17 - incontent_17 -->
+<div id="ezoic-pub-ad-placeholder-666"> </div>
+<!-- End Ezoic - incontent_17 - incontent_17 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="select matlab license" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png" alt="select matlab license" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>After that in “<em>Confirm user</em>” check if all the details are correct, here you will need to add a username that you will need to use to run MATLAB. Enter a username and click NEXT to continue.</p>
+<p>In the “<em>Destination</em>” tab keep the destination path the default one and click on the NEXT button to continue.</p>
+<div class="8zzrszCv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_18 - incontent_18 -->
+<div id="ezoic-pub-ad-placeholder-667"> </div>
+<!-- End Ezoic - incontent_18 - incontent_18 -->
+</div>
+<p>After that, you will be now on the “<em>products</em>” page, here you will need to select all the products that you want to download, click NEXT after selecting the products to continue. A popup will then appear asking you to add the products to install, click on “<em>Add</em>” to continue.</p>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="select matlab products" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png" alt="select matlab products" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>Now you will be in the “<em>Options</em>” tab, here tick the “Create symbolic links” option and click on NEXT.</p>
+<div class="GwOhGYyP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_19 - incontent_19 -->
+<div id="ezoic-pub-ad-placeholder-668"> </div>
+<!-- End Ezoic - incontent_19 - incontent_19 -->
+</div>
+<p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links-1024x240.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links-300x70.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links-768x180.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="240" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20240'%3E%3C/svg%3E" alt="select create symbolic links" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png"><noscript><img decoding="async" width="1024" height="240" src="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png" alt="select create symbolic links" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
+<p>After the options tab, you will be in the “<em>Confirmation</em>” tab where you will need to check if all the things are correct or not, like licensing, username, products. It will also display the disk space that you will need for the installation. Now click on “Begin Install’ to Download and Install MATLAB.</p>
+<p>Once the download finishes click on the “<em>Close</em>” button on the installer.</p>
+<div class="Eqz29BWg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_20 - incontent_20 -->
+<div id="ezoic-pub-ad-placeholder-669"> </div>
+<!-- End Ezoic - incontent_20 - incontent_20 -->
+</div>
+<h3>Activate MATLAB</h3>
+<p>Now to be able to use MATLAB, you will need to activate MATLAB. To do that first you will need to exit out of root using the command “<em>exit</em>”, now after that, you will need to change your directory to home using the command &#8211;</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd ~</code></pre>
+<p>Once you are in the home directory, change your directory to “<em>/usr/local/</em>” using the command &#8211;</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd /usr/local/</code></pre>
+<p>After that go inside the MATLAB directory.</p>
+<div class="9kImZcMC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_21 - incontent_21 -->
+<div id="ezoic-pub-ad-placeholder-670"> </div>
+<!-- End Ezoic - incontent_21 - incontent_21 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd MATLAB/</code></pre>
+<p>Now type the “<em>ls</em>” command to see the folder that is available inside the MATLAB directory, here inside the MATLAB directory you will get a folder named “<em>R2021b</em>” as we have installed the R2021b version of MATLAB. Go inside that version folder.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd R2021b/</code></pre>
+<p>Again change your directory to bin.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd bin</code></pre>
+<p>Now if you do a “<em>ls</em>” command inside this directory you will see a script named “<em>activate_matlab.sh</em>”, you will need to run that script in order to start the activation process of MATLAB.</p>
+<div class="f4OmGaQE" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_22 - incontent_22 -->
+<div id="ezoic-pub-ad-placeholder-671"> </div>
+<!-- End Ezoic - incontent_22 - incontent_22 -->
+</div>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">./activate_matlab.sh</code></pre>
+<p>The GUI MATLAB activation software will now open, here you will need to select the “<em>Activate automatically using the Internet</em>” option then click on NEXT. Now here sign in using your MathWorks Account and click on NEXT.</p>
+<p>On the “<em>License Selection</em> &#8221; tab the license will be automatically selected, if you want to use a different license then you can select a different license, click on NEXT when done.</p>
+<p>On the “<em>username</em>” tab, enter the username that you used during the installation process of MATLAB. After that click next and in the “<em>Confirm Selection</em>” tab check if all the provided details are correct or not.</p>
+<p>Click on “<em>Confirm</em>” to continue, if you have a valid license then the activation will be completed. After activating MATLAB click on “<em>Finish</em>” to close the GUI Activation software.</p>
+<h3>Run MATLAB</h3>
+<p>To run MATLAB, first, close all the terminal windows and open a new one, here in the terminal type the following command to run MATLAB &#8211;</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">matlab </code></pre>
+<p>This will start MATLAB. And that’s it, that is how you can Download, Install and Activate MATLAB on Ubuntu 20.04. If you have any questions then comment below or send me a mail at &#8211; netmikoblog@gmail.com</p>
+<h2>FAQ &#8211;<br>
+</h2>
+<h3>How to uninstall MATLAB on Ubuntu 20.04?</h3>
+<p>If you want to uninstall MATLAB from your Ubuntu, then you can follow these steps.</p>
+<p>First change your directory to “<em>/usr/local/</em>” then go into the root of that directory using the command “<em>sudo su</em>”, after that use the command given below to delete all the MATLAB-related files from your Ubuntu system.</p>
+<pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">rm -rf /usr/local/MATLAB/R2021b/</code></pre>
+<p>Here “<em>R2021b</em>” is the version of MATLAB that is installed on your Ubuntu. Once MATLAB is uninstalled, change your directory to home using the command “<em>cd ~</em>” and run the command “<em>matlab</em>” to see if MATLAB has been successfully removed from your Ubuntu system or not.</p>
+<h3>How long does MATLAB free trial License last?<br>
+</h3>
+<p>The free trial given by MATLAB is for 30 days, which means that you can use MATLAB for 30days using the free trial, after that, you will need to purchase a license. You can get a MATLAB trial for 30 days with one email. After that, you can buy a lifetime student license for 21 dollars.</p>
+<h3>What are the System Requirements to Install MATLAB on ubuntu?<br>
+</h3>
+<p>To be able to install MATLAB on your Ubuntu you will need a ubuntu version of 20.04, 18.04 (MATLAB is not Supported on ubuntu 16.04) that has at least 6GB of free storage for just the installation and running of MATLAB. If you want to install other products then you will need more free space.</p>
+	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-1662 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "How to Install MATLAB on Ubuntu 20.04",
+				"url": "https://netmiko.com/install-matlab-ubuntu/",
+				"articleBody": "Today I'll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish the installation of MATLAB in less than 5 mins on your ubuntu by following this tutorial.What is MATLAB - Matlab, which stands for \"matrix laboratory\", is a high-performance language for technical computing with extensive use in the engineering and scientific communities, it has a graphical interface for creating and running programs.
+			Create an MathWorks Account 		
+		Now to be able to download and Install MATLAB you will need a Math Works account and a License key.To begin, first, open your web browser and go to this link - https://mathworks.com/login, this is the official website for MATLAB, here you will need to click on “Create one” to create a new MATLAB account.		
+																														
+		Now enter all the required information like your email (use university email if you have), your country, in “Which best describes you” select “student”, after that click on yes in age confirmation, and click on the “Create'' button below.
+																														
+		On the next page you will be asked to enter your work or university email ( If you have one ), if you don't then continue by clicking on “Continue with current Email”, the benefits of work or university email can be seen here.		
+																														
+		After that Mathworks will send you an email at the email address that you provided with the link to verify the email address, open your email app and see the email set by Mathworks, click on the link or the “Verify Email” button to verify your email.		
+																														
+		Now here you will need to finish the registration process by filling up a few more details, enter your name, last name, create a new password, confirm the password, in “role” select student, in “department” select the department you are in.
+																														
+		In the Location of School/University, enter your university location and name, after that scroll down and accept the Agreement and click on “Create” to finish creating your Mathworks account.After clicking on the create button your Mathworks account will be created and you will be redirected to the Mathworks dashboard, here you will need to now get a “Licence Key”, you can either buy the students license for 21 dollars or you can click on “Try now” to start a 30-day free trial.		
+			Get MATLAB License 		
+		To Get a MATLAB Licence first Log in to your Mathworks account at https://mathworks.com/mwaccount/, after that go to this link - https://mathworks.com/products/get-matlab.html, here you will get three options to select from, the first option will be to get a 30 days trial of MATLAB, If your university already has access to MATLAB then you can select the second option, if you want to buy MATLAB student license then click on the third option.		
+																														
+		I'll show you how you can get a free trial and also how you can buy a student license. 
+			Trial Licence 		
+		To get a free Trial Licence of MATLAB you'll need to click on the “Download a Trial” button on the products page of Mathworks.Here enter your address, zip code, click “NO” in the question of whether this request is on behalf of a faculty member, enter the year of graduation, select “MATLAB Essentials” from the trial usage dropdown and click on Submit.		
+																														
+		After clicking on Submit, you will be redirected to https://matlab.mathworks.com/, from where you can download MATLAB.
+			Buy License 		
+		To buy a MATLAB student license first Log in to your Mathworks account at https://mathworks.com/mwaccount/, after that go to the products page at - https://mathworks.com/products/get-matlab.html, here click on the “Buy” button.After that in the “Pricing and Licensing” page select Student and select the Student Licence, after that click on Buy now&gt;Add to cart&gt; Checkout. Complete the transaction and get your Student Licence Key for MATLAB.		
+																														
+			Download MATLAB 
+		
+		After either purchasing a license key or using the trial version of MATLAB, you can download MATLAB by going to https://matlab.mathworks.com/, here log in using your Mathworks account info.
+After logging in to the dashboard of MATLAB you will need to click on the “Install MATLAB on your Computer” option. 		
+																														
+		In the download page you will need to click on the “Download for Linux” button, if it's showing Download for Windows then click on the arrow at the right side of the button and select Linux.The downloaded zip file will be saved to your Ubuntu downloads directory by default, or you might get a popup asking where to save the file. After downloading the MATLAB zip file it is time to install MATLAB on your ubuntu 20.04.		
+			Install MATLAB on Ubuntu		
+		
+			Update Index Packages		
+		Okay, so the first step will be to first open your ubuntu terminal and update the index packages, this is a good habit to do whenever starting any installation on your ubuntu system.		
+			sudo apt-get update 
+sudo apt-get upgrade		
+		Now you can start the installation of MATLAB on ubuntu 20.04, before starting the installation make sure that you have sudo permissions, as we will need sudo permissions for installing MATLAB.		
+			Unzip MATLAB 
+		
+		Now you will need to unzip the downloaded MATLAB zip file, you can do that by right-clicking the downloaded zip and then clicking on “Extract here”, you can also unzip it using the terminal by entering “sudo unzip -X -K file_name.zip -d extracted_file_destination”.
+The version of MATLAB that I have downloaded is r2021b. First, change your directory to the one where you downloaded the zip,		
+			cd Downloads
+		
+		After that use the command “ls” to see all the files in that directory, after that use the unzip command and unzip the downloaded MATLAB zip, using this command the zip files will be extracted to a new folder called “matlab_new” you can name it anything you want.		
+			sudo unzip -X -K matlab_R2021b_glnxa64.zip -d matlab_new		
+		Once the zip file is unzipped to “matlab_new” folder, change your directory to that folder using the command -		
+			cd matlab_new		
+		
+			Install MATLAB		
+		To install MATLAB you will need to run the install script that is in the extracted folder, here, after you have changed your directory type the command given below to go to the root of the “matlab_new” folder.		
+			sudo su		
+		After that you will need to enter the xhost command, which you will need to open the GUI installer of MATLAB.		
+			xhost +SI:localuser:root
+		
+		After that to run the MATLAB GUI installer you will need to run the install script, to run that script type the following command in the terminal -		
+			./install		
+		This will start the GUI Installer of MATLAB, at first you will be asked to Log in, log in using the Mathworks account Email and Password.
+Now here in the Agreement, click on the yes option to accept the agreement, and after that click on “NEXT”.In the “Licensing” page the trial or paid license that you have on your Mathworks account will automatically get selected, if you want you can select a different one or enter an activation key. Click NEXT to continue.		
+																														
+		After that in “Confirm user” check if all the details are correct, here you will need to add a username that you will need to use to run MATLAB. Enter a username and click NEXT to continue.In the “Destination” tab keep the destination path the default one and click on the NEXT button to continue.
+After that, you will be now on the “products” page, here you will need to select all the products that you want to download, click NEXT after selecting the products to continue. A popup will then appear asking you to add the products to install, click on “Add” to continue.		
+																														
+		Now you will be in the “Options” tab, here tick the “Create symbolic links” option and click on NEXT.		
+																														
+		After the options tab, you will be in the “Confirmation” tab where you will need to check if all the things are correct or not, like licensing, username, products. It will also display the disk space that you will need for the installation. Now click on “Begin Install’ to Download and Install MATLAB.
+Once the download finishes click on the “Close” button on the installer.		
+			Activate MATLAB		
+		Now to be able to use MATLAB, you will need to activate MATLAB. To do that first you will need to exit out of root using the command “exit”, now after that, you will need to change your directory to home using the command -		
+			cd ~		
+		Once you are in the home directory, change your directory to “/usr/local/” using the command -		
+			cd /usr/local/		
+		After that go inside the MATLAB directory.		
+			cd MATLAB/		
+		Now type the “ls” command to see the folder that is available inside the MATLAB directory, here inside the MATLAB directory you will get a folder named “R2021b” as we have installed the R2021b version of MATLAB. Go inside that version folder.
+			cd R2021b/		
+		Again change your directory to bin.		
+			cd bin		
+		Now if you do a “ls” command inside this directory you will see a script named “activate_matlab.sh”, you will need to run that script in order to start the activation process of MATLAB.		
+			./activate_matlab.sh		
+		The GUI MATLAB activation software will now open, here you will need to select the “Activate automatically using the Internet” option then click on NEXT. Now here sign in using your MathWorks Account and click on NEXT.On the “License Selection '' tab the license will be automatically selected, if you want to use a different license then you can select a different license, click on NEXT when done.
+On the “username” tab, enter the username that you used during the installation process of MATLAB. After that click next and in the “Confirm Selection” tab check if all the provided details are correct or not.Click on “Confirm” to continue, if you have a valid license then the activation will be completed. After activating MATLAB click on “Finish” to close the GUI Activation software.		
+			Run MATLAB		
+		To run MATLAB, first, close all the terminal windows and open a new one, here in the terminal type the following command to run MATLAB -		
+			matlab 		
+		This will start MATLAB. And that’s it, that is how you can Download, Install and Activate MATLAB on Ubuntu 20.04. If you have any questions then comment below or send me a mail at - netmikoblog@gmail.com
+			FAQ - 
+		
+			How to uninstall MATLAB on Ubuntu 20.04?		
+		If you want to uninstall MATLAB from your Ubuntu, then you can follow these steps.First change your directory to “/usr/local/” then go into the root of that directory using the command “sudo su”, after that use the command given below to delete all the MATLAB-related files from your Ubuntu system.		
+			rm -rf /usr/local/MATLAB/R2021b/		
+		Here “R2021b” is the version of MATLAB that is installed on your Ubuntu. Once MATLAB is uninstalled, change your directory to home using the command “cd ~” and run the command “matlab” to see if MATLAB has been successfully removed from your Ubuntu system or not.
+			How long does MATLAB free trial License last?
+		
+		The free trial given by MATLAB is for 30 days, which means that you can use MATLAB for 30days using the free trial, after that, you will need to purchase a license. You can get a MATLAB trial for 30 days with one email. After that, you can buy a lifetime student license for 21 dollars.		
+			What are the System Requirements to Install MATLAB on ubuntu?
+		
+		To be able to install MATLAB on your Ubuntu you will need a ubuntu version of 20.04, 18.04 (MATLAB is not Supported on ubuntu 16.04) that has at least 6GB of free storage for just the installation and running of MATLAB. If you want to install other products then you will need more free space.",
+				"headline": "How to Install MATLAB on Ubuntu 20.04",
+				"author": "Aomi Bora",
+				"datePublished": "2021-12-09",
+				"mainEntityOfPage": "True",
+				"dateModified": "2021-12-09",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": ,
+          "width":         },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/aomi/" alt="link to Aomi Bora author page">
+				<div data-bg="http://0.gravatar.com/avatar/cf27d396d2875baa9d78108bb57c6643?s=96&#038;d=mm&#038;r=g" class="avatar-container rocket-lazyload">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/aomi/">Aomi Bora</a></p>
+				</header>
+				<p></p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/royalty-free-sound-effects/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
+<span class="sr-only">link to How to Download Royalty Free Sound Effects</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/royalty-free-sound-effects/">How to Download Royalty Free Sound Effects</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+
+If you're a content creator, whether it's for YouTube, social media, or any other platform, you know that audio is just as important as visual elements in your content.
+
+It can set the mood,...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/royalty-free-sound-effects/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="">
+				<meta itemprop="image" src="">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="NETMIKO.COM">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp">
+				<meta itemprop="name" content="How to Download Royalty Free Sound Effects">
+				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
+				<meta itemprop="author" content="Aomi Bora">
+				<meta itemprop="datePublished" content="2023-01-09">
+				<meta itemprop="dateModified" content="2023-01-11">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
+<span class="sr-only">link to Python Program to Find the Sum of Squares of Digits of a Number</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Python Program to Find the Sum of Squares of Digits of a Number</a></p>
+					</header>
+					<div class="excerpt">
+						<p>This article presents a Python program for finding and printing the sum of the squares of the digits of a number entered by the user.
+Python Program to Find the Sum of Squares of Digits of a...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="">
+				<meta itemprop="image" src="">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="NETMIKO.COM">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp">
+				<meta itemprop="name" content="Python Program to Find the Sum of Squares of Digits of a Number">
+				<meta itemprop="headline" content="Python Program to Find the Sum of Squares of Digits of a Number">
+				<meta itemprop="author" content="Aomi Bora">
+				<meta itemprop="datePublished" content="2023-01-08">
+				<meta itemprop="dateModified" content="2023-01-08">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Simplified Coding Examples.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-682"> </div>
+<p><!-- End Ezoic - sidebar - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2023 Copyright NETMIKO.COM			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/netmiko(\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$))|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/netmiko.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"eclipse","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://netmiko.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><\/noscript>',a='<div class="play"><\/div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+</body>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+</html>

@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+		<!-- Global Site Tag (gtag.js) - Google Analytics -->
+	<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-196633016-1"></script>
+	<script type="rocketlazyloadscript">
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-196633016-1');
+	</script>
+
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
+		<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>Nosferatu Pure CSS Animation &#x2d; NETMIKO.COM</title>
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="description" content="A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and after that run the code.">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nosferatu Pure CSS Animation">
+<meta property="og:description" content="A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML&#8230;">
+<meta property="og:url" content="https://netmiko.com/nosferatu-css-animation/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nosferatu Pure CSS Animation">
+<meta name="twitter:description" content="A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML&#8230;">
+<link rel="canonical" href="https://netmiko.com/nosferatu-css-animation/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/nosferatu-css-animation/","name":"Nosferatu Pure CSS Animation"}}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 6.33ms meta | 12.03ms boot -->
+
+
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Comments Feed" href="https://netmiko.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Nosferatu Pure CSS Animation Comments Feed" href="https://netmiko.com/nosferatu-css-animation/feed/">
+<style type="text/css">img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}</style>
+	
+
+<style id="global-styles-inline-css" type="text/css">body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}</style>
+
+<style id="custom-style-inline-css" type="text/css">body { color: ; }
+			h1, h2, h3, h4, h5, h6, .header { color: ; }
+			a { transition: color .2s; color:  };
+			a:hover, a:focus, a:active { color: ; }
+			.wp-block-button__link, button,	input[type='button'], input[type='reset'], input[type='submit'], .button { background: ; color: ; }
+			.antibounce-container { background: ; }
+			.antibounce-card { color: ; }
+			.antibounce-card .button { background: ; color:  }
+.main-c {display: flex;margin-bottom:10px;}.main-iframe {flex: 1;height:350px;}@media only screen and (min-width: 768px) {.main-c {display: flex;}.main-iframe {flex: 1;height:350px;}.iframe-container {position: relative;height: 350px;}.iframe-container iframe {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}}code {background-color: #eee;}.wp-block-code::before {content: "Click Code to Copy";display: block;color: red;margin-top: -25px;margin-bottom: 25px;margin-left:-7px;padding: 10px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223 {width: 350px;}.cnt223 {min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 30px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top: -100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}#download a {color: #fff;text-decoration: none;}.wp-block-image {box-shadow: 0 0 0 1px #444;}h2.widget-title {font-size: 1.2rem;padding: 0.4em 0;}body.home .articles-wrapper>h2 {font-size: 1.2rem;padding: 0.4em 0;}.article-card header p {font-weight: 700 !important;font-size: 20px !important;margin-bottom: 10px;text-align: center;}h3 {margin-bottom: 10px;}strong {font-weight:600 !important;}@media only screen and (min-width: 768px) {h2 {margin-bottom: 20px;}a.close {color: red;}#overlay {position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;filter:alpha(opacity=70);-moz-opacity:0.7;-khtml-opacity: 0.7;opacity: 0.7;z-index: 100;display: none;}.cnt223 a{text-decoration: none;}.popup{width: 100%;margin: 0 auto;display: none;position: fixed;z-index: 101;}.close {font-size:15px;margin-top:30px;}.cnt223{min-width: 600px;width: 600px;min-height: 150px;margin: 100px auto;background: #f3f3f3;position: relative;z-index: 103;padding: 15px 35px;border-radius: 5px;box-shadow: 0 2px 5px #000;margin-top:-100px;}.cnt223 p{clear: both;color: #555555;font-size: 20px;font-family: sans-serif;}.cnt223 p a{color: #d91900;font-weight: bold;}.cnt223 .x{float: right;height: 25px;left: 22px;position: relative;top: -25px;width: 25px;}.cnt223 .x:hover{cursor: pointer;}}.lyte-wrapper::before {content: 'Watch the Video';display: block;background-color: #444;color: #f5f5f5;padding-left:5px;}.lyte-wrapper {margin-left: -1px !important;}.lyte, .lyMe {border: 5px solid #444;}.image-container {border: 5px solid #444;}</style>
+
+<style id="rocket-lazyload-inline-css" type="text/css">.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;cursor:pointer;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:72px;width:72px;left:50%;top:50%;margin-left:-36px;margin-top:-36px;position:absolute;background:url(https://netmiko.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat;cursor:pointer}</style>
+<link rel="https://api.w.org/" href="https://netmiko.com/wp-json/">
+<link rel="alternate" type="application/json" href="https://netmiko.com/wp-json/wp/v2/posts/6457">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://netmiko.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://netmiko.com/wp-includes/wlwmanifest.xml">
+<link rel="alternate" type="application/json+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Fnosferatu-css-animation%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://netmiko.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fnetmiko.com%2Fnosferatu-css-animation%2F&#038;format=xml">
+<script type="rocketlazyloadscript">document.createElement( "picture" );if(!window.HTMLPictureElement && document.addEventListener) {window.addEventListener("DOMContentLoaded", function() {var s = document.createElement("script");s.src = "https://netmiko.com/wp-content/plugins/webp-express/js/picturefill.min.js";document.body.appendChild(s);});}</script><link rel="pingback" href="https://netmiko.com/xmlrpc.php">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nosferatu Pure CSS Animation | NETMIKO.COM">
+<meta property="og:description" content="A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and&hellip;">
+<meta property="og:url" content="https://netmiko.com/nosferatu-css-animation/">
+<meta property="og:site_name" content="NETMIKO.COM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="A Cool Animation made using Pure CSS. Made by Josetxu. The codes are separated in two parts, so copy all two parts combine them and&hellip;">
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+</head>
+
+
+<body class="post-template-default single single-post postid-6457 single-format-standard no-sidebar">
+<div id="page" class="site">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+	<header id="masthead" class="site-header desktop-toggle">
+		<div class="inner-wrap">
+			<div class="hamburger-wrapper desktop">
+				<button class="hamburger hamburger--squeeze menu-toggle" type="button" aria-label="Menu" aria-controls="primary-menu" aria-expanded="false">
+					<span class="hamburger-box">
+						<span class="hamburger-inner"></span>
+					</span>
+					<span class="label">MENU</span>
+				</button>
+			</div>
+			<div class="site-branding">
+								<a href="https://netmiko.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="300" height="125" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%20125'%3E%3C/svg%3E" class="attachment-medium size-medium" alt="" decoding="async" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" data-lazy-sizes="(max-width: 300px) 100vw, 300px" data-lazy-src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp"><noscript><img width="300" height="125" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp" class="attachment-medium size-medium" alt="" decoding="async" srcset="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp 300w, https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1.webp 480w" sizes="(max-width: 300px) 100vw, 300px"></noscript></a>
+									<!-- <h1 class="site-title"><a tabindex="-1" href="" rel="home"></a></h1> -->
+										<!-- <p class="site-title"><a tabindex="-1" href="" rel="home"></a></p> -->
+								</div>
+<!-- .site-branding -->
+			<div class="search-wrapper">
+				<a href="#open" id="search-icon"><span class="sr-only">Search</span></a>
+				
+<form role="search" method="get" class="search-form" action="https://netmiko.com/">
+	<label for="s">
+		<span class="screen-reader-text">Search for:</span>
+	</label>
+	<input type="search" id="search-field" class="search-field" placeholder="Search &hellip;" value="" name="s">
+	<!-- <button type="submit" class="search-submit"><span class="screen-reader-text"></span></button> -->
+</form>
+			</div>
+		</div>
+
+		<nav id="site-navigation" class="main-navigation">
+			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"></button> -->
+			<div class="menu-hamburger-container"><ul id="primary-menu" class="inner-wrap">
+<li id="menu-item-1670" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1670"><a href="https://netmiko.com/category/blog/">Blog</a></li>
+<li id="menu-item-1666" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-1666">
+<a href="https://netmiko.com/#">More</a>
+<button type="button" class="toggle-submenu" style="display: none"><span class="sr-only">Submenu Toggle
+				</span></button><ul class="submenu">
+	<li id="menu-item-1668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1668"><a href="https://netmiko.com/about-us/">About Us</a></li>
+	<li id="menu-item-1669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1669"><a href="https://netmiko.com/contact-us/">Contact Us</a></li>
+	<li id="menu-item-1667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1667"><a href="https://netmiko.com/privacy-policy/">Privacy Policy</a></li>
+</ul>
+</li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+		
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		
+<article id="post-6457" class="post-6457 post type-post status-publish format-standard hentry category-blog">
+	<header class="entry-header">
+		<h1 class="entry-title">Nosferatu Pure CSS Animation</h1>			<div class="entry-meta sr-only">
+				<meta itemprop="datePublished" content="2022-11-04">
+<meta itemprop="dateModified" content="2022-11-04">
+<span class="byline"> Written by <span class="author vcard"><a class="url fn n" href="https://netmiko.com/author/aomi/">Aomi Bora</a></span> </span><meta itemprop="author" content="Aomi Bora">
+<link id="page-url" itemprop="mainEntityOfPage" href="https://netmiko.com/nosferatu-css-animation/"> in <a href="https://netmiko.com/category/blog/" rel="category tag">Blog</a>			</div>
+<!-- .entry-meta -->
+      <br>	</header><!-- .entry-header -->
+
+	
+	<div class="entry-content" itemprop="articleBody">
+		
+<p>A Cool Animation made using Pure CSS. Made by <a href="https://codepen.io/josetxu">Josetxu</a>.</p>
+<div class="Pw93BTdq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  First_ad - under_second_paragraph -->
+<div id="ezoic-pub-ad-placeholder-648"> </div>
+<!-- End Ezoic -  First_ad - under_second_paragraph -->
+</div>
+
+
+
+<p>The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS or you can just use one index.html file.</p>
+
+
+
+<h2>Html Code</h2>
+
+
+
+<p>Here is the Html Code.</p>
+<div class="ySQmgUVW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic -  second_ad - mid_content -->
+<div id="ezoic-pub-ad-placeholder-649"> </div>
+<!-- End Ezoic -  second_ad - mid_content -->
+</div>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html>
+&lt;html lang="en" >
+&lt;head>
+  &lt;meta charset="UTF-8">
+  &lt;title>Nosferatu Pure CSS Animation&lt;/title>
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+&lt;/head>
+&lt;body>
+  &lt;div class="content">
+  &lt;div class="right">
+    &lt;div class="door">&lt;/div>
+  &lt;/div>
+  &lt;div class="left">
+    &lt;div class="stairs">
+      &lt;div class="bars">&lt;/div>
+    &lt;/div>
+    &lt;div class="nosferatu">&lt;/div>
+  &lt;/div>
+  &lt;div class='cinema'>
+    &lt;div class="effect">
+      &lt;div class="grain">&lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;/body>
+&lt;/html>
+</code></pre>
+
+
+
+<h2>CSS Code</h2>
+
+
+
+<p>Here is the CSS Code.</p>
+
+
+
+<pre class="wp-block-code"><code>@import url('https://fonts.googleapis.com/css2?family=Creepster&amp;display=swap');
+
+:root {
+  --shadow: #0a201b;
+  --delay: 1.5s;
+}
+
+*, *:before, *:after {
+  position: absolute;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  perspective: 100vmin;
+}
+
+body:before, body:after {
+  width: 94vmin;
+  top: 15vmin;
+  text-align: left;
+  color: #0e2b25;
+  font-family: 'Creepster', cursive;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  transform: rotatey(45deg) skewY(-13deg);
+  z-index: 1;
+  content: "NOSFERATU";
+  font-size: 12vmin;
+  padding-left: 3vmin;
+}
+
+body:after {
+  content: "A Symphony of Horror        1922 - 2022";
+  top: 27vmin;
+  font-size: 3.15vmin;
+  padding-left: 4vmin;
+  opacity: 0.75;
+}
+
+.content {
+  width: 98vmin;
+  height: 73.5vmin;
+  position: relative;
+  overflow: hidden;
+}
+
+.content:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 20vmin 0vmin #000 inset, 0 0 3vmin 0.25vmin #000 inset, 0 0 1vmin 1vmin #000;
+}
+
+.left {
+  width: 75.15vmin;
+  height: 73.5vmin;
+  background: #2a7362;
+  left: 0;
+  overflow: hidden;
+  -webkit-clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+          clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+}
+
+.stairs {
+  width: 56.62vmin;
+  height: 34.84vmin;
+  bottom: -6.5vmin;
+  right: 0;
+}
+
+.stairs:before, .stairs:after {
+  content: "";
+  background: var(--shadow);
+  width: 52vmin;
+  height: 2.75vmin;
+  transform: rotate(-38deg);
+  transform-origin: right 0;
+  right: 10vmin;
+  border-radius: 0.25vmin;
+}
+
+.stairs:after {
+  width: 15vmin;
+  transform: rotate(-165deg);
+  right: 10.75vmin;
+  top: 2.65vmin;
+}
+
+.bars {
+  background: var(--shadow);
+  width: 1vmin;
+  height: 32vmin;
+  right: 9vmin;
+  top: 1vmin;
+  transform: rotate(1deg);
+  box-shadow: 2.5vmin 1vmin 0 0 var(--shadow), 5.25vmin 2vmin 0 0 var(--shadow), 8vmin 3vmin 0 0 var(--shadow), -3.5vmin 2vmin 0 0 var(--shadow), -7.5vmin 6vmin 0 0 var(--shadow), -11.75vmin 10vmin 0 0 var(--shadow), -16vmin 13vmin 0 0 var(--shadow), -20vmin 16vmin 0 0 var(--shadow), -24.25vmin 19vmin 0 0 var(--shadow), -28.5vmin 23vmin 0 0 var(--shadow), -33vmin 27vmin 0 0 var(--shadow);
+}
+
+.nosferatu {
+  width: 38.15vmin;
+  height: 59.88vmin;
+  left: -35vmin; 
+  bottom: -37vmin;
+  background: var(--shadow);
+  box-sizing: border-box;
+  -webkit-clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%);
+          clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%); 
+  -webkit-animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite; 
+          animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+
+}
+
+@-webkit-keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+
+@keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+@-webkit-keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+@keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+
+.right {
+  width: 24.5vmin;
+  height: 73.5vmin;
+  right: 0;
+  background: 
+    linear-gradient(89.5deg, #fff0 0 19.5vmin, #153f35 calc(19.5vmin + 1px) 100%), 
+    linear-gradient(90.5deg, #fff0 0 11.5vmin, #0c2620 calc(11.5vmin + 1px) 100%),
+    linear-gradient(90deg, #1c4c3f calc(1.5vmin + 1px) 100%);
+}
+
+.door {
+  width: 100%;
+  height: 100%;
+  background: 
+    conic-gradient(from 180deg at 19% 50.5%, #fff0 0 0.5deg, #16372e 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 21% 50.5%, #fff0 0 0.5deg, #1b473b 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 22% 50%, #fff0 0 0.5deg, #010e0b 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 39% 48%, #fff0 0 0.5deg, #0e2a21 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 49% 45%, #fff0 0 0.5deg, #337363 0.75deg 112deg, #fff0 112.75deg 100%);
+}
+
+/*
+Cinema Effect inspired by this pen by Brad Colthurst:
+https:&#47;&#47;codepen.io/bullerb/pen/BzKzvK 
+*/
+
+.cinema, .effect {
+  width: 98vmin;
+  height: 73.5vmin;
+  filter: blur(0.45px) drop-shadow(0px 0px 0px #fff1);
+  z-index: 2;
+}
+
+.effect {
+    background-color: #0002;
+}
+
+.cinema:after, .effect:after {
+  content: '';
+  width: 120%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 100px;
+  opacity: 0.5;
+  -webkit-animation: cinema-scratch 0.45s steps(1) infinite;
+          animation: cinema-scratch 0.45s steps(1) infinite;
+  background: repeating-linear-gradient(90deg, #fff3 1px, transparent 2px 37vmin);
+}
+
+.effect:after {
+  left: 30%;
+  -webkit-animation: effect-scratch 2s infinite;
+          animation: effect-scratch 2s infinite;
+}
+
+.grain {
+  width: 100%;
+  height: 100%;
+}
+
+.grain:after {
+  content: '';
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  opacity: .25;
+  background-image: 
+    repeating-conic-gradient(#FFF8 0%, transparent .0003%, transparent .0075%, transparent .0085%),
+    repeating-conic-gradient(#FFF 0%, transparent .0005%, transparent 0.0015%, transparent 0.065%);
+  -webkit-animation: grain 0.5s steps(1) infinite;
+          animation: grain 0.5s steps(1) infinite;
+}
+
+@-webkit-keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@-webkit-keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@-webkit-keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}
+
+@keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}</code></pre>
+
+
+
+<h2>Complete Code</h2>
+
+
+
+<p>Here is the complete code for one single index.html file.</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;!DOCTYPE html>
+&lt;html lang="en" >
+&lt;head>
+  &lt;meta charset="UTF-8">
+  &lt;title>Nosferatu Pure CSS Animation&lt;/title>
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+&lt;style>
+@import url('https://fonts.googleapis.com/css2?family=Creepster&amp;display=swap');
+
+:root {
+  --shadow: #0a201b;
+  --delay: 1.5s;
+}
+
+*, *:before, *:after {
+  position: absolute;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  perspective: 100vmin;
+}
+
+body:before, body:after {
+  width: 94vmin;
+  top: 15vmin;
+  text-align: left;
+  color: #0e2b25;
+  font-family: 'Creepster', cursive;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  transform: rotatey(45deg) skewY(-13deg);
+  z-index: 1;
+  content: "NOSFERATU";
+  font-size: 12vmin;
+  padding-left: 3vmin;
+}
+
+body:after {
+  content: "A Symphony of Horror        1922 - 2022";
+  top: 27vmin;
+  font-size: 3.15vmin;
+  padding-left: 4vmin;
+  opacity: 0.75;
+}
+
+.content {
+  width: 98vmin;
+  height: 73.5vmin;
+  position: relative;
+  overflow: hidden;
+}
+
+.content:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 20vmin 0vmin #000 inset, 0 0 3vmin 0.25vmin #000 inset, 0 0 1vmin 1vmin #000;
+}
+
+.left {
+  width: 75.15vmin;
+  height: 73.5vmin;
+  background: #2a7362;
+  left: 0;
+  overflow: hidden;
+  -webkit-clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+          clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+}
+
+.stairs {
+  width: 56.62vmin;
+  height: 34.84vmin;
+  bottom: -6.5vmin;
+  right: 0;
+}
+
+.stairs:before, .stairs:after {
+  content: "";
+  background: var(--shadow);
+  width: 52vmin;
+  height: 2.75vmin;
+  transform: rotate(-38deg);
+  transform-origin: right 0;
+  right: 10vmin;
+  border-radius: 0.25vmin;
+}
+
+.stairs:after {
+  width: 15vmin;
+  transform: rotate(-165deg);
+  right: 10.75vmin;
+  top: 2.65vmin;
+}
+
+.bars {
+  background: var(--shadow);
+  width: 1vmin;
+  height: 32vmin;
+  right: 9vmin;
+  top: 1vmin;
+  transform: rotate(1deg);
+  box-shadow: 2.5vmin 1vmin 0 0 var(--shadow), 5.25vmin 2vmin 0 0 var(--shadow), 8vmin 3vmin 0 0 var(--shadow), -3.5vmin 2vmin 0 0 var(--shadow), -7.5vmin 6vmin 0 0 var(--shadow), -11.75vmin 10vmin 0 0 var(--shadow), -16vmin 13vmin 0 0 var(--shadow), -20vmin 16vmin 0 0 var(--shadow), -24.25vmin 19vmin 0 0 var(--shadow), -28.5vmin 23vmin 0 0 var(--shadow), -33vmin 27vmin 0 0 var(--shadow);
+}
+
+.nosferatu {
+  width: 38.15vmin;
+  height: 59.88vmin;
+  left: -35vmin; 
+  bottom: -37vmin;
+  background: var(--shadow);
+  box-sizing: border-box;
+  -webkit-clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%);
+          clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%); 
+  -webkit-animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite; 
+          animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+
+}
+
+@-webkit-keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+
+@keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+@-webkit-keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+@keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+
+.right {
+  width: 24.5vmin;
+  height: 73.5vmin;
+  right: 0;
+  background: 
+    linear-gradient(89.5deg, #fff0 0 19.5vmin, #153f35 calc(19.5vmin + 1px) 100%), 
+    linear-gradient(90.5deg, #fff0 0 11.5vmin, #0c2620 calc(11.5vmin + 1px) 100%),
+    linear-gradient(90deg, #1c4c3f calc(1.5vmin + 1px) 100%);
+}
+
+.door {
+  width: 100%;
+  height: 100%;
+  background: 
+    conic-gradient(from 180deg at 19% 50.5%, #fff0 0 0.5deg, #16372e 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 21% 50.5%, #fff0 0 0.5deg, #1b473b 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 22% 50%, #fff0 0 0.5deg, #010e0b 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 39% 48%, #fff0 0 0.5deg, #0e2a21 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 49% 45%, #fff0 0 0.5deg, #337363 0.75deg 112deg, #fff0 112.75deg 100%);
+}
+
+/*
+Cinema Effect inspired by this pen by Brad Colthurst:
+https:&#47;&#47;codepen.io/bullerb/pen/BzKzvK 
+*/
+
+.cinema, .effect {
+  width: 98vmin;
+  height: 73.5vmin;
+  filter: blur(0.45px) drop-shadow(0px 0px 0px #fff1);
+  z-index: 2;
+}
+
+.effect {
+    background-color: #0002;
+}
+
+.cinema:after, .effect:after {
+  content: '';
+  width: 120%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 100px;
+  opacity: 0.5;
+  -webkit-animation: cinema-scratch 0.45s steps(1) infinite;
+          animation: cinema-scratch 0.45s steps(1) infinite;
+  background: repeating-linear-gradient(90deg, #fff3 1px, transparent 2px 37vmin);
+}
+
+.effect:after {
+  left: 30%;
+  -webkit-animation: effect-scratch 2s infinite;
+          animation: effect-scratch 2s infinite;
+}
+
+.grain {
+  width: 100%;
+  height: 100%;
+}
+
+.grain:after {
+  content: '';
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  opacity: .25;
+  background-image: 
+    repeating-conic-gradient(#FFF8 0%, transparent .0003%, transparent .0075%, transparent .0085%),
+    repeating-conic-gradient(#FFF 0%, transparent .0005%, transparent 0.0015%, transparent 0.065%);
+  -webkit-animation: grain 0.5s steps(1) infinite;
+          animation: grain 0.5s steps(1) infinite;
+}
+
+@-webkit-keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@-webkit-keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@-webkit-keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}
+
+@keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}
+&lt;/style>
+&lt;/head>
+&lt;body>
+  &lt;div class="content">
+  &lt;div class="right">
+    &lt;div class="door">&lt;/div>
+  &lt;/div>
+  &lt;div class="left">
+    &lt;div class="stairs">
+      &lt;div class="bars">&lt;/div>
+    &lt;/div>
+    &lt;div class="nosferatu">&lt;/div>
+  &lt;/div>
+  &lt;div class='cinema'>
+    &lt;div class="effect">
+      &lt;div class="grain">&lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;/body>
+&lt;/html>
+</code></pre>
+<div class="nffQwbfI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<!-- Ezoic - incontent_5 - incontent_5 -->
+<div id="ezoic-pub-ad-placeholder-654"> </div>
+<!-- End Ezoic - incontent_5 - incontent_5 -->
+</div>	</div>
+<!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+
+</article><!-- #post-6457 -->
+
+<script type="application/ld+json">
+			{
+				"@context": "http://schema.org/",
+				"@type": "BlogPosting",
+				"name": "Nosferatu Pure CSS Animation",
+				"url": "https://netmiko.com/nosferatu-css-animation/",
+				"articleBody": "A Cool Animation made using Pure CSS. Made by Josetxu.
+
+
+
+The codes are separated in two parts, so copy all two parts combine them and after that run the code. You can use two separate files for HTML, CSS or you can just use one index.html file.
+
+
+
+Html Code
+
+
+
+Here is the Html Code.
+
+
+
+&lt;!DOCTYPE html>
+&lt;html lang=\"en\" >
+&lt;head>
+  &lt;meta charset=\"UTF-8\">
+  &lt;title>Nosferatu Pure CSS Animation&lt;/title>
+  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+&lt;/head>
+&lt;body>
+  &lt;div class=\"content\">
+  &lt;div class=\"right\">
+    &lt;div class=\"door\">&lt;/div>
+  &lt;/div>
+  &lt;div class=\"left\">
+    &lt;div class=\"stairs\">
+      &lt;div class=\"bars\">&lt;/div>
+    &lt;/div>
+    &lt;div class=\"nosferatu\">&lt;/div>
+  &lt;/div>
+  &lt;div class='cinema'>
+    &lt;div class=\"effect\">
+      &lt;div class=\"grain\">&lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;/body>
+&lt;/html>
+
+
+
+
+CSS Code
+
+
+
+Here is the CSS Code.
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Creepster&amp;display=swap');
+
+:root {
+  --shadow: #0a201b;
+  --delay: 1.5s;
+}
+
+*, *:before, *:after {
+  position: absolute;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  perspective: 100vmin;
+}
+
+body:before, body:after {
+  width: 94vmin;
+  top: 15vmin;
+  text-align: left;
+  color: #0e2b25;
+  font-family: 'Creepster', cursive;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  transform: rotatey(45deg) skewY(-13deg);
+  z-index: 1;
+  content: \"NOSFERATU\";
+  font-size: 12vmin;
+  padding-left: 3vmin;
+}
+
+body:after {
+  content: \"A Symphony of Horror        1922 - 2022\";
+  top: 27vmin;
+  font-size: 3.15vmin;
+  padding-left: 4vmin;
+  opacity: 0.75;
+}
+
+.content {
+  width: 98vmin;
+  height: 73.5vmin;
+  position: relative;
+  overflow: hidden;
+}
+
+.content:after {
+  content: \"\";
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 20vmin 0vmin #000 inset, 0 0 3vmin 0.25vmin #000 inset, 0 0 1vmin 1vmin #000;
+}
+
+.left {
+  width: 75.15vmin;
+  height: 73.5vmin;
+  background: #2a7362;
+  left: 0;
+  overflow: hidden;
+  -webkit-clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+          clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+}
+
+.stairs {
+  width: 56.62vmin;
+  height: 34.84vmin;
+  bottom: -6.5vmin;
+  right: 0;
+}
+
+.stairs:before, .stairs:after {
+  content: \"\";
+  background: var(--shadow);
+  width: 52vmin;
+  height: 2.75vmin;
+  transform: rotate(-38deg);
+  transform-origin: right 0;
+  right: 10vmin;
+  border-radius: 0.25vmin;
+}
+
+.stairs:after {
+  width: 15vmin;
+  transform: rotate(-165deg);
+  right: 10.75vmin;
+  top: 2.65vmin;
+}
+
+.bars {
+  background: var(--shadow);
+  width: 1vmin;
+  height: 32vmin;
+  right: 9vmin;
+  top: 1vmin;
+  transform: rotate(1deg);
+  box-shadow: 2.5vmin 1vmin 0 0 var(--shadow), 5.25vmin 2vmin 0 0 var(--shadow), 8vmin 3vmin 0 0 var(--shadow), -3.5vmin 2vmin 0 0 var(--shadow), -7.5vmin 6vmin 0 0 var(--shadow), -11.75vmin 10vmin 0 0 var(--shadow), -16vmin 13vmin 0 0 var(--shadow), -20vmin 16vmin 0 0 var(--shadow), -24.25vmin 19vmin 0 0 var(--shadow), -28.5vmin 23vmin 0 0 var(--shadow), -33vmin 27vmin 0 0 var(--shadow);
+}
+
+.nosferatu {
+  width: 38.15vmin;
+  height: 59.88vmin;
+  left: -35vmin; 
+  bottom: -37vmin;
+  background: var(--shadow);
+  box-sizing: border-box;
+  -webkit-clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%);
+          clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%); 
+  -webkit-animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite; 
+          animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+
+}
+
+@-webkit-keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+
+@keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+@-webkit-keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+@keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+
+.right {
+  width: 24.5vmin;
+  height: 73.5vmin;
+  right: 0;
+  background: 
+    linear-gradient(89.5deg, #fff0 0 19.5vmin, #153f35 calc(19.5vmin + 1px) 100%), 
+    linear-gradient(90.5deg, #fff0 0 11.5vmin, #0c2620 calc(11.5vmin + 1px) 100%),
+    linear-gradient(90deg, #1c4c3f calc(1.5vmin + 1px) 100%);
+}
+
+.door {
+  width: 100%;
+  height: 100%;
+  background: 
+    conic-gradient(from 180deg at 19% 50.5%, #fff0 0 0.5deg, #16372e 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 21% 50.5%, #fff0 0 0.5deg, #1b473b 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 22% 50%, #fff0 0 0.5deg, #010e0b 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 39% 48%, #fff0 0 0.5deg, #0e2a21 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 49% 45%, #fff0 0 0.5deg, #337363 0.75deg 112deg, #fff0 112.75deg 100%);
+}
+
+/*
+Cinema Effect inspired by this pen by Brad Colthurst:
+https:&#47;&#47;codepen.io/bullerb/pen/BzKzvK 
+*/
+
+.cinema, .effect {
+  width: 98vmin;
+  height: 73.5vmin;
+  filter: blur(0.45px) drop-shadow(0px 0px 0px #fff1);
+  z-index: 2;
+}
+
+.effect {
+    background-color: #0002;
+}
+
+.cinema:after, .effect:after {
+  content: '';
+  width: 120%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 100px;
+  opacity: 0.5;
+  -webkit-animation: cinema-scratch 0.45s steps(1) infinite;
+          animation: cinema-scratch 0.45s steps(1) infinite;
+  background: repeating-linear-gradient(90deg, #fff3 1px, transparent 2px 37vmin);
+}
+
+.effect:after {
+  left: 30%;
+  -webkit-animation: effect-scratch 2s infinite;
+          animation: effect-scratch 2s infinite;
+}
+
+.grain {
+  width: 100%;
+  height: 100%;
+}
+
+.grain:after {
+  content: '';
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  opacity: .25;
+  background-image: 
+    repeating-conic-gradient(#FFF8 0%, transparent .0003%, transparent .0075%, transparent .0085%),
+    repeating-conic-gradient(#FFF 0%, transparent .0005%, transparent 0.0015%, transparent 0.065%);
+  -webkit-animation: grain 0.5s steps(1) infinite;
+          animation: grain 0.5s steps(1) infinite;
+}
+
+@-webkit-keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@-webkit-keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@-webkit-keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}
+
+@keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}
+
+
+
+Complete Code
+
+
+
+Here is the complete code for one single index.html file.
+
+
+
+&lt;!DOCTYPE html>
+&lt;html lang=\"en\" >
+&lt;head>
+  &lt;meta charset=\"UTF-8\">
+  &lt;title>Nosferatu Pure CSS Animation&lt;/title>
+  &lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+&lt;style>
+@import url('https://fonts.googleapis.com/css2?family=Creepster&amp;display=swap');
+
+:root {
+  --shadow: #0a201b;
+  --delay: 1.5s;
+}
+
+*, *:before, *:after {
+  position: absolute;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  perspective: 100vmin;
+}
+
+body:before, body:after {
+  width: 94vmin;
+  top: 15vmin;
+  text-align: left;
+  color: #0e2b25;
+  font-family: 'Creepster', cursive;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  transform: rotatey(45deg) skewY(-13deg);
+  z-index: 1;
+  content: \"NOSFERATU\";
+  font-size: 12vmin;
+  padding-left: 3vmin;
+}
+
+body:after {
+  content: \"A Symphony of Horror        1922 - 2022\";
+  top: 27vmin;
+  font-size: 3.15vmin;
+  padding-left: 4vmin;
+  opacity: 0.75;
+}
+
+.content {
+  width: 98vmin;
+  height: 73.5vmin;
+  position: relative;
+  overflow: hidden;
+}
+
+.content:after {
+  content: \"\";
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 20vmin 0vmin #000 inset, 0 0 3vmin 0.25vmin #000 inset, 0 0 1vmin 1vmin #000;
+}
+
+.left {
+  width: 75.15vmin;
+  height: 73.5vmin;
+  background: #2a7362;
+  left: 0;
+  overflow: hidden;
+  -webkit-clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+          clip-path: polygon(0 0, 99.85% 0%, 97.75% 100%, 0% 100%);
+}
+
+.stairs {
+  width: 56.62vmin;
+  height: 34.84vmin;
+  bottom: -6.5vmin;
+  right: 0;
+}
+
+.stairs:before, .stairs:after {
+  content: \"\";
+  background: var(--shadow);
+  width: 52vmin;
+  height: 2.75vmin;
+  transform: rotate(-38deg);
+  transform-origin: right 0;
+  right: 10vmin;
+  border-radius: 0.25vmin;
+}
+
+.stairs:after {
+  width: 15vmin;
+  transform: rotate(-165deg);
+  right: 10.75vmin;
+  top: 2.65vmin;
+}
+
+.bars {
+  background: var(--shadow);
+  width: 1vmin;
+  height: 32vmin;
+  right: 9vmin;
+  top: 1vmin;
+  transform: rotate(1deg);
+  box-shadow: 2.5vmin 1vmin 0 0 var(--shadow), 5.25vmin 2vmin 0 0 var(--shadow), 8vmin 3vmin 0 0 var(--shadow), -3.5vmin 2vmin 0 0 var(--shadow), -7.5vmin 6vmin 0 0 var(--shadow), -11.75vmin 10vmin 0 0 var(--shadow), -16vmin 13vmin 0 0 var(--shadow), -20vmin 16vmin 0 0 var(--shadow), -24.25vmin 19vmin 0 0 var(--shadow), -28.5vmin 23vmin 0 0 var(--shadow), -33vmin 27vmin 0 0 var(--shadow);
+}
+
+.nosferatu {
+  width: 38.15vmin;
+  height: 59.88vmin;
+  left: -35vmin; 
+  bottom: -37vmin;
+  background: var(--shadow);
+  box-sizing: border-box;
+  -webkit-clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%);
+          clip-path: polygon(75% 100%, 69% 95%, 66% 90%, 62% 87%, 60% 82%, 58% 79%, 57% 75%, 57% 73%, 58% 68%, 59% 67%, 59% 65%, 59% 64%, 59% 62%, 60% 60%, 60% 59%, 61% 58%, 61% 58%, 61% 57%, 62% 55.75%, 67% 54.25%, 70% 53.5%, 73% 52%, 75% 50.75%, 77.5% 50%, 78% 50%, 79.5% 49%, 79.5% 48.75%, 82.5% 47.75%, 83% 47.9%, 84% 48%, 86.25% 49%, 88% 49.5%, 90% 51%, 89% 49%, 88% 48%, 86% 47%, 84% 46%, 83% 46%, 83.5% 45.5%, 85% 45.5%, 88% 46%, 89% 46.5%, 90% 47%, 91% 48%, 91% 49%, 91.5% 47%, 91.5% 47%, 91% 46%, 89% 44.75%, 86% 44%, 83.5% 43.75%, 83% 43.25%, 84.15% 42.75%, 86% 42.75%, 89% 43.65%, 90% 43.75%, 91% 43.75%, 92% 44.25%, 92.5% 45%, 92.5% 46.5%, 93.5% 44%, 92.75% 43%, 90% 41.75%, 88% 40.5%, 85% 39.5%, 84% 39.5%, 82% 39.75%, 81% 40%, 80% 40%, 79% 40.5%, 78% 41%, 77% 41.25%, 76% 41.35%, 74.5% 42.25%, 72% 43%, 69.5% 44%, 70% 43%, 70.5% 42%, 71% 41%, 71.75% 40%, 72% 39%, 71.75% 38%, 71.5% 37%, 72% 36%, 72.2% 35%, 72.5% 33%, 73.25% 32%, 74% 31%, 74% 31%, 75% 30%, 76.5% 28.5%, 78% 30%, 78.5% 30.5%, 79.2% 29%, 79.5% 28%, 79.6% 26%, 79.25% 25%, 79.1% 24%, 80% 23%, 80.2% 22%, 80% 21%, 81% 21%, 81.35% 20.35%, 80.95% 19.75%, 80.5% 19.25%, 80.4% 19%, 80.5% 18.7%, 80.65% 16%, 80.5% 15%, 79.75% 13%, 78.75% 11%, 78% 10%, 76.75% 9%, 74% 7%, 73% 6.25%, 71% 5.35%, 69% 5%, 68% 5%, 67% 5.5%, 66% 6%, 65% 7%, 64.75% 7.5%, 64.5% 7.75%, 64% 7.5%, 63.25% 7.2%, 62% 7%, 61.25% 7.5%, 60.5% 8%, 59.5% 9%, 58.5% 9.5%, 57.5% 9.2%, 56% 9.35%, 55% 9.5%, 52% 9%, 50% 8.9%, 47% 9%, 44% 9.2%, 42.5% 9.65%, 41% 9.25%, 40.5% 9.25%, 39.5% 9.25%, 38.5% 10%, 36.5% 12%, 35.25% 13%, 34% 15%, 33.75% 17%, 33.25% 18%, 32.5% 20%, 30.5% 22%, 29.5% 23%, 27.25% 25%, 27% 25.25%, 25.75% 26%, 24.7% 27%, 23.8% 28%, 23% 28.6%, 22.25% 29.2%, 20.7% 30.8%, 20.1% 31.5%, 20% 32%, 19% 33%, 18% 35%, 17.25% 36%, 17% 37%, 17% 41%, 18% 46%, 18% 49%, 18% 50%, 18% 51%, 19% 57%, 19% 53%, 19% 55%, 18.7% 57%, 18.6% 59%, 19% 61%, 19% 62%, 19.5% 65%, 19.7% 68%, 19.6% 70%, 19.5% 71%, 18% 73%, 17% 74%, 15% 75%, 14% 76%, 12% 77%, 11% 78%, 10% 79%, 9% 80%, 8% 81%, 7% 83%, 7% 84.5%, 8.3% 83%, 9.3% 82%, 10.75% 81%, 12.2% 80%, 14% 79%, 15% 78%, 17% 77.2%, 18% 77.25%, 17.5% 78%, 16.5% 79%, 15.25% 80%, 14.5% 81%, 13.5% 82%, 13% 83%, 12.25% 84%, 11.7% 85%, 11% 86%, 11% 86%, 9.27% 88%, 9% 89%, 9% 90%, 10% 89%, 11.55% 88%, 12.5% 87%, 13.5% 86%, 15.3% 84%, 16% 83%, 18% 81%, 20% 80%, 19.75% 81%, 19.5% 81.25%, 19% 82%, 18% 84%, 16.7% 86%, 15.7% 87%, 15% 88%, 15% 89%, 16% 88%, 18% 87%, 19% 86%, 20% 84%, 21% 83.25%, 22% 82%, 22% 82%, 23% 81%, 26% 76%, 29% 69%, 30% 61%, 29% 57%, 29% 56%, 29% 54%, 28.75% 51%, 29% 48%, 28.8% 46%, 29% 44%, 29.6% 43.5%, 30% 41.5%, 29% 43%, 31% 41%, 32% 40%, 32.8% 39.25%, 34.5% 38.75%, 33.25% 45%, 33% 49%, 32% 53%, 31.8% 55%, 30.2% 59%, 29% 68%, 27% 74%, 25% 80%, 22.65% 85%, 19.85% 91%, 19.5% 93%, 18.25% 96%, 16.75% 100%); 
+  -webkit-animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite; 
+          animation: move 7s cubic-bezier(0.25, 0.15, 0.71, 0.8) var(--delay) infinite, step 7s linear var(--delay) infinite;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+
+}
+
+@-webkit-keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+
+@keyframes move {
+  0% { left: -35vmin; bottom: -37vmin; width: 45vmin;}
+  20% { left: -6vmin; bottom: -24vmin; }
+  50% { left: 28vmin; bottom: -0.5vmin; width: 38.15vmin;}
+  70%, 100% { left: 72vmin; bottom: 0vmin; width: 38.15vmin;}
+}
+@-webkit-keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+@keyframes step {
+  0%, 15%, 25%, 35%, 45%, 55% { transform:translateY(0vmin) } 
+  10%, 20%, 30%, 40%, 50%, 60%, 100% { transform:translateY(1vmin) }
+}
+
+.right {
+  width: 24.5vmin;
+  height: 73.5vmin;
+  right: 0;
+  background: 
+    linear-gradient(89.5deg, #fff0 0 19.5vmin, #153f35 calc(19.5vmin + 1px) 100%), 
+    linear-gradient(90.5deg, #fff0 0 11.5vmin, #0c2620 calc(11.5vmin + 1px) 100%),
+    linear-gradient(90deg, #1c4c3f calc(1.5vmin + 1px) 100%);
+}
+
+.door {
+  width: 100%;
+  height: 100%;
+  background: 
+    conic-gradient(from 180deg at 19% 50.5%, #fff0 0 0.5deg, #16372e 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 21% 50.5%, #fff0 0 0.5deg, #1b473b 0.75deg 85deg, #fff0 85.75deg 100%),
+    conic-gradient(from 180deg at 22% 50%, #fff0 0 0.5deg, #010e0b 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 39% 48%, #fff0 0 0.5deg, #0e2a21 0.75deg 110deg, #fff0 110.75deg 100%),
+    conic-gradient(from 180deg at 49% 45%, #fff0 0 0.5deg, #337363 0.75deg 112deg, #fff0 112.75deg 100%);
+}
+
+/*
+Cinema Effect inspired by this pen by Brad Colthurst:
+https:&#47;&#47;codepen.io/bullerb/pen/BzKzvK 
+*/
+
+.cinema, .effect {
+  width: 98vmin;
+  height: 73.5vmin;
+  filter: blur(0.45px) drop-shadow(0px 0px 0px #fff1);
+  z-index: 2;
+}
+
+.effect {
+    background-color: #0002;
+}
+
+.cinema:after, .effect:after {
+  content: '';
+  width: 120%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 100px;
+  opacity: 0.5;
+  -webkit-animation: cinema-scratch 0.45s steps(1) infinite;
+          animation: cinema-scratch 0.45s steps(1) infinite;
+  background: repeating-linear-gradient(90deg, #fff3 1px, transparent 2px 37vmin);
+}
+
+.effect:after {
+  left: 30%;
+  -webkit-animation: effect-scratch 2s infinite;
+          animation: effect-scratch 2s infinite;
+}
+
+.grain {
+  width: 100%;
+  height: 100%;
+}
+
+.grain:after {
+  content: '';
+  width: 110%;
+  height: 110%;
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  opacity: .25;
+  background-image: 
+    repeating-conic-gradient(#FFF8 0%, transparent .0003%, transparent .0075%, transparent .0085%),
+    repeating-conic-gradient(#FFF 0%, transparent .0005%, transparent 0.0015%, transparent 0.065%);
+  -webkit-animation: grain 0.5s steps(1) infinite;
+          animation: grain 0.5s steps(1) infinite;
+}
+
+@-webkit-keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-2%, -2%); }
+  40% { transform: translate(3%, 3%); }
+  50% { transform: translate(-3%, -3%); }
+  60% { transform: translate(4%, 4%); }
+  70% { transform: translate(-4%, -4%); }
+  80% { transform: translate(2%, 2%); }
+  90% { transform: translate(-3%, -3%); }
+}
+
+@-webkit-keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@keyframes cinema-scratch {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); opacity: 0.75; }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(-2%); }
+}
+
+@-webkit-keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}
+
+@keyframes effect-scratch {
+  0% { transform: translateX(0); opacity: 0.75; }
+  10% { transform: translateX(-1%); }
+  20% { transform: translateX(1%); }
+  30% { transform: translateX(-2%); }
+  40% { transform: translateX(3%); }
+  50% { transform: translateX(-3%); opacity: 0.5; }
+  60% { transform: translateX(8%); }
+  70% { transform: translateX(-3%); }
+  80% { transform: translateX(10%); opacity: 0.25; }
+  90% { transform: translateX(20%); }
+  100% { transform: translateX(30%); }
+}
+&lt;/style>
+&lt;/head>
+&lt;body>
+  &lt;div class=\"content\">
+  &lt;div class=\"right\">
+    &lt;div class=\"door\">&lt;/div>
+  &lt;/div>
+  &lt;div class=\"left\">
+    &lt;div class=\"stairs\">
+      &lt;div class=\"bars\">&lt;/div>
+    &lt;/div>
+    &lt;div class=\"nosferatu\">&lt;/div>
+  &lt;/div>
+  &lt;div class='cinema'>
+    &lt;div class=\"effect\">
+      &lt;div class=\"grain\">&lt;/div>
+    &lt;/div>
+  &lt;/div>
+&lt;/div>
+&lt;/body>
+&lt;/html>",
+				"headline": "Nosferatu Pure CSS Animation",
+				"author": "Aomi Bora",
+				"datePublished": "2022-11-04",
+				"mainEntityOfPage": "True",
+				"dateModified": "2022-11-04",
+        "image": {
+          "@type": "ImageObject",
+          "url": "",
+          "height": 0,
+          "width": 0        },
+				"publisher": {
+					"@context": "http://schema.org/",
+					"@type": "Organization",
+					"name": "NETMIKO.COM",
+          "logo":{
+             "@type":"ImageObject",
+             "url":"https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp",
+             "width":600,
+             "height":60
+          }
+				}
+			}
+</script>
+		<article class="author-card">
+			<a href="https://netmiko.com/author/aomi/" alt="link to Aomi Bora author page">
+				<div data-bg="http://0.gravatar.com/avatar/cf27d396d2875baa9d78108bb57c6643?s=96&#038;d=mm&#038;r=g" class="avatar-container rocket-lazyload">
+				</div>
+			</a>
+			<div class="author-info">
+				<header>
+					<p class="h3"><a href="https://netmiko.com/author/aomi/">Aomi Bora</a></p>
+				</header>
+				<p></p>
+			</div>
+		</article>
+					<h3 class="h2">Recent Content</h3>
+			<div class="recent-articles-container">
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/royalty-free-sound-effects/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
+<span class="sr-only">link to How to Download Royalty Free Sound Effects</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/royalty-free-sound-effects/">How to Download Royalty Free Sound Effects</a></p>
+					</header>
+					<div class="excerpt">
+						<p>
+
+If you're a content creator, whether it's for YouTube, social media, or any other platform, you know that audio is just as important as visual elements in your content.
+
+It can set the mood,...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/royalty-free-sound-effects/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="">
+				<meta itemprop="image" src="">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="NETMIKO.COM">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp">
+				<meta itemprop="name" content="How to Download Royalty Free Sound Effects">
+				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
+				<meta itemprop="author" content="Aomi Bora">
+				<meta itemprop="datePublished" content="2023-01-09">
+				<meta itemprop="dateModified" content="2023-01-11">
+
+			</article>
+					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
+				<a href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/" rel="nofollow"><div data-bg="" class="image-container rocket-lazyload"></div>
+<span class="sr-only">link to Python Program to Find the Sum of Squares of Digits of a Number</span></a>
+
+				<div class="copy-container">
+					<header>
+						<p><a itemprop="name" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Python Program to Find the Sum of Squares of Digits of a Number</a></p>
+					</header>
+					<div class="excerpt">
+						<p>This article presents a Python program for finding and printing the sum of the squares of the digits of a number entered by the user.
+Python Program to Find the Sum of Squares of Digits of a...</p>
+<div class="button-container"><a rel="nofollow" class="button reverse" href="https://netmiko.com/python-program-to-find-the-sum-of-squares-of-digits-of-a-number/">Continue Reading</a></div>					</div>
+					<!-- <div class="button-container">
+						<a rel="nofollow" class="button reverse" href="">Continue Reading</a>
+					</div> -->
+				</div>
+				<meta itemprop="thumbnailUrl" src="">
+				<meta itemprop="image" src="">
+								<span itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop="name" content="NETMIKO.COM">
+				</span>
+				<meta itemprop="logo" src="https://netmiko.com/wp-content/uploads/2022/12/nm-2.png-1-300x125.webp">
+				<meta itemprop="name" content="Python Program to Find the Sum of Squares of Digits of a Number">
+				<meta itemprop="headline" content="Python Program to Find the Sum of Squares of Digits of a Number">
+				<meta itemprop="author" content="Aomi Bora">
+				<meta itemprop="datePublished" content="2023-01-08">
+				<meta itemprop="dateModified" content="2023-01-08">
+
+			</article>
+					</div>
+				</main><!-- #main -->
+	</div>
+<!-- #primary -->
+
+
+<aside id="secondary" class="widget-area">
+		<div class="about-wrapper">
+		<h2 class="widget-title">About Us</h2>		<p class="about-copy">Simplified Coding Examples.</p>
+			</div>
+		<div class="sidebar-ad">
+		<p><!-- Ezoic - sidebar - sidebar_floating_1 --></p>
+<div id="ezoic-pub-ad-placeholder-682"> </div>
+<p><!-- End Ezoic - sidebar - sidebar_floating_1 --></p>
+	</div>
+	</aside><!-- #secondary -->
+
+	</div>
+<!-- #content -->
+
+	<footer id="colophon" class="site-footer">
+		<div class="inner-wrap">
+						<div class="site-info">
+					&copy; 2023 Copyright NETMIKO.COM			</div>
+<!-- .site-info -->
+					</div>
+	</footer><!-- #colophon -->
+</div>
+<!-- #page -->
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/netmiko(\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$))|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/netmiko.com","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/themes/fibrimex/js/app.min.js" id="income-school-js-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" async defer src="https://netmiko.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js" id="enlighterjs-js"></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="enlighterjs-js-after">
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"eclipse","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+</script>
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://netmiko.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img loading="lazy" data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><\/noscript>',a='<div class="play"><\/div>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.dataset.query.length?'':'&'+this.dataset.query;e.setAttribute("src",t.replace("ID",this.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.replaceChild(e,this)}document.addEventListener("DOMContentLoaded",function(){var e,t,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),e.onclick=lazyLoadYoutubeIframe,a[t].appendChild(e)});</script>
+</body>
+
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+</html>
