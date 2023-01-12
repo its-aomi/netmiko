@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Fix Postman Crashing on Startup in Ubuntu &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -36,7 +42,7 @@
 <meta name="twitter:description" content="Today in this post I will talk about how we can fix the crashing of Postman on ubuntu during startup and also during regular usage. I will show you some common causes and also some technical ones that&#8230;">
 <link rel="canonical" href="https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/fix-postman-crashing-on-startup-in-ubuntu/","name":"How to Fix Postman Crashing on Startup in Ubuntu"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 6.52ms meta | 10.77ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 8.25ms meta | 11.22ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -160,14 +166,14 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today in this post I will talk about how we can fix the crashing of <a href="http://www.postman.com/">Postman</a> on ubuntu during startup and also during regular usage. </p>
-<div class="XFf7qouO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="6nZ57pie" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
 </div>
 <p>I will show you some common causes and also some technical ones that might be the reason for the postman software to crash on your ubuntu system. I will provide you with the solutions for all those problems in this post.</p>
 <p>Okay, let&#8217;s now start and see the possible causes of the postman crash and also fix it.</p>
-<div class="AL7mcZsa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Fe7XegkM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -179,7 +185,7 @@ img.emoji {
 <h2>2. Uninstall and Reinstall<br>
 </h2>
 <p>If updating postman didn&#8217;t help then you should try uninstalling and reinstalling the postman software. </p>
-<div class="Mrpx3fCP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="hWFvW0Hj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -189,7 +195,7 @@ img.emoji {
 <p>You will lose the data stored in postman if you uninstall it without backup.</p>
 </blockquote>
 <p>You can easily import those backups after you have installed a fresh version of postman.</p>
-<div class="OuK1rwJn" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="oWkBRKwO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -197,7 +203,7 @@ img.emoji {
 <p>Now after you have uninstalled postman from your system you will have to delete all the files that were stored in postman. You can find these files in the directory where you installed postman. </p>
 <p>You should do this because we want a <em>fresh installation of postman</em> and don&#8217;t want any files from the previous installation.</p>
 <p>After deleting the old files, install the latest version of postman and import your data. </p>
-<div class="eCbop26P" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="gJczugbd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -206,7 +212,7 @@ img.emoji {
 <h2>3. Prevent Conflicts Between Programs </h2>
 <p>During the Ubuntu startup, is there a different program that is also running in the background or foreground along with postman? </p>
 <p>Chances are that a single program or multiple programs are creating <em>conflict during the startup processes that is making postman to crash.</em></p>
-<div class="RvVAYZFQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9Pq2fImW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -216,7 +222,7 @@ img.emoji {
 </h2>
 <p>So how much RAM does your device have, 2gb? 4gb? Because chances are that you might be running out of RAM, and that&#8217;s causing postman to not run properly and thus it is crashing.</p>
 <p>This happens because during the startup process, lots of different programs are also trying to start which means everyone is hungry for RAM.</p>
-<div class="GQDzHdmh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="vWHEzefY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -225,7 +231,7 @@ img.emoji {
 <p>But if you are not using a virtual box to run Ubuntu, then you will have to upgrade your pc or laptop’s ram in order to fix this.</p>
 <h2>4. Check Compatibility &#8211;</h2>
 <p>Now, this is something that is not that common because these days almost every pc will be able to run postman. But if you are using an old pc then there might be a little bit of chance that postman is not compatible with your pc.</p>
-<div class="Z7KpOSWv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="70FEzgue" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -234,7 +240,7 @@ img.emoji {
 <h2>5. Disable Antivirus &#8211;</h2>
 <p>Are you using an antivirus on your computer? Like Bitdefender, quick heal, etc.? Then there might be a very high chance that during the installation process of postman some important files were removed from postman software.</p>
 <p>This is a very common problem when installing any software on a computer with antivirus installed and running during any software installation. </p>
-<div class="dMDnwDlM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="whKsqD6C" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -243,7 +249,7 @@ img.emoji {
 <p>This can cause lots of different problems like crashing and missing features. So, that&#8217;s why whenever installing any trusted software from a trusted site make sure you disable the antivirus.</p>
 <blockquote>
 <p><strong>Note:</strong> Only disable antivirus for trusted software downloaded from trusted sources.</p>
-<div class="qpYr7eFh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="tjM36AtS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -254,7 +260,7 @@ img.emoji {
 <p>Okay, so that is how you can Fix Postman Crashing on Startup in Ubuntu. It&#8217;s very easy to fix the crash, just follow the steps shown above and you will have your problem fixed.</p>
 <p>The most common reasons for postman crashing on ubuntu are due to low memory and due to missing files. Which you can fix by uninstalling and reinstalling postman with antivirus disabled.</p>
 <p>Thank you for reading, comment below if you need any help.</p>
-<div class="3SgLbLlF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="FHt4YPKz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -365,7 +371,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

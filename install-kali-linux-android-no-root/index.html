@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install Kali Linux on Android Phone without Root &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-1024x240.png">
 <link rel="canonical" href="https://netmiko.com/install-kali-linux-android-no-root/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-kali-linux-android-no-root/","name":"How to Install Kali Linux on Android Phone without Root"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 6.59ms meta | 11.88ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 6.68ms meta | 11.95ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,14 +171,14 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I will walk you through the steps to install the full version of Kali Linux on your Android phone without root. The version of kali that we are going to install on our android device is called Kali NetHunter.</p>
-<div class="WK5Az2Kv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="MoODM5Y3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
 </div>
 <p><b>What is Kali Nethunter &#8211;</b>  Kali NetHunter is an Android-based penetration testing platform that provides an interactive and user-friendly environment to perform a variety of network security-related tasks.</p>
 <p><em>Kali NetHunter is a customized version of Kali Linux</em> which has been pre-installed on an Android device. It includes all the tools present in the Kali Linux distribution, but it supports wireless networks and has been optimized for touchscreen devices.</p>
-<div class="Nyzp14SC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="z07xurxZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -181,7 +187,7 @@ img.emoji {
 <p>Before starting the installation process of Kali Linux on our Android device we will need to first download some requirements that we will need in order to run and install Kali Linux NetHunter.</p>
 <p>To download and install Kali Linux NetHunter will need to first install <em>Termux</em>, <em>NetHunter-KeX</em> client, and <em>Hacker’s keyboard</em>.</p>
 <p>Here termux is used to download and install Kali Linux NetHunter, NetHunter-KeX is used to run the GUI ( Graphical user interface ) and the hacker’s keyboard is a helpful virtual keyboard containing all the symbols required in the kali terminal.</p>
-<div class="4qHdFNEj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="eSnTZLqG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -192,7 +198,7 @@ img.emoji {
 <p>If you downloaded Termux from the play store then you might get a “<em>repository under maintenance error</em>” which you can fix by changing the repo of termux, just enter the command given below in the terminal &#8211; </p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">termux-change-repo</code></pre>
 <p>This will display a popup where the main repository will be selected by default, now all you need to do is select all three repositories, main, game, and science. Once done click on “OK” to save it.</p>
-<div class="nuJzsAQ7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="xXi1anvR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -200,7 +206,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo-1024x240.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo-300x70.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo-768x180.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-termux-repo.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="240" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20240'%3E%3C/svg%3E" alt="select termux repo" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-1024x240.png"><noscript><img decoding="async" width="1024" height="240" src="https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-1024x240.png" alt="select termux repo" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-termux-repo.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>After that you will need to select the mirror, the “official repositories” will be selected by default, change it to “<em>Mirrors by</em> <em>Grimler</em>” after that click on OK to save it.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo-1024x240.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo-300x70.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo-768x180.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-grimler-repo.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="240" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20240'%3E%3C/svg%3E" alt="select grimler repo" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-1024x240.png"><noscript><img decoding="async" width="1024" height="240" src="https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-1024x240.png" alt="select grimler repo" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-grimler-repo.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="UTMoIHDj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ldk27gGY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -209,7 +215,7 @@ img.emoji {
 <h3>Download Kali NetHunter App Store &#038; KEX &#8211;</h3>
 <p>Kali Nethunter App Store is required to install all other things that we will need to install and run Kali NetHunter on our Android device.</p>
 <p>Download the Nethunter App store by going to <a href="https://store.nethunter.com/">https://store.nethunter.com/</a> and clicking on “DOWNLOAD STORE APP” which will download the NetHunter app store apk.</p>
-<div class="NXXVL8eh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="s3gsOn9S" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -217,7 +223,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-kali-nethunter-app-store.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="download kali nethunter app store" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-1024x400.png" alt="download kali nethunter app store" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/download-kali-nethunter-app-store.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Once downloaded, install the app and continue to the next step which is to download NetHunter kex.</p>
 <p>Open the NetHunter App Store and at the bottom, you will get a search button, search for Nethunter Kex, click on it and click on Install. </p>
-<div class="VBNDxuh9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="5WUBtNsp" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -225,7 +231,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex-1024x360.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex-300x105.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex-768x270.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/download-nethunter-kex.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="360" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20360'%3E%3C/svg%3E" alt="download nethunter kex" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-1024x360.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-300x105.png 300w, https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-768x270.png 768w, https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-1024x360.png"><noscript><img decoding="async" width="1024" height="360" src="https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-1024x360.png" alt="download nethunter kex" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-1024x360.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-300x105.png 300w, https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex-768x270.png 768w, https://netmiko.com/wp-content/uploads/2021/12/download-nethunter-kex.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Once the download finishes you might need to allow NetHunter Store to install apps from unknown sources, open settings and allow it, and install NetHunter Kex.</p>
 <p>NetHunter kex is required to run Kali Linux Nethunter using the graphical user interface aka GUI. If you want you can also use Kali Linux using just its command line.</p>
-<div class="Myf0cktg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="hJlQJlGE" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -235,7 +241,7 @@ img.emoji {
 <p>After installing it, open it and follow the steps to set it up. NOTE: <em>Hacker’s keyboard is optional,</em> you can also use your default keyboard on Termux or Kali Linux.</p>
 <h2>Install Kali Linux NetHunter</h2>
 <p>Okay so now let us see how we can download and install Kali Linux NetHunter on our Android device using termux, to begin first open your termux app and update its packages.</p>
-<div class="0dTRWK0H" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0k6byrxY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -249,7 +255,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">pkg install wget -y
 </code></pre>
 <p>Once wget is installed, you can now download kali, do note that in order to run and use Kali Linux NetHunter on your Android device you will need at least <em>10GB of free space</em>, so make sure to have some empty storage for the installation. </p>
-<div class="d68kwT8l" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="AblxMP6k" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -261,7 +267,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">./install-nethunter-termux
 </code></pre>
 <p>Once Kali Linux NetHunter is fully downloaded and installed it will ask you for input at the end of the installation process, the question will be “ Delete downloaded Rootfs file”, just enter “<em>y</em>” and click enter to finish the installation.</p>
-<div class="LjTwvRg4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="3CU4yTUI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -271,7 +277,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt update &amp;&amp; sudo apt full-upgrade -y
 </code></pre>
 <p>And that&#8217;s it, that&#8217;s how you can install Kali Linux on your Android device without root, now after the installation finishes, you will be in the command line interface of Kali Linux where you can do anything you want. </p>
-<div class="myOmURms" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="nhyTpxZn" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -280,7 +286,7 @@ img.emoji {
 <p>Now for users that want a GUI interface instead of using just the command line, you can follow the rest of the steps below.</p>
 <h2>Run Kali Linux NetHunter GUI </h2>
 <p>To use Kali Linux NetHunter in GUI mode, you will need to first set a kex password, you can set a kex password by entering the following command &#8211;</p>
-<div class="IHfZnao7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="oJxWyn5k" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -291,7 +297,7 @@ img.emoji {
 </code></pre>
 <p>After entering the kex command, in the terminal, you will get the RFB Port number.</p>
 <p>Now go back and open the NetHunter Kex app, here if it asks for storage permissions then allow it, after that on the right side of localhost:1 there will be a port number, you will need to <em>remove the default port number</em> and <em>enter your</em> <em>RFB Port</em> number here.</p>
-<div class="j4IeRsGW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="UprQ1F6W" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div id="ezoic-pub-ad-placeholder-665"> </div>
 <!-- End Ezoic - incontent_16 - incontent_16 -->
@@ -299,7 +305,7 @@ img.emoji {
 <p>After that below in the VNC Password, enter the kex password and click on “Connect” at the top right corner.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server-1024x360.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server-300x105.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server-768x270.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/setup-kex-server.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="360" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20360'%3E%3C/svg%3E" alt="setup kex server" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-1024x360.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-300x105.png 300w, https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-768x270.png 768w, https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-1024x360.png"><noscript><img decoding="async" width="1024" height="360" src="https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-1024x360.png" alt="setup kex server" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-1024x360.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-300x105.png 300w, https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server-768x270.png 768w, https://netmiko.com/wp-content/uploads/2021/12/setup-kex-server.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>You will now be in the GUI interface of Kali Linux NetHunter, you can use a mouse or your fingers to control it, it will work just like the Kali Linux PC, it will have everything that is available in the original Kali Linux.</p>
-<div class="kYhFZTiZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ON0NBhA5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div id="ezoic-pub-ad-placeholder-666"> </div>
 <!-- End Ezoic - incontent_17 - incontent_17 -->
@@ -308,7 +314,7 @@ img.emoji {
 <h2>Conclusion &#8211; </h2>
 <p>Installing and Running Kali Linux on your Android phone is very easy, it just takes a little bit of time and patience. You just need a good device with plenty of free space if you want to install Kali Linux. Thanks for reading, comment below if you are facing any problems.</p>
 <p>Do note that this tutorial is only for educational purposes and does not promote illegal activities that someone can do by following this tutorial. NETMIKO.COM will not be responsible for anything that might happen to your android device and others through this tutorial.</p>
-<div class="qdxs4qZA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="gaZpzw9T" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div id="ezoic-pub-ad-placeholder-667"> </div>
 <!-- End Ezoic - incontent_18 - incontent_18 -->
@@ -318,7 +324,7 @@ img.emoji {
 <p>Did you downloaded Termux from the Playstore and is now unable to do anything because of errors? That happens because the play store version of Termux is not maintained anymore, meaning no one is updating it anymore. </p>
 <p>To get the latest version of Termux you can use F-Droid, to begin first go to &#8211; <a href="https://f-droid.org/packages/com.termux/">https://f-droid.org/packages/com.termux/</a>. Here scroll down and in the latest version of Termux click on Download Now.</p>
 <p>This will download the latest version of Termux Apk which you can install and use.</p>
-<div class="Isxrk1zW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="mqWMW3UB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div id="ezoic-pub-ad-placeholder-668"> </div>
 <!-- End Ezoic - incontent_19 - incontent_19 -->
@@ -469,7 +475,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

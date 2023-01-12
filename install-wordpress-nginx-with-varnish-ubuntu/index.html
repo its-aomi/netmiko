@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-1024x400.png">
 <link rel="canonical" href="https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-wordpress-nginx-with-varnish-ubuntu/","name":"Install WordPress on NGINX with Varnish Cache in Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 13.21ms meta | 17.50ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 11.53ms meta | 11.87ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I&#8217;ll show you how you can host a WordPress website on an NGINX server with varnish caching for a fast and optimized WordPress website. </p>
-<div class="seo9CVpy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="uhCQRi0v" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -174,7 +180,7 @@ img.emoji {
 <h2>Why NGINX instead of Apache?<br>
 </h2>
 <p>The reason I recommended you to use Nginx instead of Apache for your WordPress site’s web server is that Nginx can handle more traffic and load compared to an Apache server, as Apache server uses more memory compared to Nginx because it creates a new thread for each request which consumes memory.</p>
-<div class="uGuxJjnF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="BNWgQWEl" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -185,7 +191,7 @@ img.emoji {
 </h3>
 <p>To create a new Ubuntu server or Instance on AWS you will need to first log in to your AWS account, here go to the EC2 dashboard and click on “<em>Launch Instance</em>” to start the process of creating a new Ubuntu instance.</p>
 <p>First, you will need to choose an Amazon Machine Image (<em>AMI</em>), in the search bar search for Ubuntu, this will display a few ubuntu machine images, you will need to select the “<em>Ubuntu Server 20.04 LTS (HVM)</em>” which comes under free tier, click on select on the right side.</p>
-<div class="UzUgUObg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="m9kCXm4S" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -193,7 +199,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-amazon-machine-image.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="choose amazon machine image" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-1024x400.png" alt="choose amazon machine image" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-amazon-machine-image.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>After that you will need to choose an <em>instance type</em>, choose the instance that suits your need, like t2.micro or t.2small for a small and medium blog, choose the instance type that you can afford, and click on next.</p>
 <p>In the <em>Configure Instance Details,</em> you don&#8217;t need to change anything, click on next to continue. </p>
-<div class="mUQ46rtg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="8GOeZmkm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -201,7 +207,7 @@ img.emoji {
 <p>In the <em>Storage</em> Tab enter the amount of storage that you need and the storage type that you need, like SSD or Magnetic, once done click on next. In Tags, no need to do anything, click next again.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-ssd-and-storage.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="choose ssd and storage" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-1024x400.png" alt="choose ssd and storage" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-ssd-and-storage.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Now in the <em>Configure Security Group</em> tab, you will need to add two security group rules, which are HTTP and HTTPS. Click on “<em>Add Rule</em>”, in type select “<strong>HTTP</strong>”, again add another rule for “<strong>HTTPS</strong>”. Click Review and Launch to continue.</p>
-<div class="26ry755a" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Dxelofi7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -209,7 +215,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-http-and-https-rule.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="add http and https rule" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-1024x400.png" alt="add http and https rule" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-http-and-https-rule.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>In the <em>Review</em> Tab, check if everything is correct or not, things like Instance type, storage, and Machine image are important things to check before launching the instance. If everything is correct then click on “Launch”. </p>
 <p>It will now ask you to add a <em>Key Pair</em> to the instance, select <em>create a new Key pair</em> option from the dropdown, name the keypair and <em>click on download</em> to download a .pem or .ppk file. Save this file somewhere safe because you will need it to log in to your server.</p>
-<div class="sUnZcenO" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="UnMgyiB3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -217,7 +223,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/create-a-new-keypair.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="create a new keypair" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-1024x400.png" alt="create a new keypair" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/create-a-new-keypair.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>After downloading the Key pair, <em>click on Launch</em> to launch a ubuntu server.</p>
 <p>It will take a few minutes for the instance to run so wait a few minutes. Once done you can proceed to log in to the server.</p>
-<div class="6EMjs2vJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="NOmvzZld" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -227,7 +233,7 @@ img.emoji {
 <p>If you are using Digital ocean then here are the steps to create a ubuntu server or droplet. To begin, log in to your digital ocean dashboard.</p>
 <p>Click on Create then select <em>Droplets</em>, to create a new droplet. In image Choose Ubuntu 20.04, after that in plans select the plan that suits your need.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-droplet-image-in-digital-ocean.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="choose droplet image in digital ocean" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-1024x320.png" alt="choose droplet image in digital ocean" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-droplet-image-in-digital-ocean.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="DF0BmWKa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="gu1xX7zF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -235,7 +241,7 @@ img.emoji {
 <p>Scroll down and in the data center region select the server that is closest to your customers or users. After that in the Additional option check the “<em>IpV6</em>” and “<em>Monitoring</em>”.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/check-ipv6-and-monitoring.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="check ipv6 and monitoring" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-1024x320.png" alt="check ipv6 and monitoring" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/check-ipv6-and-monitoring.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Now in authentication select Password and enter a very secure password, make sure to note it down somewhere safe. Scroll down and in <em>Hostname</em> enter your domain name and scroll down again and click on Create Droplet.</p>
-<div class="0tSHw2Iz" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="A6EpYknj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -250,7 +256,7 @@ img.emoji {
 <li style="font-weight: 400;" aria-level="1">After that add a “<em>CNAME</em>” Record, in the name enter “<em>www</em>” and in value enter your domain name.</li>
 </ol>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/add-dns-records-in-domain-dns-settings.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="add dns records in domain dns settings" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png" alt="add dns records in domain dns settings" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/add-dns-records-in-domain-dns-settings.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="DSHtNGD7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="aV1DYKSI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -262,7 +268,7 @@ img.emoji {
 <h2>Login to Ubuntu Server<br>
 </h2>
 <p>Once you have created the ubuntu server and installed putty, you can now log in to your server. This process is different for different cloud hostings, I will show you the steps for AWS and Digital Ocean. </p>
-<div class="XdIMArzu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="SqzBHs4d" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -272,7 +278,7 @@ img.emoji {
 </h3>
 <p>If you want to log in to your ubuntu server hosted on AWS then here are the steps. </p>
 <p>Open putty, in the hostname, enter the IP address of your amazon instance, after that on the left side click on “<em>SSH</em>” twice, this will display some more options, click on “<em>Auth</em>”, after that click on Browse and <em>select the .ppk or .pem Key Pair</em> downloaded during instance launch.</p>
-<div class="yk3gBoAu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ngFbhvpx" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -282,7 +288,7 @@ img.emoji {
 <h3>Digital Ocean &#8211;<br>
 </h3>
 <p>If you are using digital ocean then just copy the Ip address of the Droplet and open putty, in hostname enter the Ip address and click on open.</p>
-<div class="wKGv9ONP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="KHmB4Nja" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -292,7 +298,7 @@ img.emoji {
 </h2>
 <p>Okay now it&#8217;s time to set up the server, we will be installing WordPress on Lemp Stack so the first thing we will need to do is install NGINX. All you need to do is copy &amp; paste the commands given below in the putty terminal.</p>
 <p>First, update your ubuntu apt packages before starting the installation process, you can update your apt packages using this command &#8211; </p>
-<div class="ih9dgwUt" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="xW27jKFk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div id="ezoic-pub-ad-placeholder-665"> </div>
 <!-- End Ezoic - incontent_16 - incontent_16 -->
@@ -303,7 +309,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get install nginx</code></pre>
 <p>Once Nginx is installed check its status using the command “<em>sudo service nginx status</em>”, if it shows an output that says “Active(running) then Nginx is installed and running properly. Exit the status screen by pressing “q”.</p>
 <p>After this, you will need to set up a firewall for ubuntu and also add a <em>rule for ufw</em>.</p>
-<div class="VzfpPwtZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="w5NXpGJB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div id="ezoic-pub-ad-placeholder-666"> </div>
 <!-- End Ezoic - incontent_17 - incontent_17 -->
@@ -316,7 +322,7 @@ sudo ufw allow 'Nginx Full'
 sudo ufw status</code></pre>
 <p>Once done you can now check if Nginx is working properly or not, to do that enter the IP address of your Ubuntu server in a browser. This will display the “<em>Welcome to Nginx</em>” page which means that Nginx is working perfectly.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/welcome-to-nginx-1024x320.jpg.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/welcome-to-nginx-300x94.jpg.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/welcome-to-nginx-768x240.jpg.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/welcome-to-nginx.jpg.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="welcome to nginx" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-1024x320.jpg 1024w, https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-300x94.jpg 300w, https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-768x240.jpg 768w, https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx.jpg 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-1024x320.jpg"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-1024x320.jpg" alt="welcome to nginx" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-1024x320.jpg 1024w, https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-300x94.jpg 300w, https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx-768x240.jpg 768w, https://netmiko.com/wp-content/uploads/2021/12/welcome-to-nginx.jpg 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="i8v15tiv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="CWBk6GGI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div id="ezoic-pub-ad-placeholder-667"> </div>
 <!-- End Ezoic - incontent_18 - incontent_18 -->
@@ -328,7 +334,7 @@ sudo ufw status</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get install mysql-server
 </code></pre>
 <p>After MySQL finishes installing, <em>check its status</em> and exit status screen once done. You can exit status by pressing “q”.</p>
-<div class="IzqCWulQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="WppxIYNt" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div id="ezoic-pub-ad-placeholder-668"> </div>
 <!-- End Ezoic - incontent_19 - incontent_19 -->
@@ -339,7 +345,7 @@ sudo ufw status</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo mysql_secure_installation
 </code></pre>
 <p>In the terminal you will now get an output asking “Would you like to set up the <em>VALIDATE PASSWORD</em> component?”, just enter any key to continue. After that, you will be asked to enter a new password and confirm the password.</p>
-<div class="nQodqthg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="pJMKRHB9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_20 - incontent_20 -->
 <div id="ezoic-pub-ad-placeholder-669"> </div>
 <!-- End Ezoic - incontent_20 - incontent_20 -->
@@ -347,7 +353,7 @@ sudo ufw status</code></pre>
 <p>Create a strong password and confirm it.</p>
 <p>After that you will be asked to <em>remove the anonymous users</em>, press y to continue. After that it will ask “<em>Disallow remote root login</em>”, press y to continue.</p>
 <p>After that, in both remove test databases and reload privilege tables press and enter “y” to finish setting up the MySQL database.</p>
-<div class="URgliHxV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="MVpqLYOa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_21 - incontent_21 -->
 <div id="ezoic-pub-ad-placeholder-670"> </div>
 <!-- End Ezoic - incontent_21 - incontent_21 -->
@@ -360,7 +366,7 @@ sudo ufw status</code></pre>
 sudo apt-get install php-mysql
 </code></pre>
 <p>After installing both php-fpm and php-mysql you will need to configure Nginx for installing WordPress in it.</p>
-<div class="wJMOgi52" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="PzG08pee" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_22 - incontent_22 -->
 <div id="ezoic-pub-ad-placeholder-671"> </div>
 <!-- End Ezoic - incontent_22 - incontent_22 -->
@@ -792,7 +798,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
@@ -883,5 +889,5 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
 </body>
 
 
-<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1673423410 -->
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
 </html>

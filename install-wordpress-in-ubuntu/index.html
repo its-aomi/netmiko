@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install WordPress on Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png">
 <link rel="canonical" href="https://netmiko.com/install-wordpress-in-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-wordpress-in-ubuntu/","name":"How to Install WordPress on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 6.90ms meta | 12.01ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 5.76ms meta | 11.75ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today we will see how we can install WordPress in Ubuntu. And also setup all the things. This tutorial will be very easy and with the help of this you can easily install WordPress in your ubuntu.</p>
-<div class="ifAurBWm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="QLgjZygA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -173,7 +179,7 @@ img.emoji {
 <p>First of all we will setup a LAMP server after which we will install WordPress in it. For this tutorial we have used ubuntu 20.04 LTS. If you want to install your WordPress in your localhost i.e. in XAMPP then click on this link &#8211; <a href="https://netmiko.com/tutorials/install-wordpress-in-xampp/">Install WordPress in xampp</a> Here I showed in detail how you can run WordPress by installing it in xampp.</p>
 <h2>Update </h2>
 <p>First of all we will update the index packages for which we will use this command which will update it.</p>
-<div class="WL4rbNKg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="WPmeHCcN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -186,7 +192,7 @@ img.emoji {
 <p>It will take some time to install, it depends on your internet connection how long it will take to install it. After nginx is installed, you can type the command given below to check its status.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo systemctl status nginx</code></pre>
 <p>By typing this command you will see the status of nginx in terminal whether it is working or not. You can also check this by going to your web browser whether nginx is installed or not, for this you will need the IP address of your server, to get which you can use the command given below.</p>
-<div class="UMymA3kS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="7CFOeNkp" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -197,7 +203,7 @@ img.emoji {
 <p>Now we will install MySQL database in this server which is a very important component to run WordPress. To install it, we will type the command given below.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install mysql-server mysql-client -y</code></pre>
 <p>We are installing MySQL client because we need MySQL client to connect to our database. It will take you 2 &#8211; 5 minutes to install MySQL, it depends on your internet speed.</p>
-<div class="NAE0jxHM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="TPIIhOKD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -211,7 +217,7 @@ sudo systemctl enable nginx
 </code></pre>
 <h2>Configure MySQL Database </h2>
 <p>Now we will deploy our MySQL server for which we will type the below command so that it will be deployed securely.</p>
-<div class="xpcWlOOs" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="FZrvzhgv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -222,7 +228,7 @@ sudo systemctl enable nginx
 <h2>Connect to MySQL database<br>
 </h2>
 <p>After the MySQL server is deployed, now we have to connect to it with the role of a root user. For which we will type the command given below so that we can connect to the database with the role of a root user.</p>
-<div class="XwUyTMx3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="a6x59e8V" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -233,7 +239,7 @@ sudo systemctl enable nginx
 <p>And you will also have to create a user.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">create user &ldquo;yourusername&rdquo;@&rdquo;localhost&rdquo; identified by &ldquo;yourpassword&rdquo;; </code></pre>
 <p>Keep in mind that your password must be good, it must be strong, it must contain a capital letter, small letter, a symbol and number.</p>
-<div class="ULrR4xCA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Ai5SujJj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -249,7 +255,7 @@ sudo systemctl enable nginx
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install php7.4 php7.4-gd php7.4-mysql php7.4-zip php7.4-fpm -y
 </code></pre>
 <p>Now all the requirements are downloaded and this means that our LAMP server is also ready to install WordPress. So let us now see how we can install WordPress in ubuntu.</p>
-<div class="Qrkc1738" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Pn9X9SWs" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -263,7 +269,7 @@ sudo systemctl enable nginx
 <p>Now we have to unzip the downloaded WordPress zip file, for which we will first install unzip, for which we will use this command.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt install unzip -y</code></pre>
 <p>Unzip will now be installed in our system. After this we will unzip the zip file of WordPress.</p>
-<div class="BZPlyXRg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="sxcBdESB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -279,7 +285,7 @@ sudo systemctl enable nginx
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo cp -r * /var/www/html/
 </code></pre>
 <p>After this we will change the permissions of this folder which we need to install any plugins or anything in WordPress.</p>
-<div class="gevLTjYJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="qkj4zycu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -292,7 +298,7 @@ sudo systemctl enable nginx
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd  /etc/nginx/sites-enabled/</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">ls</code></pre>
 <p>Now we will move the default file that is in it to WordPress by default. For which we will type this command.</p>
-<div class="tyQAlr6y" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="H9X6hFka" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -303,7 +309,7 @@ sudo systemctl enable nginx
 </code></pre>
 <p>Here you will have to edit some lines, whose image is below, which you will have to change.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png.webp 735w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2-283x300.png.webp 283w" sizes="(max-width: 735px) 100vw, 735px" type="image/webp"><img decoding="async" width="735" height="780" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20735%20780'%3E%3C/svg%3E" alt="install wordpress in ubuntu lines to change (2)" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png 735w, https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2-283x300.png 283w" data-lazy-sizes="(max-width: 735px) 100vw, 735px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png"><noscript><img decoding="async" width="735" height="780" src="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png" alt="install wordpress in ubuntu lines to change (2)" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2.png 735w, https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-lines-to-change-2-283x300.png 283w" sizes="(max-width: 735px) 100vw, 735px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="l7y9eiqS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Xliyf9JP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -311,7 +317,7 @@ sudo systemctl enable nginx
 <p>We&#8217;ll go down a bit after that and uncomment these things there because we&#8217;re using PHP.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code.png.webp 713w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code-300x293.png.webp 300w" sizes="(max-width: 713px) 100vw, 713px" type="image/webp"><img decoding="async" width="713" height="696" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20713%20696'%3E%3C/svg%3E" alt="install wordpress in ubuntu change lines" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code.png 713w, https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code-300x293.png 300w" data-lazy-sizes="(max-width: 713px) 100vw, 713px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code.png"><noscript><img decoding="async" width="713" height="696" src="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code.png" alt="install wordpress in ubuntu change lines" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code.png 713w, https://netmiko.com/wp-content/uploads/2021/08/install-wordpress-in-ubuntu-uncomment-code-300x293.png 300w" sizes="(max-width: 713px) 100vw, 713px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>After all the editing is complete, we will hit exit from our Nano editor, save it and then type the command given below.</p>
-<div class="WLDu9Aef" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="zDTqHmep" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -325,7 +331,7 @@ sudo systemctl enable nginx
 <h2>Final WordPress Configuration<br>
 </h2>
 <p>After typing the IP address in the browser, when the configuration page will open, we will have to select your language here and then click on continue. After clicking on continue, we will have to type the user name of the database in this and the password of the database and then we will have to click on submit.</p>
-<div class="Mnh8cZdH" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="4XgbtEaS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div id="ezoic-pub-ad-placeholder-665"> </div>
 <!-- End Ezoic - incontent_16 - incontent_16 -->
@@ -335,7 +341,7 @@ sudo systemctl enable nginx
 <h2>Install Theme in WordPress<br>
 </h2>
 <p>Now we will see how we can install a theme in WordPress so that the look of your website looks very good.</p>
-<div class="HLa5xK22" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Wnx3U5Px" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div id="ezoic-pub-ad-placeholder-666"> </div>
 <!-- End Ezoic - incontent_17 - incontent_17 -->
@@ -343,7 +349,7 @@ sudo systemctl enable nginx
 <p>To install the theme, you must first login to your WordPress admin dashboard through your username and password that you gave during installation.</p>
 <p>After login to the dashboard, you will get the option of appearance below on the left side, above which if you hover your mouse, then you will get the option of themes, on which you will have to click. Here you will get the add new option on which you have to click.</p>
 <p>Here now you can install it by hovering over any theme, on hovering over any theme, you will see the option of install, which you have to click, after clicking it, it will be installed. After installation, you will get an activate button, which you have to click, so that the theme will now be activated on your website.</p>
-<div class="BNM3Br7b" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="U3TwWhMj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div id="ezoic-pub-ad-placeholder-667"> </div>
 <!-- End Ezoic - incontent_18 - incontent_18 -->
@@ -352,7 +358,7 @@ sudo systemctl enable nginx
 <p>Now you have to select your theme which is in your computer by clicking on the option of choose file and then click on the option of install now, now it will have to be uploaded and after uploading you will have to activate it and by which it will be activated in your website.</p>
 <h2>Install Plugin in WordPress </h2>
 <p>If you want to install a plugin, then you have to first go to the option of plugins from the menu then click on the add new option there, after clicking on add new you can search for any plugin and install it.</p>
-<div class="8jghuMsE" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="BTYQoQA0" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div id="ezoic-pub-ad-placeholder-668"> </div>
 <!-- End Ezoic - incontent_19 - incontent_19 -->
@@ -361,7 +367,7 @@ sudo systemctl enable nginx
 <h2>Conclusion &#8211; </h2>
 <p>And just like that you can easily install WordPress on your ubuntu server and create a website. If you have to install SSL certificate in your website then I have given its link in the article. Click on it and if you want to host the WordPress site on your localhost, then I have also given its link.</p>
 <p>If you liked this post, then do share it with your friends and do comment below. If I have made any mistake here, then definitely tell it in the comment and I will correct it.</p>
-<div class="odflRy2J" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="rj79eDjU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_20 - incontent_20 -->
 <div id="ezoic-pub-ad-placeholder-669"> </div>
 <!-- End Ezoic - incontent_20 - incontent_20 -->
@@ -545,7 +551,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

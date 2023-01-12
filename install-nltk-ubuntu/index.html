@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install NLTK on Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -36,7 +42,7 @@
 <meta name="twitter:description" content="Today I will show you how you can install NLTK ( Natural Language Toolkit ) on your Ubuntu 20.04 using Python. What is NLTK &ndash; NLTK is a Python package that provides tools for Natural Language&#8230;">
 <link rel="canonical" href="https://netmiko.com/install-nltk-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-nltk-ubuntu/","name":"How to Install NLTK on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 7.52ms meta | 12.49ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 7.57ms meta | 11.75ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -160,14 +166,14 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I will show you how you can install NLTK ( Natural Language Toolkit ) on your Ubuntu 20.04 using Python. </p>
-<div class="1RRvCOhk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="I9AlOT7P" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
 </div>
 <p><strong>What is NLTK</strong> &#8211; NLTK is a Python package that provides tools for Natural Language Processing. It provides many different algorithms, which are used to analyze the text and give the answer to questions like sentiment analysis, syntax parsing, part-of-speech tagging, etc.</p>
 <p>It’s mainly used for linguistic data processing, which means it processes the data to extract the relevant information.</p>
-<div class="dOu9bGzS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="DRJScTCr" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -178,7 +184,7 @@ img.emoji {
 <pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update
 sudo apt-get upgrade</code></pre>
 <p>Now to Install NLTK you will need python and pip3 installed on your ubuntu, let’s see how you can install python and pip3 for installing NLTK.</p>
-<div class="ErZbZrbc" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="xJtbXdsB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -189,7 +195,7 @@ sudo apt-get upgrade</code></pre>
 <p>To install pip3 you will need to run this command &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get -y install python3-pip</code></pre>
 <p>Now after installing python and pip3, you can start the installation of NLTK on your ubuntu 20.04.</p>
-<div class="aTIoqCis" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="yCaSqQYA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -200,7 +206,7 @@ sudo apt-get upgrade</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo pip3 install nltk</code></pre>
 <p>You might need to enter your password to use the sudo command, after entering your password, the download of nltk will start.</p>
 <p>Once NLTK finishes downloading, you will need to import NLTK using the import command, you can do that by first entering the following command to open python.</p>
-<div class="ElpvlLr5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="V3gibzAC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -213,7 +219,7 @@ sudo apt-get upgrade</code></pre>
 </code></pre>
 <h2>Uninstall NLTK</h2>
 <p>Now, if you want to uninstall NLTK from your ubuntu then you can do that by using pip3, the command format for uninstalling NLTK will be “ pip3 uninstall &lt;package-name&gt; “, where package name will be the name of the library/module that you want to uninstall.</p>
-<div class="orOLTYKP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="k2Jg4j6D" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -222,7 +228,7 @@ sudo apt-get upgrade</code></pre>
 <p>This command will remove all the files associated with nltk.</p>
 <p>That was it, that is how you can install NLTK on Ubuntu 20.04 using pip3, Here’s a post that might be of your interest &#8211;  <a href="https://netmiko.com/tutorials/data-science/install-and-setup-anaconda-ubuntu/">Install Anaconda on Ubuntu 20.04</a></p>
 <p>If you are facing any problems while installing NLTK on your ubuntu 20.04 then comment below or send me a mail at &#8211; netmikoblog@gmail.com. Thank you.</p>
-<div class="K2ntGBNo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="1Oi1mKLf" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -335,7 +341,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

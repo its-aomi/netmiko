@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install Apache Spark on Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-1024x576.png">
 <link rel="canonical" href="https://netmiko.com/install-apache-spark-on-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-apache-spark-on-ubuntu/","name":"How to Install Apache Spark on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.15ms meta | 11.72ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 6.90ms meta | 11.86ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today, in this post I will show you how you can install <a href="https://spark.apache.org/">Apache Spark</a> on Ubuntu 20.04. This will be a step-by-step tutorial on installing apache spark. Now let&#8217;s start the tutorial.</p>
-<div class="uXF9AZOJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="puvzQoUk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -175,7 +181,7 @@ img.emoji {
 <p>Okay, so the first step will be to create a new directory in the home directory where we will download and Install Apache Spark.</p>
 <blockquote>
 <p>You can create a new directory manually by going to your File Manager&gt;Home directory, then right click&gt;New Folder, name the folder “<em>spark</em>” and click on create.</p>
-<div class="3JxlGpYA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="eF8Q8KSZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -188,7 +194,7 @@ img.emoji {
 <p>Now, to be able to run and use Apache Spark we will need Java JDK installed in our Ubuntu system. To check whether you have java installed on your Ubuntu you can run the following command in the terminal.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">java --version</code></pre>
 <p>If it says “Command “java” not found” then it means that java is not installed. To install java you can use the commands given below.</p>
-<div class="HBBxVxO2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="THBINRcm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -203,7 +209,7 @@ img.emoji {
 <h3>Download Apache Spark using Terminal<br>
 </h3>
 <p>First, open your terminal and change your working directory to the “spark” directory that you created in the first step.</p>
-<div class="qBD3f4ii" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="FkPwKZag" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -217,7 +223,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget https://dlcdn.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
 </code></pre>
 <p>Here we are installing Apache Spark version 3.2.0 with package type “Pre-built for Apache Hadoop 3.3 and later”.</p>
-<div class="pHteh72w" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="6sWQIyVh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -226,7 +232,7 @@ img.emoji {
 <h3>Download Apache Spark using Browser </h3>
 <p>If you want to download Apache spark using the web browser then just go to this link here &#8211; <a href="https://spark.apache.org/downloads.html">https://spark.apache.org/downloads.html</a>.</p>
 <p>Here select the version of Apache Spark you want to install in the first dropdown, in the second dropdown select the package type, after you select the version and package type of Apache Spark, you will get the download link in the 3rd line.</p>
-<div class="udVs5MXF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="epfnu2Eg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -234,7 +240,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/select-apache-spark-version-to-download-1024x576.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/select-apache-spark-version-to-download-300x169.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/select-apache-spark-version-to-download-768x432.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/select-apache-spark-version-to-download.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="576" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="select apache spark version to download" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-1024x576.png"><noscript><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-1024x576.png" alt="select apache spark version to download" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/11/select-apache-spark-version-to-download.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Click on the download link, You will be redirected to another page with the download links for Apache Spark. Click on the top link to start the download. </p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/downloading-apache-spark-1024x576.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/downloading-apache-spark-300x169.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/downloading-apache-spark-768x432.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/downloading-apache-spark.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="576" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="downloading apache spark" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-1024x576.png"><noscript><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-1024x576.png" alt="downloading apache spark" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/11/downloading-apache-spark.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="4ooTxiS2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="q05PxDDY" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -245,7 +251,7 @@ img.emoji {
 <p>After downloading Apache Spark, right-click the downloaded file and move it to the “spark” folder that you created in the home directory.</p>
 <h2>Install Apache Spark In Ubuntu</h2>
 <p>Now, the installation process of Apache Spark is very easy. The first step will be to untar the tar file that we downloaded. To do that, first, change your working directory to the “spark” directory if you haven&#8217;t already.</p>
-<div class="WgzThuZt" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ZsG97cet" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -257,7 +263,7 @@ img.emoji {
 <p>After you untar the tar file, you will need to set up the <em>environment variable path</em> for Apache Spark. To do that first change your working directory to home directory using the command below &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd ~</code></pre>
 <p>Now, after changing the directory, using the gedit editor edit the Bashrc file. </p>
-<div class="GUHZa5lQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="G6qP67I2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -270,7 +276,7 @@ export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 </code></pre>
 <p>Change “username” to your own username, the file name at the end will be the name of the tar file that you untar-ed. After that on the top right corner click on the save button and exit the editor.</p>
 <p>Finish the installation by using the source command &#8211;</p>
-<div class="7ojCtBjd" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="RWBENj2N" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -283,7 +289,7 @@ export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 <p>Now, the last step in the installation of Apache Spark will be to verify whether Spark was installed correctly or not. You can do that by entering the following command in the terminal &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">spark-shell </code></pre>
 <p>If this command opens the Spark shell then it means that the Apache Spark installation was successful.</p>
-<div class="IebOjIuQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="svdvRfaT" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -292,7 +298,7 @@ export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 <p>You can access Spark Web UI by typing “spark-shell” in the terminal, which will start the Spark shell and also will give you the URL of Spark Context Web UI.</p>
 <p> [lyte id=&#8217;glF50MdXSdk&#8217; /]</p>
 <p>And, that is how you can install Apache Spark on Ubuntu 20.04. If you are facing any problem with the installation then comment below or contact me on Twitter. Thank you.</p>
-<div class="6xY3C4VJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Tc2b6643" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -306,7 +312,7 @@ export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 <h3>How to Fix Apache Spark crashing on Ubuntu?<br>
 </h3>
 <p>Whenever you are running Spark on your ubuntu, make sure that there is plenty of RAM available. Allocate at least 80% of your RAM to Apache Spark for its proper working.</p>
-<div class="JlOcu3gc" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="VQke0lgW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -466,7 +472,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

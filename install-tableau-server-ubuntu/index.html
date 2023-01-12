@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install Tableau Server on Ubuntu 18.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-1024x200.png">
 <link rel="canonical" href="https://netmiko.com/install-tableau-server-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-tableau-server-ubuntu/","name":"How to Install Tableau Server on Ubuntu 18.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.99ms meta | 11.89ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 7.09ms meta | 12.69ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I&#8217;ll walk you through the steps to Install Tableau Server on Ubuntu 18.04. You can easily install a Tableau server on your ubuntu device after following this tutorial. Now before we see the installation process of tableau server, let&#8217;s see what tableau is.</p>
-<div class="wvrAOYOg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="EuiCzB2q" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -174,7 +180,7 @@ img.emoji {
 <h2>Download Tableau Server<br>
 </h2>
 <p>Okay, so the first step is to download the tableau server. You can download Tableau using the terminal or directly from the official website. I&#8217;ll first show you how you can download tableau using the terminal &#8211;</p>
-<div class="unZFDi5L" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Dqt4kvuP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -185,7 +191,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget --version</code></pre>
 <p>After entering the above command you will get an output in the terminal which will say something like “ GNU wget 1.20.3 built on linux-gnu “ this means that wget is installed, if it says command not found then it means wget is not installed on your ubuntu.</p>
 <p>You can install wget on your ubuntu 18.04 by using the command &#8211;</p>
-<div class="7fv3z9Yj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="cymjSEPU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -196,7 +202,7 @@ img.emoji {
 </code></pre>
 <p>The size of the Tableau server is 2.5GB, so it will take some time to finish downloading depending upon your internet connection.</p>
 <p>Get the latest version of Tableau Server from <a href="https://www.tableau.com/downloads/server/deb">here</a>.</p>
-<div class="yLllBMET" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="NMPX2LVo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -205,7 +211,7 @@ img.emoji {
 <p>To download tableau server using your web browser, first, open your web browser and paste this link in the web browser &#8211; <a href="https://www.tableau.com/downloads/server/deb">https://www.tableau.com/downloads/server/deb</a> </p>
 <p>This is the direct download link for Tableau Server. After downloading the Tableau server deb file, move the downloaded file from the Downloads folder to the home directory, as by default anything you download using the browser will be downloaded to the downloads directory.</p>
 <p>After moving the file <em>start the Tableau Services Manager</em> to install the tableau server.</p>
-<div class="lKOb9LOu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="JLp6VosV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -219,7 +225,7 @@ sudo apt-get upgrade
 <p>After that, we will need to <em>install GDebi-core</em> which we use for installing local deb packages. You can install gdebi-core by entering this command in the terminal &#8211; </p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get -y install gdebi-core</code></pre>
 <p>After gdebi-core finishes downloading and installing, use gdebi to install the downloaded Tableau server deb file. The format for this will be &#8211; &#8220;<em>sudo gdebi -n downloaded-file-name</em>&#8220;</p>
-<div class="AQPqhCDA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="O6suynch" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -229,7 +235,7 @@ sudo apt-get upgrade
 </code></pre>
 <p>Wait for it to finish installing the tableau deb file, it will take some time. </p>
 <p>Now to start the Tableau Services Manager we’ll have to run the “./initialize-tsm” file located at the path “<em>/</em>opt/tableau/tableau_server/packages/scripts_version/initialize-tsm”.</p>
-<div class="ubopjKjW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="LRON5EWy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -237,7 +243,7 @@ sudo apt-get upgrade
 <p>After the installation of the tableau deb file, at the end of the installation, you will get an output in the terminal that will give you the command that you will need to enter for a single node or initial node installation. It will be in this format &#8211; “<em>sudo /opt/tableau/tableau_server/packages/scripts_version/initialize-tsm &#8211;accepteula</em>”.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm-1024x200.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm-300x59.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm-768x150.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/initialize-tsm.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="200" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20200'%3E%3C/svg%3E" alt="initialize tsm" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-1024x200.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-300x59.png 300w, https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-768x150.png 768w, https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-1024x200.png"><noscript><img decoding="async" width="1024" height="200" src="https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-1024x200.png" alt="initialize tsm" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-1024x200.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-300x59.png 300w, https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm-768x150.png 768w, https://netmiko.com/wp-content/uploads/2021/12/initialize-tsm.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Copy the command shown in the terminal and enter it.</p>
-<div class="MLd95iQQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="UpZ7R3Bi" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -247,7 +253,7 @@ sudo apt-get upgrade
 <h2>Login, Register and Setup Tableau Server<br>
 </h2>
 <p>After going to the web address of the Tableau server, you will be asked to first log in. Log in using your username and your password. </p>
-<div class="meuOTnr3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Ets3j4xM" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -255,7 +261,7 @@ sudo apt-get upgrade
 <p>After logging in you will be on the <strong>Activation</strong> page of Tableau, here if you have a product key then enter it. If you don&#8217;t, then at the bottom you will get the option to try Tableau for free for 14 days. Click on “<em>Start Tableau Server Trial</em>” to continue.</p>
 <p>After that, you will be on the <strong>Register</strong> page where you will need to enter all the information that is asked there, and after that click on <em>Register</em>.</p>
 <p>Now here on the <strong>Setup</strong> page, select the identity store. I have selected “local” here. After that click on Initialize to Start the Initialization process of the Tableau server. Now the Initialization will take some time to finish like 10 min or something.</p>
-<div class="vbvf9H5x" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="O1HpsyUI" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -265,7 +271,7 @@ sudo apt-get upgrade
 </code></pre>
 <p>Add a username of your choice and log in to your Tableau server using this username. </p>
 <p>And that&#8217;s it, that&#8217;s how you can Install Tableau Server on your ubuntu 18.04. If you found this tutorial helpful then be sure to comment below and also subscribe to my youtube channel <a href="https://youtube.com/netmiko">here</a>.</p>
-<div class="HBL0oX6z" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="YK7d5gGq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -399,7 +405,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

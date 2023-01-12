@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install MATLAB on Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png">
 <link rel="canonical" href="https://netmiko.com/install-matlab-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-matlab-ubuntu/","name":"How to Install MATLAB on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 5.56ms meta | 11.69ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 5.31ms meta | 11.81ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I&#8217;ll walk you through the steps to Install MATLAB on Ubuntu 20.04. The steps are pretty simple and you should be able to finish the installation of MATLAB in less than 5 mins on your ubuntu by following this tutorial.</p>
-<div class="bFs5GdO6" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="nb6Cmwwb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -173,7 +179,7 @@ img.emoji {
 <p><b>What is MATLAB &#8211; </b>Matlab, which stands for &#8220;matrix laboratory&#8221;, is a high-performance language for technical computing with extensive use in the engineering and scientific communities, it has a graphical interface for creating and running programs.</p>
 <h2>Create an MathWorks Account </h2>
 <p>Now to be able to download and Install MATLAB you will need a Math Works account and a License key.</p>
-<div class="tN8j7slS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="6E9YxLKG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -181,7 +187,7 @@ img.emoji {
 <p>To begin, first, open your web browser and go to this link &#8211; <a href="https://mathworks.com/login">https://mathworks.com/login</a>, this is the official website for MATLAB, here you will need to click on “Create one” to create a new MATLAB account.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-signup-page.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="mathworks signup page" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png" alt="mathworks signup page" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-signup-page.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Now enter all the required information like your email (<em>use university email if you have</em>), your country, in “Which best describes you” select “<em>student</em>”, after that click on yes in age confirmation, and click on the “Create&#8221; button below.</p>
-<div class="Io4Tdotu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9frAMqvo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -189,7 +195,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/mathworks-enter-info-for-account-signup.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="mathworks enter info for account signup" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png" alt="mathworks enter info for account signup" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/mathworks-enter-info-for-account-signup.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>On the next page you will be asked to enter your work or university email ( If you have one ), if you don&#8217;t then continue by clicking on “Continue with current Email”, the benefits of work or university email can be seen <a href="http://mathworks.com/support/association/benefits_of_associating.html">here</a>.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account-300x47.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account-768x120.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/email-confirmation-popup-for-mathworks-account.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="160" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20160'%3E%3C/svg%3E" alt="email confirmation popup for mathworks account" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-300x47.png 300w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-768x120.png 768w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png"><noscript><img decoding="async" width="1024" height="160" src="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png" alt="email confirmation popup for mathworks account" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-1024x160.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-300x47.png 300w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account-768x120.png 768w, https://netmiko.com/wp-content/uploads/2021/12/email-confirmation-popup-for-mathworks-account.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="O2z1i60P" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="gSvpiv3q" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -197,7 +203,7 @@ img.emoji {
 <p>After that Mathworks will send you an email at the email address that you provided with the link to verify the email address, open your email app and see the email set by Mathworks, click on the link or the “<em>Verify Email</em>” button to verify your email.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/verify-email-for-mathworks-account.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="verify email for mathworks accountverify email for mathworks account" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png" alt="verify email for mathworks accountverify email for mathworks account" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/verify-email-for-mathworks-account.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Now here you will need to finish the registration process by filling up a few more details, enter your name, last name, create a new password, confirm the password, in “<em>role</em>” select student, in “<em>department</em>” select the department you are in.</p>
-<div class="YBI6PBfb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="maleo2bm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -205,7 +211,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/finish-mathworks-profile-creation.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="finish mathworks profile creation" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png" alt="finish mathworks profile creation" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/finish-mathworks-profile-creation.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>In the Location of School/University, enter your university location and name, after that scroll down and <em>accept the Agreement</em> and click on “Create” to finish creating your Mathworks account.</p>
 <p>After clicking on the create button your Mathworks account will be created and you will be redirected to the Mathworks dashboard, here you will need to now get a “<em>Licence Key</em>”, you can either buy the students license for 21 dollars or you can click on “<em>Try now</em>” to start a 30-day free trial.</p>
-<div class="1Ur5dPiN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="3VeYo3am" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -214,7 +220,7 @@ img.emoji {
 <p>To Get a MATLAB Licence first Log in to your Mathworks account at <a href="https://mathworks.com/mwaccount/">https://mathworks.com/mwaccount/</a>, after that go to this link &#8211; <a href="https://mathworks.com/products/get-matlab.html">https://mathworks.com/products/get-matlab.html</a>, here you will get three options to select from, the first option will be to get a 30 days trial of MATLAB, If your university already has access to MATLAB then you can select the second option, if you want to buy MATLAB student license then click on the third option.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license-1024x320.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license-300x94.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license-768x240.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/choose-matlab-license.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="320" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20320'%3E%3C/svg%3E" alt="choose matlab license" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png"><noscript><img decoding="async" width="1024" height="320" src="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png" alt="choose matlab license" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-1024x320.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-300x94.png 300w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license-768x240.png 768w, https://netmiko.com/wp-content/uploads/2021/12/choose-matlab-license.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>I&#8217;ll show you how you can get a <em>free trial</em> and also how you can buy a <em>student license</em>. </p>
-<div class="rIqzKjNo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="nTXlJPmB" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -223,7 +229,7 @@ img.emoji {
 <p>To get a free Trial Licence of MATLAB you&#8217;ll need to click on the “<em>Download a Trial</em>” button on the products page of Mathworks.</p>
 <p>Here enter your address, zip code, click “NO” in the question of whether this request is on behalf of a faculty member, enter the year of graduation, select “<em>MATLAB Essentials</em>” from the trial usage dropdown and click on Submit.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/fill-matlab-trial-form.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="fill-matlab-trial-formfill-matlab-trial-form" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png" alt="fill-matlab-trial-formfill-matlab-trial-form" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/fill-matlab-trial-form.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="T9KtaOIi" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="HfeyUtRe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -232,7 +238,7 @@ img.emoji {
 <h3>Buy License </h3>
 <p>To buy a MATLAB student license first Log in to your Mathworks account at <a href="https://mathworks.com/mwaccount/">https://mathworks.com/mwaccount/</a>, after that go to the products page at &#8211; <a href="https://mathworks.com/products/get-matlab.html">https://mathworks.com/products/get-matlab.html</a>, here click on the “Buy” button.</p>
 <p>After that in the “Pricing and Licensing” page select Student and select the Student Licence, after that click on Buy now&gt;Add to cart&gt; Checkout. Complete the transaction and get your Student Licence Key for MATLAB.</p>
-<div class="jm6FLlKe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="js66mtPk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -242,7 +248,7 @@ img.emoji {
 </h2>
 <p>After either purchasing a license key or using the trial version of MATLAB, you can download MATLAB by going to <a href="https://matlab.mathworks.com/">https://matlab.mathworks.com/</a>, here log in using your Mathworks account info.</p>
 <p>After logging in to the dashboard of MATLAB you will need to click on the “<em>Install MATLAB on your Computer</em>” option. </p>
-<div class="GjTrfNDQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="8hy32p4t" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -250,7 +256,7 @@ img.emoji {
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page-1024x240.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page-300x70.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page-768x180.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/open-matlab-downloads-page.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="240" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20240'%3E%3C/svg%3E" alt="open matlab downloads page" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png"><noscript><img decoding="async" width="1024" height="240" src="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png" alt="open matlab downloads page" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/open-matlab-downloads-page.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>In the download page you will need to click on the “<em>Download for Linux</em>” button, if it&#8217;s showing Download for Windows then click on the arrow at the right side of the button and select Linux.</p>
 <p>The downloaded zip file will be saved to your Ubuntu <em>downloads directory</em> by default, or you might get a popup asking where to save the file. After downloading the MATLAB zip file it is time to install MATLAB on your ubuntu 20.04.</p>
-<div class="Od93ohd8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9maZlHSD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -264,7 +270,7 @@ sudo apt-get upgrade</code></pre>
 <h3>Unzip MATLAB<br>
 </h3>
 <p>Now you will need to unzip the downloaded MATLAB zip file, you can do that by right-clicking the downloaded zip and then clicking on “<em>Extract here</em>”, you can also unzip it using the terminal by entering “sudo unzip -X -K file_name.zip -d extracted_file_destination”.</p>
-<div class="4Jzw3yr1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="t5BqcyJl" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -275,7 +281,7 @@ sudo apt-get upgrade</code></pre>
 <p>After that use the command “<em>ls</em>” to see all the files in that directory, after that use the unzip command and unzip the downloaded MATLAB zip, using this command the zip files will be extracted to a new folder called “<em>matlab_new</em>” you can name it anything you want.</p>
 <pre class="line-numbers theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo unzip -X -K matlab_R2021b_glnxa64.zip -d matlab_new</code></pre>
 <p>Once the zip file is unzipped to “<em>matlab_new</em>” folder, change your directory to that folder using the command &#8211;</p>
-<div class="tH3Tpr1E" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Do91vwQv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -288,7 +294,7 @@ sudo apt-get upgrade</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">xhost +SI:localuser:root
 </code></pre>
 <p>After that to run the MATLAB GUI installer you will need to <em>run the install script</em>, to run that script type the following command in the terminal &#8211;</p>
-<div class="0e3eqhp3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="4vubXoPn" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div id="ezoic-pub-ad-placeholder-665"> </div>
 <!-- End Ezoic - incontent_16 - incontent_16 -->
@@ -297,7 +303,7 @@ sudo apt-get upgrade</code></pre>
 <p>This will start the GUI Installer of MATLAB, at first you will be asked to Log in, log in using the Mathworks account Email and Password.</p>
 <p>Now here in the Agreement, click on the yes option to <em>accept the agreement</em>, and after that click on “NEXT”.</p>
 <p>In the “<em>Licensing</em>” page the trial or paid license that you have on your Mathworks account will automatically get selected, if you want you can select a different one or enter an activation key. Click NEXT to continue.</p>
-<div class="2QDnVj1x" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="6nZFCYwe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div id="ezoic-pub-ad-placeholder-666"> </div>
 <!-- End Ezoic - incontent_17 - incontent_17 -->
@@ -305,7 +311,7 @@ sudo apt-get upgrade</code></pre>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-license.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="select matlab license" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png" alt="select matlab license" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-license.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>After that in “<em>Confirm user</em>” check if all the details are correct, here you will need to add a username that you will need to use to run MATLAB. Enter a username and click NEXT to continue.</p>
 <p>In the “<em>Destination</em>” tab keep the destination path the default one and click on the NEXT button to continue.</p>
-<div class="GA0bU5dJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="JSr9slxj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div id="ezoic-pub-ad-placeholder-667"> </div>
 <!-- End Ezoic - incontent_18 - incontent_18 -->
@@ -313,7 +319,7 @@ sudo apt-get upgrade</code></pre>
 <p>After that, you will be now on the “<em>products</em>” page, here you will need to select all the products that you want to download, click NEXT after selecting the products to continue. A popup will then appear asking you to add the products to install, click on “<em>Add</em>” to continue.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products-1024x400.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products-300x117.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products-768x300.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-matlab-products.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="400" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20400'%3E%3C/svg%3E" alt="select matlab products" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png"><noscript><img decoding="async" width="1024" height="400" src="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png" alt="select matlab products" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-1024x400.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-300x117.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products-768x300.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-matlab-products.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>Now you will be in the “<em>Options</em>” tab, here tick the “Create symbolic links” option and click on NEXT.</p>
-<div class="Yuf7PdU3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="CMJBGAka" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div id="ezoic-pub-ad-placeholder-668"> </div>
 <!-- End Ezoic - incontent_19 - incontent_19 -->
@@ -321,7 +327,7 @@ sudo apt-get upgrade</code></pre>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links-1024x240.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links-300x70.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links-768x180.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/12/select-create-symbolic-links.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="240" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20240'%3E%3C/svg%3E" alt="select create symbolic links" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png"><noscript><img decoding="async" width="1024" height="240" src="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png" alt="select create symbolic links" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-1024x240.png 1024w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-300x70.png 300w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links-768x180.png 768w, https://netmiko.com/wp-content/uploads/2021/12/select-create-symbolic-links.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>After the options tab, you will be in the “<em>Confirmation</em>” tab where you will need to check if all the things are correct or not, like licensing, username, products. It will also display the disk space that you will need for the installation. Now click on “Begin Install’ to Download and Install MATLAB.</p>
 <p>Once the download finishes click on the “<em>Close</em>” button on the installer.</p>
-<div class="uNs4RX6L" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="aEbzWWDa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_20 - incontent_20 -->
 <div id="ezoic-pub-ad-placeholder-669"> </div>
 <!-- End Ezoic - incontent_20 - incontent_20 -->
@@ -332,7 +338,7 @@ sudo apt-get upgrade</code></pre>
 <p>Once you are in the home directory, change your directory to “<em>/usr/local/</em>” using the command &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd /usr/local/</code></pre>
 <p>After that go inside the MATLAB directory.</p>
-<div class="xKpnwgxa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ynHwLLdH" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_21 - incontent_21 -->
 <div id="ezoic-pub-ad-placeholder-670"> </div>
 <!-- End Ezoic - incontent_21 - incontent_21 -->
@@ -343,7 +349,7 @@ sudo apt-get upgrade</code></pre>
 <p>Again change your directory to bin.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd bin</code></pre>
 <p>Now if you do a “<em>ls</em>” command inside this directory you will see a script named “<em>activate_matlab.sh</em>”, you will need to run that script in order to start the activation process of MATLAB.</p>
-<div class="hLurllEj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="03GDFcBV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_22 - incontent_22 -->
 <div id="ezoic-pub-ad-placeholder-671"> </div>
 <!-- End Ezoic - incontent_22 - incontent_22 -->
@@ -547,7 +553,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

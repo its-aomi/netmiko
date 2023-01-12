@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install AutoDock Vina on Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-1024x576.png">
 <link rel="canonical" href="https://netmiko.com/install-autodock-vina-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-autodock-vina-ubuntu/","name":"How to Install AutoDock Vina on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 5.42ms meta | 11.93ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 5.54ms meta | 12.10ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today we’ll see how we can install <a href="http://vina.scripps.edu/">AutoDock vina</a> on our ubuntu system easily. You can easily install AutoDock vina on your ubuntu if you follow the steps given below. </p>
-<div class="xn3RsM4z" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="YFYP4O0O" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -174,7 +180,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update</code></pre>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get upgrade</code></pre>
 <p>It will take a little bit of time for it to finish depending upon your internet speed. After the update and upgrade finishes, you can now start the installation process of AutoDock Vina.</p>
-<div class="aiRyTNZc" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="stNCiaVA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -187,7 +193,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get install wget
 </code></pre>
 <p>After installing wget,  download MGLTools. First, create a new directory on your desktop with the name &#8220;newdirectory&#8221; by using this command &#8211;</p>
-<div class="AqcVILdj" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="VkKOxJSk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -203,7 +209,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">wget http://mgltools.scripps.edu/downloads/tars/releases/REL1.5.6/mgltools_x86_64Linux2_1.5.6.tar.gz
 </code></pre>
 <p>Alternative download link for MGLTools &#8211; <a href="https://ccsb.scripps.edu/mgltools/downloads/">https://ccsb.scripps.edu/mgltools/downloads/</a></p>
-<div class="sSarsgNQ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="q7gpgn2X" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -215,7 +221,7 @@ img.emoji {
 </code></pre>
 <blockquote>
 <p>After this, we’ll need to download the <em>AutoDocksuite</em> so that we can run AutoDock4 analysis.</p>
-<div class="C7V0zUAx" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="z0xaV5sq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -225,7 +231,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo wget http://autodock.scripps.edu/downloads/autodock-registration/tars/dist426/autodocksuite-4.2.6-x86_64Linux2.tar</code></pre>
 <p>Okay, so all the required packages are now downloaded to our directory. Now before we start the installation we’ll need to download a library.</p>
 <p>Sometimes you might get an <em>imaging C module error</em> which you can fix by downloading and installing a library.</p>
-<div class="xlcJST4F" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="vygC90IZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -237,7 +243,7 @@ img.emoji {
 <p><strong>NOTE:</strong> This website can sometimes be down so, try this <a href="https://ccsb.scripps.edu/mgltools/downloads/">alternative link.</a></p>
 </blockquote>
 <p>Here select the version you want, 64-bit version or the 32-bit version. The 64-bit version name will be &#8220;mgltools_x86_64Linux2_1.5.6.tar.gz&#8221;.</p>
-<div class="5XYe5vwe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="iANDAtvL" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -245,7 +251,7 @@ img.emoji {
 <p>Now to download AutoDock Vina and AutoDock suite using Web Browser we will go to these links here &#8211;</p>
 <p>AutoDock Vina &#8211; <a href="http://vina.scripps.edu/download/autodock_vina_1_1_2_linux_x86.tgz">http://vina.scripps.edu/download/autodock_vina_1_1_2_linux_x86.tgz</a></p>
 <p>AutoDock suite &#8211; <a href="http://autodock.scripps.edu/downloads/autodock-registration/tars/dist426/autodocksuite-4.2.6-x86_64Linux2.tar">http://autodock.scripps.edu/downloads/autodock-registration/tars/dist426/autodocksuite-4.2.6-x86_64Linux2.tar</a></p>
-<div class="lrs4LAY2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="O3bdrsmk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -255,7 +261,7 @@ img.emoji {
 <h2>Install MGLTools and AutoDock Vina &#8211;<br>
 </h2>
 <p>Okay, so now that we have downloaded all the files required for the installation let&#8217;s continue to the next step. </p>
-<div class="oq53Ps1d" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="xex5H5dq" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -265,7 +271,7 @@ img.emoji {
 <p>After the tar file unzips, there will be a new folder named “<em>mgltools_x86_64Linux2_1.5.6 &#8216;</em>&#8216; inside the “newdirectory<em>”</em> folder.</p>
 <blockquote>
 <p>Now change your working directory from “newdirectory” to “mgltools_x86_64Linux2_1.5.6” using this command &#8211; </p>
-<div class="K460ZXAH" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="dkJ4uWv4" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -278,7 +284,7 @@ img.emoji {
 </code></pre>
 <p>After typing this command the installation of MGLTools will start. If there’s a “Commercial Usage” popup appearing on your screen then click on the OK button.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/commercial-usage-popup-2-1024x576.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/commercial-usage-popup-2-300x169.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/commercial-usage-popup-2-768x432.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/commercial-usage-popup-2.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="576" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="commercial usage popup-2" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-1024x576.png"><noscript><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-1024x576.png" alt="commercial usage popup-2" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/10/commercial-usage-popup-2.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="JVmqP1r5" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="iqZCSlya" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -287,7 +293,7 @@ img.emoji {
 <p>Change your working directory back to &#8220;newdirectory&#8221; using the command &#8211;</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">cd ..</code></pre>
 <p>Now you&#8217;ll need to unzip the AutoDock tar file. Use this command to unzip the tar file &#8211;</p>
-<div class="flLXO66R" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="46cdY6By" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -300,7 +306,7 @@ img.emoji {
 <p>We’ll have to create an alias now for AutoDock vina and pymol viewer. To do that we&#8217;ll have to edit the Bashrc file.</p>
 <blockquote>
 <p>First, you will have to change your working directory from newdirectory to the root directory.</p>
-<div class="A38AVo3R" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="UQBj1xDu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -316,7 +322,7 @@ img.emoji {
 alias pmv='sudo /home/username/newdirectory/mgltools_x86_64Linux2_1.5.6/bin/pmv'
 </code></pre>
 <p>Now the file path here after sudo will be different for everyone. It depends upon where you installed MGLTools.</p>
-<div class="3OwKuMOb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="C5jFyRrZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div id="ezoic-pub-ad-placeholder-665"> </div>
 <!-- End Ezoic - incontent_16 - incontent_16 -->
@@ -324,7 +330,7 @@ alias pmv='sudo /home/username/newdirectory/mgltools_x86_64Linux2_1.5.6/bin/pmv'
 <p>In place of username type your own username. Other things will be same if you followed my steps.</p>
 <p>After that, on the top left, click on the Save button and then click on the red x button to close the editor.</p>
 <p>Now we’ll type the final command that will finish the installation process of AutoDock Vina.</p>
-<div class="SmULUeSe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="wdeQwiG7" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div id="ezoic-pub-ad-placeholder-666"> </div>
 <!-- End Ezoic - incontent_17 - incontent_17 -->
@@ -334,7 +340,7 @@ alias pmv='sudo /home/username/newdirectory/mgltools_x86_64Linux2_1.5.6/bin/pmv'
 <p>And, that&#8217;s it, AutoDock Vina is now installed successfully on your ubuntu system. You can <em>open AutoDock Vina by typing “adt” in the terminal.</em> And to open the pymol viewer we’ll type pmv in the terminal.</p>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/running-autodock-vina-using-adt-command-1024x576.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/running-autodock-vina-using-adt-command-300x169.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/running-autodock-vina-using-adt-command-768x432.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/10/running-autodock-vina-using-adt-command.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="576" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="running autodock vina using adt command" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-1024x576.png"><noscript><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-1024x576.png" alt="running autodock vina using adt command" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/10/running-autodock-vina-using-adt-command.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
 <p>If you are facing any problem while installing AutoDock Vina, then you can contact me on <a href="https://instagram.com/aomi._.e">Instagram</a> or you can comment below. Thank you.</p>
-<div class="DaKfda8w" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="V48HSA6U" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div id="ezoic-pub-ad-placeholder-667"> </div>
 <!-- End Ezoic - incontent_18 - incontent_18 -->
@@ -344,7 +350,7 @@ alias pmv='sudo /home/username/newdirectory/mgltools_x86_64Linux2_1.5.6/bin/pmv'
 <h3>Can I install AutoDock Vina without Root permissions?</h3>
 <p>Yes, you can install AutoDock vina without having root permissions. Download the packages using your web browser and then install it.</p>
 <p><strong>Update:</strong> To edit the bashrc file, you can do that without using sudo at the back like &#8220;gedit ~/.bashrc&#8221;.</p>
-<div class="Ht7KYXax" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="kesJvwCy" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div id="ezoic-pub-ad-placeholder-668"> </div>
 <!-- End Ezoic - incontent_19 - incontent_19 -->
@@ -503,7 +509,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

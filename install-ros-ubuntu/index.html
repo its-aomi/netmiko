@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-1024x576.png">
 <link rel="canonical" href="https://netmiko.com/install-ros-ubuntu/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-ros-ubuntu/","name":"How to Install ROS Noetic and ROS Melodic on Ubuntu 20.04"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 4.68ms meta | 11.80ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 4.77ms meta | 11.83ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today I will walk you through the steps to <strong>install ROS Noetic and ROS Melodic on your Ubuntu 20.04</strong>. The steps will be very easy and you should be able to complete the installation very quickly.</p>
-<div class="A5grL2uF" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Gn0cb2Pg" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -173,7 +179,7 @@ img.emoji {
 <p>Before we begin to see the Installation process of ROS, let&#8217;s see what ROS is and why it is the preferred choice of many hobbyists, engineers, and robotics designers throughout the world.</p>
 <h2>What is ROS?</h2>
 <p>Robot Operating System, in short “ROS” is an open-source framework for researchers and developers to build and reuse code between robotics applications. It is a collection of software libraries and frameworks used in robotics development.</p>
-<div class="t220vhzC" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="s9pbMWsL" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -184,7 +190,7 @@ img.emoji {
 <p>Okay, so the first ROS version that we are going to install is ROS Noetic Ninjemys. To begin, first, make sure you have root permissions on your ubuntu system as we need root permission to download and install ROS.</p>
 <h3>Add ROS Source List </h3>
 <p>The first step will be to add the ROS Source List to our ubuntu system so that we can easily download and install all the resources for ROS using our command terminal. </p>
-<div class="WvPS4oY9" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="3ICGaIYU" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -196,7 +202,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
 </code></pre>
 <p>After adding the source list run the update command again to refresh the ubuntu packages list.</p>
-<div class="uP7XuXQb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="AGJugMTW" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -209,7 +215,7 @@ img.emoji {
 <p>After installing curl, Copy-Paste the command given below in the terminal, if everything is working fine then you should see an output in the terminal that says “OK”, which means you can continue with the installation of ROS Noetic.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -</code></pre>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/add-ros-key-to-ubuntu-1024x576.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/add-ros-key-to-ubuntu-300x169.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/add-ros-key-to-ubuntu-768x432.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/11/add-ros-key-to-ubuntu.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="576" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="add ros key to ubuntu" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-1024x576.png"><noscript><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-1024x576.png" alt="add ros key to ubuntu" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/11/add-ros-key-to-ubuntu.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="G2IfLvb3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="Dy3uN1HD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -221,7 +227,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get install ros-noetic-desktop-full -y
 </code></pre>
 <p>Now, if you don&#8217;t want to download all the extra features then you can just download the ROS-Base with this command &#8211; </p>
-<div class="bdX8fNqe" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="RafCr2Tu" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -233,7 +239,7 @@ img.emoji {
 <p>Now to be able to run ROS Noetic in your terminal you will have to source the setup.bash file in every terminal window you want to run ROS Noetic in. You can do that by entering the command given below in the terminal.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">source /opt/ros/noetic/setup.bash</code></pre>
 <p>But, sourcing the bash file every time you open a new terminal will be very inconvenient, that&#8217;s why you can automate this process by adding the source command to your bashrc file.</p>
-<div class="ICdLRnDR" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="DUcURbLx" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -242,7 +248,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">echo &quot;source /opt/ros/noetic/setup.bash&quot; &gt;&gt; ~/.bashrc</code></pre>
 <p style="text-align: center;"><em>ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (STARTS)</em></p>
 <p>Or, you can manually add the source command to your bashrc file using the gedit editor.</p>
-<div class="F79FbAB1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="0DaLw04k" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -251,7 +257,7 @@ img.emoji {
 <p>Add the “source /opt/ros/noetic/setup.bash” line to the end of the bashrc file, save and then exit.</p>
 <p style="text-align: center;"><em>ALTERNATIVE WAY TO ADD SOURCE COMMAND TO BASHRC (ENDS)</em></p>
 <p>Once you have echo or added the source command to the bashrc file run the source command to finish the setup.</p>
-<div class="mD7dCiAZ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ltLw74Oh" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -262,7 +268,7 @@ img.emoji {
 </h2>
 <p>Okay so if you want to install ROS Melodic instead of ROS Noetic then here are the steps to do that.</p>
 <p>The installation steps are the same as ROS Noetic, with just a little bit of changes. Once you have added the source list and the ROS keys you can download ROS Melodic using the command below.</p>
-<div class="xRQj0XpV" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="uSCMrwM1" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -276,7 +282,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">echo &quot;source /opt/ros/melodic/setup.bash&quot; &gt;&gt; ~/.bashrc
 </code></pre>
 <p>This command will add the source command to the bashrc file, you can also add it manually by editing the bashrc file using the gedit editor.</p>
-<div class="lAqOGY97" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="aVILA4dG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -295,7 +301,7 @@ img.emoji {
 <li style="font-weight: 400;" aria-level="1">build-essential</li>
 </ul>
 <p>You can install all these tools and dependencies by using “sudo apt-get install &lt;tool-name&gt;” like &#8211;</p>
-<div class="cmAqSgmP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="v4LM5M69" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -312,7 +318,7 @@ img.emoji {
 <h2>Conclusion &#8211;<br>
 </h2>
 <p>And that&#8217;s it, that&#8217;s how you can download, install and set up ROS Noetic and ROS Melodic on your ubuntu 20.04. If you have any questions regarding the installation process of ROS then be sure to comment below. Thank You.</p>
-<div class="ktJot6Jv" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="JS2fQJey" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -474,7 +480,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">

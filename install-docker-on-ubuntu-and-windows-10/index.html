@@ -18,9 +18,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="shortcut icon" href="https://netmiko.com/wp-content/uploads/2022/12/favicon-150x150-1-150x150.png">
 		<link rel="profile" href="https://gmpg.org/xfn/11">
-
+	
+	<script type="rocketlazyloadscript" data-rocket-type="module">
+const i = document.querySelector('.main-iframe');
+const l = i.parentNode.insertBefore(document.createElement('div'), i);
+l.classList.add('loading');
+i.addEventListener('load', () => l.remove());
+	</script>
 	<title>Install Docker on Ubuntu 20.04 and Windows 10 &#x2d; NETMIKO.COM</title>
-<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/8a1ddf38c3c8545c7313d8a92ca523ee.css" media="all" data-minify="1">
+<link rel="stylesheet" href="https://netmiko.com/wp-content/cache/min/1/a96e370aea487556230a555b34a3a68b.css" media="all" data-minify="1">
 
 <!-- The SEO Framework by Sybre Waaijer -->
 <meta name="robots" content="max-snippet:-1,max-image-preview:large,max-video-preview:-1">
@@ -41,7 +47,7 @@
 <meta name="twitter:image" content="https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-1024x576.png">
 <link rel="canonical" href="https://netmiko.com/install-docker-on-ubuntu-and-windows-10/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://netmiko.com/","name":"NETMIKO.COM"}},{"@type":"ListItem","position":2,"item":{"@id":"https://netmiko.com/category/blog/","name":"Blog"}},{"@type":"ListItem","position":3,"item":{"@id":"https://netmiko.com/install-docker-on-ubuntu-and-windows-10/","name":"Install Docker on Ubuntu 20.04 and Windows 10"}}]}</script>
-<!-- / The SEO Framework by Sybre Waaijer | 7.81ms meta | 12.54ms boot -->
+<!-- / The SEO Framework by Sybre Waaijer | 7.68ms meta | 11.77ms boot -->
 
 
 <link rel="alternate" type="application/rss+xml" title="NETMIKO.COM &raquo; Feed" href="https://netmiko.com/feed/">
@@ -165,7 +171,7 @@ img.emoji {
 	
 	<div class="entry-content" itemprop="articleBody">
 		<p>Today we will see how we can install docker in our ubuntu 20.04 and on our windows 10 computer. This installation process will be very easy and anyone can follow it to install docker easily. So let&#8217;s now see how we can install docker.</p>
-<div class="oeZdPLGA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="ftiutzWL" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  First_ad - under_second_paragraph -->
 <div id="ezoic-pub-ad-placeholder-648"> </div>
 <!-- End Ezoic -  First_ad - under_second_paragraph -->
@@ -174,7 +180,7 @@ img.emoji {
 <h2>Install docker on ubuntu 20.04 &#8211;<br>
 </h2>
 <p>Before installing Docker in our Ubuntu system, we have to setup a docker repository after which we will install docker in it.</p>
-<div class="ehzWiFqJ" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="oQ1EjyOw" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic -  second_ad - mid_content -->
 <div id="ezoic-pub-ad-placeholder-649"> </div>
 <!-- End Ezoic -  second_ad - mid_content -->
@@ -197,7 +203,7 @@ img.emoji {
 </code></pre>
 <h4>Add gpg key &#8211;</h4>
 <p>Now we will add the gpg key to it, which we use to sign files and check their signature.</p>
-<div class="BC7Cs033" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="uok61Vcm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_5 - incontent_5 -->
 <div id="ezoic-pub-ad-placeholder-654"> </div>
 <!-- End Ezoic - incontent_5 - incontent_5 -->
@@ -207,7 +213,7 @@ img.emoji {
 </code></pre>
 <p>After typing the above command, GPG key will be installed in your ubuntu and it will show OK in your terminal, if OK does not show then check your command whether it is correct or not. you might have pasted the command wrong.</p>
 <p>To check whether our GPG key is installed or not, we can use the command given below to verify it.</p>
-<div class="SUsiMU7l" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="4Ikdv0vo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_6 - incontent_6 -->
 <div id="ezoic-pub-ad-placeholder-655"> </div>
 <!-- End Ezoic - incontent_6 - incontent_6 -->
@@ -219,7 +225,7 @@ img.emoji {
 <p>Now we will add our repository to apt for which we will use the command given below.</p>
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo add-apt-repository &ldquo;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&rdquo;</code></pre>
 <p>In this command we have written stable because we want to install only the stable version of docker for which we have added the stable repository. You can also install different versions of docker, but I recommend the stable version only.</p>
-<div class="TNiDFI2g" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="RG1UEGfG" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_7 - incontent_7 -->
 <div id="ezoic-pub-ad-placeholder-656"> </div>
 <!-- End Ezoic - incontent_7 - incontent_7 -->
@@ -230,7 +236,7 @@ img.emoji {
 <pre class="theme-okaidia" data-show-toolbar="yes"><code class="language-javascript">sudo apt-get update
 </code></pre>
 <p>After this we will install docker and also along with docker we will also install its cli and containerd.io.</p>
-<div class="IA6QS2S2" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="7JZTiM3U" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_8 - incontent_8 -->
 <div id="ezoic-pub-ad-placeholder-657"> </div>
 <!-- End Ezoic - incontent_8 - incontent_8 -->
@@ -242,7 +248,7 @@ img.emoji {
 <p>Docker is now successfully installed in our system, to check that you can type some of the commands given below.</p>
 <p>Which are used to check the version of docker and to check if docker can run a container or not.</p>
 <p>&#8221; docker &#8211;version &#8221; This command will show you the version of docker which version of docker is installed in your system. If it says &#8221; command not found &#8221; then it means that docker is not installed in your system.</p>
-<div class="J7CRNOm8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="02UZgWnH" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_9 - incontent_9 -->
 <div id="ezoic-pub-ad-placeholder-658"> </div>
 <!-- End Ezoic - incontent_9 - incontent_9 -->
@@ -252,7 +258,7 @@ img.emoji {
 <h2>Install Docker on Windows 10 &#8211;<br>
 </h2>
 <p>															<picture><source data-lazy-srcset="https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Install-docker-on-windows-10-hindi-1024x576.png.webp 1024w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Install-docker-on-windows-10-hindi-300x169.png.webp 300w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Install-docker-on-windows-10-hindi-768x432.png.webp 768w, https://netmiko.com/wp-content/webp-express/webp-images/uploads/2021/09/Install-docker-on-windows-10-hindi.png.webp 1280w" sizes="(max-width: 1024px) 100vw, 1024px" type="image/webp"><img decoding="async" width="1024" height="576" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20576'%3E%3C/svg%3E" alt="Install docker on windows 10 hindi" loading="lazy" data-lazy-srcset="https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi.png 1280w" data-lazy-sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed" data-lazy-src="https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-1024x576.png"><noscript><img decoding="async" width="1024" height="576" src="https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-1024x576.png" alt="Install docker on windows 10 hindi" loading="lazy" srcset="https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-1024x576.png 1024w, https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-300x169.png 300w, https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi-768x432.png 768w, https://netmiko.com/wp-content/uploads/2021/09/Install-docker-on-windows-10-hindi.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px" class="webpexpress-processed"></noscript></picture>															</p>
-<div class="jGbQCq7N" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="m0N6U0Q8" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_10 - incontent_10 -->
 <div id="ezoic-pub-ad-placeholder-659"> </div>
 <!-- End Ezoic - incontent_10 - incontent_10 -->
@@ -262,7 +268,7 @@ img.emoji {
 <h3>Enable Hyper-V Feature &#8211;<br>
 </h3>
 <p>Before installing Docker in windows, we have to enable Hyper-V feature of windows which we need to run and install docker.</p>
-<div class="vc46GRKD" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="1W4b7FIN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_11 - incontent_11 -->
 <div id="ezoic-pub-ad-placeholder-660"> </div>
 <!-- End Ezoic - incontent_11 - incontent_11 -->
@@ -271,7 +277,7 @@ img.emoji {
 <p>Before enabling Hyper-V, we have to see whether Virtualization is enabled in our windows computer or not, for which we will open our task manager and there we will go to performance where we will see Virtualization  at the bottom of the right side. If it is disabled then you have to enable it now, for which you follow the steps given below.</p>
 <p>To enable virtualization, you have to first click on the windows logo and then click on settings. By going to the settings, we will get updates and security.</p>
 <p>Here we will go to the recovery option, here we will click on the option of restart which is under the advanced startup, after you click that, the computer will restart.</p>
-<div class="QT9TYuPm" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="WD2Kv6G3" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_12 - incontent_12 -->
 <div id="ezoic-pub-ad-placeholder-661"> </div>
 <!-- End Ezoic - incontent_12 - incontent_12 -->
@@ -279,7 +285,7 @@ img.emoji {
 <p>Now we will get some options on our screen in which we have to select troubleshoot option and then we have to select advanced options. Now we will get many options here out of which we have to click on &#8220;UEFI Firmware settings&#8221; and then we have to click on restart button.</p>
 <p>Here now we have to select the bios setup for which we will use our function keys because here you cannot use the mouse. After selecting it with the help of function keys, press enter.</p>
 <p>Now we will click on system configuration here after which we will go to Virtualization technology and press enter. Now we will go down with the help of our arrow keys and select Enabled instead of Disabled. After this we will select save and exit with the help of our function keys and after that our system will automatically restart normally.</p>
-<div class="wtKaZFyb" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="r23Ore6F" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_13 - incontent_13 -->
 <div id="ezoic-pub-ad-placeholder-662"> </div>
 <!-- End Ezoic - incontent_13 - incontent_13 -->
@@ -288,7 +294,7 @@ img.emoji {
 <h4>Enable Hyper-V</h4>
 <p>After virtualization is enabled, to enable Hyper-V, we will first have to search Hyper-V in the search bar of windows and then open the windows features. Now here we have to select Hyper-V and then click on OK, after that Hyper-V will be installed in it, after which we will have to restart our computer again.</p>
 <p>Hyper-V is not available in all windows computers only in professional, education and pro versions.</p>
-<div class="0NscG4CS" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="I4UCPPPN" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_14 - incontent_14 -->
 <div id="ezoic-pub-ad-placeholder-663"> </div>
 <!-- End Ezoic - incontent_14 - incontent_14 -->
@@ -296,7 +302,7 @@ img.emoji {
 <p>After restarting, we will have to go to the search bar again and search for Hyper-V there. Now we will open it, after opening we have to click on the virtual switch manager in the right side and then there we will have to select the new virtual network.</p>
 <p>Here we will choose the external option and then click on create virtual switch and then we will click on OK after which Hyper-V is now enabled completely.</p>
 <p>If you are facing any problem in enabling Hyper-V then you can search on YouTube how we can install Hyper-V in windows 10 and you will get many videos with the help of which you can easily install it on your windows 10 and can enable Hyper-V in the computer.</p>
-<div class="qGA59I6N" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="wfEYPUos" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_15 - incontent_15 -->
 <div id="ezoic-pub-ad-placeholder-664"> </div>
 <!-- End Ezoic - incontent_15 - incontent_15 -->
@@ -305,7 +311,7 @@ img.emoji {
 <p>Now that we have enabled Hyper-V, now we can install our docker, we will run the exe file we downloaded to install it and then we will come to the setup wizard of docker. Where we have to click on OK, after which our docker installation will start.</p>
 <p>It will take some time to install, after which docker will be installed in your Windows 10.</p>
 <p>Once installed, you will have to restart your windows computer once. After restarting, you can now search docker in your search bar.</p>
-<div class="oAo5Xptc" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="C57MjJX6" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_16 - incontent_16 -->
 <div id="ezoic-pub-ad-placeholder-665"> </div>
 <!-- End Ezoic - incontent_16 - incontent_16 -->
@@ -315,7 +321,7 @@ img.emoji {
 <h2>Frequently asked questions &#8211;</h2>
 <h3>Could not get lock /var/lib/dpkg/lock error while installing docker in ubuntu.</h3>
 <p>If you are also getting this error while installing docker, then it means that some process is running in your system which you have to stop first so that you can proceed.</p>
-<div class="oPIahjzo" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="KXZ2zD1d" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_17 - incontent_17 -->
 <div id="ezoic-pub-ad-placeholder-666"> </div>
 <!-- End Ezoic - incontent_17 - incontent_17 -->
@@ -323,7 +329,7 @@ img.emoji {
 <p>It is very easy to fix this error. When your terminal shows you this error, along with it it also shows an ID which you need to fix this problem.</p>
 <p>You get an ID which is something like “It is held by process 0000” Here our ID is 0000 which is different for everyone.</p>
 <p>To fix this error, we will use the command given below, where at the end we will enter our ID which we want to stop.</p>
-<div class="dvwZKz0s" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="9OFP4quA" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_18 - incontent_18 -->
 <div id="ezoic-pub-ad-placeholder-667"> </div>
 <!-- End Ezoic - incontent_18 - incontent_18 -->
@@ -334,7 +340,7 @@ img.emoji {
 </h3>
 <p>It is easier to install Docker in ubuntu as compared to windows because in windows you have to enable many such settings which are not easy for non-technical person. Due to which many people do not prefer to install docker in windows.</p>
 <p>If you talk about ubuntu, it is very easy to install docker in it, you just have to type some commands in terminal which will install docker in your ubuntu 20.04.</p>
-<div class="5pbmpWCr" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="T72YmFLP" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_19 - incontent_19 -->
 <div id="ezoic-pub-ad-placeholder-668"> </div>
 <!-- End Ezoic - incontent_19 - incontent_19 -->
@@ -342,7 +348,7 @@ img.emoji {
 <h3>Can we install docker on different versions of ubuntu using this tutorial?</h3>
 <p>Yes, you can install docker in different versions of ubuntu also with the help of this tutorial because if you are using different version of ubuntu then the steps are same and you will not have any problem in installing it.</p>
 <p>If you liked this tutorial, then definitely share it with your friends who want to install docker on their ubuntu linux and windows 10. And if you have any question, then you can comment it in the comment section below, which I will definitely solve it for you. Thank you.</p>
-<div class="t3ZwW8Tk" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
+<div class="P9vQu7sa" style="clear:both;float:left;width:100%;margin:0 0 20px 0;">
 <!-- Ezoic - incontent_20 - incontent_20 -->
 <div id="ezoic-pub-ad-placeholder-669"> </div>
 <!-- End Ezoic - incontent_20 - incontent_20 -->
@@ -488,7 +494,7 @@ It can set the mood,...</p>
 				<meta itemprop="headline" content="How to Download Royalty Free Sound Effects">
 				<meta itemprop="author" content="Aomi Bora">
 				<meta itemprop="datePublished" content="2023-01-09">
-				<meta itemprop="dateModified" content="2023-01-11">
+				<meta itemprop="dateModified" content="2023-01-12">
 
 			</article>
 					<article class="article-card" itemscope itemtype="http://schema.org/BlogPosting">
